@@ -1,5 +1,6 @@
 import { Clear } from '@mui/icons-material';
 import { Button, IconButton, InputBase, Paper } from '@mui/material';
+import useStyle from './styles.js';
 import React from 'react';
 
 const ListInputCard = ({ setOpen }) => {

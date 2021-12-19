@@ -8,7 +8,7 @@ import ListInputContainer from './ListInput/ListInputContainer.js';
 const List = () => {
   const classes = useStyle();
   return (
-    <div>
+    <div className='test2'>
       <Paper className={classes.root}>
         <ListTitle />
         <ListCard />
