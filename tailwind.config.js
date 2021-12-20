@@ -21,6 +21,9 @@ module.exports = {
       },
       transitionProperty: {
         'height': 'height'
+      },
+      outlineOffset: {
+        '3': '-3px'
       }
     },
   },
