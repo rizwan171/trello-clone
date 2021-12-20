@@ -17,9 +17,7 @@ const AddCard = () => {
     <> 
     
     <Collapse isOpen={open}>
-      {/* <div> */}
-        <textarea ref={inputRef} value={text} placeholder='Type something...' autoFocus className='w-full box-border outline-none border-2 border-trello-blue-100 shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5' onBlur={() => setOpen(false)}/>
-      {/* </div> */}
+      <textarea ref={inputRef} value={text} placeholder='Type something...' autoFocus className='w-full box-border outline-none border-2 border-trello-blue-100 shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5' onBlur={() => setOpen(false)}/>
     </Collapse>
     
     <Collapse isOpen={!open}>
