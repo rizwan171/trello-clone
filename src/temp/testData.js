@@ -20,11 +20,17 @@ const testData = {
       id: 'list-2',
       title: 'In progress',
       cards: cards,
+    },
+    'list-3': {
+      id: 'list-3',
+      title: 'Done',
+      cards: cards,
     }
   },
   listIds: [
     'list-1',
     'list-2',
+    'list-3',
   ]
 }
 
