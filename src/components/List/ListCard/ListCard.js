@@ -1,15 +1,11 @@
-import { Paper } from '@mui/material';
-import useStyle from './styles.js';
-import React from 'react';
+import React from "react";
 
 const ListCard = () => {
-  const classes = useStyle();
-
   return (
-    <div>
-      <Paper className={classes.card}>Card Content</Paper>
+    <div className="shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5">
+      Card Content
     </div>
-  )
+  );
 }
 
 export default ListCard;

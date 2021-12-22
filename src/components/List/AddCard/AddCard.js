@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FiPlus } from 'react-icons/fi';
-import CardText from './CardText';
+import { FiPlus, FiX } from 'react-icons/fi';
 
 const AddCard = () => {
   const [open, setOpen] = useState(false);
@@ -11,13 +10,24 @@ const AddCard = () => {
     if (open) {
       inputRef.current.focus();
     }
-  }, [open])
+  }, [open]);
+
+  const handleAddCard = () => {
+    // TODO add the addCard logic
+    setOpen(false);
+  }
 
   return (
     <> 
     
     <Collapse isOpen={open}>
       <textarea ref={inputRef} value={text} placeholder='Type something...' autoFocus className='w-full box-border outline-none border-2 border-trello-blue-100 shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5' onBlur={() => setOpen(false)}/>
+      <div className='flex items-center'>
+        <button type="button" className="py-2 px-3 bg-trello-green-100 hover:bg-trello-green-200 text-white transition ease-in duration-200 text-center text-base shadow-md rounded-md" onClick={() => handleAddCard()}>
+          Add Card
+        </button>
+        <FiX onClick={() => setOpen(false)} size={36} className='text-trello-gray-200 hover:bg-trello-gray-500 cursor-pointer rounded-full ml-1 p-1'/>
+      </div>
     </Collapse>
     
     <Collapse isOpen={!open}>
@@ -33,7 +43,6 @@ const AddCard = () => {
 
 export default AddCard;
 
-/* Logic */
 const Collapse = ({ isOpen, children }) => {
   const ref = useRef(null);
 
