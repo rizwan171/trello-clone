@@ -5,6 +5,7 @@ import testData from '../temp/testData.js';
 import { AddCardContext } from '../contexts/AddCardContext.js';
 import AddList from './List/AddList/AddList.js';
 import { AddListContext } from '../contexts/AddListContext.js';
+import { UpdateTitleContext } from '../contexts/UpdateTitleContext.js';
 
 function App() {
   const [data, setData] = useState(testData);
@@ -29,6 +30,22 @@ function App() {
     setData(newData);
   };
 
+  const updateListTitle = (newTitle, listId) => {
+    const list = data.lists[listId];
+    const newData = {
+      ...data,
+      lists: {
+        ...data.lists,
+        [listId]: {
+          ...list,
+          title: newTitle
+        }
+      }
+    };
+
+    setData(newData);
+  }
+
   const addList = (title) => {
     const listId = uuidv4();
     const newData = {
@@ -52,12 +69,14 @@ function App() {
 
   return (
     <div className='flex w-full mt-11'>
-      <AddCardContext.Provider value={addCard}>
-        <AddListContext.Provider value={addList}>
-          { data.listIds.map(id => <List key={id} list={data.lists[id]} />) }
-          <AddList />
-        </AddListContext.Provider>
-      </AddCardContext.Provider>
+      <AddListContext.Provider value={addList}>
+        <UpdateTitleContext.Provider value={updateListTitle}>
+          <AddCardContext.Provider value={addCard}>
+            {data.listIds.map(id => <List key={id} list={data.lists[id]} />)}
+            <AddList />
+          </AddCardContext.Provider>
+        </UpdateTitleContext.Provider>
+      </AddListContext.Provider>
     </div>
   );
 }
