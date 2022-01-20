@@ -1,10 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import { FiPlus, FiX } from 'react-icons/fi';
+import { AddCardContext } from '../../../contexts/AddCardContext.js';
 
-const AddCard = () => {
+const AddCard = ({ listId }) => {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
   const inputRef = useRef(null);
+
+  const addCard = useContext(AddCardContext);
 
   useEffect(() => {
     if (open) {
@@ -12,21 +15,39 @@ const AddCard = () => {
     }
   }, [open]);
 
+  const handleOnChange = (e) => {
+    setText(e.target.value);
+  }
+
   const handleAddCard = () => {
-    // TODO add the addCard logic
+    addCard(text, listId);
     setOpen(false);
+    setText("");
+  }
+
+  const handleClose = () => {
+    setOpen(false);
+    setText("");
   }
 
   return (
     <> 
     
     <Collapse isOpen={open}>
-      <textarea ref={inputRef} value={text} placeholder='Type something...' autoFocus className='w-full box-border outline-none border-2 border-trello-blue-100 shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5' onBlur={() => setOpen(false)}/>
+      <textarea 
+        ref={inputRef} 
+        value={text} 
+        placeholder='Type something...' 
+        autoFocus 
+        className='w-full box-border outline-none border-2 border-trello-blue-100 shadow bg-white hover:bg-trello-gray-400 rounded-md p-2 my-1.5' 
+        // onBlur={() => setOpen(false)}
+        onChange={handleOnChange}
+      />
       <div className='flex items-center'>
-        <button type="button" className="py-2 px-3 bg-trello-green-100 hover:bg-trello-green-200 text-white transition ease-in duration-200 text-center text-base shadow-md rounded-md" onClick={() => handleAddCard()}>
+        <button type="button" className="py-2 px-3 bg-trello-green-100 hover:bg-trello-green-200 text-white transition ease-in duration-200 text-center text-base shadow-md rounded-md" onClick={handleAddCard}>
           Add Card
         </button>
-        <FiX onClick={() => setOpen(false)} size={36} className='text-trello-gray-200 hover:bg-trello-gray-500 cursor-pointer rounded-full ml-1 p-1'/>
+        <FiX onClick={handleClose} size={36} className='text-trello-gray-200 hover:bg-trello-gray-500 cursor-pointer rounded-full ml-1 p-1'/>
       </div>
     </Collapse>
     
