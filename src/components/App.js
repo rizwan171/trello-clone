@@ -89,6 +89,19 @@ function App() {
       };
 
       setData(newData);
+    } else {
+      sourceList.cards.splice(source.index, 1);
+      destList.cards.splice(destination.index, 0, draggingCard);
+
+      const newData = {
+        ...data,
+        lists: {
+          ...data.lists,
+          [sourceList.id]: sourceList,
+          [destList.id]: destList 
+        }
+      };
+      setData(newData);
     }
   }
 
