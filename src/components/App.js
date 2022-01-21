@@ -7,6 +7,7 @@ import AddList from './List/AddList/AddList.js';
 import { AddListContext } from '../contexts/AddListContext.js';
 import { UpdateTitleContext } from '../contexts/UpdateTitleContext.js';
 import { DragDropContext } from 'react-beautiful-dnd';
+import { Droppable } from 'react-beautiful-dnd';
 
 function App() {
   const [data, setData] = useState(testData);
@@ -69,55 +70,73 @@ function App() {
   }
 
   const handleDragEnd = (result) => {
-    const { destination, source, draggableId } = result;
+    const { destination, source, draggableId, type } = result;
 
     if (!destination) return;
 
-    const sourceList = data.lists[source.droppableId];
-    const destList = data.lists[destination.droppableId];
-    const draggingCard = sourceList.cards.find(card => card.id === draggableId);
-    if (source.droppableId === destination.droppableId) {
-      sourceList.cards.splice(source.index, 1);
-      destList.cards.splice(destination.index, 0, draggingCard);
+    if (type === 'list') {
+      const newListIds = data.listIds;
+      newListIds.splice(source.index, 1);
+      newListIds.splice(destination.index, 0, draggableId);
 
       const newData = {
         ...data,
-        lists: {
-          ...data.lists,
-          [sourceList.id]: destList
-        }
+        listIds: [...newListIds]
       };
-
       setData(newData);
     } else {
-      sourceList.cards.splice(source.index, 1);
-      destList.cards.splice(destination.index, 0, draggingCard);
+      const sourceList = data.lists[source.droppableId];
+      const destList = data.lists[destination.droppableId];
+      const draggingCard = sourceList.cards.find(card => card.id === draggableId);
+      if (source.droppableId === destination.droppableId) {
+        sourceList.cards.splice(source.index, 1);
+        destList.cards.splice(destination.index, 0, draggingCard);
 
-      const newData = {
-        ...data,
-        lists: {
-          ...data.lists,
-          [sourceList.id]: sourceList,
-          [destList.id]: destList 
-        }
-      };
-      setData(newData);
+        const newData = {
+          ...data,
+          lists: {
+            ...data.lists,
+            [sourceList.id]: destList
+          }
+        };
+
+        setData(newData);
+      } else {
+        sourceList.cards.splice(source.index, 1);
+        destList.cards.splice(destination.index, 0, draggingCard);
+
+        const newData = {
+          ...data,
+          lists: {
+            ...data.lists,
+            [sourceList.id]: sourceList,
+            [destList.id]: destList
+          }
+        };
+        setData(newData);
+      }
     }
+
   }
 
   return (
-    <div className='flex w-full mt-11 overflow-y-auto'>
-      <DragDropContext onDragEnd={handleDragEnd}>
-        <AddListContext.Provider value={addList}>
-          <UpdateTitleContext.Provider value={updateListTitle}>
-            <AddCardContext.Provider value={addCard}>
-              {data.listIds.map(id => <List key={id} list={data.lists[id]} />)}
-              <AddList />
-            </AddCardContext.Provider>
-          </UpdateTitleContext.Provider>
-        </AddListContext.Provider>
-      </DragDropContext>
-    </div>
+    <DragDropContext onDragEnd={handleDragEnd}>
+      <AddListContext.Provider value={addList}>
+        <UpdateTitleContext.Provider value={updateListTitle}>
+          <AddCardContext.Provider value={addCard}>
+            <Droppable droppableId="app" type="list" direction="horizontal">
+              {(provided) =>
+                <div className='flex w-full mt-11 overflow-y-auto' ref={provided.innerRef} {...[provided.droppableProps]}>
+                  {data.listIds.map((id, index) => <List key={id} list={data.lists[id]} index={index} />)}
+                  {provided.placeholder}
+                  <AddList />
+                </div>
+              }
+            </Droppable>
+          </AddCardContext.Provider>
+        </UpdateTitleContext.Provider>
+      </AddListContext.Provider>
+    </DragDropContext>
   );
 }
 
