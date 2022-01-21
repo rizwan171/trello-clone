@@ -6,6 +6,7 @@ import { AddCardContext } from '../contexts/AddCardContext.js';
 import AddList from './List/AddList/AddList.js';
 import { AddListContext } from '../contexts/AddListContext.js';
 import { UpdateTitleContext } from '../contexts/UpdateTitleContext.js';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 function App() {
   const [data, setData] = useState(testData);
@@ -67,16 +68,42 @@ function App() {
     setData(newData);
   }
 
+  const handleDragEnd = (result) => {
+    const { destination, source, draggableId } = result;
+
+    if (!destination) return;
+
+    const sourceList = data.lists[source.droppableId];
+    const destList = data.lists[destination.droppableId];
+    const draggingCard = sourceList.cards.find(card => card.id === draggableId);
+    if (source.droppableId === destination.droppableId) {
+      sourceList.cards.splice(source.index, 1);
+      destList.cards.splice(destination.index, 0, draggingCard);
+
+      const newData = {
+        ...data,
+        lists: {
+          ...data.lists,
+          [sourceList.id]: destList
+        }
+      };
+
+      setData(newData);
+    }
+  }
+
   return (
-    <div className='flex w-full mt-11'>
-      <AddListContext.Provider value={addList}>
-        <UpdateTitleContext.Provider value={updateListTitle}>
-          <AddCardContext.Provider value={addCard}>
-            {data.listIds.map(id => <List key={id} list={data.lists[id]} />)}
-            <AddList />
-          </AddCardContext.Provider>
-        </UpdateTitleContext.Provider>
-      </AddListContext.Provider>
+    <div className='flex w-full mt-11 overflow-y-auto'>
+      <DragDropContext onDragEnd={handleDragEnd}>
+        <AddListContext.Provider value={addList}>
+          <UpdateTitleContext.Provider value={updateListTitle}>
+            <AddCardContext.Provider value={addCard}>
+              {data.listIds.map(id => <List key={id} list={data.lists[id]} />)}
+              <AddList />
+            </AddCardContext.Provider>
+          </UpdateTitleContext.Provider>
+        </AddListContext.Provider>
+      </DragDropContext>
     </div>
   );
 }
