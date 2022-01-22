@@ -9,9 +9,11 @@ import { UpdateTitleContext } from '../contexts/UpdateTitleContext.js';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { Droppable } from 'react-beautiful-dnd';
 import NavBar from './NavBar/NavBar.js';
+import BoardOptionsMenu from './BoardOptionsMenu/BoardOptionsMenu.js';
 
 function App() {
   const [data, setData] = useState(testData);
+  const [open, setOpen] = useState(true); //TODO : set false after implementation
 
   const addCard = (text, listId) => {
     const newCard = {
@@ -123,6 +125,7 @@ function App() {
   return (
     <>
       <NavBar />
+      <BoardOptionsMenu open={open} />
       <DragDropContext onDragEnd={handleDragEnd}>
         <AddListContext.Provider value={addList}>
           <UpdateTitleContext.Provider value={updateListTitle}>
