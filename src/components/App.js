@@ -8,6 +8,7 @@ import { AddListContext } from '../contexts/AddListContext.js';
 import { UpdateTitleContext } from '../contexts/UpdateTitleContext.js';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { Droppable } from 'react-beautiful-dnd';
+import NavBar from './NavBar/NavBar.js';
 
 function App() {
   const [data, setData] = useState(testData);
@@ -120,23 +121,26 @@ function App() {
   }
 
   return (
-    <DragDropContext onDragEnd={handleDragEnd}>
-      <AddListContext.Provider value={addList}>
-        <UpdateTitleContext.Provider value={updateListTitle}>
-          <AddCardContext.Provider value={addCard}>
-            <Droppable droppableId="app" type="list" direction="horizontal">
-              {(provided) =>
-                <div className='flex w-full mt-11 overflow-y-auto' ref={provided.innerRef} {...[provided.droppableProps]}>
-                  {data.listIds.map((id, index) => <List key={id} list={data.lists[id]} index={index} />)}
-                  {provided.placeholder}
-                  <AddList />
-                </div>
-              }
-            </Droppable>
-          </AddCardContext.Provider>
-        </UpdateTitleContext.Provider>
-      </AddListContext.Provider>
-    </DragDropContext>
+    <>
+      <NavBar />
+      <DragDropContext onDragEnd={handleDragEnd}>
+        <AddListContext.Provider value={addList}>
+          <UpdateTitleContext.Provider value={updateListTitle}>
+            <AddCardContext.Provider value={addCard}>
+              <Droppable droppableId="app" type="list" direction="horizontal">
+                {(provided) =>
+                  <div className='flex w-full px-6 pt-3 overflow-x-auto' ref={provided.innerRef} {...[provided.droppableProps]}>
+                    {data.listIds.map((id, index) => <List key={id} list={data.lists[id]} index={index} />)}
+                    {provided.placeholder}
+                    <AddList />
+                  </div>
+                }
+              </Droppable>
+            </AddCardContext.Provider>
+          </UpdateTitleContext.Provider>
+        </AddListContext.Provider>
+      </DragDropContext>
+    </>
   );
 }
 
