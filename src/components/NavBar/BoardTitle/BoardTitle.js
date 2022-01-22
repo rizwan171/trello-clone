@@ -36,7 +36,7 @@ const BoardTitle = ({ boardTitle }) => {
         selected ? (
           <input type="text" value={editableTitle} id="rounded-email" autoFocus size={width} onFocus={handleOnFocus} className="ml-2 py-1 text-trello-gray-300 font-semibold rounded-sm border bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100" onBlur={handleOnBlur} onChange={handleOnChange} onKeyDown={handleKeyDown} />
         ) : (
-          <h2 className='ml-2 text-trello-gray-300 font-semibold cursor-pointer' onClick={() => setSelected(true)}>{boardTitle}</h2>
+          <h2 className='ml-2 my-auto text-trello-gray-300 font-semibold cursor-pointer' onClick={() => setSelected(true)}>{boardTitle}</h2>
         )
       }
     </div>
