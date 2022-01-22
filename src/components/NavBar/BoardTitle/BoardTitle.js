@@ -3,12 +3,13 @@ import React, { useState } from 'react';
 const BoardTitle = ({ boardTitle }) => {
   const [selected, setSelected] = useState(false);
   const [editableTitle, setEditableTitle] = useState(boardTitle);
-  const [width, setWidth] = useState(0);
+  const [width, setWidth] = useState(20);
 
 
   const handleOnChange = (e) => {
     setEditableTitle(e.target.value);
-    setWidth(e.target.value.length);
+    if (e.target.value.length >= 20)
+      setWidth(e.target.value.length);
   }
 
   const handleOnBlur = () => {
@@ -25,7 +26,8 @@ const BoardTitle = ({ boardTitle }) => {
   }
 
   const handleOnFocus = (e) => {
-    setWidth(e.target.value.length);
+    if (e.target.value.length >= 20)
+      setWidth(e.target.value.length);
   }
 
   return (
