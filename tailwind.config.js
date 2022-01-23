@@ -29,7 +29,11 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: ['active'],
+      borderStyle: ['hover', 'focus'],
+      borderWidth: ['hover', 'focus'],
+    }
   },
   plugins: [],
 }
