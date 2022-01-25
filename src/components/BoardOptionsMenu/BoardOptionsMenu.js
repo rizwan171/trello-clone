@@ -1,9 +1,8 @@
 import React from 'react';
-import { AiOutlinePicture, AiOutlineCloudUpload, AiOutlineCloudDownload, AiOutlineDownload, AiOutlineUpload } from 'react-icons/ai';
+import { AiOutlinePicture, AiOutlineCloudUpload, AiOutlineCloudDownload, AiOutlineDownload, AiOutlineUpload, AiFillPicture } from 'react-icons/ai';
 import { MdOutlineDelete } from 'react-icons/md';
 import { RiDeleteBin2Line } from 'react-icons/ri';
 
-import '../../css/boardOptions.css';
 import ColorOptions from './ColorOptions/ColorOptions';
 
 const BoardOptionsMenu = () => {
@@ -25,8 +24,24 @@ const BoardOptionsMenu = () => {
             <button className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base'>Image Search</button>
             <button className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base'>Image Upload</button>
           </div>
-          <div className='h-52 w-full bg-trello-gray-500 rounded-md text-black p-1 bg-colors-container'>
-            <ColorOptions />
+          <div className='h-52 max-h-96 w-full bg-trello-gray-500 rounded-md text-black p-1 scroll-y-hidden'>
+            {/* TODO add back after creating other bacground options
+            <ColorOptions /> */}
+            <div className='flex flex-col'>
+              <input
+                // value={}
+                type="text"
+                placeholder='Search..'
+                autoFocus
+                className='w-full text-left box-border text-sm outline-none border-2 border-trello-gray-200 shadow bg-trello-gray-400 hover:bg-trello-gray-400 rounded-md mb-2 p-2'
+                // onBlur={() => setOpen(false)}
+              />
+              <div className='w-full h-28 flex flex-col text-trello-gray-200'>
+                {/* TODO instead of this placeholder icon, replace with 10-50 random pics from unsplash */}
+                <AiFillPicture size={90} className='m-auto'/>
+                <p className='m-auto text-xs'>Search for images above</p>
+              </div>
+            </div>
           </div>
         </div>
         <div className='mb-4'>
