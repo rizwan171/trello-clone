@@ -36,10 +36,13 @@ const BoardOptionsMenu = () => {
                 className='w-full text-left box-border text-sm outline-none border-2 border-trello-gray-200 shadow bg-trello-gray-400 hover:bg-trello-gray-400 rounded-md mb-2 p-2'
                 // onBlur={() => setOpen(false)}
               />
-              <div className='w-full h-28 flex flex-col text-trello-gray-200'>
+              <div className='w-full grid grid-cols-2 gap-1'>
+              <div className='bg-black h-28 rounded-md '></div>
+              <div className='bg-black h-28 rounded-md'></div>
+              <div className='bg-black h-28 rounded-md'></div>
+              <div className='bg-black h-28 rounded-md'></div>
                 {/* TODO instead of this placeholder icon, replace with 10-50 random pics from unsplash */}
-                <AiFillPicture size={90} className='m-auto'/>
-                <p className='m-auto text-xs'>Search for images above</p>
+                
               </div>
             </div>
           </div>
