@@ -3,6 +3,9 @@ import { AiOutlinePicture, AiOutlineCloudUpload, AiOutlineCloudDownload, AiOutli
 import { MdOutlineDelete } from 'react-icons/md';
 import { RiDeleteBin2Line } from 'react-icons/ri';
 
+import '../../css/boardOptions.css';
+import ColorOptions from './ColorOptions/ColorOptions';
+
 const BoardOptionsMenu = () => {
   return (
     // TODO remove text-white
@@ -22,8 +25,8 @@ const BoardOptionsMenu = () => {
             <button className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base'>Image Search</button>
             <button className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base'>Image Upload</button>
           </div>
-          <div className='h-52 w-full bg-trello-gray-500 rounded-md'>
-
+          <div className='h-52 w-full bg-trello-gray-500 rounded-md text-black p-1 bg-colors-container'>
+            <ColorOptions />
           </div>
         </div>
         <div className='mb-4'>
@@ -34,13 +37,13 @@ const BoardOptionsMenu = () => {
           <hr />
           <div className='flex flex-col'>
             <button className='flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md'>
-              <AiOutlineUpload className='mr-3' size={20} />
+              <AiOutlineUpload className='mr-2' size={20} />
               Import All</button>
             <button className='flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md'>
-              <AiOutlineUpload className='mr-3' size={20} />
+              <AiOutlineUpload className='mr-2' size={20} />
               Import Board</button>
             <button className='flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md'>
-              <AiOutlineUpload className='mr-3' size={20} />
+              <AiOutlineUpload className='mr-2' size={20} />
               Import List</button>
           </div>
         </div>
@@ -52,15 +55,15 @@ const BoardOptionsMenu = () => {
           <hr />
           <div className='flex flex-col'>
             <button className='flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 items-center text-base shadow-md rounded-md'>
-              <AiOutlineDownload className='mr-3' size={20} />
+              <AiOutlineDownload className='mr-2' size={20} />
               Export All
             </button>
             <button className='flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md'>
-              <AiOutlineDownload className='mr-3' size={20} />
+              <AiOutlineDownload className='mr-2' size={20} />
               Export Board
             </button>
             <button className='flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md'>
-              <AiOutlineDownload className='mr-3' size={20} />
+              <AiOutlineDownload className='mr-2' size={20} />
               Export List</button>
           </div>
         </div>
@@ -72,7 +75,7 @@ const BoardOptionsMenu = () => {
           <hr />
           <div className='flex flex-col'>
             <button className='flex py-2 px-3 mt-2 mb-2 bg-red-600 hover:bg-red-800 text-white items-center text-base shadow-md rounded-md'>
-              <MdOutlineDelete className='mr-3' size={20} />
+              <MdOutlineDelete className='mr-2' size={20} />
               Delete Board
             </button>
           </div>
