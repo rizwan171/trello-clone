@@ -8,10 +8,13 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import { Droppable } from 'react-beautiful-dnd';
 import NavBar from './NavBar/NavBar.js';
 import BoardOptionsMenu from './BoardOptionsMenu/BoardOptionsMenu.js';
+import { useSelector } from 'react-redux';
 
 function App() {
   const [data, setData] = useState(testData);
   const [open, setOpen] = useState(true); //TODO : set false after implementation
+
+  const lists = useSelector((state) => state.lists.value);
 
   const addCard = (text, listId) => {
     const newCard = {
@@ -32,43 +35,6 @@ function App() {
 
     setData(newData);
   };
-
-  const updateListTitle = (newTitle, listId) => {
-    const list = data.lists[listId];
-    const newData = {
-      ...data,
-      lists: {
-        ...data.lists,
-        [listId]: {
-          ...list,
-          title: newTitle
-        }
-      }
-    };
-
-    setData(newData);
-  }
-
-  const addList = (title) => {
-    const listId = uuidv4();
-    const newData = {
-      ...data,
-      lists: {
-        ...data.lists,
-        [listId]: {
-          id: listId,
-          title,
-          cards: []
-        },
-      },
-      listIds: [
-        ...data.listIds,
-        listId
-      ]
-    };
-
-    setData(newData);
-  }
 
   const handleDragEnd = (result) => {
     const { destination, source, draggableId, type } = result;
@@ -127,7 +93,7 @@ function App() {
         <Droppable droppableId="app" type="list" direction="horizontal">
           {(provided) =>
             <div className='flex w-full px-6 pt-3 overflow-x-auto' ref={provided.innerRef} {...[provided.droppableProps]}>
-              {data.listIds.map((id, index) => <List key={id} list={data.lists[id]} index={index} />)}
+              {lists.map((list, index) => <List key={list.id} list={list} index={index} />)}
               {provided.placeholder}
               <AddList />
             </div>

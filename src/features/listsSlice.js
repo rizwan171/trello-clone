@@ -1,8 +1,22 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
 
 const initialState = { 
-  value: []
+  value: [
+    // TODO set this to empty array after testing
+    {
+      id: 'list-1',
+      title: 'To Do'
+    },
+    {
+      id: 'list-2',
+      title: 'Doing'
+    },
+    {
+      id: 'list-3',
+      title: 'Done'
+    },
+  ]
 }
 
 export const listsSlice = createSlice({

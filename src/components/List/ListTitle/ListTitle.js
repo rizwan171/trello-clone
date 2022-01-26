@@ -1,11 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { MdMoreHoriz } from 'react-icons/md';
-import { UpdateTitleContext } from '../../../contexts/UpdateTitleContext.js';
+import { useDispatch } from 'react-redux';
+import { editTitle } from '../../../features/listsSlice.js';
 
 const ListTitle = ({ listId, listTitle }) => {
   const [selected, setSelected] = useState(false);
   const [editableTitle, setEditableTitle] = useState(listTitle);
-  const updateListTitle = useContext(UpdateTitleContext);
+  const dispatch = useDispatch();
 
   const handleOnChange = (e) => {
     setEditableTitle(e.target.value);
@@ -20,7 +21,7 @@ const ListTitle = ({ listId, listTitle }) => {
     if (e.key === 'Enter') {
       setSelected(false);
       setEditableTitle(editableTitle);
-      updateListTitle(editableTitle, listId);
+      dispatch(editTitle({ editableTitle, listId }));
     }
   }
 
