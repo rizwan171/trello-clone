@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Provider } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
-import store from '../app/store.js';
 import List from './List/main/List.js';
 import testData from '../temp/testData.js';
 import AddList from './List/AddList/AddList.js';
@@ -122,7 +120,7 @@ function App() {
   }
 
   return (
-    <Provider store={store}>
+    <>
       <NavBar />
       <BoardOptionsMenu open={open} />
       <DragDropContext onDragEnd={handleDragEnd}>
@@ -136,7 +134,7 @@ function App() {
           }
         </Droppable>
       </DragDropContext>
-    </Provider>
+    </>
   );
 }
 

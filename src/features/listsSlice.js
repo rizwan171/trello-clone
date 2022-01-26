@@ -18,7 +18,8 @@ export const listsSlice = createSlice({
       state.value[listIndex].title = newTitle;
     },
     removeList: (state, action) => {
-      // TODO
+      const listIndex = state.value.findIndex(list => list.id === action.payload);
+      state.value = state.value.filter(list => list.id !== listIndex);
     },
     reorderList: () => {
 
