@@ -4,8 +4,11 @@ import ListCard from "../ListCard/ListCard.js";
 import AddCard from "../AddCard/AddCard.js";
 import { Droppable } from "react-beautiful-dnd";
 import { Draggable } from "react-beautiful-dnd";
+import { useSelector } from "react-redux";
 
 const List = ({ list, index }) => {
+  const cards = useSelector((state) => state.cards.value.filter(card => card.listId === list.id));
+
   return (
     <Draggable draggableId={list.id} index={index}>
       {(provided) =>
@@ -17,7 +20,7 @@ const List = ({ list, index }) => {
                 <Droppable droppableId={list.id}>
                   {(provided) =>
                     <div ref={provided.innerRef} {...provided.droppableProps}>
-                      {list.cards.map((card, index) => <ListCard key={card.id} card={card} index={index} />)}
+                      {cards.map((card, index) => <ListCard key={card.id} card={card} index={index} />)}
                       {provided.placeholder}
                     </div>
                   }

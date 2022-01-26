@@ -1,13 +1,13 @@
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FiPlus, FiX } from 'react-icons/fi';
-import { AddListContext } from '../../../contexts/AddListContext.js';
+import { useDispatch } from 'react-redux';
+import { addList } from '../../../features/listsSlice.js';
 
-const AddList = ({ listId }) => {
+const AddList = () => {
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
   const inputRef = useRef(null);
-
-  const addList = useContext(AddListContext);
 
   useEffect(() => {
     if (open) {
@@ -20,9 +20,9 @@ const AddList = ({ listId }) => {
   }
 
   const handleAddList = () => {
-    addList(title);
     setOpen(false);
     setTitle("");
+    dispatch(addList({ title }))
   }
 
   const handleClose = () => {

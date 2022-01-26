@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FiPlus, FiX } from 'react-icons/fi';
+import { useDispatch } from 'react-redux';
+import { addCard } from '../../../features/cardsSlice.js';
 
 const AddCard = ({ listId }) => {
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
   const inputRef = useRef(null);
@@ -17,9 +20,9 @@ const AddCard = ({ listId }) => {
   }
 
   const handleAddCard = () => {
-    // addCard(text, listId); TODO
     setOpen(false);
     setText("");
+    dispatch(addCard({ listId, content: text }));
   }
 
   const handleClose = () => {
