@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import { Provider } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+
+import store from '../app/store.js';
 import List from './List/main/List.js';
 import testData from '../temp/testData.js';
-import { AddCardContext } from '../contexts/AddCardContext.js';
 import AddList from './List/AddList/AddList.js';
-import { AddListContext } from '../contexts/AddListContext.js';
-import { UpdateTitleContext } from '../contexts/UpdateTitleContext.js';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { Droppable } from 'react-beautiful-dnd';
 import NavBar from './NavBar/NavBar.js';
@@ -119,31 +119,24 @@ function App() {
         setData(newData);
       }
     }
-
   }
 
   return (
-    <>
+    <Provider store={store}>
       <NavBar />
       <BoardOptionsMenu open={open} />
       <DragDropContext onDragEnd={handleDragEnd}>
-        <AddListContext.Provider value={addList}>
-          <UpdateTitleContext.Provider value={updateListTitle}>
-            <AddCardContext.Provider value={addCard}>
-              <Droppable droppableId="app" type="list" direction="horizontal">
-                {(provided) =>
-                  <div className='flex w-full px-6 pt-3 overflow-x-auto' ref={provided.innerRef} {...[provided.droppableProps]}>
-                    {data.listIds.map((id, index) => <List key={id} list={data.lists[id]} index={index} />)}
-                    {provided.placeholder}
-                    <AddList />
-                  </div>
-                }
-              </Droppable>
-            </AddCardContext.Provider>
-          </UpdateTitleContext.Provider>
-        </AddListContext.Provider>
+        <Droppable droppableId="app" type="list" direction="horizontal">
+          {(provided) =>
+            <div className='flex w-full px-6 pt-3 overflow-x-auto' ref={provided.innerRef} {...[provided.droppableProps]}>
+              {data.listIds.map((id, index) => <List key={id} list={data.lists[id]} index={index} />)}
+              {provided.placeholder}
+              <AddList />
+            </div>
+          }
+        </Droppable>
       </DragDropContext>
-    </>
+    </Provider>
   );
 }
 

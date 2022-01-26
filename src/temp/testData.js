@@ -56,4 +56,23 @@ const testData = {
   ]
 }
 
+const newListDataStructure = [
+  {
+    id: 'list-1',
+    title: 'Todo',
+    cards: cards1,
+  },
+  {
+    id: 'list-2',
+    title: 'In progress',
+    cards: cards2,
+  },
+  {
+    id: 'list-3',
+    title: 'Done',
+    cards: cards3,
+  }
+]
+
+
 export default testData;

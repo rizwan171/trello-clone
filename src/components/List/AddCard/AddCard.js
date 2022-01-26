@@ -1,13 +1,10 @@
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FiPlus, FiX } from 'react-icons/fi';
-import { AddCardContext } from '../../../contexts/AddCardContext.js';
 
 const AddCard = ({ listId }) => {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
   const inputRef = useRef(null);
-
-  const addCard = useContext(AddCardContext);
 
   useEffect(() => {
     if (open) {
@@ -20,7 +17,7 @@ const AddCard = ({ listId }) => {
   }
 
   const handleAddCard = () => {
-    addCard(text, listId);
+    // addCard(text, listId); TODO
     setOpen(false);
     setText("");
   }
