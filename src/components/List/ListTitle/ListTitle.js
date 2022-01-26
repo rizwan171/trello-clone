@@ -21,7 +21,7 @@ const ListTitle = ({ listId, listTitle }) => {
     if (e.key === 'Enter') {
       setSelected(false);
       setEditableTitle(editableTitle);
-      dispatch(editTitle({ editableTitle, listId }));
+      dispatch(editTitle({ newTitle: editableTitle, listId }));
     }
   }
 
