@@ -15,27 +15,7 @@ function App() {
   const [open, setOpen] = useState(true); //TODO : set false after implementation
 
   const lists = useSelector((state) => state.lists.value);
-
-  const addCard = (text, listId) => {
-    const newCard = {
-      id: uuidv4(),
-      content: text
-    };
-
-    const list = data.lists[listId];
-    list.cards = [...list.cards, newCard];
-
-    const newData = {
-      ...data,
-      lists: {
-        ...data.lists,
-        [listId]: list
-      }
-    };
-
-    setData(newData);
-  };
-
+  
   const handleDragEnd = (result) => {
     const { destination, source, draggableId, type } = result;
 
