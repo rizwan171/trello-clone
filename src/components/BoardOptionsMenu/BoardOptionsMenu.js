@@ -1,17 +1,35 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { AiOutlinePicture, AiOutlineCloudUpload, AiOutlineCloudDownload, AiOutlineDownload, AiOutlineUpload, AiFillPicture } from 'react-icons/ai';
 import { MdOutlineDelete } from 'react-icons/md';
 import { RiDeleteBin2Line } from 'react-icons/ri';
 
-import ColorOptions from './ColorOptions/ColorOptions';
+import ColourOptions from './ColourOptions/ColourOptions';
 import ImageSearchOptions from './ImageSearchOptions/ImageSearchOptions';
 import ImageUploadOptions from './ImageUploadOptions/ImageUploadOptions';
 
 const BoardOptionsMenu = () => {
   const [images, setImages] = useState([]);
+  const coloursRef = useRef();
+  const imageSearchRef = useRef();
+  const imageUploadRef = useRef();
+
+  const [selectedTab, setSelectedTab] = useState("colour");
+
+  let currentTab = <></>;
+  if (selectedTab === 'colour') {
+    currentTab = <ColourOptions />;
+  } else if (selectedTab === 'image-d') {
+    currentTab = <ImageSearchOptions />;
+  } else if (selectedTab === 'image-u'){
+    currentTab = <ImageUploadOptions />;
+  }
 
   const getInitialImages = () => {
     // TODO get images from somewhere
+  }
+
+  const handleTabChange = () => {
+
   }
 
   return (
@@ -28,15 +46,14 @@ const BoardOptionsMenu = () => {
           </div>
           <hr />
           <div className='flex'>
-            <button className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base'>Colour</button>
-            <button className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base'>Image Search</button>
-            <button className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base'>Image Upload</button>
+            <button id='colour' className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base selected-tab' onClick={() => handleTabChange(coloursRef)}>Colour</button>
+            <button id='image-d' className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base' onClick={handleTabChange}>Image Search</button>
+            <button id='image-u' className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base' onClick={handleTabChange}>Image Upload</button>
           </div>
           <div className='h-52 max-h-96 w-full bg-trello-gray-500 rounded-md text-black p-1 scroll-y-hidden'>
-            {/* TODO add back after creating other bacground options
-            <ColorOptions /> */}
-            {/* <ImageSearchOptions /> */}
-            <ImageUploadOptions />
+            <ColourOptions ref={coloursRef}/>
+            <ImageSearchOptions ref={imageSearchRef}/>
+            <ImageUploadOptions ref={imageUploadRef}/>
           </div>
         </div>
         <div className='mb-4'>
