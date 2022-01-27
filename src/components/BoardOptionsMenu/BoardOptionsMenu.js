@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AiOutlinePicture, AiOutlineCloudUpload, AiOutlineCloudDownload, AiOutlineDownload, AiOutlineUpload, AiFillPicture } from 'react-icons/ai';
 import { MdOutlineDelete } from 'react-icons/md';
 import { RiDeleteBin2Line } from 'react-icons/ri';
 
 import ColorOptions from './ColorOptions/ColorOptions';
+import ImageSearchOptions from './ImageSearchOptions/ImageSearchOptions';
+import ImageUploadOptions from './ImageUploadOptions/ImageUploadOptions';
 
 const BoardOptionsMenu = () => {
+  const [images, setImages] = useState([]);
+
+  const getInitialImages = () => {
+    // TODO get images from somewhere
+  }
+
   return (
     // TODO remove text-white
     <div className='h-full w-1/5 fixed z-10 top-0 right-0 bg-trello-gray-300 text-white'>
@@ -27,24 +35,8 @@ const BoardOptionsMenu = () => {
           <div className='h-52 max-h-96 w-full bg-trello-gray-500 rounded-md text-black p-1 scroll-y-hidden'>
             {/* TODO add back after creating other bacground options
             <ColorOptions /> */}
-            <div className='flex flex-col'>
-              <input
-                // value={}
-                type="text"
-                placeholder='Search..'
-                autoFocus
-                className='w-full text-left box-border text-sm outline-none border-2 border-trello-gray-200 shadow bg-trello-gray-400 hover:bg-trello-gray-400 rounded-md mb-2 p-2'
-                // onBlur={() => setOpen(false)}
-              />
-              <div className='w-full grid grid-cols-2 gap-1'>
-              <div className='bg-black h-28 rounded-md '></div>
-              <div className='bg-black h-28 rounded-md'></div>
-              <div className='bg-black h-28 rounded-md'></div>
-              <div className='bg-black h-28 rounded-md'></div>
-                {/* TODO instead of this placeholder icon, replace with 10-50 random pics from unsplash */}
-                
-              </div>
-            </div>
+            {/* <ImageSearchOptions /> */}
+            <ImageUploadOptions />
           </div>
         </div>
         <div className='mb-4'>

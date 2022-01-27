@@ -14,6 +14,7 @@ module.exports = {
         },
         'trello-blue': {
           100: '#0079bf', // title edit border, add card border
+          200: '#006098', // image options upload hover
         },
         'trello-green': {
           100: '#5aac44',
@@ -25,6 +26,12 @@ module.exports = {
       },
       transitionProperty: {
         'height': 'height'
+      },
+      height: {
+        '38': '152px' 
+      },
+      borderWidth: {
+        '3': '3px'
       },
     },
   },
