@@ -6,6 +6,7 @@ import { RiDeleteBin2Line } from 'react-icons/ri';
 import ColourOptions from './ColourOptions/ColourOptions';
 import ImageSearchOptions from './ImageSearchOptions/ImageSearchOptions';
 import ImageUploadOptions from './ImageUploadOptions/ImageUploadOptions';
+import * as Constants from '../../constants/TabIdentifiers.js';
 
 const BoardOptionsMenu = () => {
   const [images, setImages] = useState([]);
@@ -28,7 +29,7 @@ const BoardOptionsMenu = () => {
     // TODO get images from somewhere
   }
 
-  const handleTabChange = () => {
+  const handleTabChange = (tabIdentifier) => {
 
   }
 
@@ -46,9 +47,9 @@ const BoardOptionsMenu = () => {
           </div>
           <hr />
           <div className='flex'>
-            <button id='colour' className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base selected-tab' onClick={() => handleTabChange(coloursRef)}>Colour</button>
-            <button id='image-d' className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base' onClick={handleTabChange}>Image Search</button>
-            <button id='image-u' className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base' onClick={handleTabChange}>Image Upload</button>
+            <button className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base selected-tab' onClick={() => handleTabChange(Constants.COLOURS_TAB_IDENTIFIER)}>Colour</button>
+            <button className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base' onClick={() => handleTabChange(Constants.IMAGE_SEARCH_TAB_IDENTIFIER)}>Image Search</button>
+            <button className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base' onClick={() => handleTabChange(Constants.IMAGE_UPLOAD_TAB_IDENTIFIER)}>Image Upload</button>
           </div>
           <div className='h-52 max-h-96 w-full bg-trello-gray-500 rounded-md text-black p-1 scroll-y-hidden'>
             <ColourOptions ref={coloursRef}/>
