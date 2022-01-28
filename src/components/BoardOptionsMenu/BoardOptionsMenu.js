@@ -17,16 +17,6 @@ const BoardOptionsMenu = () => {
   const [imageSearchTabActive, setImageSearchTabActive] = useState(false);
   const [imageUploadTabActive, setImageUploadTabActive] = useState(false);
 
-  const [selectedTab, setSelectedTab] = useState("colour");
-
-  let currentTab = <></>;
-  if (selectedTab === 'colour') {
-    currentTab = <ColourOptions />;
-  } else if (selectedTab === 'image-d') {
-    currentTab = <ImageSearchOptions />;
-  } else if (selectedTab === 'image-u') {
-    currentTab = <ImageUploadOptions />;
-  }
 
   const getInitialImages = () => {
     // TODO get images from somewhere

@@ -15,6 +15,7 @@ function App() {
   const [open, setOpen] = useState(true); //TODO : set false after implementation
 
   const lists = useSelector((state) => state.lists.value);
+  const showBoard = useSelector((state) => state.boardOptions.value);
   
   const handleDragEnd = (result) => {
     const { destination, source, draggableId, type } = result;
@@ -68,7 +69,7 @@ function App() {
   return (
     <>
       <NavBar />
-      <BoardOptionsMenu open={open} />
+      { showBoard && <BoardOptionsMenu /> }
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="app" type="list" direction="horizontal">
           {(provided) =>
