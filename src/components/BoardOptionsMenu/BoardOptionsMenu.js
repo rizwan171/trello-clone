@@ -13,6 +13,9 @@ const BoardOptionsMenu = () => {
   const coloursRef = useRef();
   const imageSearchRef = useRef();
   const imageUploadRef = useRef();
+  const [coloursTabActive, setColoursTabActive] = useState(true);
+  const [imageSearchTabActive, setImageSearchTabActive] = useState(false);
+  const [imageUploadTabActive, setImageUploadTabActive] = useState(false);
 
   const [selectedTab, setSelectedTab] = useState("colour");
 
@@ -21,7 +24,7 @@ const BoardOptionsMenu = () => {
     currentTab = <ColourOptions />;
   } else if (selectedTab === 'image-d') {
     currentTab = <ImageSearchOptions />;
-  } else if (selectedTab === 'image-u'){
+  } else if (selectedTab === 'image-u') {
     currentTab = <ImageUploadOptions />;
   }
 
@@ -30,7 +33,44 @@ const BoardOptionsMenu = () => {
   }
 
   const handleTabChange = (tabIdentifier) => {
+    removeSelectedClass();
+    resetActiveTab();
 
+    switch (tabIdentifier) {
+      case Constants.COLOURS_TAB_IDENTIFIER:
+        const coloursTab = coloursRef.current;
+        coloursTab.className = coloursTab.className += ' selected-tab';
+        setColoursTabActive(true);
+        break;
+      case Constants.IMAGE_SEARCH_TAB_IDENTIFIER:
+        const imageSearchTab = imageSearchRef.current;
+        imageSearchTab.className = imageSearchTab.className += ' selected-tab';
+        setImageSearchTabActive(true);
+        break;
+      case Constants.IMAGE_UPLOAD_TAB_IDENTIFIER:
+        const imageUploadTab = imageUploadRef.current;
+        imageUploadTab.className = imageUploadTab.className += ' selected-tab';
+        setImageUploadTabActive(true);
+        break;
+      default:
+        return;
+    }
+  }
+
+  const removeSelectedClass = () => {
+    const coloursTab = coloursRef.current;
+    const imageSearchTab = imageSearchRef.current;
+    const imageUploadTab = imageUploadRef.current;
+
+    coloursTab.className = coloursTab.className.replace('selected-tab', '');
+    imageSearchTab.className = imageSearchTab.className.replace('selected-tab', '');
+    imageUploadTab.className = imageUploadTab.className.replace('selected-tab', '');
+  }
+
+  const resetActiveTab = () => {
+    setColoursTabActive(false);
+    setImageSearchTabActive(false);
+    setImageUploadTabActive(false);
   }
 
   return (
@@ -47,14 +87,14 @@ const BoardOptionsMenu = () => {
           </div>
           <hr />
           <div className='flex'>
-            <button className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base selected-tab' onClick={() => handleTabChange(Constants.COLOURS_TAB_IDENTIFIER)}>Colour</button>
-            <button className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base' onClick={() => handleTabChange(Constants.IMAGE_SEARCH_TAB_IDENTIFIER)}>Image Search</button>
-            <button className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base' onClick={() => handleTabChange(Constants.IMAGE_UPLOAD_TAB_IDENTIFIER)}>Image Upload</button>
+            <button ref={coloursRef} className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base selected-tab' onClick={() => handleTabChange(Constants.COLOURS_TAB_IDENTIFIER)}>Colour</button>
+            <button ref={imageSearchRef} className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base' onClick={() => handleTabChange(Constants.IMAGE_SEARCH_TAB_IDENTIFIER)}>Image Search</button>
+            <button ref={imageUploadRef} className='py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base' onClick={() => handleTabChange(Constants.IMAGE_UPLOAD_TAB_IDENTIFIER)}>Image Upload</button>
           </div>
           <div className='h-52 max-h-96 w-full bg-trello-gray-500 rounded-md text-black p-1 scroll-y-hidden'>
-            <ColourOptions ref={coloursRef}/>
-            <ImageSearchOptions ref={imageSearchRef}/>
-            <ImageUploadOptions ref={imageUploadRef}/>
+            {coloursTabActive && <ColourOptions />}
+            {imageSearchTabActive && <ImageSearchOptions />}
+            {imageUploadTabActive && <ImageUploadOptions />}
           </div>
         </div>
         <div className='mb-4'>
