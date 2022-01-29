@@ -9,7 +9,8 @@ export const boardOptionSlice = createSlice({
   initialState,
   reducers: {
     toggleBoardVisiblity: (state, _) => {
-      state.value = !state.value;
+      const previousState = state.value;
+      state.value = !previousState;
     }
   }
 })

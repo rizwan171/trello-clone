@@ -66,8 +66,10 @@ function App() {
     }
   }
 
+  const className = showBoard ? 'mr-1/5' : ''
+
   return (
-    <>
+    <div className={className}>
       <NavBar />
       { showBoard && <BoardOptionsMenu /> }
       <DragDropContext onDragEnd={handleDragEnd}>
@@ -81,7 +83,7 @@ function App() {
           }
         </Droppable>
       </DragDropContext>
-    </>
+    </div>
   );
 }
 
