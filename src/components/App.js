@@ -16,7 +16,7 @@ function App() {
 
   const lists = useSelector((state) => state.lists.value);
   const showBoard = useSelector((state) => state.boardOptions.value);
-  
+
   const handleDragEnd = (result) => {
     const { destination, source, draggableId, type } = result;
 
@@ -71,15 +71,14 @@ function App() {
   return (
     <div className={className}>
       <NavBar />
-      { showBoard && <BoardOptionsMenu /> }
+      {showBoard && <BoardOptionsMenu />}
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="app" type="list" direction="horizontal">
           {(provided) =>
-            <div className='flex px-6 pt-3 scroll-x-hidden h-full' ref={provided.innerRef} {...[provided.droppableProps]}>
+            <div className='flex px-6 pt-3 overflow-x-auto h-full' ref={provided.innerRef} {...[provided.droppableProps]}>
               {lists.map((list, index) => <List key={list.id} list={list} index={index} />)}
               <div>
-
-              <AddList />
+                <AddList />
               </div>
               {provided.placeholder}
             </div>
