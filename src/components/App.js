@@ -66,7 +66,7 @@ function App() {
     }
   }
 
-  const className = showBoard ? 'mr-1/5 h-full' : 'h-full'
+  const className = showBoard ? 'mr-1/5' : ''
 
   return (
     <div className={className}>
