@@ -12,6 +12,7 @@ const AddList = () => {
   useEffect(() => {
     if (open) {
       inputRef.current.focus();
+      inputRef.current.scrollIntoView({behavior: "smooth", inline: "center"});
     }
   }, [open]);
 
@@ -34,7 +35,7 @@ const AddList = () => {
     <> 
     
     <Collapse isOpen={open}>
-      <div className='m-1'>
+      <div className='m-1 w-64'>
         <input
           type="text" 
           ref={inputRef} 
@@ -55,7 +56,7 @@ const AddList = () => {
     </Collapse>
     
     <Collapse isOpen={!open}>
-      <div className='flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-2 m-1' onClick={() => setOpen(true)}>
+      <div className='w-32 flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-2 m-1' onClick={() => setOpen(true)}>
         <FiPlus size={20} />
         <h2 className='flex-1 ml-1.5'>Add a list</h2>
       </div>
@@ -73,6 +74,8 @@ const Collapse = ({ isOpen, children }) => {
   const inlineStyle = isOpen
     ? { height: ref.current?.scrollHeight }
     : { height: 0, width: 0 };
+
+    console.log(ref);
 
   return (
     <div

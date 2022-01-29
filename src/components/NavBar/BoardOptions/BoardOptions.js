@@ -2,7 +2,7 @@ import React from 'react';
 import { BiCog } from 'react-icons/bi';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { toggleBoardVisiblity } from '../../../features/boardOptionSlice.js'
+import { toggleBoardVisiblity } from '../../../features/boardOptionSlice.js';
 
 const BoardOptions = () => {
   const boardOpen = useSelector((state) => state.boardOptions.value);

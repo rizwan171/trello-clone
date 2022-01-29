@@ -75,10 +75,13 @@ function App() {
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="app" type="list" direction="horizontal">
           {(provided) =>
-            <div className='flex w-full px-6 pt-3 overflow-x-auto' ref={provided.innerRef} {...[provided.droppableProps]}>
+            <div className='flex px-6 pt-3 scroll-x-hidden h-full' ref={provided.innerRef} {...[provided.droppableProps]}>
               {lists.map((list, index) => <List key={list.id} list={list} index={index} />)}
-              {provided.placeholder}
+              <div>
+
               <AddList />
+              </div>
+              {provided.placeholder}
             </div>
           }
         </Droppable>
