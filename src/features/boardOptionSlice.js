@@ -1,19 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { 
-  value: false
-}
+const initialState = {
+  value: false,
+};
 
 export const boardOptionSlice = createSlice({
   name: "boardOptions",
   initialState,
   reducers: {
-    toggleBoardVisiblity: (state, _) => {
+    toggleBoardVisibility: (state, _) => {
       const previousState = state.value;
       state.value = !previousState;
-    }
-  }
-})
+    },
+  },
+});
 
-export const { toggleBoardVisiblity } = boardOptionSlice.actions;
+export const { toggleBoardVisibility } = boardOptionSlice.actions;
 export default boardOptionSlice.reducer;
