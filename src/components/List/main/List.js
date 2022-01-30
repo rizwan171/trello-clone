@@ -7,33 +7,34 @@ import { Draggable } from "react-beautiful-dnd";
 import { useSelector } from "react-redux";
 
 const List = ({ list, index }) => {
-  const cards = useSelector((state) => state.cards.value.filter(card => card.listId === list.id));
+  const cards = useSelector((state) => state.cards.value.filter((card) => card.listId === list.id));
 
   return (
     <Draggable draggableId={list.id} index={index}>
-      {(provided) =>
+      {(provided) => (
         <div ref={provided.innerRef} {...provided.draggableProps}>
           <div {...provided.dragHandleProps}>
             <div className="shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-4 h-full">
               <ListTitle listId={list.id} listTitle={list.title} />
               <div>
                 <Droppable droppableId={list.id}>
-                  {(provided) =>
+                  {(provided) => (
                     <div ref={provided.innerRef} {...provided.droppableProps}>
-                      {cards.map((card, index) => <ListCard key={card.id} card={card} index={index} />)}
+                      {cards.map((card, index) => (
+                        <ListCard key={card.id} card={card} index={index} />
+                      ))}
                       {provided.placeholder}
                     </div>
-                  }
+                  )}
                 </Droppable>
               </div>
               <AddCard listId={list.id} />
             </div>
           </div>
         </div>
-      }
-
+      )}
     </Draggable>
-  )
-}
+  );
+};
 
 export default List;
