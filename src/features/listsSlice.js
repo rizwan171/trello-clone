@@ -1,26 +1,26 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { v4 as uuidv4 } from "uuid";
+import { createSlice } from '@reduxjs/toolkit';
+import { v4 as uuidv4 } from 'uuid';
 
 const initialState = {
   value: [
     // TODO set this to empty array after testing
     {
-      id: "list-1",
-      title: "To Do",
+      id: 'list-1',
+      title: 'To Do',
     },
     {
-      id: "list-2",
-      title: "Doing",
+      id: 'list-2',
+      title: 'Doing',
     },
     {
-      id: "list-3",
-      title: "Done",
+      id: 'list-3',
+      title: 'Done',
     },
   ],
 };
 
 export const listsSlice = createSlice({
-  name: "lists",
+  name: 'lists',
   initialState,
   reducers: {
     addList: (state, action) => {

@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import List from "./List/main/List.js";
-import testData from "../temp/testData.js";
-import AddList from "./List/AddList/AddList.js";
-import { DragDropContext } from "react-beautiful-dnd";
-import { Droppable } from "react-beautiful-dnd";
-import NavBar from "./NavBar/NavBar.js";
-import BoardOptionsMenu from "./BoardOptionsMenu/BoardOptionsMenu.js";
-import { useSelector } from "react-redux";
+import List from './List/main/List.js';
+import testData from '../temp/testData.js';
+import AddList from './List/AddList/AddList.js';
+import { DragDropContext } from 'react-beautiful-dnd';
+import { Droppable } from 'react-beautiful-dnd';
+import NavBar from './NavBar/NavBar.js';
+import BoardOptionsMenu from './BoardOptionsMenu/BoardOptionsMenu.js';
+import { useSelector } from 'react-redux';
 
 function App() {
   const [data, setData] = useState(testData);
@@ -20,7 +20,7 @@ function App() {
 
     if (!destination) return;
 
-    if (type === "list") {
+    if (type === 'list') {
       const newListIds = data.listIds;
       newListIds.splice(source.index, 1);
       newListIds.splice(destination.index, 0, draggableId);
@@ -64,7 +64,7 @@ function App() {
     }
   };
 
-  const className = showBoard ? "mr-1/5" : "";
+  const className = showBoard ? 'mr-1/5' : '';
 
   return (
     <div className={className}>
