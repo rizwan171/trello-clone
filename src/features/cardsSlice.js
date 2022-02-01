@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { v4 as uuidv4 } from 'uuid';
+import { createSlice } from '@reduxjs/toolkit'
+import { v4 as uuidv4 } from 'uuid'
 
 const initialState = {
   value: [
@@ -35,17 +35,17 @@ const initialState = {
       content: 'Test Content 2 which is slightly longer in length than the first card',
     },
   ],
-};
+}
 
 export const cardsSlice = createSlice({
   name: 'cards',
   initialState,
   reducers: {
     addCard: (state, action) => {
-      state.value.push({ ...action.payload, id: uuidv4() });
+      state.value.push({ ...action.payload, id: uuidv4() })
     },
   },
-});
+})
 
-export const { addCard } = cardsSlice.actions;
-export default cardsSlice.reducer;
+export const { addCard } = cardsSlice.actions
+export default cardsSlice.reducer

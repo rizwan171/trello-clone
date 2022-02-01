@@ -6,6 +6,5 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
-  "eslint.alwaysShowStatus": true,
-  "prettier.singleQuote": true
+  "eslint.alwaysShowStatus": true
 }
