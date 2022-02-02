@@ -1,42 +1,40 @@
-import React, { useState } from 'react'
-
-import List from './List/main/List.js'
-import testData from '../temp/testData.js'
-import AddList from './List/AddList/AddList.js'
-import { DragDropContext } from 'react-beautiful-dnd'
-import { Droppable } from 'react-beautiful-dnd'
-import NavBar from './NavBar/NavBar.js'
-import BoardOptionsMenu from './BoardOptionsMenu/BoardOptionsMenu.js'
-import { useSelector } from 'react-redux'
+import React, { useState } from "react";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { useSelector } from "react-redux";
+import List from "./List/main/List";
+import testData from "../temp/testData";
+import AddList from "./List/AddList/AddList";
+import NavBar from "./NavBar/NavBar";
+import BoardOptionsMenu from "./BoardOptionsMenu/BoardOptionsMenu";
 
 function App() {
-  const [data, setData] = useState(testData)
+  const [data, setData] = useState(testData);
 
-  const lists = useSelector((state) => state.lists.value)
-  const showBoard = useSelector((state) => state.boardOptions.value)
+  const lists = useSelector((state) => state.lists.value);
+  const showBoard = useSelector((state) => state.boardOptions.value);
 
   const handleDragEnd = (result) => {
-    const { destination, source, draggableId, type } = result
+    const { destination, source, draggableId, type } = result;
 
-    if (!destination) return
+    if (!destination) return;
 
-    if (type === 'list') {
-      const newListIds = data.listIds
-      newListIds.splice(source.index, 1)
-      newListIds.splice(destination.index, 0, draggableId)
+    if (type === "list") {
+      const newListIds = data.listIds;
+      newListIds.splice(source.index, 1);
+      newListIds.splice(destination.index, 0, draggableId);
 
       const newData = {
         ...data,
         listIds: [...newListIds],
-      }
-      setData(newData)
+      };
+      setData(newData);
     } else {
-      const sourceList = data.lists[source.droppableId]
-      const destList = data.lists[destination.droppableId]
-      const draggingCard = sourceList.cards.find((card) => card.id === draggableId)
+      const sourceList = data.lists[source.droppableId];
+      const destList = data.lists[destination.droppableId];
+      const draggingCard = sourceList.cards.find((card) => card.id === draggableId);
       if (source.droppableId === destination.droppableId) {
-        sourceList.cards.splice(source.index, 1)
-        destList.cards.splice(destination.index, 0, draggingCard)
+        sourceList.cards.splice(source.index, 1);
+        destList.cards.splice(destination.index, 0, draggingCard);
 
         const newData = {
           ...data,
@@ -44,12 +42,12 @@ function App() {
             ...data.lists,
             [sourceList.id]: destList,
           },
-        }
+        };
 
-        setData(newData)
+        setData(newData);
       } else {
-        sourceList.cards.splice(source.index, 1)
-        destList.cards.splice(destination.index, 0, draggingCard)
+        sourceList.cards.splice(source.index, 1);
+        destList.cards.splice(destination.index, 0, draggingCard);
 
         const newData = {
           ...data,
@@ -58,13 +56,13 @@ function App() {
             [sourceList.id]: sourceList,
             [destList.id]: destList,
           },
-        }
-        setData(newData)
+        };
+        setData(newData);
       }
     }
-  }
+  };
 
-  const className = showBoard ? 'mr-1/5' : ''
+  const className = showBoard ? "mr-1/5" : "";
 
   return (
     <div className={className}>
@@ -86,7 +84,7 @@ function App() {
         </Droppable>
       </DragDropContext>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

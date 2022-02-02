@@ -1,11 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   value: false,
 };
 
 export const boardOptionSlice = createSlice({
-  name: 'boardOptions',
+  name: "boardOptions",
   initialState,
   reducers: {
     toggleBoardVisibility: (state) => {
