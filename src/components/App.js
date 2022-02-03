@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-
-import List from "./List/main/List.js";
-import testData from "../temp/testData.js";
-import AddList from "./List/AddList/AddList.js";
-import { DragDropContext } from "react-beautiful-dnd";
-import { Droppable } from "react-beautiful-dnd";
-import NavBar from "./NavBar/NavBar.js";
-import BoardOptionsMenu from "./BoardOptionsMenu/BoardOptionsMenu.js";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { useSelector } from "react-redux";
+import List from "./List/main/List";
+import testData from "../temp/testData";
+import AddList from "./List/AddList/AddList";
+import NavBar from "./NavBar/NavBar";
+import BoardOptionsMenu from "./BoardOptionsMenu/BoardOptionsMenu";
 
 function App() {
   const [data, setData] = useState(testData);

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 const BoardTitle = ({ boardTitle }) => {
   const [selected, setSelected] = useState(false);
@@ -49,6 +50,10 @@ const BoardTitle = ({ boardTitle }) => {
       )}
     </div>
   );
+};
+
+BoardTitle.propTypes = {
+  boardTitle: PropTypes.string,
 };
 
 export default BoardTitle;

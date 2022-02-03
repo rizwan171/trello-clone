@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { MdMoreHoriz } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { editTitle } from "../../../features/listsSlice.js";
@@ -48,6 +49,11 @@ const ListTitle = ({ listId, listTitle }) => {
       </div>
     </div>
   );
+};
+
+ListTitle.propTypes = {
+  listId: PropTypes.string,
+  listTitle: PropTypes.string,
 };
 
 export default ListTitle;

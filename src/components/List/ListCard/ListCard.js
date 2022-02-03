@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Draggable } from "react-beautiful-dnd";
 
 const ListCard = ({ card, index }) => {
@@ -11,6 +12,11 @@ const ListCard = ({ card, index }) => {
       )}
     </Draggable>
   );
+};
+
+ListCard.propTypes = {
+  card: PropTypes.object,
+  index: PropTypes.number,
 };
 
 export default ListCard;
