@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ListTitle from "../ListTitle/ListTitle.js";
 import ListCard from "../ListCard/ListCard.js";
 import AddCard from "../AddCard/AddCard.js";
@@ -35,6 +36,11 @@ const List = ({ list, index }) => {
       )}
     </Draggable>
   );
+};
+
+List.propTypes = {
+  list: PropTypes.object,
+  index: PropTypes.number,
 };
 
 export default List;

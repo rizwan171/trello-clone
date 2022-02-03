@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 import { FiPlus, FiX } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { addCard } from "../../../features/cardsSlice.js";
@@ -71,6 +72,10 @@ const AddCard = ({ listId }) => {
   );
 };
 
+AddCard.propTypes = {
+  listId: PropTypes.string,
+};
+
 export default AddCard;
 
 const Collapse = ({ isOpen, children }) => {
@@ -83,4 +88,9 @@ const Collapse = ({ isOpen, children }) => {
       {children}
     </div>
   );
+};
+
+Collapse.propTypes = {
+  isOpen: PropTypes.bool,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
 };

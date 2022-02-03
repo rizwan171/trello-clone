@@ -53,7 +53,7 @@ const ListTitle = ({ listId, listTitle }) => {
 
 ListTitle.propTypes = {
   listId: PropTypes.string,
-  listTitle: PropTypes.string
-}
+  listTitle: PropTypes.string,
+};
 
 export default ListTitle;
