@@ -1,0 +1,38 @@
+{
+  "cards": [
+    {
+      "id": "card-1",
+      "content": "Test Content 1"
+    }, {
+      "id": "card-2",
+      "content": "Test Content 2 which is slightly longer in length than the first card"
+    }, {
+      "id": "card-3",
+      "content": "Test Content 1"
+    }, {
+      "id": "card-4",
+      "content": "Test Content 2 which is slightly longer in length than the first card"
+    }, {
+      "id": "card-5",
+      "content": "Test Content 1"
+    }, {
+      "id": "card-6",
+      "content": "Test Content 2 which is slightly longer in length than the first card"
+    }
+  ],
+  "lists": [
+    {
+      "id": "list-1",
+      "title": "Todo",
+      "cards": ["card-1", "card-2"]
+    }, {
+      "id": "list-2",
+      "title": "In progress",
+      "cards": ["card-3", "card-4"]
+    }, {
+      "id": "list-3",
+      "title": "Done",
+      "cards": ["card-5", "card-6"]
+    }
+  ]
+}
