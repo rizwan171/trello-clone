@@ -1,22 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
+import { readFileSync } from "fs";
+
+const rawData = readFileSync("../data/data.json");
+const parsedJson = JSON.parse(rawData);
 
 const initialState = {
-  value: [
-    // TODO set this to empty array after testing
-    {
-      id: "list-1",
-      title: "To Do",
-    },
-    {
-      id: "list-2",
-      title: "Doing",
-    },
-    {
-      id: "list-3",
-      title: "Done",
-    },
-  ],
+  value: [...parsedJson.lists],
 };
 
 export const listsSlice = createSlice({
