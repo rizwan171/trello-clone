@@ -2,21 +2,27 @@
   "cards": [
     {
       "id": "card-1",
+      "listId": "list-1",
       "content": "Test Content 1"
     }, {
       "id": "card-2",
+      "listId": "list-1",
       "content": "Test Content 2 which is slightly longer in length than the first card"
     }, {
       "id": "card-3",
+      "listId": "list-2",
       "content": "Test Content 1"
     }, {
       "id": "card-4",
+      "listId": "list-2",
       "content": "Test Content 2 which is slightly longer in length than the first card"
     }, {
       "id": "card-5",
+      "listId": "list-3",
       "content": "Test Content 1"
     }, {
       "id": "card-6",
+      "listId": "list-3",
       "content": "Test Content 2 which is slightly longer in length than the first card"
     }
   ],
