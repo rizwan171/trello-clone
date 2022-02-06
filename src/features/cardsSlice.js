@@ -1,13 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
-//TODO the below isnt possible
-import { readFileSync } from 'fs';
 
-const rawData = readFileSync('../data/data.json');
-const parsedJson = JSON.parse(rawData);
-
+const cardsData = JSON.parse(localStorage.getItem("cards"));
 const initialState = {
-  value: [...parsedJson.cards],
+  value: cardsData ? cardsData : [],
 };
 
 export const cardsSlice = createSlice({
@@ -16,6 +12,7 @@ export const cardsSlice = createSlice({
   reducers: {
     addCard: (state, action) => {
       state.value.push({ ...action.payload, id: uuidv4() });
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
   },
 });
