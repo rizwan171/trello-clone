@@ -7,19 +7,21 @@ import NavBar from "./NavBar/NavBar";
 import BoardOptionsMenu from "./BoardOptionsMenu/BoardOptionsMenu";
 import { useDispatch } from "react-redux";
 import { reorderList } from "../features/listsSlice";
+import { reorderCards } from "../features/cardsSlice";
 
 const App = () => {
   const dispatch = useDispatch();
   const lists = useSelector((state) => state.lists.value);
+  const cards = useSelector((state) => state.cards.value)
   const showBoard = useSelector((state) => state.boardOptions.value);
 
   const handleDragEnd = (result) => {
     const { destination, source, draggableId, type } = result;
+    const newListsOrder = [...lists];
 
     if (!destination) return;
 
     if (type === "list") {
-      const newListsOrder = [...lists];
       const listToMove = newListsOrder.find(list => list.id === draggableId);
 
       newListsOrder.splice(source.index, 1);
@@ -27,20 +29,21 @@ const App = () => {
 
       dispatch(reorderList(newListsOrder));
     } else {
-      // const sourceList = data.lists[source.droppableId];
-      // const destList = data.lists[destination.droppableId];
-      // const draggingCard = sourceList.cards.find((card) => card.id === draggableId);
-      // if (source.droppableId === destination.droppableId) {
-      //   sourceList.cards.splice(source.index, 1);
-      //   destList.cards.splice(destination.index, 0, draggingCard);
-      //   const newData = {
-      //     ...data,
-      //     lists: {
-      //       ...data.lists,
-      //       [sourceList.id]: destList,
-      //     },
-      //   };
-      //   setData(newData);
+      const sourceList = newListsOrder.find(list => list.id === source.droppableId);
+      const destList = newListsOrder.find(list => list.id === destination.droppableId);
+      const draggingCard = cards.find((card) => card.id === draggableId);
+
+      // within the same list
+      if (source.droppableId === destination.droppableId) {
+        const listCards = cards.filter((card) => card.listId == destination.droppableId);
+        const otherCards = cards.filter(card => card.listId !== destination.droppableId);
+
+        listCards.splice(source.index, 1);
+        listCards.splice(destination.index, 0, draggingCard);
+        
+        const newCardsOrder =  listCards.concat(otherCards);
+        dispatch(reorderCards(newCardsOrder));
+      }
       // } else {
       //   sourceList.cards.splice(source.index, 1);
       //   destList.cards.splice(destination.index, 0, draggingCard);
