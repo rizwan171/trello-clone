@@ -26,9 +26,12 @@ export const listsSlice = createSlice({
       state.value = state.value.filter((list) => list.id !== listIndex);
       localStorage.setItem("lists", JSON.stringify([...state.value]));
     },
-    reorderList: () => {},
+    updateAllLists: (state, action) => {
+      state.value = [...action.payload];
+      localStorage.setItem("lists", JSON.stringify([...state.value]));
+    },
   },
 });
 
-export const { addList, editTitle } = listsSlice.actions;
+export const { addList, editTitle, removeList, updateAllLists } = listsSlice.actions;
 export default listsSlice.reducer;

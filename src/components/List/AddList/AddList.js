@@ -80,10 +80,7 @@ export default AddList;
 
 const Collapse = ({ isOpen, children }) => {
   const ref = useRef(null);
-
   const inlineStyle = isOpen ? { height: ref.current?.scrollHeight } : { height: 0, width: 0 };
-
-  console.log(ref);
 
   return (
     <div ref={ref} aria-hidden={!isOpen} style={inlineStyle} className="transition-height ease overflow-hidden duration-100">

@@ -14,8 +14,12 @@ export const cardsSlice = createSlice({
       state.value.push({ ...action.payload, id: uuidv4() });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
+    updateAllCards: (state, action) => {
+      state.value = [...action.payload];
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
+    }
   },
 });
 
-export const { addCard } = cardsSlice.actions;
+export const { addCard, updateAllCards } = cardsSlice.actions;
 export default cardsSlice.reducer;
