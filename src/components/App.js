@@ -8,6 +8,7 @@ import BoardOptionsMenu from "./BoardOptionsMenu/BoardOptionsMenu";
 import { useDispatch } from "react-redux";
 import { updateAllLists } from "../features/listsSlice";
 import { updateAllCards } from "../features/cardsSlice";
+import CardModal from "./CardModal/CardModal";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -78,6 +79,7 @@ const App = () => {
           )}
         </Droppable>
       </DragDropContext>
+      <CardModal />
     </div>
   );
 };
