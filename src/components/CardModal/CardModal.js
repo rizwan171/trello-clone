@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-const CardModal = () => {
+const CardModal = ({ card }) => {
   const modalRef = useRef();
 
   const closeModal = () => {
@@ -9,12 +9,8 @@ const CardModal = () => {
   };
 
   return (
-    <div
-      id="defaultModal"
-      ref={modalRef}
-      className="hidden overflow-y-auto overflow-x-hidden fixed right-0 left-0 top-4 z-50 justify-center items-center h-modal md:h-full md:inset-0"
-    >
-      <div className="relative px-4 w-full max-w-2xl h-full md:h-auto">
+    <div id="cardModal" ref={modalRef} className="z-50 min-h-full min-w-full flex fixed top-0 left-0 justify-center items-center">
+      <div className="relative px-4 w-full max-w-2xl h-full md:h-auto mb-36">
         <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
           <div className="flex justify-between items-start p-5 rounded-t border-b dark:border-gray-600">
             <h3 className="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white">Terms of Service</h3>

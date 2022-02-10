@@ -4,7 +4,7 @@ import { Draggable } from "react-beautiful-dnd";
 
 const ListCard = ({ card, index }) => {
   const openModal = () => {
-    document.getElementById("defaultModal").classList.remove("hidden");
+    document.getElementById("cardModal").classList.remove("hidden");
   }
 
   return (
