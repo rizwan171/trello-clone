@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useRef } from "react";
 
 const CardModal = () => {
+  const modalRef = useRef();
+
+  const closeModal = () => {
+    console.log(modalRef);
+    modalRef.current.className = modalRef.current.className + " hidden";
+  };
+
   return (
     <div
       id="defaultModal"
-      aria-hidden="true"
+      ref={modalRef}
       className="hidden overflow-y-auto overflow-x-hidden fixed right-0 left-0 top-4 z-50 justify-center items-center h-modal md:h-full md:inset-0"
     >
       <div className="relative px-4 w-full max-w-2xl h-full md:h-auto">
@@ -14,7 +21,7 @@ const CardModal = () => {
             <button
               type="button"
               className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-              data-modal-toggle="defaultModal"
+              onClick={closeModal}
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -45,7 +52,7 @@ const CardModal = () => {
               I accept
             </button>
             <button
-              data-modal-toggle="defaultModal"
+              onClick={closeModal}
               type="button"
               className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600"
             >
