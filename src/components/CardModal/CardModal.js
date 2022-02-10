@@ -4,12 +4,11 @@ const CardModal = ({ card }) => {
   const modalRef = useRef();
 
   const closeModal = () => {
-    console.log(modalRef);
     modalRef.current.className = modalRef.current.className + " hidden";
   };
 
   return (
-    <div id="cardModal" ref={modalRef} className="z-50 min-h-full min-w-full flex fixed top-0 left-0 justify-center items-center">
+    <div id="cardModal" ref={modalRef} className="z-50 min-h-full min-w-full flex fixed top-0 left-0 justify-center items-center bg-black bg-opacity-30">
       <div className="relative px-4 w-full max-w-2xl h-full md:h-auto mb-36">
         <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
           <div className="flex justify-between items-start p-5 rounded-t border-b dark:border-gray-600">
