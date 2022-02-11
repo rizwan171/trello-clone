@@ -1,10 +1,13 @@
 import React, { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { clearSelectedCard } from "../../features/currentSelectedCardSlice";
 
 const CardModal = ({ card }) => {
   const modalRef = useRef();
+  const dispatch = useDispatch();
 
   const closeModal = () => {
-    modalRef.current.className = modalRef.current.className + " hidden";
+    dispatch(clearSelectedCard());
   };
 
   return (
@@ -12,7 +15,7 @@ const CardModal = ({ card }) => {
       <div className="relative px-4 w-full max-w-2xl h-full md:h-auto mb-36">
         <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
           <div className="flex justify-between items-start p-5 rounded-t border-b dark:border-gray-600">
-            <h3 className="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white">Terms of Service</h3>
+            <h3 className="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white">{ card.content }</h3>
             <button
               type="button"
               className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"

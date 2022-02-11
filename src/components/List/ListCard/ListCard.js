@@ -1,11 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Draggable } from "react-beautiful-dnd";
+import { useDispatch } from "react-redux";
+import { setCurrentSelectedCard } from "../../../features/currentSelectedCardSlice";
 
 const ListCard = ({ card, index }) => {
+  const dispatch = useDispatch();
+
   const openModal = () => {
-    document.getElementById("cardModal").classList.remove("hidden");
-  }
+    dispatch(setCurrentSelectedCard(card));
+  };
 
   return (
     <Draggable draggableId={card.id} index={index}>
