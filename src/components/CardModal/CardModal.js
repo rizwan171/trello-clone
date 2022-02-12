@@ -1,9 +1,8 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { clearSelectedCard } from "../../features/currentSelectedCardSlice";
 
 const CardModal = ({ card }) => {
-  const modalRef = useRef();
   const dispatch = useDispatch();
 
   const closeModal = () => {
@@ -11,7 +10,7 @@ const CardModal = ({ card }) => {
   };
 
   return (
-    <div id="cardModal" ref={modalRef} className="z-50 min-h-full min-w-full flex fixed top-0 left-0 justify-center items-center bg-black bg-opacity-30">
+    <div id="cardModal" className="z-50 min-h-full min-w-full flex fixed top-0 left-0 justify-center items-center bg-black bg-opacity-30">
       <div className="relative px-4 w-full max-w-2xl h-full md:h-auto mb-36">
         <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
           <div className="flex justify-between items-start p-5 rounded-t border-b dark:border-gray-600">
