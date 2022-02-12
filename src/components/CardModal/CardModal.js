@@ -4,17 +4,71 @@ import { clearSelectedCard } from "../../features/currentSelectedCardSlice";
 
 const CardModal = ({ card }) => {
   const dispatch = useDispatch();
+  const [selected, setSelected] = useState(false);
+  const [editableTitle, setEditableTitle] = useState(card.content);
+  const [width, setWidth] = useState(20);
 
   const closeModal = () => {
     dispatch(clearSelectedCard());
   };
 
+  const handleOnChange = (e) => {
+    setEditableTitle(e.target.value);
+
+    const inputLength = e.target.value.length;
+    if (inputLength >= 20 && inputLength < 40) {
+      setWidth(e.target.value.length);
+    }
+  };
+
+  const handleOnBlur = () => {
+    setSelected(false);
+    setEditableTitle(card.content);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      setSelected(false);
+      setEditableTitle(card.content); // TODO update card content here
+      // updateListTitle(editableTitle, listId);
+    }
+  };
+
+  const handleOnFocus = (e) => {
+    const inputLength = e.target.value.length;
+    if (inputLength >= 20 && inputLength < 40) {
+      setWidth(e.target.value.length);
+    }
+  };
+
   return (
-    <div id="cardModal" className="z-50 min-h-full min-w-full flex fixed top-0 left-0 justify-center items-center bg-black bg-opacity-30">
+    <div
+      id="cardModal"
+      className="z-50 min-h-full min-w-full flex fixed top-0 left-0 justify-center items-center bg-black bg-opacity-30"
+    >
       <div className="relative px-4 w-full max-w-2xl h-full md:h-auto mb-36">
-        <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-          <div className="flex justify-between items-start p-5 rounded-t border-b dark:border-gray-600">
-            <h3 className="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white">{ card.content }</h3>
+        <div className="relative bg-trello-gray-100 rounded-lg shadow dark:bg-gray-700">
+          <div className="flex justify-between items-start p-6 rounded-t">
+            {!selected && (
+              <h3 className="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white" onClick={() => setSelected(true)}>
+                {card.content}
+              </h3>
+            )}
+            {selected && (
+              <input
+                type="text"
+                value={editableTitle}
+                id="rounded-email"
+                autoFocus
+                size={width}
+                onFocus={handleOnFocus}
+                className="ml-2 py-1 text-trello-gray-300 text-xl font-semibold rounded-sm border bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100"
+                onBlur={handleOnBlur}
+                onChange={handleOnChange}
+                onKeyDown={handleKeyDown}
+              />
+            )}
+
             <button
               type="button"
               className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -30,31 +84,22 @@ const CardModal = ({ card }) => {
             </button>
           </div>
           <div className="p-6 space-y-6">
-            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-              With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies
-              around the world are updating their terms of service agreements to comply.
-            </p>
-            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-              The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure
-              a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of
-              high-risk data breaches that could personally affect them.
-            </p>
-          </div>
-          <div className="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
-            <button
-              data-modal-toggle="defaultModal"
-              type="button"
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              I accept
-            </button>
-            <button
-              onClick={closeModal}
-              type="button"
-              className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600"
-            >
-              Decline
-            </button>
+            <div className="">
+              <div>
+                
+              </div>
+              <div>
+                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                  With less than a month to go before the European Union enacts new consumer privacy laws for its citizens,
+                  companies around the world are updating their terms of service agreements to comply.
+                </p>
+                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                  The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to
+                  ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as
+                  possible of high-risk data breaches that could personally affect them.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
