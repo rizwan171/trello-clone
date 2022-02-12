@@ -46,7 +46,7 @@ const CardModal = ({ card }) => {
       id="cardModal"
       className="z-50 min-h-full min-w-full flex fixed top-0 left-0 justify-center items-center bg-black bg-opacity-30"
     >
-      <div className="relative px-4 w-full max-w-2xl h-full md:h-auto mb-36">
+      <div className="relative px-4 w-full max-w-3xl h-full md:h-auto mb-36">
         <div className="relative bg-trello-gray-100 rounded-lg shadow dark:bg-gray-700">
           <div className="flex justify-between items-start p-6 rounded-t">
             {!selected && (
@@ -84,11 +84,8 @@ const CardModal = ({ card }) => {
             </button>
           </div>
           <div className="p-6 space-y-6">
-            <div className="">
-              <div>
-                
-              </div>
-              <div>
+            <div className="flex">
+              <div className="w-3/4">
                 <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                   With less than a month to go before the European Union enacts new consumer privacy laws for its citizens,
                   companies around the world are updating their terms of service agreements to comply.
@@ -98,6 +95,24 @@ const CardModal = ({ card }) => {
                   ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as
                   possible of high-risk data breaches that could personally affect them.
                 </p>
+              </div>
+              <div className="flex items-end w-1/4 flex-col">
+                <h4 className="mb-2 text-gray-500 text-xs">Card Options</h4>
+                <button className="flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
+                  Tags
+                </button>
+                <button className="flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
+                  Colour
+                </button>
+                <button className="flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
+                  Move
+                </button>
+                <button className="flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
+                  Copy
+                </button>
+                <button className="flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
+                  Delete
+                </button>
               </div>
             </div>
           </div>
