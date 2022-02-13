@@ -8,12 +8,14 @@ import BoardOptionsMenu from "./BoardOptionsMenu/BoardOptionsMenu";
 import { useDispatch } from "react-redux";
 import { updateAllLists } from "../features/listsSlice";
 import { updateAllCards } from "../features/cardsSlice";
+import CardModal from "./CardModal/CardModal";
 
 const App = () => {
   const dispatch = useDispatch();
   const lists = useSelector((state) => state.lists.value);
   const cards = useSelector((state) => state.cards.value);
   const showBoard = useSelector((state) => state.boardOptions.value);
+  const currentSelectedCard = useSelector((state) => state.currentSelectedCard.value);
 
   const handleDragEnd = (result) => {
     const { destination, source, draggableId, type } = result;
@@ -78,6 +80,7 @@ const App = () => {
           )}
         </Droppable>
       </DragDropContext>
+      {currentSelectedCard && <CardModal card={currentSelectedCard}/>}
     </div>
   );
 };
