@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { deleteCard } from "../../features/cardsSlice";
 import { clearSelectedCard } from "../../features/currentSelectedCardSlice";
 
 const CardModal = ({ card }) => {
@@ -32,6 +33,11 @@ const CardModal = ({ card }) => {
       setEditableTitle(card.content); // TODO update card content here
       // updateListTitle(editableTitle, listId);
     }
+  };
+
+  const handleDeleteCard = () => {
+    dispatch(deleteCard(card.id));
+    dispatch(clearSelectedCard());
   };
 
   const handleOnFocus = (e) => {
@@ -110,7 +116,10 @@ const CardModal = ({ card }) => {
                 <button className="flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
                   Copy
                 </button>
-                <button className="flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
+                <button
+                  className="flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
+                  onClick={handleDeleteCard}
+                >
                   Delete
                 </button>
               </div>
