@@ -17,6 +17,7 @@ const App = () => {
   const cards = useSelector((state) => state.cards.value);
   const showBoard = useSelector((state) => state.boardOptions.value);
   const currentSelectedCard = useSelector((state) => state.currentSelectedCard.value);
+  const currentSelectedList = useSelector((state) => state.currentSelectedList.value);
 
   const handleDragEnd = (result) => {
     const { destination, source, draggableId, type } = result;
@@ -82,7 +83,7 @@ const App = () => {
         </Droppable>
       </DragDropContext>
       {currentSelectedCard && <CardModal card={currentSelectedCard}/>}
-      <ListOptionsMenu />
+      {currentSelectedList && <ListOptionsMenu list={currentSelectedList}/>}
     </div>
   );
 };

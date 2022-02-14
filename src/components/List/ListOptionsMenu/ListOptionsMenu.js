@@ -1,11 +1,24 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { deleteAllListCards } from "../../../features/cardsSlice";
+import { clearSelectedList } from "../../../features/currentSelectedListSlice";
+import { removeList } from "../../../features/listsSlice";
 
-const ListOptionsMenu = () => {
+const ListOptionsMenu = ({ list }) => {
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    dispatch(deleteAllListCards(list.id));
+    dispatch(removeList(list.id));
+    dispatch(clearSelectedList());
+  }
+
   return (
-    <div className="flex flex-col rounded-sm shadow-xl w-24 text-center fixed bg-trello-gray-400 top-80 left-36">
+    // TODO add a transition for height when this is shown
+    <div className="flex flex-col rounded-sm shadow-xl w-24 text-center fixed bg-trello-gray-400 top-0 left-0">
       <button className="w-full p-2 cursor-pointer hover:bg-black hover:bg-opacity-20 rounded-md">Copy</button>
       <button className="w-full p-2 cursor-pointer hover:bg-black hover:bg-opacity-20 rounded-md">Move</button>
-      <button className="w-full p-2 cursor-pointer hover:bg-black hover:bg-opacity-20 rounded-md">Delete</button>
+      <button className="w-full p-2 cursor-pointer hover:bg-black hover:bg-opacity-20 rounded-md" onClick={handleDelete}>Delete</button>
     </div>
   );
 };
