@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { MdMoreHoriz } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { editTitle } from "../../../features/listsSlice.js";
 import { clearSelectedList, setCurrentSelectedList } from "../../../features/currentSelectedListSlice.js";
+import { sendPositionData } from "../../../features/listOptionsMenuPositionSlice.js";
 
 const ListTitle = ({ list }) => {
   const [selected, setSelected] = useState(false);
   const [editableTitle, setEditableTitle] = useState(list.title);
   const dispatch = useDispatch();
   const currentSelectedList = useSelector((state) => state.currentSelectedList.value);
+  const moreMenuButtonRef = useRef();
 
   const handleOnChange = (e) => {
     setEditableTitle(e.target.value);
@@ -29,9 +31,10 @@ const ListTitle = ({ list }) => {
   };
 
   const handleMoreMenu = () => {
-    if (currentSelectedList) {
+    if (currentSelectedList || list.id === currentSelectedList?.id) {
       dispatch(clearSelectedList());
     } else {
+      dispatch(sendPositionData({ top: moreMenuButtonRef.current.offsetTop, left: moreMenuButtonRef.current.offsetLeft }));
       dispatch(setCurrentSelectedList(list));
     }
   };
@@ -54,7 +57,7 @@ const ListTitle = ({ list }) => {
           {list.title}
         </h2>
       )}
-      <div className="hover:bg-trello-gray-500 p-0.5 ml-1.5 rounded-ibsm" onClick={handleMoreMenu}>
+      <div ref={moreMenuButtonRef} className="hover:bg-trello-gray-500 p-0.5 ml-1.5 rounded-ibsm" onClick={handleMoreMenu}>
         <MdMoreHoriz size={20} className="text-trello-gray-200" />
       </div>
     </div>
