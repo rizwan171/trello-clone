@@ -22,6 +22,10 @@ export const cardsSlice = createSlice({
       state.value = state.value.filter((card) => card.id !== action.payload);
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
+    deleteAllListCards: (state, action) => {
+      state.value = state.value.filter((card) => card.listId !== action.payload);
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
+    }
   },
 });
 
