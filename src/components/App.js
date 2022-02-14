@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { updateAllLists } from "../features/listsSlice";
 import { updateAllCards } from "../features/cardsSlice";
 import CardModal from "./CardModal/CardModal";
+import ListOptionsMenu from "./List/ListOptionsMenu/ListOptionsMenu";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -81,6 +82,7 @@ const App = () => {
         </Droppable>
       </DragDropContext>
       {currentSelectedCard && <CardModal card={currentSelectedCard}/>}
+      <ListOptionsMenu />
     </div>
   );
 };
