@@ -31,11 +31,15 @@ const ListTitle = ({ list }) => {
   };
 
   const handleMoreMenu = () => {
-    if (currentSelectedList || list.id === currentSelectedList?.id) {
-      dispatch(clearSelectedList());
-    } else {
+    if (!currentSelectedList) {
       dispatch(sendPositionData({ top: moreMenuButtonRef.current.offsetTop, left: moreMenuButtonRef.current.offsetLeft }));
       dispatch(setCurrentSelectedList(list));
+    } else {
+      dispatch(clearSelectedList());
+      if (currentSelectedList.id !== list.id) {
+        dispatch(sendPositionData({ top: moreMenuButtonRef.current.offsetTop, left: moreMenuButtonRef.current.offsetLeft }));
+        dispatch(setCurrentSelectedList(list));
+      }
     }
   };
 

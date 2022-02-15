@@ -45,7 +45,8 @@ const App = () => {
 
         const newCardsOrder = listCards.concat(otherCards);
         dispatch(updateAllCards(newCardsOrder));
-      } else { // dragging to different lists
+      } else {
+        // dragging to different lists
         const copyOfDraggingCard = { ...draggingCard };
         copyOfDraggingCard.listId = destination.droppableId;
 
@@ -82,8 +83,8 @@ const App = () => {
           )}
         </Droppable>
       </DragDropContext>
-      {currentSelectedCard && <CardModal card={currentSelectedCard}/>}
-      {currentSelectedList && <ListOptionsMenu list={currentSelectedList}/>}
+      {currentSelectedCard && <CardModal card={currentSelectedCard} />}
+      {currentSelectedList && <ListOptionsMenu list={currentSelectedList} />}
     </div>
   );
 };
