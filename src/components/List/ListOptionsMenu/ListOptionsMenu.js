@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { deleteAllListCards } from "../../../features/cardsSlice";
@@ -43,5 +44,9 @@ const ListOptionsMenu = ({ list }) => {
     </div>
   );
 };
+
+ListOptionsMenu.propTypes = {
+  list: PropTypes.object
+}
 
 export default ListOptionsMenu;

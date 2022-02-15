@@ -70,8 +70,7 @@ const ListTitle = ({ list }) => {
 
 // TODO update proptypes
 ListTitle.propTypes = {
-  listId: PropTypes.string,
-  listTitle: PropTypes.string,
+  list: PropTypes.object
 };
 
 export default ListTitle;
