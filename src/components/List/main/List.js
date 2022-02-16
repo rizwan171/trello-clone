@@ -16,7 +16,7 @@ const List = ({ list, index }) => {
         <div ref={provided.innerRef} {...provided.draggableProps}>
           <div {...provided.dragHandleProps}>
             <div className="shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-4 h-full">
-              <ListTitle listId={list.id} listTitle={list.title} />
+              <ListTitle list={list} />
               <div>
                 <Droppable droppableId={list.id}>
                   {(provided) => (

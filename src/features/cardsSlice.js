@@ -22,8 +22,12 @@ export const cardsSlice = createSlice({
       state.value = state.value.filter((card) => card.id !== action.payload);
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
+    deleteAllListCards: (state, action) => {
+      state.value = state.value.filter((card) => card.listId !== action.payload);
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
+    }
   },
 });
 
-export const { addCard, updateAllCards, deleteCard } = cardsSlice.actions;
+export const { addCard, updateAllCards, deleteCard, deleteAllListCards } = cardsSlice.actions;
 export default cardsSlice.reducer;

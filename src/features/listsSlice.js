@@ -22,8 +22,7 @@ export const listsSlice = createSlice({
       localStorage.setItem("lists", JSON.stringify([...state.value]));
     },
     removeList: (state, action) => {
-      const listIndex = state.value.findIndex((list) => list.id === action.payload);
-      state.value = state.value.filter((list) => list.id !== listIndex);
+      state.value = state.value.filter((list) => list.id !== action.payload);
       localStorage.setItem("lists", JSON.stringify([...state.value]));
     },
     updateAllLists: (state, action) => {

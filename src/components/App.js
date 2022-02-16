@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { updateAllLists } from "../features/listsSlice";
 import { updateAllCards } from "../features/cardsSlice";
 import CardModal from "./CardModal/CardModal";
+import ListOptionsMenu from "./List/ListOptionsMenu/ListOptionsMenu";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const App = () => {
   const cards = useSelector((state) => state.cards.value);
   const showBoard = useSelector((state) => state.boardOptions.value);
   const currentSelectedCard = useSelector((state) => state.currentSelectedCard.value);
+  const currentSelectedList = useSelector((state) => state.currentSelectedList.value);
 
   const handleDragEnd = (result) => {
     const { destination, source, draggableId, type } = result;
@@ -43,7 +45,8 @@ const App = () => {
 
         const newCardsOrder = listCards.concat(otherCards);
         dispatch(updateAllCards(newCardsOrder));
-      } else { // dragging to different lists
+      } else {
+        // dragging to different lists
         const copyOfDraggingCard = { ...draggingCard };
         copyOfDraggingCard.listId = destination.droppableId;
 
@@ -80,7 +83,8 @@ const App = () => {
           )}
         </Droppable>
       </DragDropContext>
-      {currentSelectedCard && <CardModal card={currentSelectedCard}/>}
+      {currentSelectedCard && <CardModal card={currentSelectedCard} />}
+      {currentSelectedList && <ListOptionsMenu list={currentSelectedList} />}
     </div>
   );
 };
