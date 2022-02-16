@@ -68,7 +68,6 @@ const ListTitle = ({ list }) => {
   );
 };
 
-// TODO update proptypes
 ListTitle.propTypes = {
   list: PropTypes.object
 };
