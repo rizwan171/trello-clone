@@ -11,7 +11,7 @@ const ListOptionsMenu = ({ list }) => {
   const ref = useRef();
   const currentSelectedList = useSelector((state) => state.currentSelectedList.value);
   const positionData = useSelector((state) => state.listOptionsMenuPosition.value);
-  const [styles, setStyles] = useState({});
+  const [styles, setStyles] = useState({ display: "none" });
 
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
@@ -21,7 +21,7 @@ const ListOptionsMenu = ({ list }) => {
     };
 
     document.addEventListener("mousedown", checkIfClickedOutside);
-    return () => document.removeEventListener("mousedown", checkIfClickedOutside);  
+    return () => document.removeEventListener("mousedown", checkIfClickedOutside);
   }, [currentSelectedList]);
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const ListOptionsMenu = ({ list }) => {
 };
 
 ListOptionsMenu.propTypes = {
-  list: PropTypes.object
-}
+  list: PropTypes.object,
+};
 
 export default ListOptionsMenu;
