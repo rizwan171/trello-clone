@@ -14,8 +14,11 @@ import ColourOptions from "./ColourOptions/ColourOptions";
 import ImageSearchOptions from "./ImageSearchOptions/ImageSearchOptions";
 import ImageUploadOptions from "./ImageUploadOptions/ImageUploadOptions";
 import * as Constants from "../../constants/TabIdentifiers.js";
+import { useSelector } from "react-redux";
 
 const BoardOptionsMenu = () => {
+  const lists = useSelector((state) => state.lists.value);
+  const cards = useSelector((state) => state.cards.value);
   const [images, setImages] = useState([]);
   const coloursRef = useRef();
   const imageSearchRef = useRef();
@@ -67,6 +70,26 @@ const BoardOptionsMenu = () => {
     setColoursTabActive(false);
     setImageSearchTabActive(false);
     setImageUploadTabActive(false);
+  };
+
+  const initiateDownload = (data) => {
+    const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(JSON.stringify(data))}`;
+    const link = document.createElement("a");
+    link.href = jsonString;
+    link.download = "data.json";
+
+    link.click();
+    link.remove();
+  };
+
+  const handleExportAll = () => {
+    // TODO update with board info as well when that has been implemented
+    const data = {
+      lists: [...lists],
+      cards: [...cards],
+    };
+
+    initiateDownload(data);
   };
 
   return (
@@ -139,7 +162,10 @@ const BoardOptionsMenu = () => {
           </div>
           <hr />
           <div className="flex flex-col">
-            <button className="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 items-center text-base shadow-md rounded-md">
+            <button
+              className="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 items-center text-base shadow-md rounded-md"
+              onClick={handleExportAll}
+            >
               <AiOutlineDownload className="mr-2" size={20} />
               Export All
             </button>
