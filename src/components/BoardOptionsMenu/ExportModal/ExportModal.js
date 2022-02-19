@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const ExportModal = ({ closeModal, handleExportList }) => {
   const lists = useSelector((state) => state.lists.value);
-  const dispatch = useDispatch();
   const [selectedListId, setSelectedListId] = useState("");
 
   const handleChange = (e) => {
