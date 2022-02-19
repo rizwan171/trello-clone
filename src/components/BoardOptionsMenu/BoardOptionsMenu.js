@@ -113,8 +113,6 @@ const BoardOptionsMenu = () => {
         cards: cards.filter((card) => card.listId === listId),
       };
 
-      console.log("data", data);
-
       initiateDownload(data);
       closeModal();
     }

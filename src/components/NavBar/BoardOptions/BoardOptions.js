@@ -9,7 +9,6 @@ const BoardOptions = () => {
   const dispatch = useDispatch();
 
   const handleOnClick = () => {
-    console.log("click");
     dispatch(toggleBoardVisibility());
   };
 
