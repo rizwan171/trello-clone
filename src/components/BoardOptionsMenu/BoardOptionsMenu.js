@@ -103,10 +103,22 @@ const BoardOptionsMenu = () => {
     initiateDownload(data);
   };
 
-  // TODO
+  // TODO implement once multiple boards implemented
   const handleExportBoard = () => {};
 
-  const handleExportList = () => {};
+  const handleExportList = (listId) => {
+    if (listId.length > 0) {
+      const data = {
+        list: lists.find((list) => list.id === listId),
+        cards: cards.filter((card) => card.listId === listId),
+      };
+
+      console.log("data", data);
+
+      initiateDownload(data);
+      closeModal();
+    }
+  };
 
   return (
     // TODO remove text-white
@@ -214,7 +226,7 @@ const BoardOptionsMenu = () => {
           </div>
         </div>
       </div>
-      {modalOpen && <ExportModal closeModal={closeModal} />}
+      {modalOpen && <ExportModal closeModal={closeModal} handleExportList={handleExportList} />}
     </>
   );
 };

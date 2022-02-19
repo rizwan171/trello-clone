@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const ExportModal = ({ closeModal }) => {
+const ExportModal = ({ closeModal, handleExportList }) => {
   const lists = useSelector((state) => state.lists.value);
   const dispatch = useDispatch();
-  const [width, setWidth] = useState(20);
+  const [selectedListId, setSelectedListId] = useState("");
+
+  const handleChange = (e) => {
+    setSelectedListId(e.target.value);
+  };
 
   return (
     <div
@@ -15,7 +19,11 @@ const ExportModal = ({ closeModal }) => {
         <div className="relative bg-trello-gray-100 rounded-lg shadow dark:bg-gray-700">
           <div className="flex p-6">
             <div className="">
-              <select className="form-select p-6 appearance-none w-md px-3 py-1.5 text-base font-normal text-gray-700 bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
+              <select
+                value={selectedListId}
+                onChange={handleChange}
+                className="form-select p-6 appearance-none w-md px-3 py-1.5 text-base font-normal text-gray-700 bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              >
                 <option selected value="" disabled>
                   Select List...
                 </option>
@@ -33,13 +41,14 @@ const ExportModal = ({ closeModal }) => {
             <button
               type="button"
               className="text-white bg-trello-green-100 hover:bg-trello-green-200 text-base rounded-lg px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              onClick={() => handleExportList(selectedListId)}
             >
               Export
             </button>
             <button
               type="button"
               className="text-gray-600 bg-gray-300 text-base rounded-lg ml-2 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              onClick={closeModal}
+              onClick={() => closeModal()}
             >
               Cancel
             </button>
