@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import boardReducer from "../features/boardSlice.js";
 import listsReducer from "../features/listsSlice.js";
 import cardsReducer from "../features/cardsSlice.js";
 import boardOptionsReducer from "../features/boardOptionSlice.js";
@@ -8,6 +9,7 @@ import listOptionsMenuPositionReducer from "../features/listOptionsMenuPositionS
 
 export const store = configureStore({
   reducer: {
+    board: boardReducer,
     lists: listsReducer,
     cards: cardsReducer,
     boardOptions: boardOptionsReducer,
