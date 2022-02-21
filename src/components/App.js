@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { useSelector } from "react-redux";
 import List from "./List/main/List";
@@ -10,14 +10,22 @@ import { updateAllLists } from "../features/listsSlice";
 import { updateAllCards } from "../features/cardsSlice";
 import CardModal from "./CardModal/CardModal";
 import ListOptionsMenu from "./List/ListOptionsMenu/ListOptionsMenu";
+import { setNewBoardState } from "../features/boardSlice";
 
 const App = () => {
   const dispatch = useDispatch();
+  const board = useSelector((state) => state.board.value);
   const lists = useSelector((state) => state.lists.value);
   const cards = useSelector((state) => state.cards.value);
   const showBoard = useSelector((state) => state.boardOptions.value);
   const currentSelectedCard = useSelector((state) => state.currentSelectedCard.value);
   const currentSelectedList = useSelector((state) => state.currentSelectedList.value);
+
+  useEffect(() => {
+    if (!board.boardId) {
+      dispatch(setNewBoardState());
+    }
+  }, []);
 
   const handleDragEnd = (result) => {
     const { destination, source, draggableId, type } = result;

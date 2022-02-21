@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { updateTitle } from "../../../features/boardSlice.js";
 
-const BoardTitle = ({ boardTitle }) => {
+const BoardTitle = () => {
+  const dispatch = useDispatch();
+  const boardData = useSelector((state) => state.board.value);
   const [selected, setSelected] = useState(false);
-  const [editableTitle, setEditableTitle] = useState(boardTitle);
+  const [editableTitle, setEditableTitle] = useState(boardData.title);
   const [width, setWidth] = useState(20);
 
   const handleOnChange = (e) => {
@@ -13,14 +18,14 @@ const BoardTitle = ({ boardTitle }) => {
 
   const handleOnBlur = () => {
     setSelected(false);
-    setEditableTitle(boardTitle);
+    setEditableTitle(boardData.title);
   };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       setSelected(false);
+      dispatch(updateTitle(editableTitle));
       setEditableTitle(editableTitle);
-      // updateListTitle(editableTitle, listId);
     }
   };
 
@@ -45,7 +50,7 @@ const BoardTitle = ({ boardTitle }) => {
         />
       ) : (
         <h2 className="ml-2 my-auto text-trello-gray-300 font-semibold cursor-pointer" onClick={() => setSelected(true)}>
-          {boardTitle}
+          {boardData.title}
         </h2>
       )}
     </div>
