@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 import ExportModal from "./ExportModal/ExportModal";
 
 const BoardOptionsMenu = () => {
+  const board = useSelector((state) => state.board.value);
   const lists = useSelector((state) => state.lists.value);
   const cards = useSelector((state) => state.cards.value);
   const [images, setImages] = useState([]);
@@ -96,6 +97,7 @@ const BoardOptionsMenu = () => {
   const handleExportAll = () => {
     // TODO update with board info as well when that has been implemented
     const data = {
+      board,
       lists: [...lists],
       cards: [...cards],
     };
