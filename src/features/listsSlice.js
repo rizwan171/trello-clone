@@ -29,6 +29,10 @@ export const listsSlice = createSlice({
       state.value = [...action.payload];
       localStorage.setItem("lists", JSON.stringify([...state.value]));
     },
+    deleteAllLists: (state) => {
+      state.value = [];
+      localStorage.setItem("lists", JSON.stringify([...state.value]));
+    },
   },
 });
 
