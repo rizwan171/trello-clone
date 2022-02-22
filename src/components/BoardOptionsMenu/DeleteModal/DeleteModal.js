@@ -8,6 +8,9 @@ const DeleteModal = ({ closeDeleteModal, handleDeleteBoard }) => {
     >
       <div className="relative px-4 w-full max-w-sm h-full md:h-auto mb-36">
         <div className="relative bg-trello-gray-100 rounded-lg shadow dark:bg-gray-700">
+          <div className="flex p-6 text-gray-700">
+            Are you sure you want to delete this board and all its contents? The data will not be recoverable after deleting.
+          </div>
           <div className="flex items-center px-6 pb-6">
             <button
               type="button"

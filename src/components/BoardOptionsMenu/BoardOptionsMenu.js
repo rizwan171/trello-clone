@@ -5,7 +5,6 @@ import {
   AiOutlineCloudDownload,
   AiOutlineDownload,
   AiOutlineUpload,
-  AiFillPicture,
 } from "react-icons/ai";
 import { MdOutlineDelete } from "react-icons/md";
 import { RiDeleteBin2Line } from "react-icons/ri";
@@ -14,15 +13,22 @@ import ColourOptions from "./ColourOptions/ColourOptions";
 import ImageSearchOptions from "./ImageSearchOptions/ImageSearchOptions";
 import ImageUploadOptions from "./ImageUploadOptions/ImageUploadOptions";
 import * as Constants from "../../constants/TabIdentifiers.js";
+import { setNewBoardState } from "../../features/boardSlice.js";
+import { deleteAllLists } from "../../features/listsSlice.js";
+import { deleteAllCards } from "../../features/cardsSlice.js";
 import { useSelector } from "react-redux";
 import ExportModal from "./ExportModal/ExportModal";
+import { useDispatch } from "react-redux";
+import DeleteModal from "./DeleteModal/DeleteModal";
 
 const BoardOptionsMenu = () => {
+  const dispatch = useDispatch();
   const board = useSelector((state) => state.board.value);
   const lists = useSelector((state) => state.lists.value);
   const cards = useSelector((state) => state.cards.value);
   const [images, setImages] = useState([]);
   const [exportModalOpen, setExportModalOpen] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const coloursRef = useRef();
   const imageSearchRef = useRef();
   const imageUploadRef = useRef();
@@ -120,7 +126,21 @@ const BoardOptionsMenu = () => {
     }
   };
 
-  const handleDeleteBoard = () => {};
+  const openDeleteModal = () => {
+    setDeleteModalOpen(true);
+  };
+
+  const closeDeleteModal = () => {
+    setDeleteModalOpen(false);
+  };
+
+  const handleDeleteBoard = () => {
+    dispatch(deleteAllLists());
+    dispatch(deleteAllCards());
+    dispatch(setNewBoardState());
+
+    closeDeleteModal();
+  };
 
   return (
     // TODO remove text-white
@@ -220,7 +240,10 @@ const BoardOptionsMenu = () => {
             </div>
             <hr />
             <div className="flex flex-col">
-              <button className="flex py-2 px-3 mt-2 mb-2 bg-red-600 hover:bg-red-800 text-white items-center text-base shadow-md rounded-md">
+              <button
+                className="flex py-2 px-3 mt-2 mb-2 bg-red-600 hover:bg-red-800 text-white items-center text-base shadow-md rounded-md"
+                onClick={openDeleteModal}
+              >
                 <MdOutlineDelete className="mr-2" size={20} />
                 Delete Board
               </button>
@@ -229,6 +252,7 @@ const BoardOptionsMenu = () => {
         </div>
       </div>
       {exportModalOpen && <ExportModal closeExportModal={closeExportModal} handleExportList={handleExportList} />}
+      {deleteModalOpen && <DeleteModal closeDeleteModal={closeDeleteModal} handleDeleteBoard={handleDeleteBoard} />}
     </>
   );
 };
