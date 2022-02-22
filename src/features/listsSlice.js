@@ -29,8 +29,12 @@ export const listsSlice = createSlice({
       state.value = [...action.payload];
       localStorage.setItem("lists", JSON.stringify([...state.value]));
     },
+    deleteAllLists: (state) => {
+      state.value = [];
+      localStorage.setItem("lists", JSON.stringify([...state.value]));
+    },
   },
 });
 
-export const { addList, editTitle, removeList, updateAllLists } = listsSlice.actions;
+export const { addList, editTitle, removeList, updateAllLists, deleteAllLists } = listsSlice.actions;
 export default listsSlice.reducer;
