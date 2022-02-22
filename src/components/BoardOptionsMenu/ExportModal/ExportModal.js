@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
-const ExportModal = ({ closeModal, handleExportList }) => {
+const ExportModal = ({ closeExportModal, handleExportList }) => {
   const lists = useSelector((state) => state.lists.value);
   const [selectedListId, setSelectedListId] = useState("");
 
@@ -47,7 +47,7 @@ const ExportModal = ({ closeModal, handleExportList }) => {
             <button
               type="button"
               className="text-gray-600 bg-gray-300 text-base rounded-lg ml-2 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              onClick={() => closeModal()}
+              onClick={() => closeExportModal()}
             >
               Cancel
             </button>

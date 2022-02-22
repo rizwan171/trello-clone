@@ -22,7 +22,7 @@ const BoardOptionsMenu = () => {
   const lists = useSelector((state) => state.lists.value);
   const cards = useSelector((state) => state.cards.value);
   const [images, setImages] = useState([]);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [exportModalOpen, setExportModalOpen] = useState(false);
   const coloursRef = useRef();
   const imageSearchRef = useRef();
   const imageUploadRef = useRef();
@@ -76,12 +76,12 @@ const BoardOptionsMenu = () => {
   };
 
   // TODO this could set a title variable based on what was selected so ExportModal could be reused for import
-  const openModal = () => {
-    setModalOpen(true);
+  const openExportModal = () => {
+    setExportModalOpen(true);
   };
 
-  const closeModal = () => {
-    setModalOpen(false);
+  const closeExportModal = () => {
+    setExportModalOpen(false);
   };
 
   const initiateDownload = (data) => {
@@ -116,9 +116,11 @@ const BoardOptionsMenu = () => {
       };
 
       initiateDownload(data);
-      closeModal();
+      closeExportModal();
     }
   };
+
+  const handleDeleteBoard = () => {};
 
   return (
     // TODO remove text-white
@@ -204,7 +206,7 @@ const BoardOptionsMenu = () => {
               </button>
               <button
                 className="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
-                onClick={openModal}
+                onClick={openExportModal}
               >
                 <AiOutlineDownload className="mr-2" size={20} />
                 Export List
@@ -226,7 +228,7 @@ const BoardOptionsMenu = () => {
           </div>
         </div>
       </div>
-      {modalOpen && <ExportModal closeModal={closeModal} handleExportList={handleExportList} />}
+      {exportModalOpen && <ExportModal closeExportModal={closeExportModal} handleExportList={handleExportList} />}
     </>
   );
 };
