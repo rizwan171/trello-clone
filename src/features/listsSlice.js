@@ -33,8 +33,16 @@ export const listsSlice = createSlice({
       state.value = [];
       localStorage.setItem("lists", JSON.stringify([...state.value]));
     },
+    copyList: (state, action) => {
+      const list = state.value.find((list) => list.id === action.payload);
+      state.value.push({
+        ...list,
+        id: uuidv4(),
+      });
+      localStorage.setItem("lists", JSON.stringify([...state.value]));
+    },
   },
 });
 
-export const { addList, editTitle, removeList, updateAllLists, deleteAllLists } = listsSlice.actions;
+export const { addList, editTitle, removeList, updateAllLists, deleteAllLists, copyList } = listsSlice.actions;
 export default listsSlice.reducer;
