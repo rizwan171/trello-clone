@@ -30,8 +30,17 @@ export const cardsSlice = createSlice({
       state.value = [];
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
+    copyCardsToNewList: (state, action) => {
+      const cardsToCopy = state.value
+        .filter((card) => card.listId === action.payload.from)
+        .map((card) => {
+          return { ...card, id: uuidv4(), listId: action.payload.to };
+        });
+      state.value.push(...cardsToCopy);
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
+    },
   },
 });
 
-export const { addCard, updateAllCards, deleteCard, deleteAllListCards, deleteAllCards } = cardsSlice.actions;
+export const { addCard, updateAllCards, deleteCard, deleteAllListCards, deleteAllCards, copyCardsToNewList } = cardsSlice.actions;
 export default cardsSlice.reducer;

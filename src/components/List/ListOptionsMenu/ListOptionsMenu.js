@@ -2,13 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { deleteAllListCards } from "../../../features/cardsSlice";
+import { deleteAllListCards, copyCardsToNewList } from "../../../features/cardsSlice";
 import { clearSelectedList } from "../../../features/currentSelectedListSlice";
 import { removeList, copyList } from "../../../features/listsSlice";
 
 const ListOptionsMenu = ({ list }) => {
   const dispatch = useDispatch();
   const ref = useRef();
+  const lists = useSelector((state) => state.lists.value);
   const currentSelectedList = useSelector((state) => state.currentSelectedList.value);
   const positionData = useSelector((state) => state.listOptionsMenuPosition.value);
   const [styles, setStyles] = useState({ display: "none" });
@@ -35,6 +36,7 @@ const ListOptionsMenu = ({ list }) => {
 
   const handleCopy = () => {
     dispatch(copyList(list.id));
+    dispatch(copyCardsToNewList({ from: currentSelectedList.id, to: lists[lists.length - 1].id }));
     dispatch(clearSelectedList());
   };
 
