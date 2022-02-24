@@ -48,13 +48,10 @@ const ListOptionsMenu = ({ list }) => {
 
   return (
     // TODO add a transition for height when this is shown
-    <div
-      ref={ref}
-      style={styles}
-      className="flex flex-col rounded-sm shadow-xl w-24 text-center fixed bg-trello-gray-400"
-      onClick={handleCopy}
-    >
-      <button className="w-full p-2 cursor-pointer hover:bg-black hover:bg-opacity-20 rounded-md">Copy</button>
+    <div ref={ref} style={styles} className="flex flex-col rounded-sm shadow-xl w-24 text-center fixed bg-trello-gray-400">
+      <button className="w-full p-2 cursor-pointer hover:bg-black hover:bg-opacity-20 rounded-md" onClick={handleCopy}>
+        Copy
+      </button>
       {/* TODO remove cursor not allowed when multiple boards have been implemented */}
       <button className="w-full p-2 cursor-not-allowed opacity-50 hover:bg-black hover:bg-opacity-20 rounded-md">Move</button>
       <button className="w-full p-2 cursor-pointer hover:bg-black hover:bg-opacity-20 rounded-md" onClick={handleDelete}>
