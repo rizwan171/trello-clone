@@ -13,6 +13,7 @@ const ListOptionsMenu = ({ list }) => {
   const currentSelectedList = useSelector((state) => state.currentSelectedList.value);
   const positionData = useSelector((state) => state.listOptionsMenuPosition.value);
   const [styles, setStyles] = useState({ display: "none" });
+  const [done, setDone] = useState(false);
 
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
@@ -34,10 +35,20 @@ const ListOptionsMenu = ({ list }) => {
     }
   }, [positionData]);
 
+  // copyCardsToNewList relies on the lists state in this component to be updated.
+  // this state is updated on re-render/mounted (due to how redux works), hence
+  // the use of the useEffect hook below
+  useEffect(() => {
+    if (done) {
+      dispatch(copyCardsToNewList({ from: currentSelectedList.id, to: lists[lists.length - 1].id }));
+      dispatch(clearSelectedList());
+      setDone(false);
+    }
+  }, [done]);
+
   const handleCopy = () => {
     dispatch(copyList(list.id));
-    dispatch(copyCardsToNewList({ from: currentSelectedList.id, to: lists[lists.length - 1].id }));
-    dispatch(clearSelectedList());
+    setDone(true);
   };
 
   const handleDelete = () => {
