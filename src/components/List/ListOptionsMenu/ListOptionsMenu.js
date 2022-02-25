@@ -2,16 +2,18 @@ import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { deleteAllListCards } from "../../../features/cardsSlice";
+import { deleteAllListCards, copyCardsToNewList } from "../../../features/cardsSlice";
 import { clearSelectedList } from "../../../features/currentSelectedListSlice";
-import { removeList } from "../../../features/listsSlice";
+import { removeList, copyList } from "../../../features/listsSlice";
 
 const ListOptionsMenu = ({ list }) => {
   const dispatch = useDispatch();
   const ref = useRef();
+  const lists = useSelector((state) => state.lists.value);
   const currentSelectedList = useSelector((state) => state.currentSelectedList.value);
   const positionData = useSelector((state) => state.listOptionsMenuPosition.value);
   const [styles, setStyles] = useState({ display: "none" });
+  const [done, setDone] = useState(false);
 
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
@@ -33,6 +35,22 @@ const ListOptionsMenu = ({ list }) => {
     }
   }, [positionData]);
 
+  // copyCardsToNewList relies on the lists state in this component to be updated.
+  // this state is updated on re-render/mounted (due to how redux works), hence
+  // the use of the useEffect hook below
+  useEffect(() => {
+    if (done) {
+      dispatch(copyCardsToNewList({ from: currentSelectedList.id, to: lists[lists.length - 1].id }));
+      dispatch(clearSelectedList());
+      setDone(false);
+    }
+  }, [done]);
+
+  const handleCopy = () => {
+    dispatch(copyList(list.id));
+    setDone(true);
+  };
+
   const handleDelete = () => {
     dispatch(deleteAllListCards(list.id));
     dispatch(removeList(list.id));
@@ -42,8 +60,11 @@ const ListOptionsMenu = ({ list }) => {
   return (
     // TODO add a transition for height when this is shown
     <div ref={ref} style={styles} className="flex flex-col rounded-sm shadow-xl w-24 text-center fixed bg-trello-gray-400">
-      <button className="w-full p-2 cursor-pointer hover:bg-black hover:bg-opacity-20 rounded-md">Copy</button>
-      <button className="w-full p-2 cursor-pointer hover:bg-black hover:bg-opacity-20 rounded-md">Move</button>
+      <button className="w-full p-2 cursor-pointer hover:bg-black hover:bg-opacity-20 rounded-md" onClick={handleCopy}>
+        Copy
+      </button>
+      {/* TODO remove cursor not allowed when multiple boards have been implemented */}
+      <button className="w-full p-2 cursor-not-allowed opacity-50 hover:bg-black hover:bg-opacity-20 rounded-md">Move</button>
       <button className="w-full p-2 cursor-pointer hover:bg-black hover:bg-opacity-20 rounded-md" onClick={handleDelete}>
         Delete
       </button>
