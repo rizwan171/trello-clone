@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { deleteAllListCards, copyCardsToNewList } from "../../../features/cardsSlice";
+import { deleteAllListCards, copyAllCardsToNewList } from "../../../features/cardsSlice";
 import { clearSelectedList } from "../../../features/currentSelectedListSlice";
 import { removeList, copyList } from "../../../features/listsSlice";
 
@@ -35,12 +35,12 @@ const ListOptionsMenu = ({ list }) => {
     }
   }, [positionData]);
 
-  // copyCardsToNewList relies on the lists state in this component to be updated.
+  // copyAllCardsToNewList relies on the lists state in this component to be updated.
   // this state is updated on re-render/mounted (due to how redux works), hence
   // the use of the useEffect hook below
   useEffect(() => {
     if (done) {
-      dispatch(copyCardsToNewList({ from: currentSelectedList.id, to: lists[lists.length - 1].id }));
+      dispatch(copyAllCardsToNewList({ from: currentSelectedList.id, to: lists[lists.length - 1].id }));
       dispatch(clearSelectedList());
       setDone(false);
     }
