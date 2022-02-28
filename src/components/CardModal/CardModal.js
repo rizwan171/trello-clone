@@ -1,20 +1,26 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { deleteCard } from "../../features/cardsSlice";
-import { clearSelectedCard } from "../../features/currentSelectedCardSlice";
+import { updateCardContent, deleteCard, copyCardToList, moveCardToList } from "../../features/cardsSlice";
+import { clearSelectedCard, setCurrentSelectedCard } from "../../features/currentSelectedCardSlice";
+import { useSelector } from "react-redux";
 
 const CardModal = ({ card }) => {
   const dispatch = useDispatch();
+  const lists = useSelector((state) => state.lists.value);
   const [selected, setSelected] = useState(false);
-  const [editableTitle, setEditableTitle] = useState(card.content);
+  const [copyOpen, setCopyOpen] = useState(false);
+  const [moveOpen, setMoveOpen] = useState(false);
+  const [selectedListId, setSelectedListId] = useState("");
+  const [editableContent, setEditableContent] = useState(card.content);
   const [width, setWidth] = useState(20);
 
   const closeModal = () => {
     dispatch(clearSelectedCard());
   };
 
-  const handleOnChange = (e) => {
-    setEditableTitle(e.target.value);
+  const handleCardContentOnChange = (e) => {
+    setEditableContent(e.target.value);
 
     const inputLength = e.target.value.length;
     if (inputLength >= 20 && inputLength < 40) {
@@ -22,16 +28,48 @@ const CardModal = ({ card }) => {
     }
   };
 
+  const handleCopyCardOnChange = (e) => {
+    setSelectedListId(e.target.value);
+  };
+
+  const handleMoveCardOnChange = (e) => {
+    setSelectedListId(e.target.value);
+  };
+
   const handleOnBlur = () => {
     setSelected(false);
-    setEditableTitle(card.content);
+    setEditableContent(card.content);
   };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       setSelected(false);
-      setEditableTitle(card.content); // TODO update card content here
-      // updateListTitle(editableTitle, listId);
+      dispatch(updateCardContent({ id: card.id, content: editableContent }));
+      dispatch(setCurrentSelectedCard({ ...card, content: editableContent }));
+    }
+  };
+
+  const handleCopy = () => {
+    if (copyOpen) {
+      dispatch(copyCardToList({ cardId: card.id, listId: selectedListId }));
+      setSelectedListId("");
+      setCopyOpen(false);
+    } else {
+      setCopyOpen(true);
+      setMoveOpen(false);
+      setSelectedListId("");
+    }
+  };
+
+  const handleMove = () => {
+    if (moveOpen) {
+      dispatch(moveCardToList({ cardId: card.id, listId: selectedListId }));
+      setSelectedListId("");
+      setMoveOpen(false);
+    } else {
+      setMoveOpen(true);
+      setCopyOpen(false);
+      setSelectedListId("");
     }
   };
 
@@ -63,14 +101,14 @@ const CardModal = ({ card }) => {
             {selected && (
               <input
                 type="text"
-                value={editableTitle}
+                value={editableContent}
                 id="rounded-email"
                 autoFocus
                 size={width}
                 onFocus={handleOnFocus}
                 className="ml-2 py-1 text-trello-gray-300 text-xl font-semibold rounded-sm border bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100"
                 onBlur={handleOnBlur}
-                onChange={handleOnChange}
+                onChange={handleCardContentOnChange}
                 onKeyDown={handleKeyDown}
               />
             )}
@@ -104,17 +142,62 @@ const CardModal = ({ card }) => {
               </div>
               <div className="flex items-end w-1/4 flex-col">
                 <h4 className="mb-2 text-gray-500 text-xs">Card Options</h4>
-                <button className="flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
+                {/* TODO remove cursor-not-allowed and opacity-50 after tags and colour added to card */}
+                <button className="cursor-not-allowed opacity-50 flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
                   Tags
                 </button>
-                <button className="flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
+                <button className="cursor-not-allowed opacity-50 flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
                   Colour
                 </button>
-                <button className="flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
-                  Move
+                {moveOpen && (
+                  <select
+                    value={selectedListId}
+                    autoFocus
+                    onChange={handleMoveCardOnChange}
+                    className="form-select py-2 px-3 mb-2 flex w-full text-base font-normal text-gray-700 bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                  >
+                    <option selected value="" disabled>
+                      Select List...
+                    </option>
+                    {lists.map((list) => {
+                      return (
+                        <option key={list.id} value={list.id}>
+                          {list.title}
+                        </option>
+                      );
+                    })}
+                  </select>
+                )}
+                <button
+                  className="flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
+                  onClick={handleMove}
+                >
+                  {moveOpen ? "Confirm" : "Move"}
                 </button>
-                <button className="flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
-                  Copy
+                {copyOpen && (
+                  <select
+                    value={selectedListId}
+                    autoFocus
+                    onChange={handleCopyCardOnChange}
+                    className="form-select py-2 px-3 mb-2 flex w-full text-base font-normal text-gray-700 bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                  >
+                    <option selected value="" disabled>
+                      Select List...
+                    </option>
+                    {lists.map((list) => {
+                      return (
+                        <option key={list.id} value={list.id}>
+                          {list.title}
+                        </option>
+                      );
+                    })}
+                  </select>
+                )}
+                <button
+                  className="flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
+                  onClick={handleCopy}
+                >
+                  {copyOpen ? "Confirm" : "Copy"}
                 </button>
                 <button
                   className="flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"

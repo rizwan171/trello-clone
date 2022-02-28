@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
 const cardsData = JSON.parse(localStorage.getItem("cards"));
@@ -12,6 +12,15 @@ export const cardsSlice = createSlice({
   reducers: {
     addCard: (state, action) => {
       state.value.push({ ...action.payload, id: uuidv4() });
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
+    },
+    updateCardContent: (state, action) => {
+      state.value.map((card) => {
+        if (card.id === action.payload.id) {
+          card.content = action.payload.content;
+        }
+        return card;
+      });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
     updateAllCards: (state, action) => {
@@ -30,7 +39,26 @@ export const cardsSlice = createSlice({
       state.value = [];
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    copyCardsToNewList: (state, action) => {
+    copyCardToList: (state, action) => {
+      const cardToCopy = state.value.find((card) => card.id === action.payload.cardId);
+      state.value.push({
+        ...cardToCopy,
+        id: uuidv4(),
+        listId: action.payload.listId,
+      });
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
+    },
+    moveCardToList: (state, action) => {
+      state.value.map((card) => {
+        if (card.id === action.payload.cardId) {
+          card.listId = action.payload.listId;
+        }
+
+        return card;
+      });
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
+    },
+    copyAllCardsToNewList: (state, action) => {
       const cardsToCopy = state.value
         .filter((card) => card.listId === action.payload.from)
         .map((card) => {
@@ -42,5 +70,15 @@ export const cardsSlice = createSlice({
   },
 });
 
-export const { addCard, updateAllCards, deleteCard, deleteAllListCards, deleteAllCards, copyCardsToNewList } = cardsSlice.actions;
+export const {
+  addCard,
+  updateAllCards,
+  updateCardContent,
+  deleteCard,
+  deleteAllListCards,
+  deleteAllCards,
+  copyAllCardsToNewList,
+  copyCardToList,
+  moveCardToList,
+} = cardsSlice.actions;
 export default cardsSlice.reducer;
