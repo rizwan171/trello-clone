@@ -38,7 +38,14 @@ git checkout -b your-branch-name-here
 ## Pull Requests & Merging
 ### Creating a PR
 - When creating a pull request, you can add `resolves #ISSUE_NUMBER_HERE` to the description so GitHub can automatically close the issue after the PR has been merged.
+- If you have a reviewer on the PR, include any comments that may be helpful and steps to test your change in the PR
 
+### Reviewing a PR
+- This will cover reviewing PRs via the GitHub website. If you wish to use other method, like Visual Studio Code or GitHub Desktop, feel free to do so.
+- When reviewing a change, make sure to:
+	- Review the files changed via the Files Changed tab on GitHub
+	- Carry out testing, if required
+- Once you are happy with the code, you can approve the PR from the Files Changed tab on GitHub, clicking Review Changes, and choosing Approve 
 ### Rebasing
 - When it comes time to merge your branch, rebase your branch with the latest main before doing so. 
 	- Note: squashing your commits may make this easier, but is not enforced. the decision to/not to squash is entirely up to you
