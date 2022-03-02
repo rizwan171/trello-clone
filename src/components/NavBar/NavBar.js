@@ -5,7 +5,7 @@ import BoardOptions from "./BoardOptions/BoardOptions";
 const NavBar = () => {
   return (
     <div className="w-full px-6 pt-3">
-      <div className="flex w-full h-14 m-1">
+      <div className="flex w-full m-1">
         <BoardTitle />
         <BoardOptions />
       </div>

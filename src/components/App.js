@@ -70,16 +70,16 @@ const App = () => {
     }
   };
 
-  const className = showBoard ? "mr-1/5" : "";
+  const addMargin = showBoard ? "mr-1/5" : "";
 
   return (
-    <div className={className}>
+    <div className={"flex flex-col bg-red-400 max-h-screen overflow-hidden " + addMargin}>
       <NavBar />
       {showBoard && <BoardOptionsMenu />}
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="app" type="list" direction="horizontal">
           {(provided) => (
-            <div className="flex px-6 pt-3 overflow-x-auto h-full" ref={provided.innerRef} {...[provided.droppableProps]}>
+            <div className="flex px-6 pt-3 overflow-x-auto" ref={provided.innerRef} {...[provided.droppableProps]}>
               {lists.map((list, index) => (
                 <List key={list.id} list={list} index={index} />
               ))}
