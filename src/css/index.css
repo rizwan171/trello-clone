@@ -26,4 +26,8 @@
   .selected-tab {
     @apply border-trello-blue-100 border-current
   }
+
+  .overflow-wrap {
+    overflow-wrap: break-word;
+  }
 }
