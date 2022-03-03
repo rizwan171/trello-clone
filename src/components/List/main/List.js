@@ -13,11 +13,11 @@ const List = ({ list, index }) => {
   return (
     <Draggable draggableId={list.id} index={index}>
       {(provided) => (
-        <div ref={provided.innerRef} {...provided.draggableProps}>
+        <div ref={provided.innerRef} {...provided.draggableProps} className="overflow-y-auto">
           <div {...provided.dragHandleProps}>
             <div className="shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-2">
               <ListTitle list={list} />
-              <div className="overflow-y-auto flex flex-col">
+              <div className="max-h-full ">
                 <Droppable droppableId={list.id}>
                   {(provided) => (
                     <div ref={provided.innerRef} {...provided.droppableProps}>
