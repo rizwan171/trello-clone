@@ -6,7 +6,7 @@
   .scroll-y-hidden {
     -ms-overflow-style: none; /* for Internet Explorer, Edge */
     scrollbar-width: none; /* for Firefox */
-    overflow-y: scroll; 
+    overflow-y: scroll;
   }
 
   .scroll-y-hidden::-webkit-scrollbar {
@@ -16,7 +16,7 @@
   .scroll-x-hidden {
     -ms-overflow-style: none; /* for Internet Explorer, Edge */
     scrollbar-width: none; /* for Firefox */
-    overflow-x: scroll; 
+    overflow-x: scroll;
   }
 
   .scroll-x-hidden::-webkit-scrollbar {
@@ -24,10 +24,14 @@
   }
 
   .selected-tab {
-    @apply border-trello-blue-100 border-current
+    @apply border-trello-blue-100 border-current;
   }
 
   .overflow-wrap {
     overflow-wrap: break-word;
+  }
+
+  .test {
+    height: 70vh;
   }
 }
