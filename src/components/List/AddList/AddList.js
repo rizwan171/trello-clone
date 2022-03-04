@@ -21,6 +21,12 @@ const AddList = () => {
     setTitle(e.target.value);
   };
 
+  const handleKeyPress = (e) => {
+    if (e.code === 'Enter') {
+      handleAddList();
+    }
+  }
+
   const handleAddList = () => {
     setOpen(false);
     setTitle("");
@@ -45,6 +51,7 @@ const AddList = () => {
             className="w-full text-left box-border outline-none border-2 border-trello-blue-100 shadow bg-white hover:bg-trello-gray-400 rounded-md p-2 my-1.5"
             // onBlur={() => setOpen(false)}
             onChange={handleOnChange}
+            onKeyPress={handleKeyPress}
           />
           <div className="flex items-center">
             <button
