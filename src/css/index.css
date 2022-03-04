@@ -31,7 +31,8 @@
     overflow-wrap: break-word;
   }
 
-  .test {
-    height: 70vh;
+  .list-height {
+    height: min-content;
+    max-height: 65%;
   }
 }
