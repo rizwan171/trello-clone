@@ -94,7 +94,7 @@ const CardModal = ({ card }) => {
         <div className="relative bg-trello-gray-100 rounded-lg shadow dark:bg-gray-700">
           <div className="flex justify-between items-start p-6 rounded-t">
             {!selected && (
-              <h3 className="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white" onClick={() => setSelected(true)}>
+              <h3 className="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white break-all" onClick={() => setSelected(true)}>
                 {card.content}
               </h3>
             )}
