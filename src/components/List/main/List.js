@@ -22,15 +22,15 @@ const List = ({ list, index }) => {
           <ListTitle list={list} />
           <Droppable droppableId={list.id}>
             {(provided) => (
-              <div ref={provided.innerRef} {...provided.droppableProps} className="h-full max-h-full overflow-y-auto overflow-x-hidden">
+              <div ref={provided.innerRef} {...provided.droppableProps} className=" overflow-y-auto overflow-x-hidden">
                 {cards.map((card, index) => (
                   <ListCard key={card.id} card={card} index={index} />
                 ))}
                 {provided.placeholder}
+                <AddCard listId={list.id} />
               </div>
             )}
           </Droppable>
-          <AddCard listId={list.id} />
         </div>
       )}
     </Draggable>

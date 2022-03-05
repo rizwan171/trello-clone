@@ -35,4 +35,8 @@
     height: min-content;
     max-height: 85%;
   }
+
+  .height-min-content {
+    height: min-content;
+  }
 }
