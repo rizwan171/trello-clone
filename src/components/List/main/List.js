@@ -13,23 +13,24 @@ const List = ({ list, index }) => {
   return (
     <Draggable draggableId={list.id} index={index}>
       {(provided) => (
-        <div ref={provided.innerRef} {...provided.draggableProps} className="">
-          <div {...provided.dragHandleProps}>
-            <div className="shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-2 flex flex-col list-height">
-              <ListTitle list={list} />
-              <Droppable droppableId={list.id}>
-                {(provided) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps} className="h-full max-h-full overflow-y-auto">
-                    {cards.map((card, index) => (
-                      <ListCard key={card.id} card={card} index={index} />
-                    ))}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-              <AddCard listId={list.id} />
-            </div>
-          </div>
+        <div
+          ref={provided.innerRef}
+          {...provided.dragHandleProps}
+          {...provided.draggableProps}
+          className="shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-2 flex flex-col list-height"
+        >
+          <ListTitle list={list} />
+          <Droppable droppableId={list.id}>
+            {(provided) => (
+              <div ref={provided.innerRef} {...provided.droppableProps} className="h-full max-h-full overflow-y-auto overflow-x-hidden">
+                {cards.map((card, index) => (
+                  <ListCard key={card.id} card={card} index={index} />
+                ))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+          <AddCard listId={list.id} />
         </div>
       )}
     </Draggable>
