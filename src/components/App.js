@@ -79,7 +79,7 @@ const App = () => {
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="app" type="list" direction="horizontal">
           {(provided) => (
-            <div className="flex px-6 pt-3 h-full" ref={provided.innerRef} {...[provided.droppableProps]}>
+            <div className="flex px-6 pt-3 list-height" ref={provided.innerRef} {...[provided.droppableProps]}>
               {lists.map((list, index) => (
                 <List key={list.id} list={list} index={index} />
               ))}

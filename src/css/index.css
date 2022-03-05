@@ -38,5 +38,6 @@
 
   .height-min-content {
     height: min-content;
+    max-height: 100%;
   }
 }
