@@ -27,16 +27,12 @@
     @apply border-trello-blue-100 border-current;
   }
 
-  .overflow-wrap {
-    overflow-wrap: break-word;
-  }
-
   .list-height {
     height: min-content;
     max-height: 85%;
   }
 
-  .height-min-content {
+  .list-wrapper-height {
     height: min-content;
     max-height: 100%;
   }

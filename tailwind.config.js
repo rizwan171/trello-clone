@@ -30,12 +30,6 @@ module.exports = {
       height: {
         '38': '152px',
       },
-      maxHeight: {
-        '60p': '60%'
-      },
-      minHeight: {
-        '60p': '60%'
-      },
       borderWidth: {
         '3': '3px'
       },
