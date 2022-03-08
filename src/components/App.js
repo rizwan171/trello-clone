@@ -73,13 +73,13 @@ const App = () => {
   const addMargin = showBoard ? "mr-1/5" : "";
 
   return (
-    <div className={"flex flex-col h-screen box-border " + addMargin}>
+    <div className={"flex flex-col h-screen box-border w-screen" + addMargin}>
       <NavBar />
       {showBoard && <BoardOptionsMenu />}
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="app" type="list" direction="horizontal">
           {(provided) => (
-            <div className="flex px-6 pt-3 list-height" ref={provided.innerRef} {...[provided.droppableProps]}>
+            <div className="flex px-6 pt-3 list-height scroll-x-hidden" ref={provided.innerRef} {...[provided.droppableProps]}>
               {lists.map((list, index) => (
                 <List key={list.id} list={list} index={index} />
               ))}
