@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { updateCardContent, deleteCard, copyCardToList, moveCardToList } from "../../features/cardsSlice";
@@ -7,13 +7,22 @@ import { useSelector } from "react-redux";
 
 const CardModal = ({ card }) => {
   const dispatch = useDispatch();
+  const ref = useRef();
   const lists = useSelector((state) => state.lists.value);
   const [selected, setSelected] = useState(false);
   const [copyOpen, setCopyOpen] = useState(false);
   const [moveOpen, setMoveOpen] = useState(false);
   const [selectedListId, setSelectedListId] = useState("");
   const [editableContent, setEditableContent] = useState(card.content);
-  const [width, setWidth] = useState(20);
+  const [rows, setRows] = useState(1);
+
+  useEffect(() => {
+    if (ref && ref.current) {
+      ref.current.style.height = "0px";
+      const scrollHeight = ref.current.scrollHeight;
+      ref.current.style.height = scrollHeight + "px";
+    }
+  }, [editableContent]);
 
   const closeModal = () => {
     dispatch(clearSelectedCard());
@@ -21,11 +30,6 @@ const CardModal = ({ card }) => {
 
   const handleCardContentOnChange = (e) => {
     setEditableContent(e.target.value);
-
-    const inputLength = e.target.value.length;
-    if (inputLength >= 20 && inputLength < 40) {
-      setWidth(e.target.value.length);
-    }
   };
 
   const handleCopyCardOnChange = (e) => {
@@ -39,11 +43,13 @@ const CardModal = ({ card }) => {
   const handleOnBlur = () => {
     setSelected(false);
     setEditableContent(card.content);
+    setRows(1);
   };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       setSelected(false);
+      setRows(1);
       dispatch(updateCardContent({ id: card.id, content: editableContent }));
       dispatch(setCurrentSelectedCard({ ...card, content: editableContent }));
     }
@@ -79,10 +85,10 @@ const CardModal = ({ card }) => {
   };
 
   const handleOnFocus = (e) => {
-    const inputLength = e.target.value.length;
-    if (inputLength >= 20 && inputLength < 40) {
-      setWidth(e.target.value.length);
-    }
+    // The scrollHeight is the height of all the content, including that which exceeds 1 row of textarea.
+    // clientHeight is the height of the content the user can see at this point with 1 row of textarea.
+    // To dynamically set the rows, we simply divide the scrollHeight by clientHeight and roundup
+    setRows(Math.ceil(e.target.scrollHeight / e.target.clientHeight));
   };
 
   return (
@@ -94,19 +100,23 @@ const CardModal = ({ card }) => {
         <div className="relative bg-trello-gray-100 rounded-lg shadow dark:bg-gray-700">
           <div className="flex justify-between items-start p-6 rounded-t">
             {!selected && (
-              <h3 className="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white break-all" onClick={() => setSelected(true)}>
+              <h3
+                className="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white break-all"
+                onClick={() => setSelected(true)}
+              >
                 {card.content}
               </h3>
             )}
             {selected && (
-              <input
+              <textarea
+                ref={ref}
                 type="text"
                 value={editableContent}
                 id="rounded-email"
                 autoFocus
-                size={width}
+                rows={rows}
                 onFocus={handleOnFocus}
-                className="ml-2 py-1 text-trello-gray-300 text-xl font-semibold rounded-sm border bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100"
+                className="w-full scroll-y-hidden ml-2 py-1 text-trello-gray-300 text-xl font-semibold rounded-sm border bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100"
                 onBlur={handleOnBlur}
                 onChange={handleCardContentOnChange}
                 onKeyDown={handleKeyDown}
