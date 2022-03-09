@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { updateCardContent, deleteCard, copyCardToList, moveCardToList } from "../../features/cardsSlice";
@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 
 const CardModal = ({ card }) => {
   const dispatch = useDispatch();
+  const ref = useRef();
   const lists = useSelector((state) => state.lists.value);
   const [selected, setSelected] = useState(false);
   const [copyOpen, setCopyOpen] = useState(false);
@@ -15,17 +16,20 @@ const CardModal = ({ card }) => {
   const [editableContent, setEditableContent] = useState(card.content);
   const [rows, setRows] = useState(1);
 
+  useEffect(() => {
+    if (ref && ref.current) {
+      ref.current.style.height = "0px";
+      const scrollHeight = ref.current.scrollHeight;
+      ref.current.style.height = scrollHeight + "px";
+    }
+  }, [editableContent]);
+
   const closeModal = () => {
     dispatch(clearSelectedCard());
   };
 
   const handleCardContentOnChange = (e) => {
     setEditableContent(e.target.value);
-
-    // The scrollHeight is the height of all the content, including that which exceeds 1 row of textarea.
-    // clientHeight is the height of the content the user can see at this point with 1 row of textarea.
-    // To dynamically set the rows, we simply divide the scrollHeight by clientHeight and roundup
-    setRows(Math.ceil(e.target.scrollHeight / e.target.clientHeight));
   };
 
   const handleCopyCardOnChange = (e) => {
@@ -45,6 +49,7 @@ const CardModal = ({ card }) => {
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       setSelected(false);
+      setRows(1);
       dispatch(updateCardContent({ id: card.id, content: editableContent }));
       dispatch(setCurrentSelectedCard({ ...card, content: editableContent }));
     }
@@ -104,6 +109,7 @@ const CardModal = ({ card }) => {
             )}
             {selected && (
               <textarea
+                ref={ref}
                 type="text"
                 value={editableContent}
                 id="rounded-email"
