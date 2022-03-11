@@ -25,6 +25,8 @@ const App = () => {
     if (!board.boardId) {
       dispatch(setNewBoardState());
     }
+
+    document.getElementById("lists-wrapper").scrollLeft = 0;
   }, []);
 
   const handleDragEnd = (result) => {
@@ -79,7 +81,12 @@ const App = () => {
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="app" type="list" direction="horizontal">
           {(provided) => (
-            <div className="flex px-6 pt-3 list-height scroll-x-hidden" ref={provided.innerRef} {...[provided.droppableProps]}>
+            <div
+              id="lists-wrapper"
+              className="flex px-6 pt-3 lists-wrapper overflow-x-auto"
+              ref={provided.innerRef}
+              {...[provided.droppableProps]}
+            >
               {lists.map((list, index) => (
                 <List key={list.id} list={list} index={index} />
               ))}
