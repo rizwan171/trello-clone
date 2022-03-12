@@ -29,7 +29,7 @@ const List = ({ list, index }) => {
                   {cards.map((card, index) => (
                     <ListCard key={card.id} card={card} index={index} />
                   ))}
-                  {open && <AddCardForm setOpen={setOpen} />}
+                  {open && <AddCardForm listId={list.id} open={open} setOpen={setOpen} />}
                   {provided.placeholder}
                 </div>
                 {!open && <AddCardPrompt setOpen={setOpen} />}
