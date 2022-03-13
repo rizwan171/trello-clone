@@ -7,6 +7,7 @@ const AddCardForm = ({ setOpen, open, listId }) => {
   const dispatch = useDispatch();
   const [text, setText] = useState("");
   const inputRef = useRef(null);
+  const inlineStyle = open ? { height: inputRef.current?.scrollHeight } : { height: 0, overflow: "hidden" };
 
   const handleClose = () => {
     setOpen(false);
@@ -44,7 +45,7 @@ const AddCardForm = ({ setOpen, open, listId }) => {
   };
 
   return (
-    <>
+    <div className="flex flex-col transition-height ease-in-out duration-100" style={inlineStyle}>
       <textarea
         ref={inputRef}
         value={text}
@@ -69,8 +70,20 @@ const AddCardForm = ({ setOpen, open, listId }) => {
           className="text-trello-gray-200 hover:bg-trello-gray-500 cursor-pointer rounded-full ml-1 p-1"
         />
       </div>
-    </>
+    </div>
   );
 };
 
 export default AddCardForm;
+
+const Collapse = ({ isOpen, children }) => {
+  const ref = useRef(null);
+
+  const inlineStyle = isOpen ? { height: ref.current?.scrollHeight } : { height: 0 };
+
+  return (
+    <div ref={ref} aria-hidden={!isOpen} style={inlineStyle} className="transition-height ease overflow-hidden duration-300">
+      {children}
+    </div>
+  );
+};

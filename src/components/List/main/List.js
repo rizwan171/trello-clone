@@ -29,10 +29,10 @@ const List = ({ list, index }) => {
                   {cards.map((card, index) => (
                     <ListCard key={card.id} card={card} index={index} />
                   ))}
-                  {open && <AddCardForm listId={list.id} open={open} setOpen={setOpen} />}
+                  <AddCardForm listId={list.id} open={open} setOpen={setOpen} />
                   {provided.placeholder}
                 </div>
-                {!open && <AddCardPrompt setOpen={setOpen} />}
+                <AddCardPrompt open={!open} setOpen={setOpen} />
               </>
             )}
           </Droppable>
