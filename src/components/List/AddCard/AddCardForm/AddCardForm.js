@@ -75,15 +75,3 @@ const AddCardForm = ({ setOpen, open, listId }) => {
 };
 
 export default AddCardForm;
-
-const Collapse = ({ isOpen, children }) => {
-  const ref = useRef(null);
-
-  const inlineStyle = isOpen ? { height: ref.current?.scrollHeight } : { height: 0 };
-
-  return (
-    <div ref={ref} aria-hidden={!isOpen} style={inlineStyle} className="transition-height ease overflow-hidden duration-300">
-      {children}
-    </div>
-  );
-};
