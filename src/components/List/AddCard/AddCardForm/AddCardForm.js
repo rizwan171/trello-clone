@@ -23,15 +23,16 @@ const AddCardForm = ({ setOpen, open, listId }) => {
   }, [open]);
 
   const handleOnChange = (e) => {
-    setText(e.target.value);
+    if (e.target.value !== "\n") {
+      setText(e.target.value);
+    }
   };
 
   const handleAddCard = () => {
-    if (text.trim.length !== 0) {
+    if (text.trim().length !== 0) {
       dispatch(addCard({ listId, content: text }));
-      setOpen(false);
-      setText("");
     }
+    handleClose();
   };
 
   const handleKeyDown = (e) => {
