@@ -21,16 +21,24 @@ const AddCard = ({ listId }) => {
   };
 
   const handleAddCard = () => {
-    setOpen(false);
-    setText("");
-    dispatch(addCard({ listId, content: text }));
+    if (text.trim.length !== 0) { 
+      setOpen(false);
+      setText("");
+      dispatch(addCard({ listId, content: text }));
+    }
   };
 
-  const handleKeyPress = (e) => {
-    if (e.code === 'Enter') {
-      handleAddCard();
+  const handleKeyDown = (e) => {
+    switch (e.code) {
+      case 'Enter':
+        handleAddCard();
+        break;
+      case 'Escape':
+        handleClose();
+        break;
     }
   }
+
 
   const handleClose = () => {
     setOpen(false);
@@ -48,7 +56,7 @@ const AddCard = ({ listId }) => {
           className="w-full box-border outline-none border-2 border-trello-blue-100 shadow bg-white hover:bg-trello-gray-400 rounded-md p-2 my-1.5"
           // onBlur={() => setOpen(false)}
           onChange={handleOnChange}
-          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyDown}
         />
         <div className="flex items-center">
           <button
