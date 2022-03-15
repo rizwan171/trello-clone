@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FiX } from "react-icons/fi";
 import { useDispatch } from "react-redux";
-import { addCard } from "../../../../features/cardsSlice";
+import { addCard } from "../../../../features/cardsSlice.js";
 
 const AddCardForm = ({ setOpen, open, listId }) => {
   const dispatch = useDispatch();
   const [text, setText] = useState("");
   const inputRef = useRef(null);
-  const inlineStyle = open ? { height: inputRef.current?.scrollHeight } : { height: 0, overflow: "hidden" };
+  const inlineStyle = open ? { height: "min-content" } : { height: 0, overflow: "hidden" };
 
   const handleClose = () => {
     setOpen(false);

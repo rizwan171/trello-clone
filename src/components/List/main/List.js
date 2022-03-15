@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import ListTitle from "../ListTitle/ListTitle.js";
 import ListCard from "../ListCard/ListCard.js";
@@ -11,6 +11,10 @@ import AddCardForm from "../AddCard/AddCardForm/AddCardForm.js";
 const List = ({ list, index }) => {
   const cards = useSelector((state) => state.cards.value.filter((card) => card.listId === list.id));
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    document.getElementById(list.id).scrollTop = 0;
+  }, []);
 
   return (
     <Draggable draggableId={list.id} index={index}>
@@ -25,7 +29,12 @@ const List = ({ list, index }) => {
           <Droppable droppableId={list.id}>
             {(provided) => (
               <>
-                <div ref={provided.innerRef} {...provided.droppableProps} className="scroll-y-hidden overflow-x-hidden">
+                <div
+                  id={list.id}
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                  className="scroll-y-hidden overflow-x-hidden"
+                >
                   {cards.map((card, index) => (
                     <ListCard key={card.id} card={card} index={index} />
                   ))}
