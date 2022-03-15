@@ -16,8 +16,9 @@ const AddCardForm = ({ setOpen, open, listId }) => {
 
   useEffect(() => {
     if (open) {
-      inputRef.current.focus();
       inputRef.current.scrollIntoView();
+      inputRef.current.focus();
+      inputRef.current.setSelectionRange(0, 0);
     }
   }, [open]);
 
@@ -45,14 +46,13 @@ const AddCardForm = ({ setOpen, open, listId }) => {
   };
 
   return (
-    <div className="flex flex-col transition-height ease-in-out duration-100" style={inlineStyle}>
+    <div className="flex flex-col transition-height ease-in-out duration-200" style={inlineStyle}>
       <textarea
         ref={inputRef}
         value={text}
         placeholder="Type something..."
         autoFocus
         className="w-full box-border outline-none border-2 border-trello-blue-100 shadow bg-white hover:bg-trello-gray-400 rounded-md p-2 my-1.5"
-        onBlur={handleClose}
         onChange={handleOnChange}
         onKeyDown={handleKeyDown}
       />

@@ -30,6 +30,9 @@ module.exports = {
       height: {
         '38': '152px',
       },
+      minHeight: {
+        '4': '16px',
+      },
       borderWidth: {
         '3': '3px'
       },
