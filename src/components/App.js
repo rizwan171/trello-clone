@@ -72,13 +72,39 @@ const App = () => {
     }
   };
 
+  const handleDragStart = (data) => {
+    if (data.type != "list") {
+      console.log("here");
+      console.log(data);
+      console.log(data.draggableId);
+      console.log(cards.find((card) => card.id === data.draggableId));
+      const cardDiv = document.getElementById(data.draggableId);
+      const sourceListId = cards.find((card) => card.id === data.draggableId).listId;
+      lists
+        .filter((list) => list.id !== sourceListId)
+        .forEach((list) => {
+          console.log("lopp");
+          const listDiv = document.getElementById(list.id);
+          console.log(listDiv);
+          console.log(listDiv.style.height);
+          console.log(cardDiv.clientHeight);
+          if (listDiv.style.height === 0 || !listDiv.style.height) {
+            console.log("hitttttttt");
+            listDiv.style.height = cardDiv.clientHeight;
+                      console.log(listDiv.style.height);
+
+          }
+        });
+    }
+  };
+
   const addMargin = showBoard ? "mr-1/5" : "";
 
   return (
     <div className={"flex flex-col h-screen box-border w-screen" + addMargin}>
       <NavBar />
       {showBoard && <BoardOptionsMenu />}
-      <DragDropContext onDragEnd={handleDragEnd}>
+      <DragDropContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
         <Droppable droppableId="app" type="list" direction="horizontal">
           {(provided) => (
             <div
