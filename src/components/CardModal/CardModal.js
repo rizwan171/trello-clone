@@ -98,7 +98,7 @@ const CardModal = ({ card }) => {
     >
       <div className="relative px-4 w-full max-w-3xl h-full md:h-auto mb-36">
         <div className="relative bg-trello-gray-100 rounded-lg shadow dark:bg-gray-700">
-          <div className="flex justify-between items-start p-6 rounded-t">
+          <div className="flex p-6 rounded-t">
             {!selected && (
               <h3
                 className="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white break-all"
@@ -116,7 +116,7 @@ const CardModal = ({ card }) => {
                 autoFocus
                 rows={rows}
                 onFocus={handleOnFocus}
-                className="w-full scroll-y-hidden ml-2 py-1 text-trello-gray-300 text-xl font-semibold rounded-sm border bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100"
+                className="w-full scroll-y-hidden mr-2 py-1 text-trello-gray-300 text-xl font-semibold rounded-sm border bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100"
                 onBlur={handleOnBlur}
                 onChange={handleCardContentOnChange}
                 onKeyDown={handleKeyDown}
@@ -125,7 +125,7 @@ const CardModal = ({ card }) => {
 
             <button
               type="button"
-              className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+              className="text-gray-400 bg-transparent hover:bg-black hover:bg-opacity-10 hover:text-gray-600 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
               onClick={closeModal}
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
