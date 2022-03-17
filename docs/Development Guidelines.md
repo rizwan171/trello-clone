@@ -46,6 +46,7 @@ git checkout -b your-branch-name-here
 	- Review the files changed via the Files Changed tab on GitHub
 	- Carry out testing, if required
 - Once you are happy with the code, you can approve the PR from the Files Changed tab on GitHub, clicking Review Changes, and choosing Approve 
+- **Note: PRs require at least 1 approval before merging. This can be bypassed by admins but it is recommended to get 1 approval before merging**
 ### Rebasing
 - When it comes time to merge your branch, rebase your branch with the latest main before doing so. 
 	- Note: squashing your commits may make this easier, but is not enforced. the decision to/not to squash is entirely up to you
@@ -66,4 +67,5 @@ git push origin your-branch-name-here --force
 
 ### Merging your PR
 - Once reviewers are happy, and you have rebased, you can merge using the green merge button on the PR
+- **Note: Merging should be carried out by the pull request author to reduce unintended merge behaviour or complications**
 - Make sure to delete the branch after merging
