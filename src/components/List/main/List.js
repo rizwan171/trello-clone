@@ -33,7 +33,7 @@ const List = ({ list, index }) => {
                   id={list.id}
                   ref={provided.innerRef}
                   {...provided.droppableProps}
-                  className="scroll-y-hidden overflow-x-hidden min-h-4 pb-1.5"
+                  className="overflow-y-auto overflow-x-hidden min-h-4 pb-1.5"
                 >
                   {cards.map((card, index) => (
                     <ListCard key={card.id} card={card} index={index} />
