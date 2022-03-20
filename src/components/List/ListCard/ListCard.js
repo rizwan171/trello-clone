@@ -15,7 +15,15 @@ const ListCard = ({ card, index }) => {
     <Draggable draggableId={card.id} index={index}>
       {(provided) => (
         <div ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps} onClick={openModal}>
-          <div className="shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words">{card.content}</div>
+          <div className="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words">
+            <p>{card.content}</p>
+            <div className="pt-2 text-xs flex flex-wrap">
+              <div className="bg-blue-500 rounded-md p-1 mr-1">Tag 1</div>
+              <div className="bg-blue-500 rounded-md p-1 mr-1">Tag 1</div>
+              <div className="bg-blue-500 rounded-md p-1 mr-1">Tag 1</div>
+              <div className="bg-blue-500 rounded-md p-1 mr-1">Tag 1</div>
+            </div>
+          </div>
         </div>
       )}
     </Draggable>
