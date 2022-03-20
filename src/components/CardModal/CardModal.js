@@ -10,8 +10,10 @@ const CardModal = ({ card }) => {
   const ref = useRef();
   const lists = useSelector((state) => state.lists.value);
   const [selected, setSelected] = useState(false);
+  // TODO: copy and move shouldnt be open at the same time, so these states could be reduced to just the 1
   const [copyOpen, setCopyOpen] = useState(false);
   const [moveOpen, setMoveOpen] = useState(false);
+  const [tagsOpen, setTagsOpen] = useState(false);
   const [selectedListId, setSelectedListId] = useState("");
   const [editableContent, setEditableContent] = useState(card.content);
   const [rows, setRows] = useState(1);
@@ -91,6 +93,10 @@ const CardModal = ({ card }) => {
     setRows(Math.ceil(e.target.scrollHeight / e.target.clientHeight));
   };
 
+  const openTagsMenu = () => {
+    setTagsOpen(true);
+  };
+
   return (
     <div
       id="cardModal"
@@ -150,12 +156,23 @@ const CardModal = ({ card }) => {
                   possible of high-risk data breaches that could personally affect them.
                 </p>
               </div>
-              <div className="flex items-end w-1/4 flex-col">
-                <h4 className="mb-2 text-gray-500 text-xs">Card Options</h4>
-                {/* TODO remove cursor-not-allowed and opacity-50 after tags and colour added to card */}
-                <button className="cursor-not-allowed opacity-50 flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
-                  Tags
-                </button>
+              <div className="flex w-1/4 flex-col">
+                <h4 className="mb-2 text-gray-500 text-xs self-end">Card Options</h4>
+                {tagsOpen ? (
+                  <div className="flex flex-col h-48">
+                    <div>Test</div>
+                    <div>Test</div>
+                  </div>
+                ) : (
+                  <button
+                    className="flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
+                    onClick={openTagsMenu}
+                  >
+                    Tags
+                  </button>
+                )}
+
+                {/* TODO remove cursor-not-allowed and opacity-50 after colour added to card */}
                 <button className="cursor-not-allowed opacity-50 flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
                   Colour
                 </button>

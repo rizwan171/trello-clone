@@ -75,7 +75,7 @@ const App = () => {
   const addMargin = showBoard ? "mr-1/5" : "";
 
   return (
-    <div className={"flex flex-col h-screen box-border w-screen" + addMargin}>
+    <div className={"flex flex-col h-screen box-border w-screen bg-red-400" + addMargin}>
       <NavBar />
       {showBoard && <BoardOptionsMenu />}
       <DragDropContext onDragEnd={handleDragEnd}>
