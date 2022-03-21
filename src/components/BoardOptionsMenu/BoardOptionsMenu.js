@@ -23,6 +23,7 @@ import DeleteModal from "./DeleteModal/DeleteModal";
 
 const BoardOptionsMenu = () => {
   const dispatch = useDispatch();
+  
   const board = useSelector((state) => state.board.value);
   const lists = useSelector((state) => state.lists.value);
   const cards = useSelector((state) => state.cards.value);
@@ -32,6 +33,7 @@ const BoardOptionsMenu = () => {
   const coloursRef = useRef();
   const imageSearchRef = useRef();
   const imageUploadRef = useRef();
+  const fileInput = useRef();
   const [coloursTabActive, setColoursTabActive] = useState(true);
   const [imageSearchTabActive, setImageSearchTabActive] = useState(false);
   const [imageUploadTabActive, setImageUploadTabActive] = useState(false);
@@ -99,6 +101,22 @@ const BoardOptionsMenu = () => {
     link.click();
     link.remove();
   };
+
+  
+  const handleImportAll = async(e) => {
+    console.log('changed')
+    const file = e.target.files[0];    
+    let fr = new FileReader();
+    fr.onload= (e) => {
+      console.log(e.target.result, JSON.parse(fr.result))
+    }
+    fr.readAsText(file)
+  }
+
+  const handleImportAllClick = () => {
+    fileInput.current.click();
+    console.log('clicked')
+  }
 
   const handleExportAll = () => {
     // TODO update with board info as well when that has been implemented
@@ -192,7 +210,10 @@ const BoardOptionsMenu = () => {
             </div>
             <hr />
             <div className="flex flex-col">
-              <button className="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
+              <input type="file" id="file" ref={fileInput} onChange={(e) => handleImportAll(e)} className="hidden"/>
+              <button 
+                className="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
+                onClick={handleImportAllClick}>
                 <AiOutlineUpload className="mr-2" size={20} />
                 Import All
               </button>
