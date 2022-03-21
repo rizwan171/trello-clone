@@ -16,6 +16,18 @@ const CardModal = ({ card }) => {
   const [editableContent, setEditableContent] = useState(card.content);
   const [rows, setRows] = useState(1);
 
+  
+  const close = (e) => {
+    if (e.code === "Escape") {
+      closeModal();
+      document.removeEventListener("keydown", close)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("keydown", close)
+  }, []);
+
   useEffect(() => {
     if (ref && ref.current) {
       ref.current.style.height = "0px";
