@@ -5,6 +5,7 @@ import { updateCardContent, deleteCard, copyCardToList, moveCardToList } from ".
 import { clearSelectedCard, setCurrentSelectedCard } from "../../features/currentSelectedCardSlice";
 import { useSelector } from "react-redux";
 import { FiPlus } from "react-icons/fi";
+import Tag from "./Tag/Tag";
 
 const CardModal = ({ card }) => {
   const dispatch = useDispatch();
@@ -141,12 +142,13 @@ const CardModal = ({ card }) => {
           </div>
           <div className="flex gap-1 px-6">
             {/* TODO note: tags here should be components */}
-            <div className="p-1 rounded-md bg-blue-400">Tag 1</div>
-            <div className="p-1 rounded-md bg-green-400">Tag 1</div>
-            <div className="p-1 rounded-md bg-red-300">Tag 1</div>
-            <div className="p-1 rounded-md bg-yellow-200">Tag 1</div>
-            <div className="p-1 rounded-md bg-purple-400">Tag 1</div>
-            <div className="p-1 rounded-md flex items-center cursor-pointer hover:bg-black hover:bg-opacity-5">
+            <Tag />
+            <Tag />
+            <Tag />
+            <Tag />
+            <Tag />
+            <Tag />
+            <div className="p-1 rounded-ibsm flex items-center cursor-pointer hover:bg-black hover:bg-opacity-5">
               <FiPlus className="mr-0.5" />
               <p>Add Tag</p>
             </div>
