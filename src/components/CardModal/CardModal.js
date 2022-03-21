@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { updateCardContent, deleteCard, copyCardToList, moveCardToList } from "../../features/cardsSlice";
 import { clearSelectedCard, setCurrentSelectedCard } from "../../features/currentSelectedCardSlice";
 import { useSelector } from "react-redux";
+import { FiPlus } from "react-icons/fi";
 
 const CardModal = ({ card }) => {
   const dispatch = useDispatch();
@@ -13,7 +14,6 @@ const CardModal = ({ card }) => {
   // TODO: copy and move shouldnt be open at the same time, so these states could be reduced to just the 1
   const [copyOpen, setCopyOpen] = useState(false);
   const [moveOpen, setMoveOpen] = useState(false);
-  const [tagsOpen, setTagsOpen] = useState(false);
   const [selectedListId, setSelectedListId] = useState("");
   const [editableContent, setEditableContent] = useState(card.content);
   const [rows, setRows] = useState(1);
@@ -93,10 +93,6 @@ const CardModal = ({ card }) => {
     setRows(Math.ceil(e.target.scrollHeight / e.target.clientHeight));
   };
 
-  const openTagsMenu = () => {
-    setTagsOpen(true);
-  };
-
   return (
     <div
       id="cardModal"
@@ -143,6 +139,18 @@ const CardModal = ({ card }) => {
               </svg>
             </button>
           </div>
+          <div className="flex gap-1 px-6">
+            {/* TODO note: tags here should be components */}
+            <div className="p-1 rounded-md bg-blue-400">Tag 1</div>
+            <div className="p-1 rounded-md bg-green-400">Tag 1</div>
+            <div className="p-1 rounded-md bg-red-300">Tag 1</div>
+            <div className="p-1 rounded-md bg-yellow-200">Tag 1</div>
+            <div className="p-1 rounded-md bg-purple-400">Tag 1</div>
+            <div className="p-1 rounded-md flex items-center cursor-pointer hover:bg-black hover:bg-opacity-5">
+              <FiPlus className="mr-0.5" />
+              <p>Add Tag</p>
+            </div>
+          </div>
           <div className="p-6 space-y-6">
             <div className="flex">
               <div className="w-3/4">
@@ -158,20 +166,6 @@ const CardModal = ({ card }) => {
               </div>
               <div className="flex w-1/4 flex-col">
                 <h4 className="mb-2 text-gray-500 text-xs self-end">Card Options</h4>
-                {tagsOpen ? (
-                  <div className="flex flex-col h-48">
-                    <div>Test</div>
-                    <div>Test</div>
-                  </div>
-                ) : (
-                  <button
-                    className="flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
-                    onClick={openTagsMenu}
-                  >
-                    Tags
-                  </button>
-                )}
-
                 {/* TODO remove cursor-not-allowed and opacity-50 after colour added to card */}
                 <button className="cursor-not-allowed opacity-50 flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
                   Colour
