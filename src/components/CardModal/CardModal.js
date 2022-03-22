@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 import { updateCardContent, deleteCard, copyCardToList, moveCardToList } from "../../features/cardsSlice";
 import { clearSelectedCard, setCurrentSelectedCard } from "../../features/currentSelectedCardSlice";
 import { useSelector } from "react-redux";
-import { FiPlus } from "react-icons/fi";
 import Tag from "./Tag/Tag";
+import AddTag from "./AddTag/AddTag";
 
 const CardModal = ({ card }) => {
   const dispatch = useDispatch();
@@ -148,10 +148,7 @@ const CardModal = ({ card }) => {
             <Tag />
             <Tag />
             <Tag />
-            <div className="p-1 rounded-ibsm flex items-center cursor-pointer hover:bg-black hover:bg-opacity-5">
-              <FiPlus className="mr-0.5" />
-              <p>Add Tag</p>
-            </div>
+            <AddTag />
           </div>
           <div className="p-6 space-y-6">
             <div className="flex">
