@@ -1,7 +1,18 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { FiPlus, FiX } from "react-icons/fi";
+import { useDispatch, useSelector } from "react-redux";
+import Select from "react-select";
+import { createTag } from "../../../features/tagsSlice";
 
 const AddTag = () => {
+  const dispatch = useDispatch();
+  const tags = useSelector((state) => state.tags.value);
+  const options = tags.map((tag) => {
+    return {
+      label: tag.name,
+      value: tag.id,
+    }
+  })
   const inputRef = useRef();
   const [showSelector, setShowSelector] = useState(false);
   const [searchValue, setSearchValue] = useState("");
@@ -18,17 +29,31 @@ const AddTag = () => {
     setSearchValue(e.target.value);
   };
 
+  const handleOnKeyDown = (e) => {
+    if (e.code === "Enter") {
+      dispatch(createTag({ name: searchValue }));
+      setSearchValue("");
+    }
+  };
+
+  const handleSelect = (e) => {
+    console.log("hi");
+    console.log(e);
+  }
+
   return showSelector ? (
     <div className="flex gap-1 flexgap rounded-ibsm items-center">
-      <input
+      {/* <input
         ref={inputRef}
         className="p-1 w-44 rounded-sm"
-        placeholder="Select Tag..."
+        placeholder="Add Tag..."
         type="text"
         value={searchValue}
         autoFocus
         onChange={handleOnChange}
-      />
+        onKeyDown={handleOnKeyDown}
+      /> */}
+      <Select options={options} autoFocus openMenuOnFocus maxMenuHeight={220} onInputChange={handleSelect}/>
       <FiX className="cursor-pointer" onClick={closeSelector} />
     </div>
   ) : (

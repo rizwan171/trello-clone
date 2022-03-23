@@ -11,6 +11,7 @@ const CardModal = ({ card }) => {
   const dispatch = useDispatch();
   const ref = useRef();
   const lists = useSelector((state) => state.lists.value);
+  const tags = useSelector((state) => state.tags.value);
   const [selected, setSelected] = useState(false);
   // TODO: copy and move shouldnt be open at the same time, so these states could be reduced to just the 1
   const [copyOpen, setCopyOpen] = useState(false);
@@ -140,14 +141,12 @@ const CardModal = ({ card }) => {
               </svg>
             </button>
           </div>
-          <div className="flex gap-1 px-6">
-            {/* TODO note: tags here should be components */}
-            <Tag />
-            <Tag />
-            <Tag />
-            <Tag />
-            <Tag />
-            <Tag />
+          <div className="flex gap-1 px-6 flex-wrap">
+            {
+              tags.map((tag) => 
+                <Tag key={tag.id} name={tag.name}/>
+              )
+            }
             <AddTag />
           </div>
           <div className="p-6 space-y-6">
