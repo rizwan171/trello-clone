@@ -100,7 +100,67 @@ const CardModal = ({ card }) => {
       id="cardModal"
       className="z-50 min-h-full min-w-full flex fixed top-0 left-0 justify-center items-center bg-black bg-opacity-30"
     >
-      <div className="relative px-4 w-full max-w-3xl h-full md:h-auto mb-36">
+      <div className="flex flex-col bg-trello-gray-100 w-2/3 rounded-sm h-96 p-4">
+        <div className="flex bg-blue-200">
+          {!selected && (
+            <h3
+              className="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white break-all"
+              onClick={() => setSelected(true)}
+            >
+              {card.content}
+            </h3>
+          )}
+          {selected && (
+            <textarea
+              ref={ref}
+              type="text"
+              value={editableContent}
+              id="rounded-email"
+              autoFocus
+              rows={rows}
+              onFocus={handleOnFocus}
+              className="w-full scroll-y-hidden mr-2 py-1 text-trello-gray-300 text-xl font-semibold rounded-sm border bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100"
+              onBlur={handleOnBlur}
+              onChange={handleCardContentOnChange}
+              onKeyDown={handleKeyDown}
+            />
+          )}
+          <button
+            type="button"
+            className="text-gray-400 bg-transparent hover:bg-black hover:bg-opacity-10 hover:text-gray-600 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            onClick={closeModal}
+          >
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fillRule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clipRule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div className="flex w-full">
+          <div className="w-1/2">
+            With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies
+            around the world are updating their terms of service agreements to comply. With less than a month to go before the
+            European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms
+            of service agreements to comply.
+          </div>
+          <div className="flex flex-col i">
+            <p>Add to card</p>
+            <h4 className="mb-2 text-gray-800 text-sm">Add to card</h4>
+            <button className="flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
+              Tags
+            </button>
+            <p>Actions</p>
+            <button className="flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
+              Colour
+            </button>
+          </div>
+        </div>
+      </div>
+      {/* OLD */}
+      {/* <div className="relative px-4 w-full max-w-3xl h-full md:h-auto mb-36">
         <div className="relative bg-trello-gray-100 rounded-lg shadow dark:bg-gray-700">
           <div className="flex p-6 rounded-t">
             {!selected && (
@@ -142,11 +202,9 @@ const CardModal = ({ card }) => {
             </button>
           </div>
           <div className="flex gap-1 px-6 flex-wrap">
-            {
-              tags.map((tag) => 
-                <Tag key={tag.id} name={tag.name}/>
-              )
-            }
+            {tags.map((tag) => (
+              <Tag key={tag.id} name={tag.name} />
+            ))}
             <AddTag />
           </div>
           <div className="p-6 space-y-6">
@@ -164,7 +222,6 @@ const CardModal = ({ card }) => {
               </div>
               <div className="flex w-1/4 flex-col">
                 <h4 className="mb-2 text-gray-500 text-xs self-end">Card Options</h4>
-                {/* TODO remove cursor-not-allowed and opacity-50 after colour added to card */}
                 <button className="cursor-not-allowed opacity-50 flex w-full py-2 px-3 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
                   Colour
                 </button>
@@ -228,7 +285,7 @@ const CardModal = ({ card }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -53,7 +53,7 @@ const AddTag = () => {
         onChange={handleOnChange}
         onKeyDown={handleOnKeyDown}
       /> */}
-      <Select options={options} autoFocus openMenuOnFocus maxMenuHeight={220} onInputChange={handleSelect}/>
+      <Select options={options} autoFocus openMenuOnFocus maxMenuHeight={220} onInputChange={handleSelect} noOptionsMessage={""}/>
       <FiX className="cursor-pointer" onClick={closeSelector} />
     </div>
   ) : (
