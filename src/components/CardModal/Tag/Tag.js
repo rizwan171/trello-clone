@@ -3,9 +3,9 @@ import { FiX } from "react-icons/fi";
 
 const Tag = ({ name }) => {
   return (
-    <div className="flex items-center gap-1 p-1 rounded-ibsm bg-blue-400">
+    <div className="flex items-center gap-1 py-1 px-2 rounded-sm bg-blue-600 font-semibold text-white">
       <p>{name}</p>
-      <FiX className="cursor-pointer" />
+      {/* <FiX className="cursor-pointer" /> */}
     </div>
   );
 };

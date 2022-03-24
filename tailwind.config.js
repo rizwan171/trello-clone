@@ -11,10 +11,13 @@ module.exports = {
           400: '#f4f5f7', // list card hover
           500: '#dadbe2', // more icon hover, add card hover
           600: '#3d4d69', // add card icon and text
+          'card-modal-buttons': '#EAECF0',
+          'card-modal-buttons-hover': '#E2E4E9',
         },
         'trello-blue': {
           100: '#0079bf', // title edit border, add card border
           200: '#006098', // image options upload hover
+          'card-modal-button-text': '#091e42'
         },
         'trello-green': {
           100: '#5aac44',
@@ -29,6 +32,10 @@ module.exports = {
       },
       height: {
         '38': '152px',
+        '218': '654px',
+      },
+      width: {
+        '218': '654px'
       },
       minHeight: {
         '4': '16px',
