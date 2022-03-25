@@ -4,9 +4,9 @@ import { useDispatch } from "react-redux";
 import { updateCardContent, deleteCard, copyCardToList, moveCardToList } from "../../features/cardsSlice";
 import { clearSelectedCard, setCurrentSelectedCard } from "../../features/currentSelectedCardSlice";
 import { useSelector } from "react-redux";
-import { AiOutlineTag } from "react-icons/ai";
+import { AiOutlineTag, AiOutlineDelete } from "react-icons/ai";
 import { HiOutlineArrowRight } from "react-icons/hi";
-import { MdOutlineContentCopy, MdInbox } from "react-icons/md";
+import { MdOutlineContentCopy, MdInbox, MdClose } from "react-icons/md";
 import { FiAlignLeft } from "react-icons/fi";
 import Tag from "./Tag/Tag";
 import AddTag from "./AddTag/AddTag";
@@ -14,6 +14,7 @@ import AddTag from "./AddTag/AddTag";
 const CardModal = ({ card }) => {
   const dispatch = useDispatch();
   const ref = useRef();
+  const tagsButtonRef = useRef();
   const lists = useSelector((state) => state.lists.value);
   const tags = useSelector((state) => state.tags.value);
   const [selected, setSelected] = useState(false);
@@ -23,6 +24,7 @@ const CardModal = ({ card }) => {
   const [selectedListId, setSelectedListId] = useState("");
   const [editableContent, setEditableContent] = useState(card.content);
   const [rows, setRows] = useState(1);
+  const [tagsMenuStyle, setTagsMenuStyle] = useState({});
 
   useEffect(() => {
     if (ref && ref.current) {
@@ -31,6 +33,10 @@ const CardModal = ({ card }) => {
       ref.current.style.height = scrollHeight + "px";
     }
   }, [editableContent]);
+
+  useEffect(() => {
+
+  }, []);
 
   const closeModal = () => {
     dispatch(clearSelectedCard());
@@ -104,7 +110,7 @@ const CardModal = ({ card }) => {
       id="cardModal"
       className="z-50 min-h-full min-w-full flex fixed top-0 left-0 justify-center items-center bg-black bg-opacity-30"
     >
-      <div className="flex flex-col bg-trello-gray-400 w-218 rounded-sm h-96 p-4">
+      <div className="flex flex-col bg-trello-gray-400 w-218 rounded-sm h-96 p-4 mb-80">
         <div className="flex">
           <div className="flex flex-col w-full">
             {!selected && (
@@ -138,13 +144,7 @@ const CardModal = ({ card }) => {
             className="text-gray-400 bg-transparent hover:bg-black hover:bg-opacity-10 hover:text-gray-600 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
             onClick={closeModal}
           >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path
-                fillRule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
+            <MdClose size={20} />
           </button>
         </div>
         <div className="flex w-full h-full">
@@ -171,12 +171,22 @@ const CardModal = ({ card }) => {
               terms of service agreements to comply.
             </p>
           </div>
-          <div className="flex flex-col w-44 py-4 ml-auto">
+          <div className="flex flex-col w-44 py-4 ml-auto bg-red-500">
             <h4 className="text-gray-800 text-sm">Add to card</h4>
-            <button className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm">
+            <button
+              ref={tagsButtonRef}
+              className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
+            >
               <AiOutlineTag />
               <p>Tags</p>
             </button>
+            <div className="fixed w-72 h-60 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4 ">
+              <div className="relative text-center mb-2">
+                <span className="text-sm block relative z-10">Labels</span>
+                <MdClose size={20} className="absolute right-0 top-0 z-20" />
+              </div>
+              <hr />
+            </div>
             <h4 className="text-gray-800 text-sm">Actions</h4>
             <button className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm">
               <MdOutlineContentCopy />
@@ -185,6 +195,10 @@ const CardModal = ({ card }) => {
             <button className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm">
               <HiOutlineArrowRight />
               <p>Move</p>
+            </button>
+            <button className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm">
+              <AiOutlineDelete />
+              <p>Delete</p>
             </button>
           </div>
         </div>
