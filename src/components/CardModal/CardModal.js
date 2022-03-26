@@ -34,9 +34,7 @@ const CardModal = ({ card }) => {
     }
   }, [editableContent]);
 
-  useEffect(() => {
-
-  }, []);
+  useEffect(() => {}, []);
 
   const closeModal = () => {
     dispatch(clearSelectedCard());
@@ -182,10 +180,21 @@ const CardModal = ({ card }) => {
             </button>
             <div className="fixed w-72 h-60 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4 ">
               <div className="relative text-center mb-2">
-                <span className="text-sm block relative z-10">Labels</span>
+                <span className="text-sm block relative z-10">Tags</span>
                 <MdClose size={20} className="absolute right-0 top-0 z-20" />
               </div>
               <hr />
+              <div className="flex flex-col mt-2 text-sm">
+                <input
+                  type="text"
+                  className="w-full py-1 px-2 border-1 mb-2 border-gray-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100"
+                  placeholder="Search tags..."
+                />
+                <span className="text-gray-600 my-2 font-semibold">Tags</span>
+                <div>
+
+                </div>
+              </div>
             </div>
             <h4 className="text-gray-800 text-sm">Actions</h4>
             <button className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm">
