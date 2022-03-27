@@ -6,7 +6,7 @@ import { clearSelectedCard, setCurrentSelectedCard } from "../../features/curren
 import { useSelector } from "react-redux";
 import { AiOutlineTag, AiOutlineDelete } from "react-icons/ai";
 import { HiOutlineArrowRight } from "react-icons/hi";
-import { MdOutlineContentCopy, MdInbox, MdClose } from "react-icons/md";
+import { MdOutlineContentCopy, MdInbox, MdClose, MdOutlineEdit, MdCheck } from "react-icons/md";
 import { FiAlignLeft } from "react-icons/fi";
 import Tag from "./Tag/Tag";
 import AddTag from "./AddTag/AddTag";
@@ -178,7 +178,8 @@ const CardModal = ({ card }) => {
               <AiOutlineTag />
               <p>Tags</p>
             </button>
-            <div className="fixed w-72 h-60 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4 ">
+            {/* TODO min-h-60 should be changed later to something more appropriate */}
+            <div className="fixed w-72 min-h-60 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4 ">
               <div className="relative text-center mb-2">
                 <span className="text-sm block relative z-10">Tags</span>
                 <MdClose size={20} className="absolute right-0 top-0 z-20" />
@@ -187,13 +188,48 @@ const CardModal = ({ card }) => {
               <div className="flex flex-col mt-2 text-sm">
                 <input
                   type="text"
-                  className="w-full py-1 px-2 border-1 mb-2 border-gray-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100"
+                  className="w-full h-9 py-1 px-2 border-1 mb-2 border-gray-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100"
                   placeholder="Search tags..."
                 />
                 <span className="text-gray-600 my-2 font-semibold">Tags</span>
-                <div>
-
+                <div className="flex flex-col w-full gap-1 font-bold">
+                  <div className="flex h-8">
+                    <div className="items-center flex bg-green-400 text-white w-full rounded-ibsm">
+                      <span className="ml-2">Tag Name</span>
+                      <MdCheck size={20} className="ml-auto mr-2" />
+                    </div>
+                    <MdOutlineEdit className="self-center ml-2" size={20} />
+                  </div>
+                  <div className="flex h-8">
+                    <div className="items-center flex bg-green-400 text-white w-full rounded-ibsm">
+                      <span className="ml-2">Tag Name</span>
+                      <MdCheck size={20} className="ml-auto mr-2" />
+                    </div>
+                    <MdOutlineEdit className="self-center ml-2" size={20} />
+                  </div>
+                  <div className="flex h-8">
+                    <div className="items-center flex bg-green-400 text-white w-full rounded-ibsm">
+                      <span className="ml-2">Tag Name</span>
+                    </div>
+                    <MdOutlineEdit className="self-center ml-2" size={20} />
+                  </div>
+                  <div className="flex h-8">
+                    <div className="items-center flex bg-green-400 text-white w-full rounded-ibsm">
+                      <span className="ml-2">Tag Name</span>
+                      <MdCheck size={20} className="ml-auto mr-2" />
+                    </div>
+                    <MdOutlineEdit className="self-center ml-2" size={20} />
+                  </div>
+                  <div className="flex h-8">
+                    <div className="items-center flex bg-green-400 text-white w-full rounded-ibsm">
+                      <span className="ml-2">Tag Name</span>
+                    </div>
+                    <MdOutlineEdit className="self-center ml-2" size={20} />
+                  </div>
                 </div>
+                <button className="py-1.5 px-2 mt-3 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-sm shadow-sm rounded-sm">
+                  Create a new tag
+                </button>
               </div>
             </div>
             <h4 className="text-gray-800 text-sm">Actions</h4>

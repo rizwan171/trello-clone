@@ -40,6 +40,8 @@ module.exports = {
       },
       minHeight: {
         '4': '16px',
+        '9': '36px',
+        '60': '240px'
       },
       borderWidth: {
         '1': '1px',
