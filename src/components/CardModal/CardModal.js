@@ -8,8 +8,9 @@ import { AiOutlineTag, AiOutlineDelete } from "react-icons/ai";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import { MdOutlineContentCopy, MdInbox, MdClose, MdOutlineEdit, MdCheck } from "react-icons/md";
 import { FiAlignLeft } from "react-icons/fi";
-import Tag from "./Tag/Tag";
+import CardModalTag from "./CardModalTag/CardModalTag";
 import AddTag from "./AddTag/AddTag";
+import TagOption from "./TagsMenu/TagOption/TagOption";
 
 const CardModal = ({ card }) => {
   const dispatch = useDispatch();
@@ -152,7 +153,7 @@ const CardModal = ({ card }) => {
                 <p className="mb-2">Labels</p>
                 <div className="flex gap-1 flex-wrap mb-4">
                   {tags.map((tag) => (
-                    <Tag key={tag.id} name={tag.name} />
+                    <CardModalTag key={tag.id} name={tag.name} />
                   ))}
                   <AddTag />
                 </div>
@@ -193,39 +194,9 @@ const CardModal = ({ card }) => {
                 />
                 <span className="text-gray-600 my-2 font-semibold">Tags</span>
                 <div className="flex flex-col w-full gap-1 font-bold">
-                  <div className="flex h-8">
-                    <div className="items-center flex bg-green-400 text-white w-full rounded-ibsm">
-                      <span className="ml-2">Tag Name</span>
-                      <MdCheck size={20} className="ml-auto mr-2" />
-                    </div>
-                    <MdOutlineEdit className="self-center ml-2" size={20} />
-                  </div>
-                  <div className="flex h-8">
-                    <div className="items-center flex bg-green-400 text-white w-full rounded-ibsm">
-                      <span className="ml-2">Tag Name</span>
-                      <MdCheck size={20} className="ml-auto mr-2" />
-                    </div>
-                    <MdOutlineEdit className="self-center ml-2" size={20} />
-                  </div>
-                  <div className="flex h-8">
-                    <div className="items-center flex bg-green-400 text-white w-full rounded-ibsm">
-                      <span className="ml-2">Tag Name</span>
-                    </div>
-                    <MdOutlineEdit className="self-center ml-2" size={20} />
-                  </div>
-                  <div className="flex h-8">
-                    <div className="items-center flex bg-green-400 text-white w-full rounded-ibsm">
-                      <span className="ml-2">Tag Name</span>
-                      <MdCheck size={20} className="ml-auto mr-2" />
-                    </div>
-                    <MdOutlineEdit className="self-center ml-2" size={20} />
-                  </div>
-                  <div className="flex h-8">
-                    <div className="items-center flex bg-green-400 text-white w-full rounded-ibsm">
-                      <span className="ml-2">Tag Name</span>
-                    </div>
-                    <MdOutlineEdit className="self-center ml-2" size={20} />
-                  </div>
+                  {tags.map((tag) => (
+                    <TagOption key={tag.id} name={tag.name} />
+                  ))}
                 </div>
                 <button className="py-1.5 px-2 mt-3 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-sm shadow-sm rounded-sm">
                   Create a new tag
