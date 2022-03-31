@@ -109,17 +109,14 @@ const BoardOptionsMenu = () => {
     let result;    
     let fr = new FileReader();
     fr.onload= (e) => {
-      console.log(e.target.result, JSON.parse(fr.result))
       result = JSON.parse(fr.result)
+      dispatch(deleteAllLists(result.lists))
+      dispatch(deleteAllCards(result.cards))
+      dispatch(updateTitle(result.board.title))
+      dispatch(updateAllLists(result.lists)) 
+      dispatch(updateAllCards(result.cards))
     }
     fr.readAsText(file)
-
-    dispatch(deleteAllCards())
-    dispatch(deleteAllLists())
-    dispatch(updateTitle({title: result.board.title}))
-
-    dispatch(updateAllLists({title: result.lists})) 
-    dispatch(updateAllCards({title: result.cards}))
   }
 
   const handleImportAllClick = () => {
