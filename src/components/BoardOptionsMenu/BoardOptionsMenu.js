@@ -13,9 +13,9 @@ import ColourOptions from "./ColourOptions/ColourOptions";
 import ImageSearchOptions from "./ImageSearchOptions/ImageSearchOptions";
 import ImageUploadOptions from "./ImageUploadOptions/ImageUploadOptions";
 import * as Constants from "../../constants/TabIdentifiers.js";
-import { setNewBoardState } from "../../features/boardSlice.js";
-import { deleteAllLists } from "../../features/listsSlice.js";
-import { deleteAllCards } from "../../features/cardsSlice.js";
+import { setNewBoardState, updateTitle } from "../../features/boardSlice.js";
+import { deleteAllLists, updateAllLists } from "../../features/listsSlice.js";
+import { deleteAllCards, updateAllCards } from "../../features/cardsSlice.js";
 import { useSelector } from "react-redux";
 import ExportModal from "./ExportModal/ExportModal";
 import { useDispatch } from "react-redux";
@@ -105,12 +105,21 @@ const BoardOptionsMenu = () => {
   
   const handleImportAll = async(e) => {
     console.log('changed')
-    const file = e.target.files[0];    
+    const file = e.target.files[0];
+    let result;    
     let fr = new FileReader();
     fr.onload= (e) => {
       console.log(e.target.result, JSON.parse(fr.result))
+      result = JSON.parse(fr.result)
     }
     fr.readAsText(file)
+
+    dispatch(deleteAllCards())
+    dispatch(deleteAllLists())
+    dispatch(updateTitle({title: result.board.title}))
+
+    dispatch(updateAllLists({title: result.lists})) 
+    dispatch(updateAllCards({title: result.cards}))
   }
 
   const handleImportAllClick = () => {
