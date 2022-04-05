@@ -13,9 +13,9 @@ import ColourOptions from "./ColourOptions/ColourOptions";
 import ImageSearchOptions from "./ImageSearchOptions/ImageSearchOptions";
 import ImageUploadOptions from "./ImageUploadOptions/ImageUploadOptions";
 import * as Constants from "../../constants/TabIdentifiers.js";
-import { setNewBoardState } from "../../features/boardSlice.js";
-import { deleteAllLists } from "../../features/listsSlice.js";
-import { deleteAllCards } from "../../features/cardsSlice.js";
+import { setNewBoardState, updateTitle } from "../../features/boardSlice.js";
+import { deleteAllLists, updateAllLists } from "../../features/listsSlice.js";
+import { deleteAllCards, updateAllCards } from "../../features/cardsSlice.js";
 import { useSelector } from "react-redux";
 import ExportModal from "./ExportModal/ExportModal";
 import { useDispatch } from "react-redux";
@@ -32,6 +32,7 @@ const BoardOptionsMenu = () => {
   const coloursRef = useRef();
   const imageSearchRef = useRef();
   const imageUploadRef = useRef();
+  const fileInput = useRef();
   const [coloursTabActive, setColoursTabActive] = useState(true);
   const [imageSearchTabActive, setImageSearchTabActive] = useState(false);
   const [imageUploadTabActive, setImageUploadTabActive] = useState(false);
@@ -99,6 +100,27 @@ const BoardOptionsMenu = () => {
     link.click();
     link.remove();
   };
+  
+  const handleImportAll = async(e) => {
+    console.log('changed')
+    const file = e.target.files[0];
+    let result;    
+    let fr = new FileReader();
+    fr.onload= (e) => {
+      result = JSON.parse(fr.result)
+      dispatch(deleteAllLists(result.lists))
+      dispatch(deleteAllCards(result.cards))
+      dispatch(updateTitle(result.board.title))
+      dispatch(updateAllLists(result.lists)) 
+      dispatch(updateAllCards(result.cards))
+    }
+    fr.readAsText(file)
+  }
+
+  const handleImportAllClick = () => {
+    fileInput.current.click();
+    console.log('clicked')
+  }
 
   const handleExportAll = () => {
     // TODO update with board info as well when that has been implemented
@@ -192,7 +214,10 @@ const BoardOptionsMenu = () => {
             </div>
             <hr />
             <div className="flex flex-col">
-              <button className="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md">
+              <input type="file" id="file" ref={fileInput} onChange={(e) => handleImportAll(e)} className="hidden"/>
+              <button 
+                className="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
+                onClick={handleImportAllClick}>
                 <AiOutlineUpload className="mr-2" size={20} />
                 Import All
               </button>
