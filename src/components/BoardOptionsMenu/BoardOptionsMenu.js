@@ -23,7 +23,6 @@ import DeleteModal from "./DeleteModal/DeleteModal";
 
 const BoardOptionsMenu = () => {
   const dispatch = useDispatch();
-  
   const board = useSelector((state) => state.board.value);
   const lists = useSelector((state) => state.lists.value);
   const cards = useSelector((state) => state.cards.value);
@@ -101,7 +100,6 @@ const BoardOptionsMenu = () => {
     link.click();
     link.remove();
   };
-
   
   const handleImportAll = async(e) => {
     console.log('changed')
