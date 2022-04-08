@@ -53,7 +53,7 @@ const AddCardForm = ({ setOpen, open, listId }) => {
         value={text}
         placeholder="Type something..."
         autoFocus
-        className="resize-none w-full box-border outline-none shadow bg-white hover:bg-trello-gray-400 rounded-md p-2 my-1.5"
+        className="resize-none w-full box-border outline-none shadow bg-white rounded-md p-2 my-1.5"
         onChange={handleOnChange}
         onKeyDown={handleKeyDown}
       />
