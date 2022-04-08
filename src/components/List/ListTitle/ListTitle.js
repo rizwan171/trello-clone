@@ -44,7 +44,7 @@ const ListTitle = ({ list }) => {
   };
 
   return (
-    <div className="flex items-center select-none cursor-pointer">
+    <div className="flex items-start select-none cursor-pointer p-1">
       {selected ? (
         <input
           type="text"
