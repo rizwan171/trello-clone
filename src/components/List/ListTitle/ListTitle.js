@@ -67,7 +67,7 @@ const ListTitle = ({ list }) => {
 
 
   return (
-    <div className="flex items-start select-none cursor-pointer">
+    <div className="flex items-start select-none cursor-pointer pb-2">
       {selected ? (
         <textarea
           ref = {ref}
@@ -77,13 +77,13 @@ const ListTitle = ({ list }) => {
           autoFocus
           rows={rows}
           onFocus = {handleOnFocus}
-          className="w-full scroll-y-hidden  mr-2 py-1 text-trello-gray-300 font-semibold rounded-sm flex-1 border bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100"
+          className="w-full scroll-y-hidden px-1 text-trello-gray-300 font-semibold rounded-sm bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100"
           onBlur={handleOnBlur}
           onChange={handleOnChange}
           onKeyDown={handleKeyDown}
         />
       ) : (
-        <h2 className="flex-1 text-trello-gray-300 font-semibold break-all" onClick={() => setSelected(true)}>
+        <h2 className="flex-1 px-1 text-trello-gray-300 font-semibold break-all" onClick={() => setSelected(true)}>
           {list.title}
         </h2>
       )}
