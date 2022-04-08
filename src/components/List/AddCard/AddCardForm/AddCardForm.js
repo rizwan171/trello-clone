@@ -53,11 +53,11 @@ const AddCardForm = ({ setOpen, open, listId }) => {
         value={text}
         placeholder="Type something..."
         autoFocus
-        className="w-full box-border outline-none border-2 border-trello-blue-100 shadow bg-white hover:bg-trello-gray-400 rounded-md p-2 my-1.5"
+        className="resize-none w-full box-border outline-none shadow bg-white hover:bg-trello-gray-400 rounded-md p-2 my-1.5"
         onChange={handleOnChange}
         onKeyDown={handleKeyDown}
       />
-      <div className="flex items-center">
+      <div className="flex items-center mt-1.5">
         <button
           type="button"
           className="py-2 px-3 bg-trello-green-100 hover:bg-trello-green-200 text-white transition ease-in duration-200 text-center text-base shadow-md rounded-md"
