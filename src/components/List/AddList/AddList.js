@@ -10,8 +10,6 @@ const AddList = () => {
   const [title, setTitle] = useState("");
   const inputRef = useRef(null);
 
-  const inlineStyle = open ? { height: "min-content" } : { height: 0, overflow: "hidden" };
-
   useEffect(() => {
     if (open) {
       inputRef.current.focus();
