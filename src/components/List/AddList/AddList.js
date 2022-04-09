@@ -39,47 +39,50 @@ const AddList = () => {
   };
 
   return (
-    <>
-      <Collapse isOpen={open}>
-        <div className="m-1 w-64">
-          <input
-            type="text"
-            ref={inputRef}
-            value={title}
-            placeholder="Type something..."
-            autoFocus
-            className="w-full text-left box-border outline-none border-2 border-trello-blue-100 shadow bg-white hover:bg-trello-gray-400 rounded-md p-2 my-1.5"
-            // onBlur={() => setOpen(false)}
-            onChange={handleOnChange}
-            onKeyPress={handleKeyPress}
-          />
-          <div className="flex items-center">
-            <button
-              type="button"
-              className="py-2 px-3 bg-trello-green-100 hover:bg-trello-green-200 text-white transition ease-in duration-200 text-center text-base shadow-md rounded-md"
-              onClick={handleAddList}
-            >
-              Add List
-            </button>
-            <FiX
-              onClick={handleClose}
-              size={36}
-              className="text-trello-gray-200 hover:bg-trello-gray-500 cursor-pointer rounded-full ml-1 p-1"
+    <div className= { open && "shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-2 flex flex-col list-wrapper" } >
+      {open ? 
+      <Collapse isOpen={open}  className= {open && "h-full"}>
+          <div>
+            <input
+              type="text"
+              ref={inputRef}
+              value={title}
+              placeholder="Type something..."
+              autoFocus
+              className="w-full text-left box-border outline-none border-2 border-trello-blue-100 shadow bg-white hover:bg-trello-gray-400 rounded-md p-2"
+              // onBlur={() => setOpen(false)}
+              onChange={handleOnChange}
+              onKeyPress={handleKeyPress}
             />
-          </div>
+            <div className="flex items-center mt-2">
+              <button
+                type="button"
+                className="py-2 px-3 bg-trello-green-100 hover:bg-trello-green-200 text-white transition ease-in duration-200 text-center text-base shadow-md rounded-md"
+                onClick={handleAddList}
+              >
+                Add List
+              </button>
+              <FiX
+                onClick={handleClose}
+                size={36}
+                className="text-trello-gray-200 hover:bg-trello-gray-500 cursor-pointer rounded-full ml-1 p-1"
+              />
+            </div>
+
         </div>
       </Collapse>
-
+      :
       <Collapse isOpen={!open}>
         <div
           className="w-32 flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-2 m-1"
           onClick={() => setOpen(true)}
         >
           <FiPlus size={20} />
-          <h2 className="flex-1 ml-1.5">Add a list</h2>
+          <h2 className="flex-1">Add a list</h2>
         </div>
       </Collapse>
-    </>
+    }
+    </div>
   );
 };
 
@@ -87,7 +90,7 @@ export default AddList;
 
 const Collapse = ({ isOpen, children }) => {
   const ref = useRef(null);
-  const inlineStyle = isOpen ? { height: ref.current?.scrollHeight } : { height: 0, width: 0 };
+  const inlineStyle = isOpen ? { height: '100%' } : { height: 0, width: 0 };
 
   return (
     <div ref={ref} aria-hidden={!isOpen} style={inlineStyle} className="transition-height ease overflow-hidden duration-100">

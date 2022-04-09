@@ -89,10 +89,8 @@ const App = () => {
             >
               {lists.map((list, index) => (
                 <List key={list.id} list={list} index={index} />
-              ))}
-              <div>
-                <AddList />
-              </div>
+              ))} 
+              <AddList />
               {provided.placeholder}
             </div>
           )}
