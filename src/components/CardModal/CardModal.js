@@ -4,20 +4,17 @@ import { useDispatch } from "react-redux";
 import { updateCardContent, deleteCard, copyCardToList, moveCardToList } from "../../features/cardsSlice";
 import { clearSelectedCard, setCurrentSelectedCard } from "../../features/currentSelectedCardSlice";
 import { useSelector } from "react-redux";
-import { AiOutlineTag, AiOutlineDelete } from "react-icons/ai";
-import { HiOutlineArrowRight } from "react-icons/hi";
-import { MdOutlineContentCopy, MdInbox, MdClose, MdOutlineEdit, MdCheck, MdArrowBack, MdClear } from "react-icons/md";
+import { MdInbox, MdClose } from "react-icons/md";
 import { FiAlignLeft } from "react-icons/fi";
-import CardModalTag from "./CardModalTag/CardModalTag";
+import CardModalTag from "./CardModalTags/CardModalTag/CardModalTag";
 import AddTag from "./AddTag/AddTag";
-import TagOption from "./TagsMenu/TagOption/TagOption";
+import CardModalActions from "./CardModalActions/CardModalActions";
+import CardModalTags from "./CardModalTags/CardModalTags";
 
 const CardModal = ({ card }) => {
   const dispatch = useDispatch();
   const ref = useRef();
-  const tagsButtonRef = useRef();
   const lists = useSelector((state) => state.lists.value);
-  const tags = useSelector((state) => state.tags.value);
   const [selected, setSelected] = useState(false);
   // TODO: copy and move shouldnt be open at the same time, so these states could be reduced to just the 1
   const [copyOpen, setCopyOpen] = useState(false);
@@ -25,9 +22,6 @@ const CardModal = ({ card }) => {
   const [selectedListId, setSelectedListId] = useState("");
   const [editableContent, setEditableContent] = useState(card.content);
   const [rows, setRows] = useState(1);
-  const [tagsMenuStyle, setTagsMenuStyle] = useState({});
-  // TODO set to false after
-  const [createTagOpen, setCreateTagOpen] = useState(true);
 
   useEffect(() => {
     if (ref && ref.current) {
@@ -36,8 +30,6 @@ const CardModal = ({ card }) => {
       ref.current.style.height = scrollHeight + "px";
     }
   }, [editableContent]);
-
-  useEffect(() => {}, []);
 
   const closeModal = () => {
     dispatch(clearSelectedCard());
@@ -106,8 +98,6 @@ const CardModal = ({ card }) => {
     setRows(Math.ceil(e.target.scrollHeight / e.target.clientHeight));
   };
 
-  const showCreateTagForm = () => {};
-
   return (
     <div
       id="cardModal"
@@ -152,17 +142,7 @@ const CardModal = ({ card }) => {
         </div>
         <div className="flex w-full h-full">
           <div className="flex flex-col w-2/3 py-4">
-            <div>
-              <div className="flex flex-col text-sm text-gray-700">
-                <p className="mb-2">Labels</p>
-                <div className="flex gap-1 flex-wrap mb-4">
-                  {tags.map((tag) => (
-                    <CardModalTag key={tag.id} name={tag.name} />
-                  ))}
-                  <AddTag />
-                </div>
-              </div>
-            </div>
+            <CardModalTags />
             <div className="flex items-center gap-2 text-lg text-gray-800 font-semibold">
               <FiAlignLeft size={20} />
               <p>Description</p>
@@ -174,98 +154,7 @@ const CardModal = ({ card }) => {
               terms of service agreements to comply.
             </p>
           </div>
-          <div className="flex flex-col w-44 py-4 ml-auto bg-red-500">
-            <h4 className="text-gray-800 text-sm">Add to card</h4>
-            <button
-              ref={tagsButtonRef}
-              className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
-            >
-              <AiOutlineTag />
-              <p>Tags</p>
-            </button>
-            {/* TODO min-h-60 should be changed later to something more appropriate */}
-            {!createTagOpen ? (
-              <div className="fixed w-72 min-h-60 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4 ">
-                <div className="relative text-center mb-2">
-                  <span className="text-sm block relative z-10">Tags</span>
-                  <MdClose size={20} className="absolute right-0 top-0 z-20" />
-                </div>
-                <hr />
-                <div className="flex flex-col mt-2 text-sm">
-                  <input
-                    type="text"
-                    className="w-full h-9 py-1 px-2 border-1 mb-2 border-gray-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100"
-                    placeholder="Search tags..."
-                  />
-                  <span className="text-gray-600 my-2 font-semibold">Tags</span>
-                  <div className="flex flex-col w-full gap-1 font-bold">
-                    {tags.map((tag) => (
-                      <TagOption key={tag.id} name={tag.name} />
-                    ))}
-                  </div>
-                  <button
-                    onClick={showCreateTagForm}
-                    className="py-1.5 px-2 mt-3 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-sm shadow-sm rounded-sm"
-                  >
-                    Create a new tag
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <div className="fixed w-72 min-h-40 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4 ">
-                <div className="relative text-center mb-2">
-                  <span className="text-sm block relative z-10">Tags</span>
-                  <MdArrowBack size={20} className="absolute left-0 top-0 z-20" />
-                  <MdClose size={20} className="absolute right-0 top-0 z-20" />
-                </div>
-                <hr />
-                <div className="flex flex-col mt-2 text-sm">
-                  <span className="text-gray-600 my-2 font-semibold">Name</span>
-                  <input
-                    type="text"
-                    className="w-full h-9 py-1 px-2 border-1 mb-2 border-gray-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100"
-                  />
-                  <span className="text-gray-600 my-2 font-semibold">Select a colour</span>
-                  <div className="grid grid-cols-5 gap-2">
-                    <div className="h-11 w-12 rounded-md bg-black "></div>
-                    <div className="h-11 w-12 rounded-md bg-black "></div>
-                    <div className="h-11 w-12 rounded-md bg-black "></div>
-                    <div className="h-11 w-12 rounded-md bg-black "></div>
-                    <div className="h-11 w-12 rounded-md bg-black "></div>
-                    <div className="h-11 w-12 rounded-md bg-black "></div>
-                    <div className="h-11 w-12 rounded-md bg-black "></div>
-                    <div className="h-11 w-12 rounded-md bg-black "></div>
-                    <div className="h-11 w-12 rounded-md bg-black "></div>
-                    <div className="h-11 w-12 rounded-md bg-black "></div>
-                    <div className="h-11 w-12 rounded-md bg-trello-gray-card-modal-buttons flex justify-center items-center">
-                      <MdClear size={20}/>
-                    </div>
-                    <div className="col-span-3 flex flex-col">
-                      <span className="text-gray-600">No Colour</span>
-                      <span className="text-gray-400">This wont show up on the front of cards</span>
-                    </div>
-                  </div>
-                  <button className="p-2 mt-3 bg-trello-blue-100 hover:bg-trello-blue-200 text-white font-semibold items-center text-sm shadow-sm rounded-sm">
-                    Create
-                  </button>
-                </div>
-              </div>
-            )}
-
-            <h4 className="text-gray-800 text-sm">Actions</h4>
-            <button className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm">
-              <MdOutlineContentCopy />
-              <p>Copy</p>
-            </button>
-            <button className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm">
-              <HiOutlineArrowRight />
-              <p>Move</p>
-            </button>
-            <button className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm">
-              <AiOutlineDelete />
-              <p>Delete</p>
-            </button>
-          </div>
+          <CardModalActions />
         </div>
       </div>
     </div>
