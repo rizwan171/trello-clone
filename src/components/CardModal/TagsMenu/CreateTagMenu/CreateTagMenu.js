@@ -19,22 +19,22 @@ const CreateTagMenu = ({ closeTags, goBackToTagsMenu }) => {
         />
         <span className="text-gray-600 my-2 font-semibold">Select a colour</span>
         <div className="grid grid-cols-5 gap-2">
-          <div className="h-11 w-12 rounded-md bg-black "></div>
-          <div className="h-11 w-12 rounded-md bg-black "></div>
-          <div className="h-11 w-12 rounded-md bg-black "></div>
-          <div className="h-11 w-12 rounded-md bg-black "></div>
-          <div className="h-11 w-12 rounded-md bg-black "></div>
-          <div className="h-11 w-12 rounded-md bg-black "></div>
-          <div className="h-11 w-12 rounded-md bg-black "></div>
-          <div className="h-11 w-12 rounded-md bg-black "></div>
-          <div className="h-11 w-12 rounded-md bg-black "></div>
-          <div className="h-11 w-12 rounded-md bg-black "></div>
+          <div className="h-11 w-12 rounded-md bg-green-300 "></div>
+          <div className="h-11 w-12 rounded-md bg-yellow-300 "></div>
+          <div className="h-11 w-12 rounded-md bg-yellow-500 "></div>
+          <div className="h-11 w-12 rounded-md bg-red-500 "></div>
+          <div className="h-11 w-12 rounded-md bg-purple-300 "></div>
+          <div className="h-11 w-12 rounded-md bg-blue-600 "></div>
+          <div className="h-11 w-12 rounded-md bg-blue-400 "></div>
+          <div className="h-11 w-12 rounded-md bg-indigo-400 "></div>
+          <div className="h-11 w-12 rounded-md bg-red-300 "></div>
+          <div className="h-11 w-12 rounded-md bg-gray-600 "></div>
           <div className="h-11 w-12 rounded-md bg-trello-gray-card-modal-buttons flex justify-center items-center">
             <MdClear size={20} />
           </div>
           <div className="col-span-3 flex flex-col">
             <span className="text-gray-600">No Colour</span>
-            <span className="text-gray-400">This wont show up on the front of cards</span>
+            <span className="text-gray-400">This won&apos;t show up on the front of cards</span>
           </div>
         </div>
         <button className="p-2 mt-3 bg-trello-blue-100 hover:bg-trello-blue-200 text-white font-semibold items-center text-sm shadow-sm rounded-sm">
