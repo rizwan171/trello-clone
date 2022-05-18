@@ -1,7 +1,18 @@
 import React from "react";
 import { MdClose, MdArrowBack, MdClear } from "react-icons/md";
+import TagColourOption from "./TagColourOption/TagColourOption";
+import { NO_COLOUR, TAG_COLOURS } from "../../../../constants/TagColours.js";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedTagColour } from "../../../../features/selectedTagColourSlice";
 
 const CreateTagMenu = ({ closeTags, goBackToTagsMenu }) => {
+  const dispatch = useDispatch();
+  const selectedTagColour = useSelector((state) => state.selectedTagColour.value);
+
+  const setNoColour = () => {
+    dispatch(setSelectedTagColour(NO_COLOUR));
+  };
+
   return (
     <div className="fixed w-72 min-h-40 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4 ">
       <div className="relative text-center mb-2">
@@ -19,18 +30,20 @@ const CreateTagMenu = ({ closeTags, goBackToTagsMenu }) => {
         />
         <span className="text-gray-600 my-2 font-semibold">Select a colour</span>
         <div className="grid grid-cols-5 gap-2">
-          <div className="h-11 w-12 rounded-md bg-green-300 "></div>
-          <div className="h-11 w-12 rounded-md bg-yellow-300 "></div>
-          <div className="h-11 w-12 rounded-md bg-yellow-500 "></div>
-          <div className="h-11 w-12 rounded-md bg-red-500 "></div>
-          <div className="h-11 w-12 rounded-md bg-purple-300 "></div>
-          <div className="h-11 w-12 rounded-md bg-blue-600 "></div>
-          <div className="h-11 w-12 rounded-md bg-blue-400 "></div>
-          <div className="h-11 w-12 rounded-md bg-indigo-400 "></div>
-          <div className="h-11 w-12 rounded-md bg-red-300 "></div>
-          <div className="h-11 w-12 rounded-md bg-gray-600 "></div>
-          <div className="h-11 w-12 rounded-md bg-trello-gray-card-modal-buttons flex justify-center items-center">
-            <MdClear size={20} />
+          {TAG_COLOURS.map((colour, index) => (
+            <TagColourOption key={index} colour={colour} />
+          ))}
+          <div
+            className={
+              "h-11 w-12 rounded-md bg-trello-gray-card-modal-buttons cursor-pointer" + selectedTagColour == NO_COLOUR
+                ? " ring-2 ring-trello-blue-100"
+                : ""
+            }
+            onClick={setNoColour}
+          >
+            <div className="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md flex justify-center items-center">
+              <MdClear size={20} />
+            </div>
           </div>
           <div className="col-span-3 flex flex-col">
             <span className="text-gray-600">No Colour</span>
