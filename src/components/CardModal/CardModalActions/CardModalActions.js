@@ -14,11 +14,6 @@ const CardModalActions = () => {
     setCreateTagOpen(false);
   };
 
-  const goBackToTagsMenu = () => {
-    setCreateTagOpen(false);
-    setTagsMenuOpen(true);
-  };
-
   const showTagsMenu = () => {
     setTagsMenuOpen(true);
     setCreateTagOpen(false);
@@ -40,7 +35,7 @@ const CardModalActions = () => {
         <p>Tags</p>
       </button>
       {tagsMenuOpen && <TagsMenu closeTags={closeTags} showCreateTagForm={showCreateTagForm} />}
-      {createTagOpen && <CreateTagMenu closeTags={closeTags} goBackToTagsMenu={goBackToTagsMenu} />}
+      {createTagOpen && <CreateTagMenu closeTags={closeTags} showTagsMenu={showTagsMenu} />}
       <h4 className="text-gray-800 text-sm">Actions</h4>
       <button className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm">
         <MdOutlineContentCopy />

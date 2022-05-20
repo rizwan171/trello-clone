@@ -18,7 +18,7 @@ const TagsMenu = ({ closeTags, showCreateTagForm }) => {
 
   return (
     // TODO min-h-60 should be changed later to something more appropriate
-    <div className="fixed w-72 min-h-60 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4 ">
+    <div className="fixed w-72 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4 ">
       <div className="relative text-center mb-2">
         <span className="text-sm block relative z-10">Tags</span>
         <MdClose onClick={closeTags} size={20} className="absolute right-0 top-0 z-20 cursor-pointer" />

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSelectedTagColour } from "../../../../features/selectedTagColourSlice";
 import { createTag } from "../../../../features/tagsSlice";
 
-const CreateTagMenu = ({ closeTags, goBackToTagsMenu }) => {
+const CreateTagMenu = ({ closeTags, showTagsMenu }) => {
   const dispatch = useDispatch();
   const selectedTagColour = useSelector((state) => state.selectedTagColour.value);
   const [tagName, setTagName] = useState("");
@@ -23,15 +23,25 @@ const CreateTagMenu = ({ closeTags, goBackToTagsMenu }) => {
     dispatch(createTag({ name: tagName, colour: selectedTagColour }));
     setTagName("");
     setSelectedTagColour("");
-    goBackToTagsMenu();
-  }
+    showTagsMenu();
+  };
+
+  const handleBack = () => {
+    setSelectedTagColour("");
+    showTagsMenu();
+  };
+
+  const handleClose = () => {
+    setSelectedTagColour("");
+    closeTags();
+  };
 
   return (
     <div className="fixed w-72 min-h-40 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4 ">
       <div className="relative text-center mb-2">
         <span className="text-sm block relative z-10">New Tag</span>
-        <MdArrowBack onClick={goBackToTagsMenu} size={20} className="absolute left-0 top-0 z-20 cursor-pointer" />
-        <MdClose onClick={closeTags} size={20} className="absolute right-0 top-0 z-20 cursor-pointer" />
+        <MdArrowBack onClick={handleBack} size={20} className="absolute left-0 top-0 z-20 cursor-pointer" />
+        <MdClose onClick={handleClose} size={20} className="absolute right-0 top-0 z-20 cursor-pointer" />
       </div>
       <hr />
       <div className="flex flex-col mt-2 text-sm">
@@ -64,7 +74,10 @@ const CreateTagMenu = ({ closeTags, goBackToTagsMenu }) => {
             <span className="text-gray-400">This won&apos;t show up on the front of cards</span>
           </div>
         </div>
-        <button onClick={handleCreateTag} className="p-2 mt-3 bg-trello-blue-100 hover:bg-trello-blue-200 text-white font-semibold items-center text-sm shadow-sm rounded-sm">
+        <button
+          onClick={handleCreateTag}
+          className="p-2 mt-3 bg-trello-blue-100 hover:bg-trello-blue-200 text-white font-semibold items-center text-sm shadow-sm rounded-sm"
+        >
           Create
         </button>
       </div>
