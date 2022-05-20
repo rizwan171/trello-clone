@@ -4,7 +4,7 @@ import TagColourOption from "./TagColourOption/TagColourOption";
 import { NO_COLOUR, TAG_COLOURS } from "../../../../constants/TagColours.js";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedTagColour } from "../../../../features/selectedTagColourSlice";
-import { createTag } from "../../../../features/tagsSlice";
+import { createTag, updateTag } from "../../../../features/tagsSlice";
 import { clearCreateTagMenuData } from "../../../../features/createTagMenuDataSlice";
 
 const CreateTagMenu = ({ closeTags, showTagsMenu }) => {
@@ -41,7 +41,11 @@ const CreateTagMenu = ({ closeTags, showTagsMenu }) => {
   };
 
   const handleCreateTag = () => {
-    dispatch(createTag({ name: tagName, colour: selectedTagColour }));
+    if (tagData) {
+      dispatch(updateTag({ ...tagData, name: tagName, colour: selectedTagColour }));
+    } else {
+      dispatch(createTag({ name: tagName, colour: selectedTagColour }));
+    }
     showTagsMenu();
   };
 
