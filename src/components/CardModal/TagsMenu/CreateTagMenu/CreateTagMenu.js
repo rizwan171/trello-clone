@@ -1,18 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdClose, MdArrowBack, MdClear } from "react-icons/md";
 import TagColourOption from "./TagColourOption/TagColourOption";
 import { NO_COLOUR, TAG_COLOURS } from "../../../../constants/TagColours.js";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedTagColour } from "../../../../features/selectedTagColourSlice";
 import { createTag } from "../../../../features/tagsSlice";
+import { clearCreateTagMenuData } from "../../../../features/createTagMenuDataSlice";
 
 const CreateTagMenu = ({ closeTags, showTagsMenu }) => {
   const dispatch = useDispatch();
   const selectedTagColour = useSelector((state) => state.selectedTagColour.value);
+  const tagData = useSelector((state) => state.createTagMenuData.value);
   const [tagName, setTagName] = useState("");
+  const [titleText, setTitleText] = useState("New Tag");
+  const [buttonText, setButtonText] = useState("Create");
+
+  useEffect(() => {
+    if (tagData) {
+      setTagName(tagData.name);
+      dispatch(setSelectedTagColour(tagData.colour));
+      setTitleText("Edit Tag");
+      setButtonText("Update");
+    }
+  }, [tagData]);
 
   const setNoColour = () => {
     dispatch(setSelectedTagColour(NO_COLOUR));
+  };
+
+  const resetFields = () => {
+    setTagName("");
+    setTitleText("New Tag");
+    setButtonText("Create");
+    dispatch(setSelectedTagColour(""));
+    dispatch(clearCreateTagMenuData({}));
   };
 
   const handleOnChange = (e) => {
@@ -21,25 +42,23 @@ const CreateTagMenu = ({ closeTags, showTagsMenu }) => {
 
   const handleCreateTag = () => {
     dispatch(createTag({ name: tagName, colour: selectedTagColour }));
-    setTagName("");
-    setSelectedTagColour("");
     showTagsMenu();
   };
 
   const handleBack = () => {
-    setSelectedTagColour("");
+    resetFields();
     showTagsMenu();
   };
 
   const handleClose = () => {
-    setSelectedTagColour("");
+    resetFields();
     closeTags();
   };
 
   return (
     <div className="fixed w-72 min-h-40 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4 ">
       <div className="relative text-center mb-2">
-        <span className="text-sm block relative z-10">New Tag</span>
+        <span className="text-sm block relative z-10">{titleText}</span>
         <MdArrowBack onClick={handleBack} size={20} className="absolute left-0 top-0 z-20 cursor-pointer" />
         <MdClose onClick={handleClose} size={20} className="absolute right-0 top-0 z-20 cursor-pointer" />
       </div>
@@ -78,7 +97,7 @@ const CreateTagMenu = ({ closeTags, showTagsMenu }) => {
           onClick={handleCreateTag}
           className="p-2 mt-3 bg-trello-blue-100 hover:bg-trello-blue-200 text-white font-semibold items-center text-sm shadow-sm rounded-sm"
         >
-          Create
+          {buttonText}
         </button>
       </div>
     </div>

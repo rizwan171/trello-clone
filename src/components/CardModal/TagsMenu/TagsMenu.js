@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { MdClose } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setCreateTagMenuData } from "../../../features/createTagMenuDataSlice";
 import TagOption from "./TagOption/TagOption";
 
 const TagsMenu = ({ closeTags, showCreateTagForm }) => {
+  const dispatch = useDispatch();
   const tags = useSelector((state) => state.tags.value);
   const [tagsToShow, setTagsToShow] = useState([...tags]);
 
@@ -14,6 +16,11 @@ const TagsMenu = ({ closeTags, showCreateTagForm }) => {
     } else {
       setTagsToShow(tags.filter((tag) => tag.name.toLowerCase().includes(searchQuery)));
     }
+  };
+
+  const handleEditTag = (tag) => {
+    dispatch(setCreateTagMenuData(tag));
+    showCreateTagForm();
   };
 
   return (
@@ -35,7 +42,7 @@ const TagsMenu = ({ closeTags, showCreateTagForm }) => {
         <span className="text-gray-600 my-2 font-semibold">Tags</span>
         <div className="flex flex-col w-full gap-1 font-bold">
           {tagsToShow.map((tag) => (
-            <TagOption key={tag.id} tag={tag} />
+            <TagOption key={tag.id} tag={tag} editTag={handleEditTag} />
           ))}
         </div>
         <button

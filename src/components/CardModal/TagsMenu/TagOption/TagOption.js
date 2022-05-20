@@ -2,12 +2,16 @@ import React, { useEffect, useRef } from "react";
 import { MdCheck, MdOutlineEdit } from "react-icons/md";
 
 // TODO isSelected would be used to show the check mark
-const TagOption = ({ tag, isSelected }) => {
+const TagOption = ({ tag, isSelected, editTag }) => {
   const tagRef = useRef();
 
   useEffect(() => {
     tagRef.current.style.background = tag.colour;
   }, []);
+
+  const handleEdit = () => {
+    editTag(tag);
+  };
 
   return (
     <div className="flex h-8">
@@ -15,7 +19,7 @@ const TagOption = ({ tag, isSelected }) => {
         <span className="ml-2">{tag.name}</span>
         <MdCheck size={20} className="ml-auto mr-2" />
       </div>
-      <MdOutlineEdit className="self-center ml-2 cursor-pointer" size={20} />
+      <MdOutlineEdit className="self-center ml-2 cursor-pointer" size={20} onClick={handleEdit} />
     </div>
   );
 };

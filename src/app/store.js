@@ -8,6 +8,7 @@ import currentSelectedListReducer from "../features/currentSelectedListSlice.js"
 import listOptionsMenuPositionReducer from "../features/listOptionsMenuPositionSlice.js";
 import tagsReducer from "../features/tagsSlice.js";
 import selectedTagColourReducer from "../features/selectedTagColourSlice.js";
+import createTagMenuDataReducer from "../features/createTagMenuDataSlice.js";
 
 export const store = configureStore({
   reducer: {
@@ -20,5 +21,6 @@ export const store = configureStore({
     listOptionsMenuPosition: listOptionsMenuPositionReducer,
     tags: tagsReducer,
     selectedTagColour: selectedTagColourReducer,
+    createTagMenuData: createTagMenuDataReducer,
   },
 });
