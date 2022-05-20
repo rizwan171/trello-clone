@@ -35,9 +35,8 @@ const CreateTagMenu = ({ closeTags, goBackToTagsMenu }) => {
           ))}
           <div
             className={
-              "h-11 w-12 rounded-md bg-trello-gray-card-modal-buttons cursor-pointer" + selectedTagColour == NO_COLOUR
-                ? " ring-2 ring-trello-blue-100"
-                : ""
+              "h-11 w-12 rounded-md bg-trello-gray-card-modal-buttons cursor-pointer" +
+              (selectedTagColour == NO_COLOUR ? " ring-2 ring-trello-blue-100" : "")
             }
             onClick={setNoColour}
           >
