@@ -1,31 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import { AiOutlineTag, AiOutlineDelete } from "react-icons/ai";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import { MdOutlineContentCopy } from "react-icons/md";
-import CreateTagMenu from '../TagsMenu/CreateTagMenu/CreateTagMenu';
-import TagsMenu from '../TagsMenu/TagsMenu';
+import CreateTagMenu from "../TagsMenu/CreateTagMenu/CreateTagMenu";
+import TagsMenu from "../TagsMenu/TagsMenu";
 
 const CardModalActions = () => {
-    const [tagsMenuOpen, setTagsMenuOpen] = useState(false);
-    const [createTagOpen, setCreateTagOpen] = useState(false);
+  const [tagsMenuOpen, setTagsMenuOpen] = useState(false);
+  const [createTagOpen, setCreateTagOpen] = useState(false);
 
+  const closeTags = () => {
+    setTagsMenuOpen(false);
+    setCreateTagOpen(false);
+  };
 
-    const closeTags = () => {
-      setTagsMenuOpen(false);
-      setCreateTagOpen(false);
-    };
+  const goBackToTagsMenu = () => {
+    setCreateTagOpen(false);
+    setTagsMenuOpen(true);
+  };
 
-    const goBackToTagsMenu = () => {
-      setCreateTagOpen(false);
-    };
+  const showTagsMenu = () => {
+    setTagsMenuOpen(true);
+    setCreateTagOpen(false);
+  };
 
-    const showTagsMenu = () => {
-      setTagsMenuOpen(true);
-    };
-
-    const showCreateTagForm = () => {
-      setCreateTagOpen(true);
-    };
+  const showCreateTagForm = () => {
+    setCreateTagOpen(true);
+    setTagsMenuOpen(false);
+  };
 
   return (
     <div className="flex flex-col w-44 py-4 ml-auto">
@@ -54,6 +56,6 @@ const CardModalActions = () => {
       </button>
     </div>
   );
-}
+};
 
-export default CardModalActions
+export default CardModalActions;

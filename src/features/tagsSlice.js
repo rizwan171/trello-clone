@@ -1,29 +1,32 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
-// const listData = JSON.parse(localStorage.getItem("tags")); TODO comment back in after
-
 const initialState = {
   value: [
     {
       id: uuidv4(),
       name: "Tag 1",
+      colour: "#6EE7B7",
     },
     {
       id: uuidv4(),
       name: "Tag 2",
+      colour: "#FCD34D",
     },
     {
       id: uuidv4(),
       name: "Tag 3",
+      colour: "#F59E0B",
     },
     {
       id: uuidv4(),
       name: "Tag 4",
+      colour: "#EF4444",
     },
     {
       id: uuidv4(),
       name: "Tag 5",
+      colour: "#FCA5A5",
     },
   ],
 };
@@ -34,7 +37,7 @@ export const tagsSlice = createSlice({
   reducers: {
     createTag: (state, action) => {
       state.value.push({ ...action.payload, id: uuidv4() });
-      // localStorage.setItem("tags", JSON.stringify([...state.value])); TODO comment back in after
+      localStorage.setItem("tags", JSON.stringify([...state.value]));
     },
   },
 });

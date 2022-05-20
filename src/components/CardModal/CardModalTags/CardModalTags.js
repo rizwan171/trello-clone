@@ -11,7 +11,7 @@ const CardModalTags = () => {
       <p className="mb-2">Tags</p>
       <div className="flex gap-1 flex-wrap mb-4">
         {tags.map((tag) => (
-          <CardModalTag key={tag.id} name={tag.name} />
+          <CardModalTag key={tag.id} tag={tag} />
         ))}
         <AddTag />
       </div>
