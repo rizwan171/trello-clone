@@ -14,7 +14,7 @@ import CardModalTags from "./CardModalTags/CardModalTags";
 const CardModal = ({ card }) => {
   const dispatch = useDispatch();
   const ref = useRef();
-  const lists = useSelector((state) => state.lists.value);
+  const listName = useSelector((state) => state.lists.value).find((list) => list.id === card.listId).title;
   const [selected, setSelected] = useState(false);
   // TODO: copy and move shouldnt be open at the same time, so these states could be reduced to just the 1
   const [copyOpen, setCopyOpen] = useState(false);
@@ -129,7 +129,7 @@ const CardModal = ({ card }) => {
                 onKeyDown={handleKeyDown}
               />
             )}
-            <p className="text-sm text-gray-700">in list LIST_NAME_HERE</p>
+            <p className="text-sm text-gray-700">in list {listName}</p>
           </div>
 
           <button
