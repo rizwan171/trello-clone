@@ -1,34 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
+const tagsData = JSON.parse(localStorage.getItem("tags"));
 const initialState = {
-  value: [
-    {
-      id: uuidv4(),
-      name: "Tag 1",
-      colour: "#6EE7B7",
-    },
-    {
-      id: uuidv4(),
-      name: "Tag 2",
-      colour: "#FCD34D",
-    },
-    {
-      id: uuidv4(),
-      name: "Tag 3",
-      colour: "#F59E0B",
-    },
-    {
-      id: uuidv4(),
-      name: "Tag 4",
-      colour: "#EF4444",
-    },
-    {
-      id: uuidv4(),
-      name: "Tag 5",
-      colour: "#FCA5A5",
-    },
-  ],
+  value: tagsData ? tagsData : [],
 };
 
 export const tagsSlice = createSlice({
