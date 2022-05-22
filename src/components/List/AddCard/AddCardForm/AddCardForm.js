@@ -30,7 +30,7 @@ const AddCardForm = ({ setOpen, open, listId }) => {
 
   const handleAddCard = () => {
     if (text.trim().length !== 0) {
-      dispatch(addCard({ listId, content: text }));
+      dispatch(addCard({ listId, content: text, tags: [] }));
     }
     handleClose();
   };

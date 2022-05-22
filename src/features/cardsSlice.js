@@ -67,6 +67,25 @@ export const cardsSlice = createSlice({
       state.value.push(...cardsToCopy);
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
+    addTagToCard: (state, action) => {
+      state.value.map((card) => {
+        if (card.id === action.payload.cardId) {
+          card.tags.push(action.payload.tagId)
+        }
+        return card;
+      });
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
+    },
+    removeTagFromCard: (state, action) => {
+      state.value.map((card) => {
+        if (card.id === action.payload.cardId) {
+          const tagIndex = card.tags.indexOf(action.payload.tagId)
+          card.tags.splice(tagIndex, 1);
+        }
+        return card;
+      });
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
+    },
   },
 });
 
@@ -80,5 +99,7 @@ export const {
   copyAllCardsToNewList,
   copyCardToList,
   moveCardToList,
+  addTagToCard,
+  removeTagFromCard,
 } = cardsSlice.actions;
 export default cardsSlice.reducer;

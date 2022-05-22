@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
+import { addTagToCard, removeTagFromCard } from "../../../features/cardsSlice";
 import { setCreateTagMenuData } from "../../../features/createTagMenuDataSlice";
+import { setCurrentSelectedCard } from "../../../features/currentSelectedCardSlice";
 import TagOption from "./TagOption/TagOption";
 
-const TagsMenu = ({ closeTags, showCreateTagForm }) => {
+const TagsMenu = ({ card, closeTags, showCreateTagForm }) => {
   const dispatch = useDispatch();
   const tags = useSelector((state) => state.tags.value);
   const [tagsToShow, setTagsToShow] = useState([...tags]);
@@ -21,6 +23,16 @@ const TagsMenu = ({ closeTags, showCreateTagForm }) => {
   const handleEditTag = (tag) => {
     dispatch(setCreateTagMenuData(tag));
     showCreateTagForm();
+  };
+
+  const tagClicked = (tag) => {
+    if (card.tags.includes(tag.id)) {
+      dispatch(removeTagFromCard({ cardId: card.id, tagId: tag.id }));
+      dispatch(setCurrentSelectedCard({ ...card, tags: [...card.tags.filter((tagId) => tagId !== tag.id)] }));
+    } else {
+      dispatch(addTagToCard({ cardId: card.id, tagId: tag.id }));
+      dispatch(setCurrentSelectedCard({ ...card, tags: [...card.tags, tag.id] }));
+    }
   };
 
   return (
@@ -41,9 +53,10 @@ const TagsMenu = ({ closeTags, showCreateTagForm }) => {
         />
         <span className="text-gray-600 my-2 font-semibold">Tags</span>
         <div className="flex flex-col w-full gap-1 font-bold">
-          {tagsToShow.map((tag) => (
-            <TagOption key={tag.id} tag={tag} editTag={handleEditTag} />
-          ))}
+          {tagsToShow.map((tag) => {
+            const isSelected = card.tags.includes(tag.id);
+            return <TagOption key={tag.id} tag={tag} isSelected={isSelected} editTag={handleEditTag} tagClicked={tagClicked} />;
+          })}
         </div>
         <button
           onClick={showCreateTagForm}

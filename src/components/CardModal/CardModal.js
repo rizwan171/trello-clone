@@ -142,7 +142,7 @@ const CardModal = ({ card }) => {
         </div>
         <div className="flex w-full h-full">
           <div className="flex flex-col w-2/3 py-4">
-            <CardModalTags />
+            <CardModalTags card={card}/>
             <div className="flex items-center gap-2 text-lg text-gray-800 font-semibold">
               <FiAlignLeft size={20} />
               <p>Description</p>
@@ -154,7 +154,7 @@ const CardModal = ({ card }) => {
               terms of service agreements to comply.
             </p>
           </div>
-          <CardModalActions />
+          <CardModalActions card={card}/>
         </div>
       </div>
     </div>
