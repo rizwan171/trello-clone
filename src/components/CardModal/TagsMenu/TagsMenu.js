@@ -37,6 +37,7 @@ const TagsMenu = ({ card, closeTags, showCreateTagForm }) => {
 
   return (
     // TODO need to determine max height and then scroll tags
+    // TODO mt-16 should be replaced with something more robust
     <div className="fixed mt-16 w-72 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4">
       <div className="relative text-center mb-2">
         <span className="text-sm block relative z-10">Tags</span>
