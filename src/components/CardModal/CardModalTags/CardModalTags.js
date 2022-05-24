@@ -13,7 +13,7 @@ const CardModalTags = ({ card }) => {
         {tagsToShow.map((tag) => (
           <CardModalTag key={tag.id} tag={tag} />
         ))}
-        <AddTag />
+        <AddTag card={card} />
       </div>
     </div>
   );
