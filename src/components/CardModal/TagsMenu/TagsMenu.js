@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTagToCard, removeTagFromCard } from "../../../features/cardsSlice";
 import { setCreateTagMenuData } from "../../../features/createTagMenuDataSlice";
 import { setCurrentSelectedCard } from "../../../features/currentSelectedCardSlice";
+import { closeTagsMenu, showCreateTagMenu } from "../../../features/tagsMenuVisibilitySlice";
 import TagOption from "./TagOption/TagOption";
 
-const TagsMenu = ({ card, closeTags, showCreateTagForm }) => {
+const TagsMenu = ({ card }) => {
   const dispatch = useDispatch();
   const tags = useSelector((state) => state.tags.value);
   const [tagsToShow, setTagsToShow] = useState([...tags]);
@@ -22,7 +23,15 @@ const TagsMenu = ({ card, closeTags, showCreateTagForm }) => {
 
   const handleEditTag = (tag) => {
     dispatch(setCreateTagMenuData(tag));
-    showCreateTagForm();
+    dispatch(showCreateTagMenu());
+  };
+
+  const handleShowCreateTagForm = () => {
+    dispatch(showCreateTagMenu());
+  };
+
+  const handleCloseTags = () => {
+    dispatch(closeTagsMenu());
   };
 
   const tagClicked = (tag) => {
@@ -41,7 +50,7 @@ const TagsMenu = ({ card, closeTags, showCreateTagForm }) => {
     <div className="fixed mt-16 w-72 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4">
       <div className="relative text-center mb-2">
         <span className="text-sm block relative z-10">Tags</span>
-        <MdClose onClick={closeTags} size={20} className="absolute right-0 top-0 z-20 cursor-pointer" />
+        <MdClose onClick={handleCloseTags} size={20} className="absolute right-0 top-0 z-20 cursor-pointer" />
       </div>
       <hr />
       <div className="flex flex-col mt-2 text-sm">
@@ -60,7 +69,7 @@ const TagsMenu = ({ card, closeTags, showCreateTagForm }) => {
           })}
         </div>
         <button
-          onClick={showCreateTagForm}
+          onClick={handleShowCreateTagForm}
           className="py-1.5 px-2 mt-3 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-sm shadow-sm rounded-sm"
         >
           Create a new tag
