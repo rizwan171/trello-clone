@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedTagColour } from "../../../../../features/selectedTagColourSlice";
+import { setSelectedTagColour } from "../../../../../../features/selectedTagColourSlice";
 
 const TagColourOption = ({ colour }) => {
   const ref = useRef();

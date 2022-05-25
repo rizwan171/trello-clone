@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { addTagToCard, removeTagFromCard } from "../../../features/cardsSlice";
-import { setCreateTagMenuData } from "../../../features/createTagMenuDataSlice";
-import { setCurrentSelectedCard } from "../../../features/currentSelectedCardSlice";
-import { closeTagsMenu, showCreateTagMenu } from "../../../features/tagsMenuVisibilitySlice";
+import { addTagToCard, removeTagFromCard } from "../../../../features/cardsSlice";
+import { setCreateTagMenuData } from "../../../../features/createTagMenuDataSlice";
+import { setCurrentSelectedCard } from "../../../../features/currentSelectedCardSlice";
+import { closeTagsMenu, showCreateTagMenu } from "../../../../features/tagsMenuVisibilitySlice";
 import TagOption from "./TagOption/TagOption";
 
 const TagsMenu = ({ card }) => {

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { MdClose, MdArrowBack, MdClear } from "react-icons/md";
 import TagColourOption from "./TagColourOption/TagColourOption";
-import { NO_COLOUR, TAG_COLOURS } from "../../../../constants/TagColours.js";
+import { NO_COLOUR, TAG_COLOURS } from "../../../../../constants/TagColours.js";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedTagColour } from "../../../../features/selectedTagColourSlice";
-import { createTag, updateTag } from "../../../../features/tagsSlice";
-import { clearCreateTagMenuData } from "../../../../features/createTagMenuDataSlice";
+import { setSelectedTagColour } from "../../../../../features/selectedTagColourSlice";
+import { createTag, updateTag } from "../../../../../features/tagsSlice";
+import { clearCreateTagMenuData } from "../../../../../features/createTagMenuDataSlice";
+import { closeTagsMenu, showTagsMenu } from "../../../../../features/tagsMenuVisibilitySlice";
 
-const CreateTagMenu = ({ closeTags, showTagsMenu }) => {
+const CreateTagMenu = () => {
   const dispatch = useDispatch();
   const selectedTagColour = useSelector((state) => state.selectedTagColour.value);
   const tagData = useSelector((state) => state.createTagMenuData.value);
@@ -46,17 +47,17 @@ const CreateTagMenu = ({ closeTags, showTagsMenu }) => {
     } else {
       dispatch(createTag({ name: tagName, colour: selectedTagColour }));
     }
-    showTagsMenu();
+    dispatch(showTagsMenu());
   };
 
   const handleBack = () => {
     resetFields();
-    showTagsMenu();
+    dispatch(showTagsMenu());
   };
 
   const handleClose = () => {
     resetFields();
-    closeTags();
+    dispatch(closeTagsMenu());
   };
 
   return (

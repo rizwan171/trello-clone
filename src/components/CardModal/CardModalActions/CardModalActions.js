@@ -5,8 +5,8 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 import { MdOutlineContentCopy } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { showTagsMenu } from "../../../features/tagsMenuVisibilitySlice";
-import CreateTagMenu from "../TagsMenu/CreateTagMenu/CreateTagMenu";
-import TagsMenu from "../TagsMenu/TagsMenu";
+import CreateTagMenu from "./TagsMenu/CreateTagMenu/CreateTagMenu";
+import TagsMenu from "./TagsMenu/TagsMenu";
 
 const CardModalActions = ({ card }) => {
   const dispatch = useDispatch();
