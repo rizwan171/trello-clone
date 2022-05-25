@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 import { showTagsMenu } from "../../../features/tagsMenuVisibilitySlice";
 import CreateTagMenu from "./TagsMenu/CreateTagMenu/CreateTagMenu";
 import TagsMenu from "./TagsMenu/TagsMenu";
+import CopyMenu from "./CopyMenu/CopyMenu";
+import MoveMenu from "./MoveMenu/MoveMenu";
 
 const CardModalActions = ({ card }) => {
   const dispatch = useDispatch();
@@ -34,10 +36,12 @@ const CardModalActions = ({ card }) => {
         <MdOutlineContentCopy />
         <p>Copy</p>
       </button>
+      <CopyMenu />
       <button className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm">
         <HiOutlineArrowRight />
         <p>Move</p>
       </button>
+      {/* <MoveMenu /> */}
       <button className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm">
         <AiOutlineDelete />
         <p>Delete</p>
