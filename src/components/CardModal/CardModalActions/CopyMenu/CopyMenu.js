@@ -35,15 +35,15 @@ const CopyMenu = () => {
           value={selectedList}
           onChange={(e) => setSelectedList(e.target.value)}
         >
+          <option value="" selected disabled hidden>
+            Select list
+          </option>
           {lists.map((list) => (
             <option value={list.id} key={list.id}>
               {list.title}
             </option>
           ))}
         </select>
-        <span className="text-gray-500 mt-2 text-xs font-semibold">
-          Note: The card will be placed at the beginning of the selected list
-        </span>
         <button
           onClick={handleCopyCard}
           className="p-2 mt-3 bg-trello-blue-100 hover:bg-trello-blue-200 text-white font-semibold items-center text-sm shadow-sm rounded-sm"

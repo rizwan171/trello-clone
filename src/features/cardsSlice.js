@@ -70,7 +70,7 @@ export const cardsSlice = createSlice({
     addTagToCard: (state, action) => {
       state.value.map((card) => {
         if (card.id === action.payload.cardId) {
-          card.tags.push(action.payload.tagId)
+          card.tags.push(action.payload.tagId);
         }
         return card;
       });
@@ -79,7 +79,7 @@ export const cardsSlice = createSlice({
     removeTagFromCard: (state, action) => {
       state.value.map((card) => {
         if (card.id === action.payload.cardId) {
-          const tagIndex = card.tags.indexOf(action.payload.tagId)
+          const tagIndex = card.tags.indexOf(action.payload.tagId);
           card.tags.splice(tagIndex, 1);
         }
         return card;
