@@ -62,18 +62,6 @@ const CardModal = ({ card }) => {
     }
   };
 
-  const handleCopy = () => {
-    if (copyOpen) {
-      dispatch(copyCardToList({ cardId: card.id, listId: selectedListId }));
-      setSelectedListId("");
-      setCopyOpen(false);
-    } else {
-      setCopyOpen(true);
-      setMoveOpen(false);
-      setSelectedListId("");
-    }
-  };
-
   const handleMove = () => {
     if (moveOpen) {
       dispatch(moveCardToList({ cardId: card.id, listId: selectedListId }));
