@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTagToCard, removeTagFromCard } from "../../../../features/cardsSlice";
 import { setCreateTagMenuData } from "../../../../features/createTagMenuDataSlice";
 import { setCurrentSelectedCard } from "../../../../features/currentSelectedCardSlice";
-import { closeTagsMenu, showCreateTagMenu } from "../../../../features/tagsMenuVisibilitySlice";
+import { closeMenu, showCreateTagMenu } from "../../../../features/modalActionMenusVisibilitySlice";
 import TagOption from "./TagOption/TagOption";
 
 const TagsMenu = ({ card }) => {
@@ -31,7 +31,7 @@ const TagsMenu = ({ card }) => {
   };
 
   const handleCloseTags = () => {
-    dispatch(closeTagsMenu());
+    dispatch(closeMenu());
   };
 
   const tagClicked = (tag) => {

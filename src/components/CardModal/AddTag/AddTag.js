@@ -1,7 +1,7 @@
 import React from "react";
 import { FiPlus } from "react-icons/fi";
 import { useDispatch } from "react-redux";
-import { showTagsMenu } from "../../../features/tagsMenuVisibilitySlice";
+import { showTagsMenu } from "../../../features/modalActionMenusVisibilitySlice";
 
 const AddTag = () => {
   const dispatch = useDispatch();

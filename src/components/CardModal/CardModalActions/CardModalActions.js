@@ -4,7 +4,7 @@ import { AiOutlineTag, AiOutlineDelete } from "react-icons/ai";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import { MdOutlineContentCopy } from "react-icons/md";
 import { useSelector } from "react-redux";
-import { showTagsMenu } from "../../../features/tagsMenuVisibilitySlice";
+import { showTagsMenu } from "../../../features/modalActionMenusVisibilitySlice";
 import CreateTagMenu from "./TagsMenu/CreateTagMenu/CreateTagMenu";
 import TagsMenu from "./TagsMenu/TagsMenu";
 import CopyMenu from "./CopyMenu/CopyMenu";
@@ -12,8 +12,9 @@ import MoveMenu from "./MoveMenu/MoveMenu";
 
 const CardModalActions = ({ card }) => {
   const dispatch = useDispatch();
-  const tagsMenuOpen = useSelector((state) => state.tagsMenuVisibility.value.tagsMenuOpen);
-  const createTagsMenuOpen = useSelector((state) => state.tagsMenuVisibility.value.createTagsMenuOpen);
+  const tagsMenuOpen = useSelector((state) => state.modalActionMenusVisibility.value.tagsMenuOpen);
+  const createTagsMenuOpen = useSelector((state) => state.modalActionMenusVisibility.value.createTagsMenuOpen);
+  const copyMenuOpen = useSelector((state) => state.modalActionMenusVisibility.value.copyMenuOpen);
 
   const handleShowTagsMenu = () => {
     dispatch(showTagsMenu());
@@ -36,7 +37,7 @@ const CardModalActions = ({ card }) => {
         <MdOutlineContentCopy />
         <p>Copy</p>
       </button>
-      <CopyMenu />
+      {copyMenuOpen && <CopyMenu />}
       <button className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm">
         <HiOutlineArrowRight />
         <p>Move</p>
