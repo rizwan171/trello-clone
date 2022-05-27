@@ -103,7 +103,7 @@ const CardModal = ({ card }) => {
       id="cardModal"
       className="z-50 min-h-full min-w-full flex fixed top-0 left-0 justify-center items-center bg-black bg-opacity-30"
     >
-      <div className="flex flex-col bg-trello-gray-400 w-218 rounded-sm h-96 p-4 mb-80">
+      <div className="flex flex-col bg-trello-gray-400 w-218 rounded-sm  max-h-full p-4 mb-80">
         <div className="flex">
           <div className="flex flex-col w-full">
             {!selected && (
@@ -142,7 +142,7 @@ const CardModal = ({ card }) => {
         </div>
         <div className="flex w-full h-full">
           <div className="flex flex-col w-2/3 py-4">
-            <CardModalTags card={card}/>
+            <CardModalTags card={card} />
             <div className="flex items-center gap-2 text-lg text-gray-800 font-semibold">
               <FiAlignLeft size={20} />
               <p>Description</p>
@@ -154,7 +154,7 @@ const CardModal = ({ card }) => {
               terms of service agreements to comply.
             </p>
           </div>
-          <CardModalActions card={card}/>
+          <CardModalActions card={card} />
         </div>
       </div>
     </div>
