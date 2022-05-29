@@ -4,11 +4,12 @@ import { AiOutlineTag, AiOutlineDelete } from "react-icons/ai";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import { MdOutlineContentCopy } from "react-icons/md";
 import { useSelector } from "react-redux";
-import { showCopyMenu, showMoveMenu, showTagsMenu } from "../../../features/modalActionMenusVisibilitySlice";
+import { showCopyMenu, showDeleteMenu, showMoveMenu, showTagsMenu } from "../../../features/modalActionMenusVisibilitySlice";
 import CreateTagMenu from "./TagsMenu/CreateTagMenu/CreateTagMenu";
 import TagsMenu from "./TagsMenu/TagsMenu";
 import CopyMenu from "./CopyMenu/CopyMenu";
 import MoveMenu from "./MoveMenu/MoveMenu";
+import DeleteMenu from "./DeleteMenu/DeleteMenu";
 
 const CardModalActions = ({ card }) => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const CardModalActions = ({ card }) => {
   const createTagsMenuOpen = useSelector((state) => state.modalActionMenusVisibility.value.createTagsMenuOpen);
   const copyMenuOpen = useSelector((state) => state.modalActionMenusVisibility.value.copyMenuOpen);
   const moveMenuOpen = useSelector((state) => state.modalActionMenusVisibility.value.moveMenuOpen);
+  const deleteMenuOpen = useSelector((state) => state.modalActionMenusVisibility.value.deleteMenuOpen);
 
   const handleShowTagsMenu = () => {
     dispatch(showTagsMenu());
@@ -27,6 +29,10 @@ const CardModalActions = ({ card }) => {
 
   const handleShowMoveMenu = () => {
     dispatch(showMoveMenu());
+  };
+
+  const handleShowDeleteMenu = () => {
+    dispatch(showDeleteMenu());
   };
 
   return (
@@ -58,10 +64,14 @@ const CardModalActions = ({ card }) => {
         <p>Move</p>
       </button>
       {moveMenuOpen && <MoveMenu />}
-      <button className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm">
+      <button
+        className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
+        onClick={handleShowDeleteMenu}
+      >
         <AiOutlineDelete />
         <p>Delete</p>
       </button>
+      {deleteMenuOpen && <DeleteMenu />}
     </div>
   );
 };

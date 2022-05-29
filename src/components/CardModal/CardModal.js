@@ -1,13 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { updateCardContent, deleteCard, copyCardToList, moveCardToList } from "../../features/cardsSlice";
+import { updateCardContent, deleteCard } from "../../features/cardsSlice";
 import { clearSelectedCard, setCurrentSelectedCard } from "../../features/currentSelectedCardSlice";
 import { useSelector } from "react-redux";
 import { MdInbox, MdClose } from "react-icons/md";
 import { FiAlignLeft } from "react-icons/fi";
-import CardModalTag from "./CardModalTags/CardModalTag/CardModalTag";
-import AddTag from "./AddTag/AddTag";
 import CardModalActions from "./CardModalActions/CardModalActions";
 import CardModalTags from "./CardModalTags/CardModalTags";
 
@@ -16,10 +13,6 @@ const CardModal = ({ card }) => {
   const ref = useRef();
   const listName = useSelector((state) => state.lists.value).find((list) => list.id === card.listId).title;
   const [selected, setSelected] = useState(false);
-  // TODO: copy and move shouldnt be open at the same time, so these states could be reduced to just the 1
-  const [copyOpen, setCopyOpen] = useState(false);
-  const [moveOpen, setMoveOpen] = useState(false);
-  const [selectedListId, setSelectedListId] = useState("");
   const [editableContent, setEditableContent] = useState(card.content);
   const [rows, setRows] = useState(1);
 
@@ -39,14 +32,6 @@ const CardModal = ({ card }) => {
     setEditableContent(e.target.value);
   };
 
-  const handleCopyCardOnChange = (e) => {
-    setSelectedListId(e.target.value);
-  };
-
-  const handleMoveCardOnChange = (e) => {
-    setSelectedListId(e.target.value);
-  };
-
   const handleOnBlur = () => {
     setSelected(false);
     setEditableContent(card.content);
@@ -60,23 +45,6 @@ const CardModal = ({ card }) => {
       dispatch(updateCardContent({ id: card.id, content: editableContent }));
       dispatch(setCurrentSelectedCard({ ...card, content: editableContent }));
     }
-  };
-
-  const handleMove = () => {
-    if (moveOpen) {
-      dispatch(moveCardToList({ cardId: card.id, listId: selectedListId }));
-      setSelectedListId("");
-      setMoveOpen(false);
-    } else {
-      setMoveOpen(true);
-      setCopyOpen(false);
-      setSelectedListId("");
-    }
-  };
-
-  const handleDeleteCard = () => {
-    dispatch(deleteCard(card.id));
-    dispatch(clearSelectedCard());
   };
 
   const handleOnFocus = (e) => {

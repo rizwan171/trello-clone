@@ -6,6 +6,7 @@ const initialState = {
     createTagsMenuOpen: false,
     copyMenuOpen: false,
     moveMenuOpen: false,
+    deleteMenuOpen: false,
   },
 };
 
@@ -42,8 +43,14 @@ export const modalActionMenusVisibilitySlice = createSlice({
         moveMenuOpen: true,
       };
     },
+    showDeleteMenu: (state) => {
+      state.value = {
+        ...initialState.value,
+        deleteMenuOpen: true,
+      };
+    },
   },
 });
 
-export const { closeMenu, showTagsMenu, showCreateTagMenu, showCopyMenu, showMoveMenu } = modalActionMenusVisibilitySlice.actions;
+export const { closeMenu, showTagsMenu, showCreateTagMenu, showCopyMenu, showMoveMenu, showDeleteMenu } = modalActionMenusVisibilitySlice.actions;
 export default modalActionMenusVisibilitySlice.reducer;
