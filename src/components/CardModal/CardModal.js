@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateCardContent, deleteCard } from "../../features/cardsSlice";
+import { updateCardTitle } from "../../features/cardsSlice";
 import { clearSelectedCard, setCurrentSelectedCard } from "../../features/currentSelectedCardSlice";
 import { useSelector } from "react-redux";
 import { MdInbox, MdClose } from "react-icons/md";
@@ -13,7 +13,7 @@ const CardModal = ({ card }) => {
   const ref = useRef();
   const listName = useSelector((state) => state.lists.value).find((list) => list.id === card.listId).title;
   const [selected, setSelected] = useState(false);
-  const [editableContent, setEditableContent] = useState(card.content);
+  const [editableTitle, setEditableTitle] = useState(card.title);
   const [rows, setRows] = useState(1);
 
   useEffect(() => {
@@ -22,19 +22,19 @@ const CardModal = ({ card }) => {
       const scrollHeight = ref.current.scrollHeight;
       ref.current.style.height = scrollHeight + "px";
     }
-  }, [editableContent]);
+  }, [editableTitle]);
 
   const closeModal = () => {
     dispatch(clearSelectedCard());
   };
 
-  const handleCardContentOnChange = (e) => {
-    setEditableContent(e.target.value);
+  const handleCardTitleOnChange = (e) => {
+    setEditableTitle(e.target.value);
   };
 
   const handleOnBlur = () => {
     setSelected(false);
-    setEditableContent(card.content);
+    setEditableTitle(card.title);
     setRows(1);
   };
 
@@ -42,8 +42,8 @@ const CardModal = ({ card }) => {
     if (e.key === "Enter") {
       setSelected(false);
       setRows(1);
-      dispatch(updateCardContent({ id: card.id, content: editableContent }));
-      dispatch(setCurrentSelectedCard({ ...card, content: editableContent }));
+      dispatch(updateCardTitle({ id: card.id, title: editableTitle }));
+      dispatch(setCurrentSelectedCard({ ...card, title: editableTitle }));
     }
   };
 
@@ -66,7 +66,7 @@ const CardModal = ({ card }) => {
               <div className="flex gap-1 items-center">
                 <MdInbox size={25} />
                 <h3 className="text-xl font-semibold text-gray-800 break-all" onClick={() => setSelected(true)}>
-                  {card.content}
+                  {card.title}
                 </h3>
               </div>
             )}
@@ -74,14 +74,14 @@ const CardModal = ({ card }) => {
               <textarea
                 ref={ref}
                 type="text"
-                value={editableContent}
+                value={editableTitle}
                 id="rounded-email"
                 autoFocus
                 rows={rows}
                 onFocus={handleOnFocus}
                 className="w-full scroll-y-hidden mr-2 text-trello-gray-300 text-xl font-semibold rounded-sm border bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100"
                 onBlur={handleOnBlur}
-                onChange={handleCardContentOnChange}
+                onChange={handleCardTitleOnChange}
                 onKeyDown={handleKeyDown}
               />
             )}

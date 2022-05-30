@@ -14,10 +14,10 @@ export const cardsSlice = createSlice({
       state.value.push({ ...action.payload, id: uuidv4() });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    updateCardContent: (state, action) => {
+    updateCardTitle: (state, action) => {
       state.value.map((card) => {
         if (card.id === action.payload.id) {
-          card.content = action.payload.content;
+          card.title = action.payload.title;
         }
         return card;
       });
@@ -92,7 +92,7 @@ export const cardsSlice = createSlice({
 export const {
   addCard,
   updateAllCards,
-  updateCardContent,
+  updateCardTitle,
   deleteCard,
   deleteAllListCards,
   deleteAllCards,

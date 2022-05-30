@@ -18,7 +18,7 @@ const ListCard = ({ card, index }) => {
       {(provided) => (
         <div ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps} onClick={openModal}>
           <div className="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words">
-            <p>{card.content}</p>
+            <p>{card.title}</p>
             {card.tags.length > 0 && (
               <div className="pt-2 text-xs flex flex-wrap gap-1">
                 {tagsToShow.map((tag) => (
