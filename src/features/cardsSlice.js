@@ -23,6 +23,15 @@ export const cardsSlice = createSlice({
       });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
+    updateCardDescription: (state, action) => {
+      state.value.map((card) => {
+        if (card.id === action.payload.id) {
+          card.description = action.payload.description;
+        }
+        return card;
+      });
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
+    },
     updateAllCards: (state, action) => {
       state.value = [...action.payload];
       localStorage.setItem("cards", JSON.stringify([...state.value]));
@@ -93,6 +102,7 @@ export const {
   addCard,
   updateAllCards,
   updateCardTitle,
+  updateCardDescription,
   deleteCard,
   deleteAllListCards,
   deleteAllCards,

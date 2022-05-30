@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateCardTitle } from "../../features/cardsSlice";
+import { updateCardDescription, updateCardTitle } from "../../features/cardsSlice";
 import { clearSelectedCard, setCurrentSelectedCard } from "../../features/currentSelectedCardSlice";
 import { useSelector } from "react-redux";
 import { MdInbox, MdClose } from "react-icons/md";
@@ -10,17 +10,19 @@ import CardModalTags from "./CardModalTags/CardModalTags";
 
 const CardModal = ({ card }) => {
   const dispatch = useDispatch();
-  const ref = useRef();
+  const editableTitleRef = useRef();
+  const descriptionRef = useRef();
   const listName = useSelector((state) => state.lists.value).find((list) => list.id === card.listId).title;
   const [selected, setSelected] = useState(false);
   const [editableTitle, setEditableTitle] = useState(card.title);
+  const [editableDescription, setEditableDescription] = useState(card.description);
   const [rows, setRows] = useState(1);
 
   useEffect(() => {
-    if (ref && ref.current) {
-      ref.current.style.height = "0px";
-      const scrollHeight = ref.current.scrollHeight;
-      ref.current.style.height = scrollHeight + "px";
+    if (editableTitleRef && editableTitleRef.current) {
+      editableTitleRef.current.style.height = "0px";
+      const scrollHeight = editableTitleRef.current.scrollHeight;
+      editableTitleRef.current.style.height = scrollHeight + "px";
     }
   }, [editableTitle]);
 
@@ -30,6 +32,21 @@ const CardModal = ({ card }) => {
 
   const handleCardTitleOnChange = (e) => {
     setEditableTitle(e.target.value);
+  };
+
+  const handleDescriptionChange = (e) => {
+    setEditableDescription(e.target.value);
+  };
+
+  const handleUpdateDescription = () => {
+    dispatch(updateCardDescription({ id: card.id, description: editableDescription }));
+    dispatch(setCurrentSelectedCard({ ...card, description: editableDescription }));
+  };
+
+  const handleDesciptionKeyDown = (e) => {
+    if (e.code === "Escape") {
+      descriptionRef.current.blur();
+    }
   };
 
   const handleOnBlur = () => {
@@ -59,7 +76,7 @@ const CardModal = ({ card }) => {
       id="cardModal"
       className="z-50 min-h-full min-w-full flex fixed top-0 left-0 justify-center items-center bg-black bg-opacity-30"
     >
-      <div className="flex flex-col bg-trello-gray-400 w-218 rounded-sm  max-h-full p-4 mb-80">
+      <div className="flex flex-col bg-trello-gray-400 w-218 rounded-sm h-96 max-h-full p-4 mb-80">
         <div className="flex">
           <div className="flex flex-col w-full">
             {!selected && (
@@ -72,7 +89,7 @@ const CardModal = ({ card }) => {
             )}
             {selected && (
               <textarea
-                ref={ref}
+                ref={editableTitleRef}
                 type="text"
                 value={editableTitle}
                 id="rounded-email"
@@ -99,16 +116,23 @@ const CardModal = ({ card }) => {
         <div className="flex w-full h-full">
           <div className="flex flex-col w-2/3 py-4">
             <CardModalTags card={card} />
-            <div className="flex items-center gap-2 text-lg text-gray-800 font-semibold">
+            <div className="flex items-center gap-2 text-lg mb-2 text-gray-800 font-semibold">
               <FiAlignLeft size={20} />
               <p>Description</p>
             </div>
-            <p>
-              With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies
-              around the world are updating their terms of service agreements to comply. With less than a month to go before the
-              European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their
-              terms of service agreements to comply.
-            </p>
+            {card.description.trim().length < 0 ? (
+              <p>{card.description}</p>
+            ) : (
+              <textarea
+                ref={descriptionRef}
+                value={editableDescription}
+                onChange={handleDescriptionChange}
+                onBlur={handleUpdateDescription}
+                onKeyDown={handleDesciptionKeyDown}
+                placeholder="Add some more detail here..."
+                className="text-gray-600 p-2 bg-black bg-opacity-5 rounded-ibsm h-44"
+              />
+            )}
           </div>
           <CardModalActions card={card} />
         </div>
