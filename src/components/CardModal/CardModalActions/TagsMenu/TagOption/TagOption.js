@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { MdCheck, MdOutlineEdit } from "react-icons/md";
 
-// TODO isSelected would be used to show the check mark
 const TagOption = ({ tag, isSelected, editTag, tagClicked }) => {
   const tagRef = useRef();
 
