@@ -4,10 +4,11 @@ import { Draggable } from "react-beautiful-dnd";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentSelectedCard } from "../../../features/currentSelectedCardSlice";
 import ListCardTag from "./ListCardTag/ListCardTag";
+import { NO_COLOUR } from "../../../constants/TagColours";
 
 const ListCard = ({ card, index }) => {
   const dispatch = useDispatch();
-  const tagsToShow = useSelector((state) => state.tags.value).filter((tag) => card.tags.includes(tag.id));
+  const tagsToShow = useSelector((state) => state.tags.value).filter((tag) => card.tags.includes(tag.id) && tag.colour !== NO_COLOUR);
 
   const openModal = () => {
     dispatch(setCurrentSelectedCard(card));

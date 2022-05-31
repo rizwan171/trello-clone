@@ -70,7 +70,7 @@ const TagsMenu = ({ card }) => {
         </div>
         <button
           onClick={handleShowCreateTagForm}
-          className="py-1.5 px-2 mt-3 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-sm shadow-sm rounded-sm"
+          className="p-2 mt-3 bg-trello-blue-100 hover:bg-trello-blue-200 text-white font-semibold items-center text-sm shadow-sm rounded-sm"
         >
           Create a new tag
         </button>

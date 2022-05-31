@@ -11,4 +11,4 @@ export const TAG_COLOURS = [
   "#4B5563",
 ];
 
-export const NO_COLOUR = "##EAECF0";
+export const NO_COLOUR = "#DBDCDE";
