@@ -14,10 +14,19 @@ export const cardsSlice = createSlice({
       state.value.push({ ...action.payload, id: uuidv4() });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    updateCardContent: (state, action) => {
+    updateCardTitle: (state, action) => {
       state.value.map((card) => {
         if (card.id === action.payload.id) {
-          card.content = action.payload.content;
+          card.title = action.payload.title;
+        }
+        return card;
+      });
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
+    },
+    updateCardDescription: (state, action) => {
+      state.value.map((card) => {
+        if (card.id === action.payload.id) {
+          card.description = action.payload.description;
         }
         return card;
       });
@@ -67,18 +76,40 @@ export const cardsSlice = createSlice({
       state.value.push(...cardsToCopy);
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
+    addTagToCard: (state, action) => {
+      state.value.map((card) => {
+        if (card.id === action.payload.cardId) {
+          card.tags.push(action.payload.tagId);
+        }
+        return card;
+      });
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
+    },
+    removeTagFromCard: (state, action) => {
+      state.value.map((card) => {
+        if (card.id === action.payload.cardId) {
+          const tagIndex = card.tags.indexOf(action.payload.tagId);
+          card.tags.splice(tagIndex, 1);
+        }
+        return card;
+      });
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
+    },
   },
 });
 
 export const {
   addCard,
   updateAllCards,
-  updateCardContent,
+  updateCardTitle,
+  updateCardDescription,
   deleteCard,
   deleteAllListCards,
   deleteAllCards,
   copyAllCardsToNewList,
   copyCardToList,
   moveCardToList,
+  addTagToCard,
+  removeTagFromCard,
 } = cardsSlice.actions;
 export default cardsSlice.reducer;
