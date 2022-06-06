@@ -95,6 +95,15 @@ export const cardsSlice = createSlice({
       });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
+    addFileToCard: (state, action) => {
+      state.value.map((card) => {
+        if (card.id === action.payload.cardId) {
+          card.attachments.push(action.payload.upload);
+        }
+        return card;
+      });
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
+    }
   },
 });
 
@@ -111,5 +120,6 @@ export const {
   moveCardToList,
   addTagToCard,
   removeTagFromCard,
+  addFileToCard,
 } = cardsSlice.actions;
 export default cardsSlice.reducer;
