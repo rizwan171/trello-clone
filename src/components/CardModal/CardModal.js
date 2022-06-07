@@ -7,6 +7,7 @@ import { MdInbox, MdClose } from "react-icons/md";
 import { FiAlignLeft } from "react-icons/fi";
 import CardModalActions from "./CardModalActions/CardModalActions";
 import CardModalTags from "./CardModalTags/CardModalTags";
+import CardModalAttachment from "./CardModalAttachments/CardModalAttachment";
 
 const CardModal = ({ card }) => {
   const dispatch = useDispatch();
@@ -88,7 +89,7 @@ const CardModal = ({ card }) => {
       id="cardModal"
       className="z-50 min-h-full min-w-full flex fixed top-0 left-0 justify-center items-center bg-black bg-opacity-30"
     >
-      <div className="flex flex-col bg-trello-gray-400 w-218 rounded-sm h-96 max-h-full p-4 mb-80">
+      <div className="flex flex-col bg-trello-gray-400 w-218 rounded-sm max-h-full p-4 mb-80">
         <div className="flex">
           <div className="flex flex-col w-full">
             {!selected && (
@@ -145,6 +146,7 @@ const CardModal = ({ card }) => {
                 className="text-gray-600 p-2 bg-black bg-opacity-5 rounded-ibsm h-44"
               />
             )}
+            <CardModalAttachment card = {card}/>
           </div>
           <CardModalActions card={card} />
         </div>
