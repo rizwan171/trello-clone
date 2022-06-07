@@ -98,8 +98,9 @@ export const cardsSlice = createSlice({
     addFileToCard: (state, action) => {
       state.value.map((card) => {
         if (card.id === action.payload.cardId) {
-          card.attachments.push(action.payload.upload);
+          card.attachments = [...card.attachments, action.payload.upload];
         }
+        console.log(card.attachments)
         return card;
       });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
