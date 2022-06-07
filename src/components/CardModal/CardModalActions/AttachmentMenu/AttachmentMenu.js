@@ -1,16 +1,34 @@
-import React, { useState } from "react";
+import localforage from "localforage";
+import React, { useState, useRef } from "react";
 import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { closeMenu } from "../../../../features/modalActionMenusVisibilitySlice";
+import { v4 as uuidv4 } from "uuid";
+import { addFileToCard } from "../../../../features/cardsSlice";
 
 const AttachmentMenu = () => {
-  const [selectedFile, setSelectedFile] = useState();
-  const [isFilePicked, setIsFilePicked] = useState(false);
-  const hiddenFileInput = React.useRef(null);
+  const hiddenFileInput = useRef(null);
 
-  const handleFileSelect = (e) => {
-      setSelectedFile(e.target.files);
-      setIsFilePicked(true);
+  const handleFileSelect = async(e) => {
+      const files = e.target.files;
+      let upload = []
+      if (files) {
+          for (let i= 0; i < files.length; i++) {
+            let id = uuidv4();
+            await localforage.setItem(id, files[i])
+            upload.push(id);
+            console.log("adding", await localforage.getItem(id));
+          }
+      }
+      dispatch(
+          addFileToCard (
+              { 
+                  cardId: card.id, 
+                  upload, 
+              }
+          )
+      );
+      handleClose();
   }
 
   const dispatch = useDispatch();
@@ -21,23 +39,9 @@ const AttachmentMenu = () => {
     dispatch(closeMenu());
   };
 
-  const handleUpload = async() => {
-    await hiddenFileInput.current.click();
-    if (isFilePicked) { 
-        console.log(selectedFile);
-    } else {
-        console.log('error')
-    }
-    // dispatch(
-    //     addFileToCard (
-    //         { 
-    //             cardId: card.id, 
-    //             upload: {}, 
-    //         }
-    //     )
-    // );
-    handleClose();
-  };
+
+
+
 
   return (
     // TODO change mt-32 to something more robust
@@ -49,7 +53,7 @@ const AttachmentMenu = () => {
       <hr />
       <div className="flex flex-col mt-2 text-sm">
         <button
-          onClick={handleUpload}
+          onClick={() => hiddenFileInput.current.click()}
           className="p-2 mt-3 bg-trello-blue-100 hover:bg-trello-blue-200 text-white font-semibold items-center text-sm shadow-sm rounded-sm"
         >
           Upload from computer
