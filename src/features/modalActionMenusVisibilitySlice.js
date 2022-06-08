@@ -8,6 +8,8 @@ const initialState = {
     moveMenuOpen: false,
     deleteMenuOpen: false,
     attachmentMenuOpen: false,
+    attachmentDeleteMenuOpen: false,
+    attachmentEditMenuOpen: false,
   },
 };
 
@@ -55,9 +57,29 @@ export const modalActionMenusVisibilitySlice = createSlice({
         ...initialState.value,
         attachmentMenuOpen: true,
       }
+    },
+    showAttachmentDeleteMenu: (state, action)=> {
+      state.value = {
+        ...initialState.value,
+        attachmentDeleteMenuOpen: {
+          status: true,
+          id: action.payload.id
+        }
+      }
+      console.log(action.payload.id)
+    },
+    showAttachmentEditMenu: (state, action)=> {
+      state.value = {
+        ...initialState.value,
+        attachmentEditMenuOpen: {
+          status: true,
+          id: action.payload.id
+        }
+      }
+      console.log(action.payload.id)
     }
   },
 });
 
-export const { closeMenu, showTagsMenu, showCreateTagMenu, showCopyMenu, showMoveMenu, showDeleteMenu, showAttachmentMenu } = modalActionMenusVisibilitySlice.actions;
+export const { closeMenu, showTagsMenu, showCreateTagMenu, showCopyMenu, showMoveMenu, showDeleteMenu, showAttachmentMenu, showAttachmentDeleteMenu, showAttachmentEditMenu } = modalActionMenusVisibilitySlice.actions;
 export default modalActionMenusVisibilitySlice.reducer;
