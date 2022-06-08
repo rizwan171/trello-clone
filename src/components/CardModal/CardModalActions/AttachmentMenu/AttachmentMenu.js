@@ -4,10 +4,12 @@ import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { closeMenu } from "../../../../features/modalActionMenusVisibilitySlice";
 import { v4 as uuidv4 } from "uuid";
-import { addFileToCard } from "../../../../features/cardsSlice";
+import { addFilesToCard } from "../../../../features/cardsSlice";
+import { setCurrentSelectedCard } from "../../../../features/currentSelectedCardSlice";
 
 const AttachmentMenu = () => {
   const hiddenFileInput = useRef(null);
+  const dispatch = useDispatch();
 
   const handleFileSelect = async(e) => {
       const files = e.target.files;
@@ -15,23 +17,24 @@ const AttachmentMenu = () => {
       if (files) {
           for (let i= 0; i < files.length; i++) {
             let id = uuidv4();
+            let date = JSON.stringify(new Date());
             await localforage.setItem(id, files[i])
-            upload.push(id);
-            console.log("adding", await localforage.getItem(id));
+            upload.push({fileId: id, date, name: files[i].name});
           }
       }
+      console.log('upload',upload)
+
       dispatch(
-          addFileToCard (
+          addFilesToCard (
               { 
                   cardId: card.id, 
                   upload, 
               }
           )
       );
+      dispatch(setCurrentSelectedCard({ ...card, attachments: [...card.attachments, ...upload] }));
       handleClose();
   }
-
-  const dispatch = useDispatch();
 
   const card = useSelector((state) => state.currentSelectedCard.value);
 
