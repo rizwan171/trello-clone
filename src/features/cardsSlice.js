@@ -95,16 +95,39 @@ export const cardsSlice = createSlice({
       });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    addFileToCard: (state, action) => {
+    addFilesToCard: (state, action) => {
       state.value.map((card) => {
         if (card.id === action.payload.cardId) {
-          card.attachments = [...card.attachments, action.payload.upload];
+          card.attachments = [...card.attachments, ...action.payload.upload];
         }
-        console.log(card.attachments)
+        return card;
+      });
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
+    },
+    removeFileFromCard: (state, action) => {
+      state.value.map((card) => {
+        if (card.id === action.payload.cardId) {
+          card.attachments = card.attachments.filter(item => item.fileId !== action.payload.id)
+        }
+        return card;
+      });
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
+    },
+    updateFileInCard: (state, action)  => {
+      state.value.map((card) => {
+        if (card.id === action.payload.cardId) {
+          const index = card.attachments.findIndex((item)=> item.fileId===action.payload.id)
+          console.log('act1', index)
+          console.log('act1', action.payload.name)
+
+          card.attachments[index].name = action.payload.name;
+        }
+        console.log('act', card.attachments)
         return card;
       });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     }
+
   },
 });
 
@@ -121,6 +144,8 @@ export const {
   moveCardToList,
   addTagToCard,
   removeTagFromCard,
-  addFileToCard,
+  addFilesToCard,
+  removeFileFromCard,
+  updateFileInCard
 } = cardsSlice.actions;
 export default cardsSlice.reducer;
