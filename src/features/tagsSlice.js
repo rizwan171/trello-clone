@@ -25,8 +25,12 @@ export const tagsSlice = createSlice({
       });
       localStorage.setItem("tags", JSON.stringify([...state.value]));
     },
+    deleteTag: (state, action) => {
+      state.map.filter((tag) => tag.id !== action.payload);
+      localStorage.setItem("tags", JSON.stringify([...state.value]));
+    },
   },
 });
 
-export const { createTag, updateTag } = tagsSlice.actions;
+export const { createTag, updateTag, deleteTag } = tagsSlice.actions;
 export default tagsSlice.reducer;

@@ -95,6 +95,13 @@ export const cardsSlice = createSlice({
       });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
+    removeTagFromAllCards: (state, action) => {
+      state.value.map((card) => {
+        let tags = card.tags.filter((id) => id !== action.payload);
+        return { ...card, tags };
+      });
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
+    },
   },
 });
 
@@ -111,5 +118,6 @@ export const {
   moveCardToList,
   addTagToCard,
   removeTagFromCard,
+  removeTagFromAllCards
 } = cardsSlice.actions;
 export default cardsSlice.reducer;
