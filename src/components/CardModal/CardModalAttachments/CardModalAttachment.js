@@ -59,7 +59,6 @@ const getRelativeDate = (date) => {
 const CardModalAttachment = () => {
     const [files, setFiles] = useState([]);
     const card = useSelector((state) => state.currentSelectedCard.value)
-    const [toggle, setToggle] = useState(false);
     const attachmentMenuOpen = useSelector((state) => state.modalActionMenusVisibility.value.attachmentMenuOpen);
     const attachmentDeleteMenuOpen = useSelector((state) => state.modalActionMenusVisibility.value.attachmentDeleteMenuOpen);
     const attachmentEditMenuOpen = useSelector((state) => state.modalActionMenusVisibility.value.attachmentEditMenuOpen);
@@ -78,9 +77,6 @@ const CardModalAttachment = () => {
         setFiles(result);
     },[card])   
 
-
-
-
     const showAttachmentDeleteModal = (id) => {
         dispatch(showAttachmentDeleteMenu({id}));
     }
@@ -89,15 +85,6 @@ const CardModalAttachment = () => {
         dispatch(showAttachmentEditMenu({id}));
     }
 
-
-
-    // const produceImage = (file) => {
-    //     //https://www.youtube.com/watch?v=PDtW-XAshqs
-
-    //     return URL.createObjectURL(file);
-    // }
-
-  console.log("query", files)
 
   // TODO: Add formated date to date span
   return (<>
@@ -141,6 +128,7 @@ const CardModalAttachment = () => {
             >
                 <p>Add an attachment</p>
                 {attachmentMenuOpen && toggle && <AttachmentMenu/>}
+                
             </button>
         </>)
       }
