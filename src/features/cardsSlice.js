@@ -97,8 +97,9 @@ export const cardsSlice = createSlice({
     },
     removeTagFromAllCards: (state, action) => {
       state.value.map((card) => {
-        let tags = card.tags.filter((id) => id !== action.payload);
-        return { ...card, tags };
+          const tagIndex = card.tags.indexOf(action.payload.tagId);
+          card.tags.splice(tagIndex, 1);
+        return card;
       });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
@@ -118,6 +119,6 @@ export const {
   moveCardToList,
   addTagToCard,
   removeTagFromCard,
-  removeTagFromAllCards
+  removeTagFromAllCards,
 } = cardsSlice.actions;
 export default cardsSlice.reducer;

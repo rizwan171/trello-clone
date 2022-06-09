@@ -26,7 +26,9 @@ export const tagsSlice = createSlice({
       localStorage.setItem("tags", JSON.stringify([...state.value]));
     },
     deleteTag: (state, action) => {
-      state.map.filter((tag) => tag.id !== action.payload);
+      state.value = state.value.filter((tag) => 
+        tag.id !== action.payload
+      );
       localStorage.setItem("tags", JSON.stringify([...state.value]));
     },
   },
