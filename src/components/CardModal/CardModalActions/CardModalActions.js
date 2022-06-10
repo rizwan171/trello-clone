@@ -11,7 +11,7 @@ import CopyMenu from "./CopyMenu/CopyMenu";
 import MoveMenu from "./MoveMenu/MoveMenu";
 import DeleteMenu from "./DeleteMenu/DeleteMenu";
 
-const CardModalActions = ({ card }) => {
+const CardModalActions = () => {
   const dispatch = useDispatch();
   const tagsMenuOpen = useSelector((state) => state.modalActionMenusVisibility.value.tagsMenuOpen);
   const createTagsMenuOpen = useSelector((state) => state.modalActionMenusVisibility.value.createTagsMenuOpen);
@@ -45,8 +45,8 @@ const CardModalActions = ({ card }) => {
         <AiOutlineTag />
         <p>Tags</p>
       </button>
-      {tagsMenuOpen && <TagsMenu card={card} />}
-      {createTagsMenuOpen && <CreateTagMenu card={card} />}
+      {tagsMenuOpen && <TagsMenu />}
+      {createTagsMenuOpen && <CreateTagMenu />}
       <h4 className="text-gray-800 text-sm">Actions</h4>
       <button
         className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"

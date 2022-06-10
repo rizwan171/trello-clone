@@ -96,7 +96,7 @@ const App = () => {
           )}
         </Droppable>
       </DragDropContext>
-      {currentSelectedCard && <CardModal card={currentSelectedCard} />}
+      {currentSelectedCard && <CardModal />}
       {currentSelectedList && <ListOptionsMenu list={currentSelectedList} />}
     </div>
   );

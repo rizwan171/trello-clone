@@ -8,26 +8,26 @@ import { FiAlignLeft } from "react-icons/fi";
 import CardModalActions from "./CardModalActions/CardModalActions";
 import CardModalTags from "./CardModalTags/CardModalTags";
 
-const CardModal = ({ card }) => {
+const CardModal = () => {
   const dispatch = useDispatch();
   const editableTitleRef = useRef();
   const descriptionRef = useRef();
-  const listName = useSelector((state) => state.lists.value).find((list) => list.id === card.listId).title;
+  const currentSelectedCard = useSelector((state) => state.currentSelectedCard.value);
+  const listName = useSelector((state) => state.lists.value).find((list) => list.id === currentSelectedCard.listId).title;
   const [selected, setSelected] = useState(false);
-  const [editableTitle, setEditableTitle] = useState(card.title);
-  const [editableDescription, setEditableDescription] = useState(card.description);
+  const [editableTitle, setEditableTitle] = useState(currentSelectedCard.title);
+  const [editableDescription, setEditableDescription] = useState(currentSelectedCard.description);
   const [rows, setRows] = useState(1);
 
-  
   const close = (e) => {
     if (e.code === "Escape") {
       closeModal();
-      document.removeEventListener("keydown", close)
+      document.removeEventListener("keydown", close);
     }
-  }
+  };
 
   useEffect(() => {
-    document.addEventListener("keydown", close)
+    document.addEventListener("keydown", close);
   }, []);
 
   useEffect(() => {
@@ -51,8 +51,8 @@ const CardModal = ({ card }) => {
   };
 
   const handleUpdateDescription = () => {
-    dispatch(updateCardDescription({ id: card.id, description: editableDescription }));
-    dispatch(setCurrentSelectedCard({ ...card, description: editableDescription }));
+    dispatch(updateCardDescription({ id: currentSelectedCard.id, description: editableDescription }));
+    dispatch(setCurrentSelectedCard({ ...currentSelectedCard, description: editableDescription }));
   };
 
   const handleDesciptionKeyDown = (e) => {
@@ -63,7 +63,7 @@ const CardModal = ({ card }) => {
 
   const handleOnBlur = () => {
     setSelected(false);
-    setEditableTitle(card.title);
+    setEditableTitle(currentSelectedCard.title);
     setRows(1);
   };
 
@@ -71,8 +71,8 @@ const CardModal = ({ card }) => {
     if (e.key === "Enter") {
       setSelected(false);
       setRows(1);
-      dispatch(updateCardTitle({ id: card.id, title: editableTitle }));
-      dispatch(setCurrentSelectedCard({ ...card, title: editableTitle }));
+      dispatch(updateCardTitle({ id: currentSelectedCard.id, title: editableTitle }));
+      dispatch(setCurrentSelectedCard({ ...currentSelectedCard, title: editableTitle }));
     }
   };
 
@@ -95,7 +95,7 @@ const CardModal = ({ card }) => {
               <div className="flex gap-1 items-center">
                 <MdInbox size={25} />
                 <h3 className="text-xl font-semibold text-gray-800 break-all" onClick={() => setSelected(true)}>
-                  {card.title}
+                  {currentSelectedCard.title}
                 </h3>
               </div>
             )}
@@ -127,13 +127,13 @@ const CardModal = ({ card }) => {
         </div>
         <div className="flex w-full h-full">
           <div className="flex flex-col w-2/3 py-4">
-            <CardModalTags card={card} />
+            <CardModalTags />
             <div className="flex items-center gap-2 text-lg mb-2 text-gray-800 font-semibold">
               <FiAlignLeft size={20} />
               <p>Description</p>
             </div>
-            {card.description.trim().length < 0 ? (
-              <p>{card.description}</p>
+            {currentSelectedCard.description.trim().length < 0 ? (
+              <p>{currentSelectedCard.description}</p>
             ) : (
               <textarea
                 ref={descriptionRef}
@@ -146,7 +146,7 @@ const CardModal = ({ card }) => {
               />
             )}
           </div>
-          <CardModalActions card={card} />
+          <CardModalActions />
         </div>
       </div>
     </div>
