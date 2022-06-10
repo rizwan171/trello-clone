@@ -7,9 +7,12 @@ import { v4 as uuidv4 } from "uuid";
 import { addFilesToCard } from "../../../../features/cardsSlice";
 import { setCurrentSelectedCard } from "../../../../features/currentSelectedCardSlice";
 
-const AttachmentMenu = () => {
+const AttachmentMenu = ({ update }) => {
   const hiddenFileInput = useRef(null);
   const dispatch = useDispatch();
+
+  let style = "fixed mt-10 w-72 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4"
+  if (update) style = "fixed w-72 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4"
 
   const handleFileSelect = async(e) => {
       const files = e.target.files;
@@ -48,7 +51,7 @@ const AttachmentMenu = () => {
 
   return (
     // TODO change mt-32 to something more robust
-    <div className="fixed mt-32 w-72 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4">
+    <div className= {style}>
       <div className="relative text-center mb-2">
         <span className="text-sm block relative z-10">Attach From... </span>
         <MdClose onClick={handleClose} size={20} className="absolute right-0 top-0 z-20 cursor-pointer" />
