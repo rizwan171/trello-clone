@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentSelectedCard } from "../../../features/currentSelectedCardSlice";
 import ListCardTag from "./ListCardTag/ListCardTag";
 import { NO_COLOUR } from "../../../constants/TagColours";
+import { AiOutlinePaperClip } from "react-icons/ai";
 
 const ListCard = ({ card, index }) => {
   const dispatch = useDispatch();
@@ -27,6 +28,12 @@ const ListCard = ({ card, index }) => {
                 ))}
               </div>
             )}
+            {card.attachments.length > 0 && (
+            <div className="flex items-center text-gray-600 pt-2">
+              <AiOutlinePaperClip classNamesize={1} />
+              <span className="text-xs pl-1">{ card.attachments.length}</span>  
+            </div>)}
+            
           </div>
         </div>
       )}
