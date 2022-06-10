@@ -7,9 +7,18 @@ const initialState = {
     copyMenuOpen: false,
     moveMenuOpen: false,
     deleteMenuOpen: false,
-    attachmentMenuOpen: false,
-    attachmentDeleteMenuOpen: false,
-    attachmentEditMenuOpen: false,
+    attachmentMenuOpen: {
+      status: false,
+      id: 0
+    },
+    attachmentDeleteMenuOpen: {
+      status: false,
+      id: 0
+    },
+    attachmentEditMenuOpen: {
+      status: false,
+      id: 0
+    },
   },
 };
 
@@ -52,10 +61,14 @@ export const modalActionMenusVisibilitySlice = createSlice({
         deleteMenuOpen: true,
       };
     },
-    showAttachmentMenu: (state) => {
+    showAttachmentMenu: (state, action) => {
+      console.log('cardslide', action.payload.id)
       state.value = {
         ...initialState.value,
-        attachmentMenuOpen: true,
+        attachmentMenuOpen: {
+          status: true,
+          id: action.payload.id
+        }
       }
     },
     showAttachmentDeleteMenu: (state, action)=> {
