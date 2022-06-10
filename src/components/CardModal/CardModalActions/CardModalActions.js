@@ -37,54 +37,74 @@ const CardModalActions = ({ card }) => {
     dispatch(showDeleteMenu());
   };
 
-  const handleShowAttachmentMenu = () => {
-    dispatch(showAttachmentMenu());
+  const handleShowAttachmentMenu = (id) => {
+    dispatch(showAttachmentMenu({id}));
   }
+
   return (
     <div className="flex flex-col w-44 py-4 ml-auto">
       <h4 className="text-gray-800 text-sm">Add to card</h4>
-      <button
-        className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
-        onClick={handleShowTagsMenu}
-      >
-        <AiOutlineTag />
-        <p>Tags</p>
-      </button>
-      {tagsMenuOpen && <TagsMenu card={card} />}
+
+      <div className="flex-col flex">
+        <button
+          className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
+          onClick={handleShowTagsMenu}
+        >
+          <AiOutlineTag />
+          <p>Tags</p>
+        </button>
+        {tagsMenuOpen && <TagsMenu card={card} />}
+      </div>
+      
       {createTagsMenuOpen && <CreateTagMenu card={card} />}
       <h4 className="text-gray-800 text-sm">Actions</h4>
-      <button
-        className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
-        onClick={handleShowCopyMenu}
-      >
-        <MdOutlineContentCopy />
-        <p>Copy</p>
-      </button>
-      {copyMenuOpen && <CopyMenu />}
-      <button
-        className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
-        onClick={handleShowMoveMenu}
-      >
-        <HiOutlineArrowRight />
-        <p>Move</p>
-      </button>
-      {moveMenuOpen && <MoveMenu />}
-      <button
-        className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
-        onClick={handleShowDeleteMenu}
-      >
-        <AiOutlineDelete />
-        <p>Delete</p>
-      </button>
-      {deleteMenuOpen && <DeleteMenu />}
-      <button
-        className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
-        onClick={handleShowAttachmentMenu}
-      >
-        <AiOutlinePaperClip />
-        <p>Attachment</p>
-      </button>
-      {attachmentMenuOpen && <AttachmentMenu />}
+      
+      
+      <div className="flex-col flex">
+        <button
+          className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
+          onClick={handleShowCopyMenu}
+        >
+          <MdOutlineContentCopy />
+          <p>Copy</p>
+        </button>
+        {copyMenuOpen && <CopyMenu />}
+      </div>
+
+      <div className="flex-col flex">
+        <button
+          className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
+          onClick={handleShowMoveMenu}
+        >
+          <HiOutlineArrowRight />
+          <p>Move</p>
+        </button>
+        {moveMenuOpen && <MoveMenu />}
+      </div>
+
+
+      <div className="flex-col flex">
+        <button
+          className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
+          onClick={handleShowDeleteMenu}
+        >
+          <AiOutlineDelete />
+          <p>Delete</p>
+        </button>
+        {deleteMenuOpen && <DeleteMenu />}
+      </div>
+
+      <div className="flex-col flex">
+        <button
+          className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
+          onClick={() => handleShowAttachmentMenu(1)}
+        >
+          <AiOutlinePaperClip />
+          <p>Attachment</p>
+        </button>
+        {attachmentMenuOpen.status && attachmentMenuOpen.id===1 && <AttachmentMenu update={false}/>}
+
+      </div>
     </div>
   );
 };
