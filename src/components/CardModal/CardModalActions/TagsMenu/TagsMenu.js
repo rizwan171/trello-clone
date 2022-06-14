@@ -7,8 +7,9 @@ import { setCurrentSelectedCard } from "../../../../features/currentSelectedCard
 import { closeMenu, showCreateTagMenu } from "../../../../features/modalActionMenusVisibilitySlice";
 import TagOption from "./TagOption/TagOption";
 
-const TagsMenu = ({ card }) => {
+const TagsMenu = () => {
   const dispatch = useDispatch();
+  const currentSelectedCard = useSelector((state) => state.currentSelectedCard.value);
   const tags = useSelector((state) => state.tags.value);
   const [tagsToShow, setTagsToShow] = useState([...tags]);
 
@@ -35,12 +36,17 @@ const TagsMenu = ({ card }) => {
   };
 
   const tagClicked = (tag) => {
-    if (card.tags.includes(tag.id)) {
-      dispatch(removeTagFromCard({ cardId: card.id, tagId: tag.id }));
-      dispatch(setCurrentSelectedCard({ ...card, tags: [...card.tags.filter((tagId) => tagId !== tag.id)] }));
+    if (currentSelectedCard.tags.includes(tag.id)) {
+      dispatch(removeTagFromCard({ cardId: currentSelectedCard.id, tagId: tag.id }));
+      dispatch(
+        setCurrentSelectedCard({
+          ...currentSelectedCard,
+          tags: [...currentSelectedCard.tags.filter((tagId) => tagId !== tag.id)],
+        })
+      );
     } else {
-      dispatch(addTagToCard({ cardId: card.id, tagId: tag.id }));
-      dispatch(setCurrentSelectedCard({ ...card, tags: [...card.tags, tag.id] }));
+      dispatch(addTagToCard({ cardId: currentSelectedCard.id, tagId: tag.id }));
+      dispatch(setCurrentSelectedCard({ ...currentSelectedCard, tags: [...currentSelectedCard.tags, tag.id] }));
     }
   };
 
@@ -64,7 +70,7 @@ const TagsMenu = ({ card }) => {
         <span className="text-gray-600 my-2 font-semibold">Tags</span>
         <div className="flex flex-col w-full gap-1 font-bold">
           {tagsToShow.map((tag) => {
-            const isSelected = card.tags.includes(tag.id);
+            const isSelected = currentSelectedCard.tags.includes(tag.id);
             return <TagOption key={tag.id} tag={tag} isSelected={isSelected} editTag={handleEditTag} tagClicked={tagClicked} />;
           })}
         </div>
