@@ -62,7 +62,6 @@ export const modalActionMenusVisibilitySlice = createSlice({
       };
     },
     showAttachmentMenu: (state, action) => {
-      console.log('cardslide', action.payload.id)
       state.value = {
         ...initialState.value,
         attachmentMenuOpen: {
@@ -89,7 +88,6 @@ export const modalActionMenusVisibilitySlice = createSlice({
           id: action.payload.id
         }
       }
-      console.log(action.payload.id)
     }
   },
 });
