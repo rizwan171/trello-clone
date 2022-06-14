@@ -4,12 +4,15 @@ import TagColourOption from "./TagColourOption/TagColourOption";
 import { NO_COLOUR, TAG_COLOURS } from "../../../../../constants/TagColours.js";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedTagColour } from "../../../../../features/selectedTagColourSlice";
-import { createTag, updateTag } from "../../../../../features/tagsSlice";
+import { createTag, deleteTag, updateTag } from "../../../../../features/tagsSlice";
 import { clearCreateTagMenuData } from "../../../../../features/createTagMenuDataSlice";
 import { closeMenu, showTagsMenu } from "../../../../../features/modalActionMenusVisibilitySlice";
+import { removeTagFromAllCards } from "../../../../../features/cardsSlice";
+import { setCurrentSelectedCard } from "../../../../../features/currentSelectedCardSlice";
 
 const CreateTagMenu = () => {
   const dispatch = useDispatch();
+  const currentSelectedCard = useSelector((state) => state.currentSelectedCard.value);
   const selectedTagColour = useSelector((state) => state.selectedTagColour.value);
   const tagData = useSelector((state) => state.createTagMenuData.value);
   const [tagName, setTagName] = useState("");
@@ -50,6 +53,17 @@ const CreateTagMenu = () => {
     dispatch(showTagsMenu());
   };
 
+  const handleDeleteTag = () => {
+    dispatch(deleteTag(tagData.id));
+    dispatch(removeTagFromAllCards(tagData.id));
+
+    let updatedTags = [...currentSelectedCard.tags]
+    const tagIndex = updatedTags.indexOf(tagData.tagId);
+    updatedTags.splice(tagIndex, 1);
+    dispatch(setCurrentSelectedCard({ ...currentSelectedCard, tags: updatedTags }));
+    dispatch(showTagsMenu());
+  };
+
   const handleBack = () => {
     resetFields();
     dispatch(showTagsMenu());
@@ -62,7 +76,7 @@ const CreateTagMenu = () => {
 
   return (
     // TODO mt-16 should be replaced with something more robust
-  <div className="fixed mt-16 w-72 min-h-40 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4 ">
+    <div className="fixed mt-16 w-72 min-h-40 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4 ">
       <div className="relative text-center mb-2">
         <span className="text-sm block relative z-10">{titleText}</span>
         <MdArrowBack onClick={handleBack} size={20} className="absolute left-0 top-0 z-20 cursor-pointer" />
@@ -105,6 +119,14 @@ const CreateTagMenu = () => {
         >
           {buttonText}
         </button>
+        {tagData && (
+          <button
+            onClick={handleDeleteTag}
+            className="p-2 mt-1 bg-red-600 hover:bg-red-800 text-white font-semibold items-center text-sm shadow-sm rounded-sm"
+          >
+            Delete
+          </button>
+        )}
       </div>
     </div>
   );

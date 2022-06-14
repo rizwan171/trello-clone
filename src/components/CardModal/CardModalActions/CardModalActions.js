@@ -12,7 +12,7 @@ import MoveMenu from "./MoveMenu/MoveMenu";
 import DeleteMenu from "./DeleteMenu/DeleteMenu";
 import AttachmentMenu from "./AttachmentMenu/AttachmentMenu";
 
-const CardModalActions = ({ card }) => {
+const CardModalActions = () => {
   const dispatch = useDispatch();
   const tagsMenuOpen = useSelector((state) => state.modalActionMenusVisibility.value.tagsMenuOpen);
   const createTagsMenuOpen = useSelector((state) => state.modalActionMenusVisibility.value.createTagsMenuOpen);
@@ -44,7 +44,6 @@ const CardModalActions = ({ card }) => {
   return (
     <div className="flex flex-col w-44 py-4 ml-auto">
       <h4 className="text-gray-800 text-sm">Add to card</h4>
-
       <div className="flex-col flex">
         <button
           className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
@@ -53,12 +52,10 @@ const CardModalActions = ({ card }) => {
           <AiOutlineTag />
           <p>Tags</p>
         </button>
-        {tagsMenuOpen && <TagsMenu card={card} />}
+        {tagsMenuOpen && <TagsMenu card/>}
       </div>
-      
-      {createTagsMenuOpen && <CreateTagMenu card={card} />}
+      {createTagsMenuOpen && <CreateTagMenu/>}
       <h4 className="text-gray-800 text-sm">Actions</h4>
-      
       
       <div className="flex-col flex">
         <button
@@ -82,7 +79,6 @@ const CardModalActions = ({ card }) => {
         {moveMenuOpen && <MoveMenu />}
       </div>
 
-
       <div className="flex-col flex">
         <button
           className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
@@ -103,7 +99,6 @@ const CardModalActions = ({ card }) => {
           <p>Attachment</p>
         </button>
         {attachmentMenuOpen.status && attachmentMenuOpen.id===1 && <AttachmentMenu update={false}/>}
-
       </div>
     </div>
   );

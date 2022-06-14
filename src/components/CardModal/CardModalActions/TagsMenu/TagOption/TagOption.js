@@ -17,8 +17,8 @@ const TagOption = ({ tag, isSelected, editTag, tagClicked }) => {
   };
 
   return (
-    <div onClick={handleClick} className="flex h-8">
-      <div ref={tagRef} className="items-center flex text-white w-full rounded-ibsm cursor-pointer">
+    <div className="flex h-8">
+      <div ref={tagRef} className="items-center flex text-white w-full rounded-ibsm cursor-pointer" onClick={handleClick}>
         <span className="ml-2">{tag.name}</span>
         {isSelected && <MdCheck size={20} className="ml-auto mr-2" />}
       </div>
