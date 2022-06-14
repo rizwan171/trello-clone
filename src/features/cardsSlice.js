@@ -107,27 +107,26 @@ export const cardsSlice = createSlice({
     removeFileFromCard: (state, action) => {
       state.value.map((card) => {
         if (card.id === action.payload.cardId) {
-          card.attachments = card.attachments.filter(item => item.fileId !== action.payload.id)
+          card.attachments = card.attachments.filter((item) => item.fileId !== action.payload.id);
         }
         return card;
       });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    updateFileInCard: (state, action)  => {
+    updateFileInCard: (state, action) => {
       state.value.map((card) => {
         if (card.id === action.payload.cardId) {
-          const index = card.attachments.findIndex((item)=> item.fileId===action.payload.id)
-          console.log('act1', index)
-          console.log('act1', action.payload.name)
+          const index = card.attachments.findIndex((item) => item.fileId === action.payload.id);
+          console.log("act1", index);
+          console.log("act1", action.payload.name);
 
           card.attachments[index].name = action.payload.name;
         }
-        console.log('act', card.attachments)
+        console.log("act", card.attachments);
         return card;
       });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
-    }
-
+    },
   },
 });
 
@@ -146,6 +145,6 @@ export const {
   removeTagFromCard,
   addFilesToCard,
   removeFileFromCard,
-  updateFileInCard
+  updateFileInCard,
 } = cardsSlice.actions;
 export default cardsSlice.reducer;

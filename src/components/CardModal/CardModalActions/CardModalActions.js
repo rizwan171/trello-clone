@@ -38,7 +38,7 @@ const CardModalActions = ({ card }) => {
   };
 
   const handleShowAttachmentMenu = (id) => {
-    dispatch(showAttachmentMenu({id}));
+    dispatch(showAttachmentMenu(id));
   }
 
   return (

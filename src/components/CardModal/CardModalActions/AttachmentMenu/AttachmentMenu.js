@@ -45,12 +45,7 @@ const AttachmentMenu = ({ update }) => {
     dispatch(closeMenu());
   };
 
-
-
-
-
   return (
-    // TODO change mt-32 to something more robust
     <div className= {style}>
       <div className="relative text-center mb-2">
         <span className="text-sm block relative z-10">Attach From... </span>

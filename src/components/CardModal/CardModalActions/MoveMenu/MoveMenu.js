@@ -20,7 +20,6 @@ const MoveMenu = () => {
   };
 
   return (
-    // TODO change mt-40 to something more robust
     <div className="fixed mt-10 w-72 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4">
       <div className="relative text-center mb-2">
         <span className="text-sm block relative z-10">Move Card</span>
