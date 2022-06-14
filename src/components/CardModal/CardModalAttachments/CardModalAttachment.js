@@ -88,7 +88,6 @@ const CardModalAttachment = () => {
           isImage = false;
           color = "rgb(229 231 235)";
         }
-        console.log(item.fileId, url);
         // TODO: replace with dominant color - right now it is random
         result.push({ item, file: url, color, isImage, fileExtension });
       })
@@ -105,7 +104,7 @@ const CardModalAttachment = () => {
   };
 
   const handleShowAttachmentMenuModal = (id) => {
-    dispatch(showAttachmentMenu({ id }));
+    dispatch(showAttachmentMenu(id));
   };
 
   // TODO: Add formated date to date span
