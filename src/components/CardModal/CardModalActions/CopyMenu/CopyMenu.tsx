@@ -15,7 +15,7 @@ const CopyMenu = () => {
   };
 
   const handleCopyCard = () => {
-    dispatch(copyCardToList({ cardId: card.id, listId: selectedList }));
+    dispatch(copyCardToList({ id: card.id, listId: selectedList }));
     handleClose();
   };
 

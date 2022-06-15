@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import BoardOptionState from "../types/BoardOptionsSlice";
 
-const initialState = {
+const initialState: BoardOptionState = {
   value: false,
 };
 
@@ -8,7 +9,7 @@ export const boardOptionSlice = createSlice({
   name: "boardOptions",
   initialState,
   reducers: {
-    toggleBoardVisibility: (state) => {
+    toggleBoardVisibility: (state: BoardOptionState) => {
       const previousState = state.value;
       state.value = !previousState;
     },

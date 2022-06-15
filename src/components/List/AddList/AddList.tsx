@@ -30,7 +30,7 @@ const AddList = () => {
   const handleAddList = () => {
     setOpen(false);
     setTitle("");
-    dispatch(addList({ title }));
+    dispatch(addList(title));
   };
 
   const handleClose = () => {

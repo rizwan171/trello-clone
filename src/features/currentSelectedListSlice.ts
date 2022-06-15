@@ -1,6 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import CurrentSelectedListState, { SetCurrentSelectedListParams } from "../types/CurrentSelectedListSlice";
 
-const initialState = {
+const initialState: CurrentSelectedListState = {
   value: null,
 };
 
@@ -8,10 +9,10 @@ export const currentSelectedListSlice = createSlice({
   name: "currentSelectedList",
   initialState,
   reducers: {
-    setCurrentSelectedList: (state, action) => {
+    setCurrentSelectedList: (state: CurrentSelectedListState, action: PayloadAction<SetCurrentSelectedListParams>) => {
       state.value = { ...action.payload };
     },
-    clearSelectedList: (state, _) => {
+    clearSelectedList: (state: CurrentSelectedListState) => {
       state.value = null;
     },
   },

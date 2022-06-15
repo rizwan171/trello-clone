@@ -1,8 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
+import Tag from "../types/Tag";
+import TagsState, { CreateTagParams, UpdateTagParams } from "../types/TagsSlice";
 
-const tagsData = JSON.parse(localStorage.getItem("tags"));
-const initialState = {
+const tagsData: Tag[] = JSON.parse(localStorage.getItem("tags") || "[]");
+const initialState: TagsState = {
   value: tagsData ? tagsData : [],
 };
 
@@ -10,11 +12,11 @@ export const tagsSlice = createSlice({
   name: "tags",
   initialState,
   reducers: {
-    createTag: (state, action) => {
+    createTag: (state: TagsState, action: PayloadAction<CreateTagParams>) => {
       state.value.push({ ...action.payload, id: uuidv4() });
       localStorage.setItem("tags", JSON.stringify([...state.value]));
     },
-    updateTag: (state, action) => {
+    updateTag: (state: TagsState, action: PayloadAction<UpdateTagParams>) => {
       state.value.map((tag) => {
         if (tag.id === action.payload.id) {
           tag.name = action.payload.name;

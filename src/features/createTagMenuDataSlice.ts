@@ -1,6 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import CreateTagMenuDataState, { SetCreateTagMenuDataParams } from "../types/CreateTagMenuDataSlice";
 
-const initialState = {
+const initialState: CreateTagMenuDataState = {
   value: null,
 };
 
@@ -8,10 +9,10 @@ export const createTagMenuDataSlice = createSlice({
   name: "createTagMenuData",
   initialState,
   reducers: {
-    setCreateTagMenuData: (state, action) => {
+    setCreateTagMenuData: (state: CreateTagMenuDataState, action: PayloadAction<SetCreateTagMenuDataParams>) => {
       state.value = { ...action.payload };
     },
-    clearCreateTagMenuData: (state) => {
+    clearCreateTagMenuData: (state: CreateTagMenuDataState) => {
       state.value = null;
     },
   },

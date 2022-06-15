@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import ModalActionMenuVisibilityState from "../types/ModalActionMenuVisibilitySlice";
 
-const initialState = {
+const initialState: ModalActionMenuVisibilityState = {
   value: {
     tagsMenuOpen: false,
     createTagsMenuOpen: false,
@@ -26,36 +27,36 @@ export const modalActionMenusVisibilitySlice = createSlice({
   name: "modalActionMenusVisibility",
   initialState,
   reducers: {
-    closeMenu: (state) => {
+    closeMenu: (state: ModalActionMenuVisibilityState) => {
       state.value = {
         ...initialState.value,
       };
     },
-    showTagsMenu: (state) => {
+    showTagsMenu: (state: ModalActionMenuVisibilityState) => {
       state.value = {
         ...initialState.value,
         tagsMenuOpen: true,
       };
     },
-    showCreateTagMenu: (state) => {
+    showCreateTagMenu: (state: ModalActionMenuVisibilityState) => {
       state.value = {
         ...initialState.value,
         createTagsMenuOpen: true,
       };
     },
-    showCopyMenu: (state) => {
+    showCopyMenu: (state: ModalActionMenuVisibilityState) => {
       state.value = {
         ...initialState.value,
         copyMenuOpen: true,
       };
     },
-    showMoveMenu: (state) => {
+    showMoveMenu: (state: ModalActionMenuVisibilityState) => {
       state.value = {
         ...initialState.value,
         moveMenuOpen: true,
       };
     },
-    showDeleteMenu: (state) => {
+    showDeleteMenu: (state: ModalActionMenuVisibilityState) => {
       state.value = {
         ...initialState.value,
         deleteMenuOpen: true,

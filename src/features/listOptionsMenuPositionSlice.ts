@@ -1,6 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import ListOptionsMenuPositionState, { SendPositionDataParams } from "../types/ListOptionMenuPositionSlice";
 
-const initialState = {
+const initialState: ListOptionsMenuPositionState = {
   value: null,
 };
 
@@ -8,9 +9,9 @@ export const listOptionsMenuPositionSlice = createSlice({
   name: "listOptionsMenuPosition",
   initialState,
   reducers: {
-    sendPositionData: (state, action) => {
+    sendPositionData: (state: ListOptionsMenuPositionState, action: PayloadAction<SendPositionDataParams>) => {
       state.value = { ...action.payload };
-    }
+    },
   },
 });
 

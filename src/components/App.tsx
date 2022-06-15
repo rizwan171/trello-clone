@@ -27,7 +27,8 @@ const App = () => {
       dispatch(setNewBoardState());
     }
 
-    document.getElementById("lists-wrapper").scrollLeft = 0;
+    const listWrapper = document.getElementById("lists-wrapper");
+    if (listWrapper) listWrapper.scrollLeft = 0;
   }, []);
 
   const handleDragEnd = (result: DragUpdate) => {
@@ -63,7 +64,9 @@ const App = () => {
 
         const sourceListCards = cards.filter((card: Card) => card.listId === source.droppableId && card.id !== draggingCard.id);
         const destListCards = cards.filter((card: Card) => card.listId === destination.droppableId);
-        const otherCards = cards.filter((card: Card) => card.listId !== source.droppableId && card.listId !== destination.droppableId);
+        const otherCards = cards.filter(
+          (card: Card) => card.listId !== source.droppableId && card.listId !== destination.droppableId
+        );
 
         destListCards.splice(destination.index, 0, copyOfDraggingCard);
 
@@ -90,7 +93,7 @@ const App = () => {
             >
               {lists.map((list, index) => (
                 <List key={list.id} list={list} index={index} />
-              ))} 
+              ))}
               <AddList />
               {provided.placeholder}
             </div>

@@ -15,7 +15,7 @@ const MoveMenu = () => {
   };
 
   const handleMoveCard = () => {
-    dispatch(moveCardToList({ cardId: card.id, listId: selectedList }));
+    dispatch(moveCardToList({ id: card.id, listId: selectedList }));
     handleClose();
   };
 

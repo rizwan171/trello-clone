@@ -1,8 +1,23 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
+import Card from "../types/Card";
+import {
+  CardsState,
+  AddCardParams,
+  UpdateCardTitleParams,
+  UpdateCardDescriptionParams,
+  UpdateAllCardsParams,
+  DeleteCardParams,
+  DeleteAllListCardsParams,
+  CopyCardToListParams,
+  MoveCardToListParams,
+  CopyAllCardsToNewListParams,
+  AddTagToCardParams,
+  RemoveTagFromCardParams,
+} from "../types/CardsSlice";
 
-const cardsData = JSON.parse(localStorage.getItem("cards"));
-const initialState = {
+const cardsData: Card[] = JSON.parse(localStorage.getItem("cards") || "[]");
+const initialState: CardsState = {
   value: cardsData ? cardsData : [],
 };
 
@@ -10,11 +25,11 @@ export const cardsSlice = createSlice({
   name: "cards",
   initialState,
   reducers: {
-    addCard: (state, action) => {
+    addCard: (state: CardsState, action: PayloadAction<AddCardParams>) => {
       state.value.push({ ...action.payload, id: uuidv4() });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    updateCardTitle: (state, action) => {
+    updateCardTitle: (state: CardsState, action: PayloadAction<UpdateCardTitleParams>) => {
       state.value.map((card) => {
         if (card.id === action.payload.id) {
           card.title = action.payload.title;
@@ -23,7 +38,7 @@ export const cardsSlice = createSlice({
       });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    updateCardDescription: (state, action) => {
+    updateCardDescription: (state: CardsState, action: PayloadAction<UpdateCardDescriptionParams>) => {
       state.value.map((card) => {
         if (card.id === action.payload.id) {
           card.description = action.payload.description;
@@ -32,34 +47,36 @@ export const cardsSlice = createSlice({
       });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    updateAllCards: (state, action) => {
+    updateAllCards: (state: CardsState, action: PayloadAction<UpdateAllCardsParams>) => {
       state.value = [...action.payload];
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    deleteCard: (state, action) => {
+    deleteCard: (state: CardsState, action: PayloadAction<DeleteCardParams>) => {
       state.value = state.value.filter((card) => card.id !== action.payload);
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    deleteAllListCards: (state, action) => {
+    deleteAllListCards: (state: CardsState, action: PayloadAction<DeleteAllListCardsParams>) => {
       state.value = state.value.filter((card) => card.listId !== action.payload);
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    deleteAllCards: (state) => {
+    deleteAllCards: (state: CardsState) => {
       state.value = [];
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    copyCardToList: (state, action) => {
-      const cardToCopy = state.value.find((card) => card.id === action.payload.cardId);
-      state.value.push({
-        ...cardToCopy,
-        id: uuidv4(),
-        listId: action.payload.listId,
-      });
+    copyCardToList: (state: CardsState, action: PayloadAction<CopyCardToListParams>) => {
+      const cardToCopy = state.value.find((card) => card.id === action.payload.id);
+      if (cardToCopy) {
+        state.value.push({
+          ...cardToCopy,
+          id: uuidv4(),
+          listId: action.payload.listId,
+        });
+      }
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    moveCardToList: (state, action) => {
+    moveCardToList: (state: CardsState, action: PayloadAction<MoveCardToListParams>) => {
       state.value.map((card) => {
-        if (card.id === action.payload.cardId) {
+        if (card.id === action.payload.id) {
           card.listId = action.payload.listId;
         }
 
@@ -67,7 +84,7 @@ export const cardsSlice = createSlice({
       });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    copyAllCardsToNewList: (state, action) => {
+    copyAllCardsToNewList: (state: CardsState, action: PayloadAction<CopyAllCardsToNewListParams>) => {
       const cardsToCopy = state.value
         .filter((card) => card.listId === action.payload.from)
         .map((card) => {
@@ -76,18 +93,18 @@ export const cardsSlice = createSlice({
       state.value.push(...cardsToCopy);
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    addTagToCard: (state, action) => {
+    addTagToCard: (state: CardsState, action: PayloadAction<AddTagToCardParams>) => {
       state.value.map((card) => {
-        if (card.id === action.payload.cardId) {
+        if (card.id === action.payload.id) {
           card.tags.push(action.payload.tagId);
         }
         return card;
       });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    removeTagFromCard: (state, action) => {
+    removeTagFromCard: (state: CardsState, action: PayloadAction<RemoveTagFromCardParams>) => {
       state.value.map((card) => {
-        if (card.id === action.payload.cardId) {
+        if (card.id === action.payload.id) {
           const tagIndex = card.tags.indexOf(action.payload.tagId);
           card.tags.splice(tagIndex, 1);
         }

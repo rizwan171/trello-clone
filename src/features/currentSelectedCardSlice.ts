@@ -1,6 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import CurrentSelectedCardState, { SetCurrentSelectedCardParams } from "../types/CurrentSelectedCardSlice";
 
-const initialState = {
+const initialState: CurrentSelectedCardState = {
   value: null,
 };
 
@@ -8,10 +9,10 @@ export const currentSelectedCardSlice = createSlice({
   name: "currentSelectedCard",
   initialState,
   reducers: {
-    setCurrentSelectedCard: (state, action) => {
+    setCurrentSelectedCard: (state: CurrentSelectedCardState, action: PayloadAction<SetCurrentSelectedCardParams>) => {
       state.value = { ...action.payload };
     },
-    clearSelectedCard: (state, _) => {
+    clearSelectedCard: (state: CurrentSelectedCardState) => {
       state.value = null;
     },
   },

@@ -1,21 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 import Board from "../types/Board";
+import BoardState from "../types/BoardSlice";
 
-const boardData: Board = JSON.parse(localStorage.getItem("board"));
-const initialState: Board = {
-  value: boardData ? boardData : null,
+const boardData: Board = JSON.parse(localStorage.getItem("board") || "{}");
+const initialState: BoardState = {
+  value: boardData ? boardData : { id: uuidv4(), title: "New Board..." },
 };
+localStorage.setItem("board", JSON.stringify(initialState.value));
 
 export const boardSlice = createSlice({
   name: "cards",
   initialState,
   reducers: {
-    setNewBoardState: (state) => {
+    setNewBoardState: (state: BoardState) => {
       state.value = { id: uuidv4(), title: "New Board..." };
       localStorage.setItem("board", JSON.stringify(state.value));
     },
-    updateTitle: (state, action) => {
+    updateTitle: (state: BoardState, action: PayloadAction<string>) => {
       state.value = { ...state.value, title: action.payload };
       localStorage.setItem("board", JSON.stringify(state.value));
     },

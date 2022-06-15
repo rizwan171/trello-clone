@@ -3,4 +3,5 @@ export default interface Card {
   listId: string;
   title: string;
   description: string;
+  tags: string[];
 }

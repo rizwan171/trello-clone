@@ -41,7 +41,7 @@ const ListTitle = ({ list }) => {
       setSelected(false);
       setRows(1);
       setEditableTitle(editableTitle);
-      dispatch(editTitle({ newTitle: editableTitle, listId: list.id }));
+      dispatch(editTitle({ id: list.id, title: editableTitle }));
     }
   };
 

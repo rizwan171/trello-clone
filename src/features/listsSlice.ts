@@ -1,9 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
+import List from "../types/List";
+import ListsState, {
+  AddListParams,
+  CopyListParams,
+  EditTitleParams,
+  RemoveListParams,
+  UpdateAllListsParams,
+} from "../types/ListsSlice";
 
-const listData = JSON.parse(localStorage.getItem("lists"));
+const listData: List[] = JSON.parse(localStorage.getItem("lists") || "[]");
 
-const initialState = {
+const initialState: ListsState = {
   value: listData ? listData : [],
 };
 
@@ -11,35 +19,38 @@ export const listsSlice = createSlice({
   name: "lists",
   initialState,
   reducers: {
-    addList: (state, action) => {
-      state.value.push({ ...action.payload, id: uuidv4() });
+    addList: (state: ListsState, action: PayloadAction<AddListParams>) => {
+      state.value.push({ id: uuidv4(), title: action.payload });
       localStorage.setItem("lists", JSON.stringify([...state.value]));
     },
-    editTitle: (state, action) => {
-      const { listId, newTitle } = action.payload;
-      const listIndex = state.value.findIndex((list) => list.id === listId);
-      state.value[listIndex].title = newTitle;
-      localStorage.setItem("lists", JSON.stringify([...state.value]));
+    editTitle: (state: ListsState, action: PayloadAction<EditTitleParams>) => {
+      const listIndex = state.value.findIndex((list) => list.id === action.payload.id);
+      if (listIndex !== -1) {
+        state.value[listIndex].title = action.payload.title;
+        localStorage.setItem("lists", JSON.stringify([...state.value]));
+      }
     },
-    removeList: (state, action) => {
+    removeList: (state: ListsState, action: PayloadAction<RemoveListParams>) => {
       state.value = state.value.filter((list) => list.id !== action.payload);
       localStorage.setItem("lists", JSON.stringify([...state.value]));
     },
-    updateAllLists: (state, action) => {
+    updateAllLists: (state: ListsState, action: PayloadAction<UpdateAllListsParams>) => {
       state.value = [...action.payload];
       localStorage.setItem("lists", JSON.stringify([...state.value]));
     },
-    deleteAllLists: (state) => {
+    deleteAllLists: (state: ListsState) => {
       state.value = [];
       localStorage.setItem("lists", JSON.stringify([...state.value]));
     },
-    copyList: (state, action) => {
+    copyList: (state: ListsState, action: PayloadAction<CopyListParams>) => {
       const list = state.value.find((list) => list.id === action.payload);
-      state.value.push({
-        ...list,
-        id: uuidv4(),
-      });
-      localStorage.setItem("lists", JSON.stringify([...state.value]));
+      if (list) {
+        state.value.push({
+          ...list,
+          id: uuidv4(),
+        });
+        localStorage.setItem("lists", JSON.stringify([...state.value]));
+      }
     },
   },
 });

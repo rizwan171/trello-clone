@@ -1,18 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import SelectedTagColourState, { SetSelectedTagColourParams } from "../types/SelectedTagColourSlice";
 
-const initialState = {
-  value: "",
+const initialState: SelectedTagColourState = {
+  value: null,
 };
 
 export const selectedTagColourSlice = createSlice({
   name: "selectedTagColour",
   initialState,
   reducers: {
-    setSelectedTagColour: (state, action) => {
+    setSelectedTagColour: (state: SelectedTagColourState, action: PayloadAction<SetSelectedTagColourParams>) => {
       state.value = action.payload;
     },
-    clearSelectedTagColour: (state) => {
-      state.value = "";
+    clearSelectedTagColour: (state: SelectedTagColourState) => {
+      state.value = null;
     },
   },
 });
