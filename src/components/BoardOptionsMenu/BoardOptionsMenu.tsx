@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import {
   AiOutlinePicture,
   AiOutlineCloudUpload,
@@ -15,23 +15,25 @@ import * as Constants from "../../constants/TabIdentifiers";
 import { setNewBoardState, updateTitle } from "../../features/boardSlice";
 import { deleteAllLists, updateAllLists } from "../../features/listsSlice";
 import { deleteAllCards, updateAllCards } from "../../features/cardsSlice";
-import { useSelector } from "react-redux";
 import ExportModal from "./ExportModal/ExportModal";
-import { useDispatch } from "react-redux";
 import DeleteModal from "./DeleteModal/DeleteModal";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { TabIdentifier } from "../../types/TabIdentifier";
+import ExportData from "../../types/ExportData";
+import ImportData from "../../types/ImportData";
 
 const BoardOptionsMenu = () => {
-  const dispatch = useDispatch();
-  const board = useSelector((state) => state.board.value);
-  const lists = useSelector((state) => state.lists.value);
-  const cards = useSelector((state) => state.cards.value);
+  const dispatch = useAppDispatch();
+  const board = useAppSelector((state) => state.board.value);
+  const lists = useAppSelector((state) => state.lists.value);
+  const cards = useAppSelector((state) => state.cards.value);
   const [images, setImages] = useState([]);
   const [exportModalOpen, setExportModalOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-  const coloursRef = useRef();
-  const imageSearchRef = useRef();
-  const imageUploadRef = useRef();
-  const fileInput = useRef();
+  const coloursRef = useRef<HTMLButtonElement>(null);
+  const imageSearchRef = useRef<HTMLButtonElement>(null);
+  const imageUploadRef = useRef<HTMLButtonElement>(null);
+  const fileInput = useRef<HTMLInputElement>(null);
   const [coloursTabActive, setColoursTabActive] = useState(true);
   const [imageSearchTabActive, setImageSearchTabActive] = useState(false);
   const [imageUploadTabActive, setImageUploadTabActive] = useState(false);
@@ -40,23 +42,27 @@ const BoardOptionsMenu = () => {
     // TODO get images from somewhere
   };
 
-  const handleTabChange = (tabIdentifier) => {
+  const handleTabChange = (tabIdentifier: TabIdentifier) => {
     removeSelectedClass();
     resetActiveTab();
 
+    const coloursTab = coloursRef.current;
+    const imageSearchTab = imageSearchRef.current;
+    const imageUploadTab = imageUploadRef.current;
+    if (!coloursTab || !imageSearchTab || !imageUploadTab) {
+      return;
+    }
+
     switch (tabIdentifier) {
       case Constants.COLOURS_TAB_IDENTIFIER:
-        const coloursTab = coloursRef.current;
         coloursTab.className = coloursTab.className += " selected-tab";
         setColoursTabActive(true);
         break;
       case Constants.IMAGE_SEARCH_TAB_IDENTIFIER:
-        const imageSearchTab = imageSearchRef.current;
         imageSearchTab.className = imageSearchTab.className += " selected-tab";
         setImageSearchTabActive(true);
         break;
       case Constants.IMAGE_UPLOAD_TAB_IDENTIFIER:
-        const imageUploadTab = imageUploadRef.current;
         imageUploadTab.className = imageUploadTab.className += " selected-tab";
         setImageUploadTabActive(true);
         break;
@@ -69,6 +75,9 @@ const BoardOptionsMenu = () => {
     const coloursTab = coloursRef.current;
     const imageSearchTab = imageSearchRef.current;
     const imageUploadTab = imageUploadRef.current;
+    if (!coloursTab || !imageSearchTab || !imageUploadTab) {
+      return;
+    }
 
     coloursTab.className = coloursTab.className.replace("selected-tab", "");
     imageSearchTab.className = imageSearchTab.className.replace("selected-tab", "");
@@ -90,7 +99,7 @@ const BoardOptionsMenu = () => {
     setExportModalOpen(false);
   };
 
-  const initiateDownload = (data) => {
+  const initiateDownload = (data: ExportData) => {
     const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(JSON.stringify(data))}`;
     const link = document.createElement("a");
     link.href = jsonString;
@@ -99,27 +108,31 @@ const BoardOptionsMenu = () => {
     link.click();
     link.remove();
   };
-  
-  const handleImportAll = async(e) => {
-    console.log('changed')
-    const file = e.target.files[0];
-    let result;    
-    const fr = new FileReader();
-    fr.onload= (e) => {
-      result = JSON.parse(fr.result)
-      dispatch(deleteAllLists(result.lists))
-      dispatch(deleteAllCards(result.cards))
-      dispatch(updateTitle(result.board.title))
-      dispatch(updateAllLists(result.lists)) 
-      dispatch(updateAllCards(result.cards))
+
+  const handleImportAll = async (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const file = e.target.files[0];
+      let result: ImportData;
+      const fr = new FileReader();
+      fr.onload = () => {
+        const uploadedFileJson = fr.result as string;
+        if (uploadedFileJson) {
+          result = JSON.parse(uploadedFileJson);
+          dispatch(deleteAllLists());
+          dispatch(deleteAllCards());
+          dispatch(updateTitle(result.board.title));
+          dispatch(updateAllLists(result.lists));
+          dispatch(updateAllCards(result.cards));
+          // TODO add import for tags
+        }
+        fr.readAsText(file);
+      };
     }
-    fr.readAsText(file)
-  }
+  };
 
   const handleImportAllClick = () => {
-    fileInput.current.click();
-    console.log('clicked')
-  }
+    fileInput.current?.click();
+  };
 
   const handleExportAll = () => {
     // TODO update with board info as well when that has been implemented
@@ -136,7 +149,7 @@ const BoardOptionsMenu = () => {
   // eslint-disable-next-line
   const handleExportBoard = () => {};
 
-  const handleExportList = (listId) => {
+  const handleExportList = (listId: string) => {
     if (listId.length > 0) {
       const data = {
         list: lists.find((list) => list.id === listId),
@@ -214,10 +227,11 @@ const BoardOptionsMenu = () => {
             </div>
             <hr />
             <div className="flex flex-col">
-              <input type="file" id="file" ref={fileInput} onChange={(e) => handleImportAll(e)} className="hidden"/>
-              <button 
+              <input type="file" id="file" ref={fileInput} onChange={(e) => handleImportAll(e)} className="hidden" />
+              <button
                 className="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
-                onClick={handleImportAllClick}>
+                onClick={handleImportAllClick}
+              >
                 <AiOutlineUpload className="mr-2" size={20} />
                 Import All
               </button>

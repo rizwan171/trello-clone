@@ -1,3 +1,5 @@
-export const COLOURS_TAB_IDENTIFIER = "colours";
-export const IMAGE_SEARCH_TAB_IDENTIFIER = "image-d";
-export const IMAGE_UPLOAD_TAB_IDENTIFIER = "image-u";
+import { TabIdentifier } from "../types/TabIdentifier";
+
+export const COLOURS_TAB_IDENTIFIER: TabIdentifier = "colours";
+export const IMAGE_SEARCH_TAB_IDENTIFIER: TabIdentifier = "image-d";
+export const IMAGE_UPLOAD_TAB_IDENTIFIER: TabIdentifier = "image-u";
