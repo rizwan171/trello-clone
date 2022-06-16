@@ -9,15 +9,15 @@ const initialState = {
     deleteMenuOpen: false,
     attachmentMenuOpen: {
       status: false,
-      id: 0
+      id: 0,
     },
     attachmentDeleteMenuOpen: {
       status: false,
-      id: 0
+      id: 0,
     },
     attachmentEditMenuOpen: {
       status: false,
-      id: 0
+      id: 0,
     },
   },
 };
@@ -62,36 +62,46 @@ export const modalActionMenusVisibilitySlice = createSlice({
       };
     },
     showAttachmentMenu: (state, action) => {
-      console.log(action.payload)
+      console.log(action.payload);
       state.value = {
         ...initialState.value,
         attachmentMenuOpen: {
           status: true,
-          id: action.payload
-        }
-      }
+          id: action.payload,
+        },
+      };
     },
-    showAttachmentDeleteMenu: (state, action)=> {
+    showAttachmentDeleteMenu: (state, action) => {
       state.value = {
         ...initialState.value,
         attachmentDeleteMenuOpen: {
           status: true,
-          id: action.payload.id
-        }
-      }
-      console.log(action.payload.id)
+          id: action.payload.id,
+        },
+      };
+      console.log(action.payload.id);
     },
-    showAttachmentEditMenu: (state, action)=> {
+    showAttachmentEditMenu: (state, action) => {
       state.value = {
         ...initialState.value,
         attachmentEditMenuOpen: {
           status: true,
-          id: action.payload.id
-        }
-      }
-    }
+          id: action.payload.id,
+        },
+      };
+    },
   },
 });
 
-export const { closeMenu, showTagsMenu, showCreateTagMenu, showCopyMenu, showMoveMenu, showDeleteMenu, showAttachmentMenu, showAttachmentDeleteMenu, showAttachmentEditMenu } = modalActionMenusVisibilitySlice.actions;
+export const {
+  closeMenu,
+  showTagsMenu,
+  showCreateTagMenu,
+  showCopyMenu,
+  showMoveMenu,
+  showDeleteMenu,
+  showAttachmentMenu,
+  showAttachmentDeleteMenu,
+  showAttachmentEditMenu,
+} = modalActionMenusVisibilitySlice.actions;
 export default modalActionMenusVisibilitySlice.reducer;

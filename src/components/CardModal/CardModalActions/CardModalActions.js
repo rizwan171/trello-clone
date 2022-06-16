@@ -1,10 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { AiOutlineTag, AiOutlineDelete, AiOutlinePaperClip} from "react-icons/ai";
+import { AiOutlineTag, AiOutlineDelete, AiOutlinePaperClip } from "react-icons/ai";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import { MdOutlineContentCopy } from "react-icons/md";
 import { useSelector } from "react-redux";
-import { showCopyMenu, showDeleteMenu, showMoveMenu, showTagsMenu, showAttachmentMenu} from "../../../features/modalActionMenusVisibilitySlice";
+import {
+  showCopyMenu,
+  showDeleteMenu,
+  showMoveMenu,
+  showTagsMenu,
+  showAttachmentMenu,
+} from "../../../features/modalActionMenusVisibilitySlice";
 import CreateTagMenu from "./TagsMenu/CreateTagMenu/CreateTagMenu";
 import TagsMenu from "./TagsMenu/TagsMenu";
 import CopyMenu from "./CopyMenu/CopyMenu";
@@ -39,7 +45,7 @@ const CardModalActions = () => {
 
   const handleShowAttachmentMenu = (id) => {
     dispatch(showAttachmentMenu(id));
-  }
+  };
 
   return (
     <div className="flex flex-col w-44 py-4 ml-auto">
@@ -52,11 +58,11 @@ const CardModalActions = () => {
           <AiOutlineTag />
           <p>Tags</p>
         </button>
-        {tagsMenuOpen && <TagsMenu card/>}
+        {tagsMenuOpen && <TagsMenu card />}
       </div>
-      {createTagsMenuOpen && <CreateTagMenu/>}
+      {createTagsMenuOpen && <CreateTagMenu />}
       <h4 className="text-gray-800 text-sm">Actions</h4>
-      
+
       <div className="flex-col flex">
         <button
           className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
@@ -98,7 +104,7 @@ const CardModalActions = () => {
           <AiOutlinePaperClip />
           <p>Attachment</p>
         </button>
-        {attachmentMenuOpen.status && attachmentMenuOpen.id===1 && <AttachmentMenu update={false}/>}
+        {attachmentMenuOpen.status && attachmentMenuOpen.id === 1 && <AttachmentMenu update={false} />}
       </div>
     </div>
   );

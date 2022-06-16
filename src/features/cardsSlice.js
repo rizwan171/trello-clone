@@ -97,8 +97,8 @@ export const cardsSlice = createSlice({
     },
     removeTagFromAllCards: (state, action) => {
       state.value.map((card) => {
-          const tagIndex = card.tags.indexOf(action.payload.tagId);
-          card.tags.splice(tagIndex, 1);
+        const tagIndex = card.tags.indexOf(action.payload.tagId);
+        card.tags.splice(tagIndex, 1);
         return card;
       });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
@@ -135,7 +135,6 @@ export const cardsSlice = createSlice({
       });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    
   },
 });
 

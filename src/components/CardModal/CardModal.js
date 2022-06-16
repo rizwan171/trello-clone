@@ -146,7 +146,7 @@ const CardModal = () => {
                 className="text-gray-600 p-2 bg-black bg-opacity-5 rounded-ibsm h-44"
               />
             )}
-            <CardModalAttachment/>
+            <CardModalAttachment />
           </div>
           <CardModalActions />
         </div>

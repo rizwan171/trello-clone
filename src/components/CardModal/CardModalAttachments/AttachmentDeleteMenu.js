@@ -6,17 +6,16 @@ import { removeFileFromCard } from "../../../features/cardsSlice";
 import { setCurrentSelectedCard } from "../../../features/currentSelectedCardSlice";
 import { closeMenu } from "../../../features/modalActionMenusVisibilitySlice";
 
-const AttachmentDeleteMenu = ({id}) => {
+const AttachmentDeleteMenu = ({ id }) => {
   const card = useSelector((state) => state.currentSelectedCard.value);
   const dispatch = useDispatch();
 
   const handleDelete = () => {
     localforage.removeItem(id);
-    dispatch(removeFileFromCard({ cardId: card.id, id}));
-    dispatch(setCurrentSelectedCard({ ...card, attachments: card.attachments.filter(item => item.fileId !== id) }));    
+    dispatch(removeFileFromCard({ cardId: card.id, id }));
+    dispatch(setCurrentSelectedCard({ ...card, attachments: card.attachments.filter((item) => item.fileId !== id) }));
     handleClose();
-}
-
+  };
 
   const handleClose = () => {
     dispatch(closeMenu());
@@ -34,7 +33,7 @@ const AttachmentDeleteMenu = ({id}) => {
         <span> Deleting an attachment is permanent. There is no undo.</span>
         <button
           className="p-2 mt-3 bg-red-600 hover:bg-red-800 text-white font-semibold items-center text-sm shadow-sm rounded-sm"
-          onClick={()=> handleDelete()}
+          onClick={() => handleDelete()}
         >
           Delete
         </button>
