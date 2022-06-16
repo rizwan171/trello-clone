@@ -27,12 +27,7 @@ const AttachmentMenu = ({ update }) => {
       }
     }
 
-    dispatch(
-      addFilesToCard({
-        cardId: card.id,
-        upload,
-      })
-    );
+    dispatch(addFilesToCard({cardId: card.id, upload}));
     dispatch(setCurrentSelectedCard({ ...card, attachments: [...card.attachments, ...upload] }));
     handleClose();
   };

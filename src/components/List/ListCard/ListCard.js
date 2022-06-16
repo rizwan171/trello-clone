@@ -30,7 +30,7 @@ const ListCard = ({ card, index }) => {
             )}
             {card.attachments.length > 0 && (
             <div className="flex items-center text-gray-600 pt-2">
-              <AiOutlinePaperClip classNamesize={1} />
+              <AiOutlinePaperClip/>
               <span className="text-xs pl-1">{ card.attachments.length}</span>  
             </div>)}
             

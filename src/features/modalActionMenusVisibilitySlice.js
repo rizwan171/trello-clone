@@ -62,7 +62,6 @@ export const modalActionMenusVisibilitySlice = createSlice({
       };
     },
     showAttachmentMenu: (state, action) => {
-      console.log(action.payload);
       state.value = {
         ...initialState.value,
         attachmentMenuOpen: {
@@ -79,7 +78,6 @@ export const modalActionMenusVisibilitySlice = createSlice({
           id: action.payload.id,
         },
       };
-      console.log(action.payload.id);
     },
     showAttachmentEditMenu: (state, action) => {
       state.value = {
