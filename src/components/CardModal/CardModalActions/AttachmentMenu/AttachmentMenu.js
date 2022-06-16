@@ -1,5 +1,5 @@
 import localforage from "localforage";
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { closeMenu } from "../../../../features/modalActionMenusVisibilitySlice";
