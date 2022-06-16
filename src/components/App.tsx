@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import { DragDropContext, DragUpdate, Droppable } from "react-beautiful-dnd";
-import { useAppSelector } from "../app/hooks";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
 import List from "./List/main/List";
 import AddList from "./List/AddList/AddList";
 import NavBar from "./NavBar/NavBar";
 import BoardOptionsMenu from "./BoardOptionsMenu/BoardOptionsMenu";
-import { useDispatch } from "react-redux";
 import { updateAllLists } from "../features/listsSlice";
 import { updateAllCards } from "../features/cardsSlice";
 import CardModal from "./CardModal/CardModal";
@@ -14,7 +13,7 @@ import { setNewBoardState } from "../features/boardSlice";
 import Card from "../types/Card";
 
 const App = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const board = useAppSelector((state) => state.board.value);
   const lists = useAppSelector((state) => state.lists.value);
   const cards = useAppSelector((state) => state.cards.value);
@@ -39,13 +38,17 @@ const App = () => {
 
     if (type === "list") {
       const listToMove = newListsOrder.find((list) => list.id === draggableId);
-
-      newListsOrder.splice(source.index, 1);
-      newListsOrder.splice(destination.index, 0, listToMove);
+      if (listToMove) {
+        newListsOrder.splice(source.index, 1);
+        newListsOrder.splice(destination.index, 0, listToMove);
+      }
 
       dispatch(updateAllLists(newListsOrder));
     } else {
       const draggingCard = cards.find((card: Card) => card.id === draggableId);
+      if (!draggingCard) {
+        return;
+      }
 
       // within the same list
       if (source.droppableId === destination.droppableId) {
