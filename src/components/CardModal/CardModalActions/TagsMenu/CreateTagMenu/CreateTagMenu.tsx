@@ -10,7 +10,7 @@ import { closeMenu, showTagsMenu } from "../../../../../features/modalActionMenu
 import { removeTagFromAllCards } from "../../../../../features/cardsSlice";
 import { setCurrentSelectedCard } from "../../../../../features/currentSelectedCardSlice";
 
-const CreateTagMenu = () => {
+const CreateTagMenu: React.FunctionComponent = () => {
   const dispatch = useDispatch();
   const currentSelectedCard = useSelector((state) => state.currentSelectedCard.value);
   const selectedTagColour = useSelector((state) => state.selectedTagColour.value);

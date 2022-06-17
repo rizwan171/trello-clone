@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { MdClose } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { moveCardToList } from "../../../../features/cardsSlice";
 import { closeMenu } from "../../../../features/modalActionMenusVisibilitySlice";
 
-const MoveMenu = () => {
-  const dispatch = useDispatch();
-  const card = useSelector((state) => state.currentSelectedCard.value);
-  const lists = useSelector((state) => state.lists.value);
+const MoveMenu: React.FunctionComponent = () => {
+  const dispatch = useAppDispatch();
+  const card = useAppSelector((state) => state.currentSelectedCard.value);
+
+  const lists = useAppSelector((state) => state.lists.value);
   const [selectedList, setSelectedList] = useState("");
 
   const handleClose = () => {
@@ -15,6 +16,10 @@ const MoveMenu = () => {
   };
 
   const handleMoveCard = () => {
+    if (!card) {
+      return;
+    }
+
     dispatch(moveCardToList({ id: card.id, listId: selectedList }));
     handleClose();
   };
@@ -38,7 +43,7 @@ const MoveMenu = () => {
             Select list
           </option>
           {lists
-            .filter((list) => list.id !== card.listId)
+            .filter((list) => list.id !== card?.listId)
             .map((list) => (
               <option value={list.id} key={list.id}>
                 {list.title}

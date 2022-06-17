@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { MdClose } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { copyCardToList } from "../../../../features/cardsSlice";
 import { closeMenu } from "../../../../features/modalActionMenusVisibilitySlice";
 
-const CopyMenu = () => {
-  const dispatch = useDispatch();
-  const card = useSelector((state) => state.currentSelectedCard.value);
-  const lists = useSelector((state) => state.lists.value);
+const CopyMenu: React.FunctionComponent = () => {
+  const dispatch = useAppDispatch();
+  const card = useAppSelector((state) => state.currentSelectedCard.value);
+  const lists = useAppSelector((state) => state.lists.value);
   const [selectedList, setSelectedList] = useState("");
 
   const handleClose = () => {
@@ -15,6 +15,10 @@ const CopyMenu = () => {
   };
 
   const handleCopyCard = () => {
+    if (!card) {
+      return;
+    }
+
     dispatch(copyCardToList({ id: card.id, listId: selectedList }));
     handleClose();
   };

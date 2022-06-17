@@ -1,28 +1,28 @@
-import React, { useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "../../../../../../app/hooks";
 import { setSelectedTagColour } from "../../../../../../features/selectedTagColourSlice";
+import TagColourOptionProps from "../../../../../../types/components/TagColourOptionProps";
 
-const TagColourOption = ({ colour }) => {
-  const ref = useRef();
+const TagColourOption: React.FunctionComponent<TagColourOptionProps> = ({ colour }) => {
+  const ref = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
-  const selectedTagColour = useSelector((state) => state.selectedTagColour.value);
+  const selectedTagColour = useAppSelector((state) => state.selectedTagColour.value);
   let styles = "h-11 w-12 rounded-md cursor-pointer";
   styles += colour == selectedTagColour ? " ring-2 ring-trello-blue-100" : "";
 
   useEffect(() => {
-    ref.current.style.background = colour;
+    if (ref.current) {
+      ref.current.style.background = colour;
+    }
   }, []);
 
   const setSelectedColour = () => {
     dispatch(setSelectedTagColour(colour));
-  }
+  };
 
   return (
-    <div
-      ref={ref}
-      className={styles}
-      onClick={setSelectedColour}
-    >
+    <div ref={ref} className={styles} onClick={setSelectedColour}>
       <div className="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"></div>
     </div>
   );

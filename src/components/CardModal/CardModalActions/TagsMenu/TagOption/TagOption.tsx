@@ -1,11 +1,14 @@
 import { useEffect, useRef } from "react";
 import { MdCheck, MdOutlineEdit } from "react-icons/md";
+import TagOptionProps from "../../../../../types/components/TagOptionProps";
 
-const TagOption = ({ tag, isSelected, editTag, tagClicked }) => {
-  const tagRef = useRef();
+const TagOption: React.FunctionComponent<TagOptionProps> = ({ tag, isSelected, editTag, tagClicked }) => {
+  const tagRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    tagRef.current.style.background = tag.colour;
+    if (tagRef.current) {
+      tagRef.current.style.background = tag.colour;
+    }
   }, []);
 
   const handleEdit = () => {

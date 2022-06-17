@@ -1,18 +1,22 @@
 import { MdClose } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { deleteCard } from "../../../../features/cardsSlice";
 import { clearSelectedCard } from "../../../../features/currentSelectedCardSlice";
 import { closeMenu } from "../../../../features/modalActionMenusVisibilitySlice";
 
-const DeleteMenu = () => {
-  const dispatch = useDispatch();
-  const card = useSelector((state) => state.currentSelectedCard.value);
+const DeleteMenu: React.FunctionComponent = () => {
+  const dispatch = useAppDispatch();
+  const card = useAppSelector((state) => state.currentSelectedCard.value);
 
   const handleClose = () => {
     dispatch(closeMenu());
   };
 
   const handleDeleteCard = () => {
+    if (!card) {
+      return;
+    }
+
     dispatch(deleteCard(card.id));
     dispatch(clearSelectedCard());
     handleClose();

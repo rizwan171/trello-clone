@@ -10,7 +10,7 @@ import { updateAllCards } from "../features/cardsSlice";
 import CardModal from "./CardModal/CardModal";
 import ListOptionsMenu from "./List/ListOptionsMenu/ListOptionsMenu";
 import { setNewBoardState } from "../features/boardSlice";
-import Card from "../types/Card";
+import Card from "../types/global/Card";
 
 const App: React.FunctionComponent = () => {
   const dispatch = useAppDispatch();
