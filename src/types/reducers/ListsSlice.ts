@@ -1,4 +1,4 @@
-import List from "./List";
+import List from "../global/List";
 
 export default interface ListsState {
   value: List[];

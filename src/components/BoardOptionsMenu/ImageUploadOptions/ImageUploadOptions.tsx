@@ -1,6 +1,6 @@
 import { AiOutlinePicture, AiOutlineSave } from "react-icons/ai";
 
-const ImageUploadOptions = () => {
+const ImageUploadOptions: React.FunctionComponent = () => {
   return (
     <div className="flex flex-col">
       <div className="border-dashed border-3 border-trello-blue-100 h-38 flex flex-col items-center justify-center cursor-pointer">

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import ModalActionMenuVisibilityState from "../types/ModalActionMenuVisibilitySlice";
+import ModalActionMenuVisibilityState from "../types/reducers/ModalActionMenuVisibilitySlice";
 
 const initialState: ModalActionMenuVisibilityState = {
   value: {

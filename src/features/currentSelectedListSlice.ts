@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import CurrentSelectedListState, { SetCurrentSelectedListParams } from "../types/CurrentSelectedListSlice";
+import CurrentSelectedListState, { SetCurrentSelectedListParams } from "../types/reducers/CurrentSelectedListSlice";
 
 const initialState: CurrentSelectedListState = {
   value: null,

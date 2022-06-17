@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
-import List from "../types/List";
+import List from "../types/global/List";
 import ListsState, {
   AddListParams,
   CopyListParams,
   EditTitleParams,
   RemoveListParams,
   UpdateAllListsParams,
-} from "../types/ListsSlice";
+} from "../types/reducers/ListsSlice";
 
 const listData: List[] = JSON.parse(localStorage.getItem("lists") || "[]");
 

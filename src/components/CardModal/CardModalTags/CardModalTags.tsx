@@ -1,9 +1,10 @@
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../../app/hooks";
+import Card from "../../../types/Card";
 import AddTag from "../AddTag/AddTag";
 import CardModalTag from "./CardModalTag/CardModalTag";
 
-const CardModalTags = ({ card }) => {
-  const tagsToShow = useSelector((state) => state.tags.value).filter((tag) => card.tags.includes(tag.id));
+const CardModalTags: React.FunctionComponent<CardModalTagsProps> = ({ card }) => {
+  const tagsToShow = useAppSelector((state) => state.tags.value).filter((tag) => card.tags.includes(tag.id));
 
   return (
     <div className="flex flex-col text-sm text-gray-700">
@@ -12,10 +13,14 @@ const CardModalTags = ({ card }) => {
         {tagsToShow.map((tag) => (
           <CardModalTag key={tag.id} tag={tag} />
         ))}
-        <AddTag card={card} />
+        <AddTag />
       </div>
     </div>
   );
 };
+
+interface CardModalTagsProps {
+  card: Card
+}
 
 export default CardModalTags;

@@ -12,7 +12,7 @@ import ListOptionsMenu from "./List/ListOptionsMenu/ListOptionsMenu";
 import { setNewBoardState } from "../features/boardSlice";
 import Card from "../types/Card";
 
-const App = () => {
+const App: React.FunctionComponent = () => {
   const dispatch = useAppDispatch();
   const board = useAppSelector((state) => state.board.value);
   const lists = useAppSelector((state) => state.lists.value);

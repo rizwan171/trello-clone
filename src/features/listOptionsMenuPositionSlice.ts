@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import ListOptionsMenuPositionState, { SendPositionDataParams } from "../types/ListOptionMenuPositionSlice";
+import ListOptionsMenuPositionState, { SendPositionDataParams } from "../types/reducers/ListOptionMenuPositionSlice";
 
 const initialState: ListOptionsMenuPositionState = {
   value: null,

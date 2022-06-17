@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import CreateTagMenuDataState, { SetCreateTagMenuDataParams } from "../types/CreateTagMenuDataSlice";
+import CreateTagMenuDataState, { SetCreateTagMenuDataParams } from "../types/reducers/CreateTagMenuDataSlice";
 
 const initialState: CreateTagMenuDataState = {
   value: null,

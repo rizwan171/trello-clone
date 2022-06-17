@@ -1,4 +1,4 @@
-import Tag from "./Tag";
+import Tag from "../global/Tag";
 
 export default interface CreateTagMenuDataState {
   value: Tag | null;

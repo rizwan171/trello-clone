@@ -18,16 +18,15 @@ import { deleteAllCards, updateAllCards } from "../../features/cardsSlice";
 import ExportModal from "./ExportModal/ExportModal";
 import DeleteModal from "./DeleteModal/DeleteModal";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { TabIdentifier } from "../../types/TabIdentifier";
-import ExportData from "../../types/ExportData";
-import ImportData from "../../types/ImportData";
+import { TabIdentifier } from "../../types/global/TabIdentifier";
+import ExportData from "../../types/global/ExportData";
+import ImportData from "../../types/global/ImportData";
 
-const BoardOptionsMenu = () => {
+const BoardOptionsMenu: React.FunctionComponent = () => {
   const dispatch = useAppDispatch();
   const board = useAppSelector((state) => state.board.value);
   const lists = useAppSelector((state) => state.lists.value);
   const cards = useAppSelector((state) => state.cards.value);
-  const [images, setImages] = useState([]);
   const [exportModalOpen, setExportModalOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const coloursRef = useRef<HTMLButtonElement>(null);
@@ -37,10 +36,6 @@ const BoardOptionsMenu = () => {
   const [coloursTabActive, setColoursTabActive] = useState(true);
   const [imageSearchTabActive, setImageSearchTabActive] = useState(false);
   const [imageUploadTabActive, setImageUploadTabActive] = useState(false);
-
-  const getInitialImages = () => {
-    // TODO get images from somewhere
-  };
 
   const handleTabChange = (tabIdentifier: TabIdentifier) => {
     removeSelectedClass();

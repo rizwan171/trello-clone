@@ -1,11 +1,12 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { SetStateAction, useState } from "react";
+import { useAppSelector } from "../../../app/hooks";
+import ExportModalProps from "../../../types/components/ExportModalProps";
 
-const ExportModal = ({ closeExportModal, handleExportList }) => {
-  const lists = useSelector((state) => state.lists.value);
+const ExportModal: React.FunctionComponent<ExportModalProps> = ({ closeExportModal, handleExportList }) => {
+  const lists = useAppSelector((state) => state.lists.value);
   const [selectedListId, setSelectedListId] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { value: SetStateAction<string>; }; }) => {
     setSelectedListId(e.target.value);
   };
 

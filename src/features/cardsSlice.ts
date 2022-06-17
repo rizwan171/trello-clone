@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
-import Card from "../types/Card";
+import Card from "../types/global/Card";
 import {
   CardsState,
   AddCardParams,
@@ -14,7 +14,7 @@ import {
   CopyAllCardsToNewListParams,
   AddTagToCardParams,
   RemoveTagFromCardParams,
-} from "../types/CardsSlice";
+} from "../types/reducers/CardsSlice";
 
 const cardsData: Card[] = JSON.parse(localStorage.getItem("cards") || "[]");
 const initialState: CardsState = {

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
-import Tag from "../types/Tag";
-import TagsState, { CreateTagParams, UpdateTagParams } from "../types/TagsSlice";
+import Tag from "../types/global/Tag";
+import TagsState, { CreateTagParams, UpdateTagParams } from "../types/reducers/TagsSlice";
 
 const tagsData: Tag[] = JSON.parse(localStorage.getItem("tags") || "[]");
 const initialState: TagsState = {
