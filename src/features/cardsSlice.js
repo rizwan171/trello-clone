@@ -97,8 +97,40 @@ export const cardsSlice = createSlice({
     },
     removeTagFromAllCards: (state, action) => {
       state.value.map((card) => {
-          const tagIndex = card.tags.indexOf(action.payload.tagId);
-          card.tags.splice(tagIndex, 1);
+        const tagIndex = card.tags.indexOf(action.payload.tagId);
+        card.tags.splice(tagIndex, 1);
+        return card;
+      });
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
+    },
+    addFilesToCard: (state, action) => {
+      state.value.map((card) => {
+        if (card.id === action.payload.cardId) {
+          card.attachments = [...card.attachments, ...action.payload.upload];
+        }
+        return card;
+      });
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
+    },
+    removeFileFromCard: (state, action) => {
+      state.value.map((card) => {
+        if (card.id === action.payload.cardId) {
+          card.attachments = card.attachments.filter((item) => item.fileId !== action.payload.id);
+        }
+        return card;
+      });
+      localStorage.setItem("cards", JSON.stringify([...state.value]));
+    },
+    updateFileInCard: (state, action) => {
+      state.value.map((card) => {
+        if (card.id === action.payload.cardId) {
+          const index = card.attachments.findIndex((item) => item.fileId === action.payload.id);
+          console.log("act1", index);
+          console.log("act1", action.payload.name);
+
+          card.attachments[index].name = action.payload.name;
+        }
+        console.log("act", card.attachments);
         return card;
       });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
@@ -120,5 +152,8 @@ export const {
   addTagToCard,
   removeTagFromCard,
   removeTagFromAllCards,
+  addFilesToCard,
+  removeFileFromCard,
+  updateFileInCard,
 } = cardsSlice.actions;
 export default cardsSlice.reducer;
