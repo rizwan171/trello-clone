@@ -7,7 +7,7 @@ import { setCurrentSelectedCard } from "../../../../features/currentSelectedCard
 import { closeMenu, showCreateTagMenu } from "../../../../features/modalActionMenusVisibilitySlice";
 import TagOption from "./TagOption/TagOption";
 
-const TagsMenu = ({ card }) => {
+const TagsMenu: React.FunctionComponent<TagsMenuProps> = ({ card }) => {
   const dispatch = useDispatch();
   const tags = useSelector((state) => state.tags.value);
   const [tagsToShow, setTagsToShow] = useState([...tags]);
