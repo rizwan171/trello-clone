@@ -1,11 +1,10 @@
 import { BiCog } from "react-icons/bi";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { toggleBoardVisibility } from "../../../features/boardOptionSlice";
 
-const BoardOptions = () => {
-  const boardOpen = useSelector((state) => state.boardOptions.value);
-  const dispatch = useDispatch();
+const BoardOptions: React.FunctionComponent = () => {
+  const dispatch = useAppDispatch();
+  const boardOpen = useAppSelector((state) => state.boardOptions.value);
 
   const handleOnClick = () => {
     dispatch(toggleBoardVisibility());

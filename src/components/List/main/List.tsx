@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import ListTitle from "../ListTitle/ListTitle";
 import ListCard from "../ListCard/ListCard";
 import { Droppable, Draggable } from "react-beautiful-dnd";
-import { useSelector } from "react-redux";
 import AddCardPrompt from "../AddCard/AddCardPrompt/AddCardPrompt";
 import AddCardForm from "../AddCard/AddCardForm/AddCardForm";
+import ListProps from "../../../types/components/ListProps";
+import { useAppSelector } from "../../../app/hooks";
 
-const List = ({ list, index }) => {
-  const cards = useSelector((state) => state.cards.value.filter((card) => card.listId === list.id));
+const List: React.FunctionComponent<ListProps> = ({ list, index }) => {
+  const cards = useAppSelector((state) => state.cards.value.filter((card) => card.listId === list.id));
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    document.getElementById(list.id).scrollTop = 0;
+    const listElement = document.getElementById(list.id);
+    if (listElement) {
+      listElement.scrollTop = 0;
+    }
   }, []);
 
   return (
@@ -48,11 +51,6 @@ const List = ({ list, index }) => {
       )}
     </Draggable>
   );
-};
-
-List.propTypes = {
-  list: PropTypes.object,
-  index: PropTypes.number,
 };
 
 export default List;

@@ -1,17 +1,16 @@
-import { useState } from "react";
+import { ChangeEvent, FocusEvent, KeyboardEvent, useState } from "react";
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import { updateTitle } from "../../../features/boardSlice";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 
-const BoardTitle = () => {
-  const dispatch = useDispatch();
-  const boardData = useSelector((state) => state.board.value);
+const BoardTitle: React.FunctionComponent = () => {
+  const dispatch = useAppDispatch();
+  const boardData = useAppSelector((state) => state.board.value);
   const [selected, setSelected] = useState(false);
   const [editableTitle, setEditableTitle] = useState(boardData.title);
   const [width, setWidth] = useState(20);
 
-  const handleOnChange = (e) => {
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEditableTitle(e.target.value);
     if (e.target.value.length >= 20) setWidth(e.target.value.length);
   };
@@ -21,7 +20,7 @@ const BoardTitle = () => {
     setEditableTitle(boardData.title);
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       setSelected(false);
       dispatch(updateTitle(editableTitle));
@@ -29,7 +28,7 @@ const BoardTitle = () => {
     }
   };
 
-  const handleOnFocus = (e) => {
+  const handleOnFocus = (e: FocusEvent<HTMLInputElement>) => {
     if (e.target.value.length >= 20) setWidth(e.target.value.length);
   };
 

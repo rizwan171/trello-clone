@@ -1,10 +1,13 @@
 import { useEffect, useRef } from "react";
+import CardModalTagProps from "../../../../types/components/CardModalTagProps";
 
-const CardModalTag = ({ tag }) => {
-  const tagRef = useRef();
+const CardModalTag: React.FunctionComponent<CardModalTagProps> = ({ tag }) => {
+  const tagRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    tagRef.current.style.background = tag.colour;
+    if (tagRef.current) {
+      tagRef.current.style.background = tag.colour;
+    }
   }, []);
 
   return (

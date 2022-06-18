@@ -1,10 +1,13 @@
 import { useEffect, useRef } from "react";
+import ListCardTagProps from "../../../../types/components/ListCardTagProps";
 
-const ListCardTag = ({ tag }) => {
-  const ref = useRef();
+const ListCardTag: React.FunctionComponent<ListCardTagProps> = ({ tag }) => {
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    ref.current.style.background = tag.colour;
+    if (ref.current) {
+      ref.current.style.background = tag.colour;
+    }
   }, []);
 
   return (

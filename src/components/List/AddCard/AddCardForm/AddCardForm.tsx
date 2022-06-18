@@ -1,12 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { FiX } from "react-icons/fi";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../../../app/hooks";
 import { addCard } from "../../../../features/cardsSlice";
+import AddCardFormProps from "../../../../types/components/AddCardFormProps";
 
-const AddCardForm = ({ setOpen, open, listId }) => {
-  const dispatch = useDispatch();
+const AddCardForm: React.FunctionComponent<AddCardFormProps> = ({ setOpen, open, listId }) => {
+  const dispatch = useAppDispatch();
   const [text, setText] = useState("");
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
   const inlineStyle = open ? { height: "min-content" } : { height: 0, overflow: "hidden" };
 
   const handleClose = () => {
@@ -15,14 +16,14 @@ const AddCardForm = ({ setOpen, open, listId }) => {
   };
 
   useEffect(() => {
-    if (open) {
+    if (open && inputRef.current) {
       inputRef.current.scrollIntoView();
       inputRef.current.focus();
       inputRef.current.setSelectionRange(0, 0);
     }
   }, [open]);
 
-  const handleOnChange = (e) => {
+  const handleOnChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     if (e.target.value !== "\n") {
       setText(e.target.value);
     }
@@ -30,12 +31,12 @@ const AddCardForm = ({ setOpen, open, listId }) => {
 
   const handleAddCard = () => {
     if (text.trim().length !== 0) {
-      dispatch(addCard({ listId, title: text, tags: [], description: "", attachments: []}));
+      dispatch(addCard({ listId, title: text, tags: [], description: "", attachments: [] }));
     }
     handleClose();
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     switch (e.code) {
       case "Enter":
         handleAddCard();

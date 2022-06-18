@@ -1,35 +1,34 @@
-import { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { ChangeEvent, FocusEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { updateCardDescription, updateCardTitle } from "../../features/cardsSlice";
 import { clearSelectedCard, setCurrentSelectedCard } from "../../features/currentSelectedCardSlice";
-import { useSelector } from "react-redux";
 import { MdInbox, MdClose } from "react-icons/md";
 import { FiAlignLeft } from "react-icons/fi";
 import CardModalActions from "./CardModalActions/CardModalActions";
 import CardModalTags from "./CardModalTags/CardModalTags";
 import CardModalAttachment from "./CardModalAttachments/CardModalAttachment";
-import { useAppSelector } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
-const CardModal = () => {
-  const dispatch = useDispatch();
-  const editableTitleRef = useRef();
-  const descriptionRef = useRef();
+const CardModal: React.FunctionComponent = () => {
+  const dispatch = useAppDispatch();
   const card = useAppSelector((state) => state.currentSelectedCard.value);
-  const listName = useSelector((state) => state.lists.value).find((list) => list.id === card.listId).title;
+  const lists = useAppSelector((state) => state.lists.value);
+  const editableTitleRef = useRef<HTMLTextAreaElement>(null);
+  const descriptionRef = useRef<HTMLTextAreaElement>(null);
+  const [listName, setListName] = useState("");
   const [selected, setSelected] = useState(false);
-  const [editableTitle, setEditableTitle] = useState(card.title);
-  const [editableDescription, setEditableDescription] = useState(card.description);
+  const [editableTitle, setEditableTitle] = useState("");
+  const [editableDescription, setEditableDescription] = useState("");
   const [rows, setRows] = useState(1);
 
-  const close = (e) => {
-    if (e.code === "Escape") {
-      closeModal();
-      document.removeEventListener("keydown", close);
-    }
-  };
-
   useEffect(() => {
-    document.addEventListener("keydown", close);
+    if (lists && card) {
+      setEditableTitle(card.title);
+      setEditableDescription(card.description);
+      const cardList = lists.find((list) => list.id === card.listId);
+      setListName(cardList ? cardList.title : "");
+    }
+
+    document.addEventListener("keydown", () => close);
   }, []);
 
   useEffect(() => {
@@ -40,24 +39,39 @@ const CardModal = () => {
     }
   }, [editableTitle]);
 
+  const close = (e: KeyboardEvent) => {
+    if (e.code === "Escape") {
+      closeModal();
+      document.removeEventListener("keydown", () => close);
+    }
+  };
+
   const closeModal = () => {
     dispatch(clearSelectedCard());
   };
 
-  const handleCardTitleOnChange = (e) => {
+  const handleCardTitleOnChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setEditableTitle(e.target.value);
   };
 
-  const handleDescriptionChange = (e) => {
+  const handleDescriptionChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setEditableDescription(e.target.value);
   };
 
   const handleUpdateDescription = () => {
-    dispatch(updateCardDescription({ id: card.id, description: editableDescription }));
+    if (!card || !editableDescription) {
+      return;
+    }
+
+    dispatch(updateCardDescription({ cardId: card.id, description: editableDescription }));
     dispatch(setCurrentSelectedCard({ ...card, description: editableDescription }));
   };
 
-  const handleDesciptionKeyDown = (e) => {
+  const handleDesciptionKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (!descriptionRef.current) {
+      return;
+    }
+
     if (e.code === "Escape") {
       descriptionRef.current.blur();
     }
@@ -65,20 +79,23 @@ const CardModal = () => {
 
   const handleOnBlur = () => {
     setSelected(false);
-    setEditableTitle(card.title);
+    setEditableTitle(card ? card.title : "");
     setRows(1);
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter") {
       setSelected(false);
       setRows(1);
-      dispatch(updateCardTitle({ id: card.id, title: editableTitle }));
+
+      if (!card || !editableTitle) return;
+
+      dispatch(updateCardTitle({ cardId: card.id, title: editableTitle }));
       dispatch(setCurrentSelectedCard({ ...card, title: editableTitle }));
     }
   };
 
-  const handleOnFocus = (e) => {
+  const handleOnFocus = (e: FocusEvent<HTMLTextAreaElement>) => {
     // The scrollHeight is the height of all the content, including that which exceeds 1 row of textarea.
     // clientHeight is the height of the content the user can see at this point with 1 row of textarea.
     // To dynamically set the rows, we simply divide the scrollHeight by clientHeight and roundup
@@ -97,16 +114,15 @@ const CardModal = () => {
               <div className="flex gap-1 items-center">
                 <MdInbox size={25} />
                 <h3 className="text-xl font-semibold text-gray-800 break-all" onClick={() => setSelected(true)}>
-                  {card.title}
+                  {card?.title}
                 </h3>
               </div>
             )}
             {selected && (
               <textarea
                 ref={editableTitleRef}
-                type="text"
+                typeof="text"
                 value={editableTitle}
-                id="rounded-email"
                 autoFocus
                 rows={rows}
                 onFocus={handleOnFocus}
@@ -134,7 +150,7 @@ const CardModal = () => {
               <FiAlignLeft size={20} />
               <p>Description</p>
             </div>
-            {card.description.trim().length < 0 ? (
+            {card && card.description.trim().length < 0 ? (
               <p>{card.description}</p>
             ) : (
               <textarea

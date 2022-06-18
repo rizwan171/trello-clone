@@ -1,31 +1,30 @@
-import { useState, useRef, useEffect } from "react";
-import PropTypes from "prop-types";
+import { useState, useRef, useEffect, ChangeEvent, KeyboardEvent, ReactNode } from "react";
 import { FiPlus, FiX } from "react-icons/fi";
-import { useDispatch } from "react-redux";
 import { addList } from "../../../features/listsSlice";
+import { useAppDispatch } from "../../../app/hooks";
 
-const AddList = () => {
-  const dispatch = useDispatch();
+const AddList: React.FunctionComponent = () => {
+  const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (open) {
+    if (open && inputRef.current) {
       inputRef.current.focus();
       inputRef.current.scrollIntoView({ behavior: "smooth", inline: "center" });
     }
   }, [open]);
 
-  const handleOnChange = (e) => {
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   };
 
-  const handleKeyPress = (e) => {
-    if (e.code === 'Enter') {
+  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.code === "Enter") {
       handleAddList();
     }
-  }
+  };
 
   const handleAddList = () => {
     setOpen(false);
@@ -39,9 +38,9 @@ const AddList = () => {
   };
 
   return (
-    <div className= { open && "shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-2 flex flex-col list-wrapper" } >
-      {open ? 
-      <Collapse isOpen={open}  className= {open && "h-full"}>
+    <div className={open ? "shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-2 flex flex-col list-wrapper" : ""}>
+      {open ? (
+        <Collapse isOpen={open} className={open ? "h-full" : ""}>
           <div>
             <input
               type="text"
@@ -68,38 +67,43 @@ const AddList = () => {
                 className="text-trello-gray-200 hover:bg-trello-gray-500 cursor-pointer rounded-full ml-1 p-1"
               />
             </div>
-
-        </div>
-      </Collapse>
-      :
-      <Collapse isOpen={!open}>
-        <div
-          className="w-32 flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-2 m-1"
-          onClick={() => setOpen(true)}
-        >
-          <FiPlus size={20} />
-          <h2 className="flex-1">Add a list</h2>
-        </div>
-      </Collapse>
-    }
+          </div>
+        </Collapse>
+      ) : (
+        <Collapse isOpen={!open}>
+          <div
+            className="w-32 flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-2 m-1"
+            onClick={() => setOpen(true)}
+          >
+            <FiPlus size={20} />
+            <h2 className="flex-1">Add a list</h2>
+          </div>
+        </Collapse>
+      )}
     </div>
   );
 };
 
 export default AddList;
 
-const Collapse = ({ isOpen, children }) => {
-  const ref = useRef(null);
-  const inlineStyle = isOpen ? { height: '100%' } : { height: 0, width: 0 };
+const Collapse: React.FunctionComponent<CollapseProps> = ({ isOpen, children, className }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const inlineStyle = isOpen ? { height: "100%" } : { height: 0, width: 0 };
 
   return (
-    <div ref={ref} aria-hidden={!isOpen} style={inlineStyle} className="transition-height ease overflow-hidden duration-100">
+    <div
+      ref={ref}
+      aria-hidden={!isOpen}
+      style={inlineStyle}
+      className={"transition-height ease overflow-hidden duration-100 " + className}
+    >
       {children}
     </div>
   );
 };
 
-Collapse.propTypes = {
-  isOpen: PropTypes.bool,
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
-};
+interface CollapseProps {
+  isOpen: boolean;
+  children: ReactNode;
+  className?: string;
+}

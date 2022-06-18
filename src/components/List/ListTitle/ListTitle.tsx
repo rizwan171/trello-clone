@@ -1,32 +1,29 @@
-import { useEffect, useRef, useState } from "react";
-import PropTypes from "prop-types";
+import { ChangeEvent, FocusEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { MdMoreHoriz } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
 import { editTitle } from "../../../features/listsSlice";
 import { clearSelectedList, setCurrentSelectedList } from "../../../features/currentSelectedListSlice";
 import { sendPositionData } from "../../../features/listOptionsMenuPositionSlice";
+import ListTitleProps from "../../../types/components/ListTitleProps";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 
-const ListTitle = ({ list }) => {
+const ListTitle: React.FunctionComponent<ListTitleProps> = ({ list }) => {
+  const dispatch = useAppDispatch();
+  const currentSelectedList = useAppSelector((state) => state.currentSelectedList.value);
   const [selected, setSelected] = useState(false);
   const [editableTitle, setEditableTitle] = useState(list.title);
   const [rows, setRows] = useState(1);
-
-  const dispatch = useDispatch();
-  const currentSelectedList = useSelector((state) => state.currentSelectedList.value);
-  const moreMenuButtonRef = useRef();
-  const ref = useRef();
-
+  const moreMenuButtonRef = useRef<HTMLDivElement>(null);
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
-    if (ref && ref.current) {
-      ref.current.style.height = "0px";
-      const scrollHeight = ref.current.scrollHeight;
-      ref.current.style.height = scrollHeight + "px";
+    if (textAreaRef && textAreaRef.current) {
+      textAreaRef.current.style.height = "0px";
+      const scrollHeight = textAreaRef.current.scrollHeight;
+      textAreaRef.current.style.height = scrollHeight + "px";
     }
   }, [editableTitle]);
 
-
-  const handleOnChange = (e) => {
+  const handleOnChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setEditableTitle(e.target.value);
   };
 
@@ -36,7 +33,7 @@ const ListTitle = ({ list }) => {
     setRows(1);
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter") {
       setSelected(false);
       setRows(1);
@@ -46,6 +43,10 @@ const ListTitle = ({ list }) => {
   };
 
   const handleMoreMenu = () => {
+    if (!moreMenuButtonRef.current) {
+      return;
+    }
+
     if (!currentSelectedList) {
       dispatch(sendPositionData({ top: moreMenuButtonRef.current.offsetTop, left: moreMenuButtonRef.current.offsetLeft }));
       dispatch(setCurrentSelectedList(list));
@@ -58,25 +59,24 @@ const ListTitle = ({ list }) => {
     }
   };
 
-  const handleOnFocus = (e) => {
+  const handleOnFocus = (e: FocusEvent<HTMLTextAreaElement>) => {
     // The scrollHeight is the height of all the content, including that which exceeds 1 row of textarea.
     // clientHeight is the height of the content the user can see at this point with 1 row of textarea.
     // To dynamically set the rows, we simply divide the scrollHeight by clientHeight and roundup
     setRows(Math.ceil(e.target.scrollHeight / e.target.clientHeight));
   };
 
-
   return (
     <div className="flex items-start select-none cursor-pointer p-1">
       {selected ? (
         <textarea
-          ref = {ref}
-          type="text"
+          ref={textAreaRef}
+          typeof="text"
           value={editableTitle}
           id="rounded-email"
           autoFocus
           rows={rows}
-          onFocus = {handleOnFocus}
+          onFocus={handleOnFocus}
           className="w-full scroll-y-hidden px-1 text-trello-gray-300 font-semibold rounded-sm bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100"
           onBlur={handleOnBlur}
           onChange={handleOnChange}
@@ -92,10 +92,6 @@ const ListTitle = ({ list }) => {
       </div>
     </div>
   );
-};
-
-ListTitle.propTypes = {
-  list: PropTypes.object
 };
 
 export default ListTitle;

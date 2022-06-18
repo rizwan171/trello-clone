@@ -1,23 +1,22 @@
 import { useEffect, useRef, useState } from "react";
-import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 import { deleteAllListCards, copyAllCardsToNewList } from "../../../features/cardsSlice";
 import { clearSelectedList } from "../../../features/currentSelectedListSlice";
 import { removeList, copyList } from "../../../features/listsSlice";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 
-const ListOptionsMenu = () => {
-  const dispatch = useDispatch();
-  const ref = useRef();
-  const lists = useSelector((state) => state.lists.value);
-  const currentSelectedList = useSelector((state) => state.currentSelectedList.value);
-  const positionData = useSelector((state) => state.listOptionsMenuPosition.value);
-  const [styles, setStyles] = useState({ display: "none" });
+const ListOptionsMenu: React.FunctionComponent = () => {
+  const dispatch = useAppDispatch();
+  const lists = useAppSelector((state) => state.lists.value);
+  const currentSelectedList = useAppSelector((state) => state.currentSelectedList.value);
+  const positionData = useAppSelector((state) => state.listOptionsMenuPosition.value);
+  const [styles, setStyles] = useState({});
   const [done, setDone] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const checkIfClickedOutside = (e) => {
-      if (currentSelectedList && ref.current && !ref.current.contains(e.target)) {
+    setStyles({ display: "none" });
+    const checkIfClickedOutside = (e: MouseEvent) => {
+      if (currentSelectedList && ref.current && !ref.current.contains(e.target as Node)) {
         dispatch(clearSelectedList());
       }
     };
@@ -39,21 +38,29 @@ const ListOptionsMenu = () => {
   // this state is updated on re-render/mounted (due to how redux works), hence
   // the use of the useEffect hook below
   useEffect(() => {
-    if (done) {
-      dispatch(copyAllCardsToNewList({ from: currentSelectedList.id, to: lists[lists.length - 1].id }));
+    if (done && currentSelectedList) {
+      dispatch(copyAllCardsToNewList({ sourceListId: currentSelectedList.id, destListId: lists[lists.length - 1].id }));
       dispatch(clearSelectedList());
       setDone(false);
     }
   }, [done]);
 
   const handleCopy = () => {
-    dispatch(copyList(list.id));
+    if (!currentSelectedList) {
+      return;
+    }
+
+    dispatch(copyList(currentSelectedList.id));
     setDone(true);
   };
 
   const handleDelete = () => {
-    dispatch(deleteAllListCards(list.id));
-    dispatch(removeList(list.id));
+    if (!currentSelectedList) {
+      return;
+    }
+
+    dispatch(deleteAllListCards(currentSelectedList.id));
+    dispatch(removeList(currentSelectedList.id));
     dispatch(clearSelectedList());
   };
 
@@ -70,10 +77,6 @@ const ListOptionsMenu = () => {
       </button>
     </div>
   );
-};
-
-ListOptionsMenu.propTypes = {
-  list: PropTypes.object,
 };
 
 export default ListOptionsMenu;

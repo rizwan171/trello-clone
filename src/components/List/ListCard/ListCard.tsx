@@ -1,14 +1,14 @@
-import PropTypes from "prop-types";
 import { Draggable } from "react-beautiful-dnd";
-import { useDispatch, useSelector } from "react-redux";
 import { setCurrentSelectedCard } from "../../../features/currentSelectedCardSlice";
 import ListCardTag from "./ListCardTag/ListCardTag";
 import { NO_COLOUR } from "../../../constants/TagColours";
 import { AiOutlinePaperClip } from "react-icons/ai";
+import ListCardProps from "../../../types/components/ListCardProps";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 
-const ListCard = ({ card, index }) => {
-  const dispatch = useDispatch();
-  const tagsToShow = useSelector((state) => state.tags.value).filter((tag) => card.tags.includes(tag.id) && tag.colour !== NO_COLOUR);
+const ListCard: React.FunctionComponent<ListCardProps> = ({ card, index }) => {
+  const dispatch = useAppDispatch();
+  const tagsToShow = useAppSelector((state) => state.tags.value).filter((tag) => card.tags.includes(tag.id) && tag.colour !== NO_COLOUR);
 
   const openModal = () => {
     dispatch(setCurrentSelectedCard(card));
@@ -38,11 +38,6 @@ const ListCard = ({ card, index }) => {
       )}
     </Draggable>
   );
-};
-
-ListCard.propTypes = {
-  card: PropTypes.object,
-  index: PropTypes.number,
 };
 
 export default ListCard;

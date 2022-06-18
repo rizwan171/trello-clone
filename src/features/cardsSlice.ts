@@ -73,7 +73,7 @@ export const cardsSlice = createSlice({
         state.value.push({
           ...cardToCopy,
           id: uuidv4(),
-          listId: action.payload.listId,
+          listId: action.payload.destListId,
         });
       }
       localStorage.setItem("cards", JSON.stringify([...state.value]));
