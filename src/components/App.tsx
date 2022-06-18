@@ -92,7 +92,7 @@ const App: React.FunctionComponent = () => {
               id="lists-wrapper"
               className="flex px-6 pt-3 lists-wrapper overflow-x-auto"
               ref={provided.innerRef}
-              {...[provided.droppableProps]}
+              {...provided.droppableProps}
             >
               {lists.map((list, index) => (
                 <List key={list.id} list={list} index={index} />
