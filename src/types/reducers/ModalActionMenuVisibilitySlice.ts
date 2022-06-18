@@ -4,8 +4,8 @@ export default interface ModalActionMenuVisibilityState {
   value: ModalActionMenuVisibilityData;
 }
 
-export type ShowAttachmentMenuParams = number;
+export type ShowAttachmentMenuParams = number | string;
 
-export type ShowAttachmentDeleteMenuParams = number;
+export type ShowAttachmentDeleteMenuParams = number | string;
 
-export type ShowAttachmentEditMenuParams = number;
+export type ShowAttachmentEditMenuParams = number | string;

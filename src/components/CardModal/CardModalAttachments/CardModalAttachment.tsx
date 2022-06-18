@@ -10,7 +10,7 @@ import AttachmentDeleteMenu from "./AttachmentDeleteMenu";
 import AttachmentEditMenu from "./AttachmentEditMenu";
 import AttachmentMenu from "../CardModalActions/AttachmentMenu/AttachmentMenu";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import Attachment from "../../../types/global/Attachment";
+import { AttachmentFile } from "../../../types/components/CardModalAttachment";
 
 const randomInt = (min: number, max: number) => {
   // min and max included
@@ -74,36 +74,42 @@ const CardModalAttachment: React.FunctionComponent = () => {
   const attachmentEditMenuOpen = useAppSelector((state) => state.modalActionMenusVisibility.value.attachmentEditMenuOpen);
   const [files, setFiles] = useState<AttachmentFile[]>([]);
 
-  useEffect(async (): Promise<void> => {
+  useEffect(() => {
     if (!card) {
       return;
     }
-    const result: AttachmentFile[] = [];
-    await Promise.all(
-      card.attachments.map(async (item) => {
-        const file: File | null = await localforage.getItem(item.id);
-        if (file) {
-          const url = URL.createObjectURL(file);
-          const fileExtension = getFileExtension(file.name);
-          let color = arrColors[randomInt(0, arrColors.length)];
-          let isImage = true;
-          if (fileExtension !== "png") {
-            isImage = false;
-            color = "rgb(229 231 235)";
+
+    const getAttachments = async () => {
+      const result: AttachmentFile[] = [];
+      await Promise.all(
+        card.attachments.map(async (item) => {
+          const file: File | null = await localforage.getItem(item.id);
+          if (file) {
+            const url = URL.createObjectURL(file);
+            const fileExtension = getFileExtension(file.name);
+            let color = arrColors[randomInt(0, arrColors.length)];
+            let isImage = true;
+            if (fileExtension !== "png") {
+              isImage = false;
+              color = "rgb(229 231 235)";
+            }
+            // TODO: replace with dominant color - right now it is random
+            result.push({ item, file: url, color, isImage, fileExtension });
           }
-          // TODO: replace with dominant color - right now it is random
-          result.push({ item, file: url, color, isImage, fileExtension });
-        }
-      })
-    );
-    setFiles(result);
+        })
+      );
+
+      setFiles(result);
+    };
+
+    getAttachments();
   }, [card]);
 
-  const handleShowAttachmentDeleteModal = (id: number) => {
+  const handleShowAttachmentDeleteModal = (id: string) => {
     dispatch(showAttachmentDeleteMenu(id));
   };
 
-  const handleShowAttachmentEditModal = (id: number) => {
+  const handleShowAttachmentEditModal = (id: string) => {
     dispatch(showAttachmentEditMenu(id));
   };
 
@@ -157,10 +163,7 @@ const CardModalAttachment: React.FunctionComponent = () => {
                   <span>
                     {" "}
                     -{" "}
-                    <span
-                      className="underline cursor-pointer"
-                      onClick={() => handleShowAttachmentEditModal(attachment.item.id)}
-                    >
+                    <span className="underline cursor-pointer" onClick={() => handleShowAttachmentEditModal(attachment.item.id)}>
                       Edit
                     </span>{" "}
                   </span>
@@ -188,13 +191,5 @@ const CardModalAttachment: React.FunctionComponent = () => {
     </>
   );
 };
-
-interface AttachmentFile {
-  item: Attachment;
-  file: string;
-  color: string;
-  isImage: boolean;
-  fileExtension: string;
-}
 
 export default CardModalAttachment;

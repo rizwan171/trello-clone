@@ -6,14 +6,14 @@ export default interface ModalActionMenuVisibilityData {
   deleteMenuOpen: boolean;
   attachmentMenuOpen: {
     status: boolean;
-    id: number;
+    id: number | string;
   };
   attachmentDeleteMenuOpen: {
     status: boolean;
-    id: number;
+    id: number | string;
   };
   attachmentEditMenuOpen: {
     status: boolean;
-    id: number;
+    id: number | string;
   };
 }
