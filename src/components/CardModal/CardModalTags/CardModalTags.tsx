@@ -1,10 +1,10 @@
 import { useAppSelector } from "../../../app/hooks";
-import Card from "../../../types/Card";
 import AddTag from "../AddTag/AddTag";
 import CardModalTag from "./CardModalTag/CardModalTag";
 
-const CardModalTags: React.FunctionComponent<CardModalTagsProps> = ({ card }) => {
-  const tagsToShow = useAppSelector((state) => state.tags.value).filter((tag) => card.tags.includes(tag.id));
+const CardModalTags: React.FunctionComponent = () => {
+  const card = useAppSelector(state => state.currentSelectedCard.value)
+  const tagsToShow = useAppSelector((state) => state.tags.value).filter((tag) => card?.tags.includes(tag.id));
 
   return (
     <div className="flex flex-col text-sm text-gray-700">
@@ -18,9 +18,5 @@ const CardModalTags: React.FunctionComponent<CardModalTagsProps> = ({ card }) =>
     </div>
   );
 };
-
-interface CardModalTagsProps {
-  card: Card
-}
 
 export default CardModalTags;

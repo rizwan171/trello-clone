@@ -8,27 +8,28 @@ import { FiAlignLeft } from "react-icons/fi";
 import CardModalActions from "./CardModalActions/CardModalActions";
 import CardModalTags from "./CardModalTags/CardModalTags";
 import CardModalAttachment from "./CardModalAttachments/CardModalAttachment";
+import { useAppSelector } from "../../app/hooks";
 
-const CardModal = ({ card }) => {
+const CardModal = () => {
   const dispatch = useDispatch();
   const editableTitleRef = useRef();
   const descriptionRef = useRef();
+  const card = useAppSelector((state) => state.currentSelectedCard.value);
   const listName = useSelector((state) => state.lists.value).find((list) => list.id === card.listId).title;
   const [selected, setSelected] = useState(false);
   const [editableTitle, setEditableTitle] = useState(card.title);
   const [editableDescription, setEditableDescription] = useState(card.description);
   const [rows, setRows] = useState(1);
 
-  
   const close = (e) => {
     if (e.code === "Escape") {
       closeModal();
-      document.removeEventListener("keydown", close)
+      document.removeEventListener("keydown", close);
     }
-  }
+  };
 
   useEffect(() => {
-    document.addEventListener("keydown", close)
+    document.addEventListener("keydown", close);
   }, []);
 
   useEffect(() => {
@@ -128,7 +129,7 @@ const CardModal = ({ card }) => {
         </div>
         <div className="flex w-full h-full">
           <div className="flex flex-col w-2/3 py-4">
-            <CardModalTags card={card} />
+            <CardModalTags />
             <div className="flex items-center gap-2 text-lg mb-2 text-gray-800 font-semibold">
               <FiAlignLeft size={20} />
               <p>Description</p>
@@ -148,7 +149,7 @@ const CardModal = ({ card }) => {
             )}
             <CardModalAttachment />
           </div>
-          <CardModalActions card={card} />
+          <CardModalActions />
         </div>
       </div>
     </div>

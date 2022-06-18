@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { AiOutlineTag, AiOutlineDelete, AiOutlinePaperClip } from "react-icons/ai";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import { MdOutlineContentCopy } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "react-redux";
 import {
   showCopyMenu,
   showDeleteMenu,
@@ -16,15 +16,16 @@ import CopyMenu from "./CopyMenu/CopyMenu";
 import MoveMenu from "./MoveMenu/MoveMenu";
 import DeleteMenu from "./DeleteMenu/DeleteMenu";
 import AttachmentMenu from "./AttachmentMenu/AttachmentMenu";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 
-const CardModalActions = ({ card }) => {
-  const dispatch = useDispatch();
-  const tagsMenuOpen = useSelector((state) => state.modalActionMenusVisibility.value.tagsMenuOpen);
-  const createTagsMenuOpen = useSelector((state) => state.modalActionMenusVisibility.value.createTagsMenuOpen);
-  const copyMenuOpen = useSelector((state) => state.modalActionMenusVisibility.value.copyMenuOpen);
-  const moveMenuOpen = useSelector((state) => state.modalActionMenusVisibility.value.moveMenuOpen);
-  const deleteMenuOpen = useSelector((state) => state.modalActionMenusVisibility.value.deleteMenuOpen);
-  const attachmentMenuOpen = useSelector((state) => state.modalActionMenusVisibility.value.attachmentMenuOpen);
+const CardModalActions = () => {
+  const dispatch = useAppDispatch();
+  const tagsMenuOpen = useAppSelector((state) => state.modalActionMenusVisibility.value.tagsMenuOpen);
+  const createTagsMenuOpen = useAppSelector((state) => state.modalActionMenusVisibility.value.createTagsMenuOpen);
+  const copyMenuOpen = useAppSelector((state) => state.modalActionMenusVisibility.value.copyMenuOpen);
+  const moveMenuOpen = useAppSelector((state) => state.modalActionMenusVisibility.value.moveMenuOpen);
+  const deleteMenuOpen = useAppSelector((state) => state.modalActionMenusVisibility.value.deleteMenuOpen);
+  const attachmentMenuOpen = useAppSelector((state) => state.modalActionMenusVisibility.value.attachmentMenuOpen);
 
   const handleShowTagsMenu = () => {
     dispatch(showTagsMenu());
@@ -57,7 +58,7 @@ const CardModalActions = ({ card }) => {
           <AiOutlineTag />
           <p>Tags</p>
         </button>
-        {tagsMenuOpen && <TagsMenu card />}
+        {tagsMenuOpen && <TagsMenu />}
       </div>
       {createTagsMenuOpen && <CreateTagMenu />}
       <h4 className="text-gray-800 text-sm">Actions</h4>

@@ -1,18 +1,20 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { MdClose } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { addTagToCard, removeTagFromCard } from "../../../../features/cardsSlice";
 import { setCreateTagMenuData } from "../../../../features/createTagMenuDataSlice";
 import { setCurrentSelectedCard } from "../../../../features/currentSelectedCardSlice";
 import { closeMenu, showCreateTagMenu } from "../../../../features/modalActionMenusVisibilitySlice";
+import Tag from "../../../../types/global/Tag";
 import TagOption from "./TagOption/TagOption";
 
-const TagsMenu: React.FunctionComponent<TagsMenuProps> = ({ card }) => {
-  const dispatch = useDispatch();
-  const tags = useSelector((state) => state.tags.value);
+const TagsMenu: React.FunctionComponent = () => {
+  const dispatch = useAppDispatch();
+  const card = useAppSelector((state) => state.currentSelectedCard.value);
+  const tags = useAppSelector((state) => state.tags.value);
   const [tagsToShow, setTagsToShow] = useState([...tags]);
 
-  const handleSearch = (e) => {
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const searchQuery = e.target.value.toLowerCase().trim();
     if (searchQuery.length === 0) {
       setTagsToShow([...tags]);
@@ -21,7 +23,7 @@ const TagsMenu: React.FunctionComponent<TagsMenuProps> = ({ card }) => {
     }
   };
 
-  const handleEditTag = (tag) => {
+  const handleEditTag = (tag: Tag) => {
     dispatch(setCreateTagMenuData(tag));
     dispatch(showCreateTagMenu());
   };
@@ -34,7 +36,11 @@ const TagsMenu: React.FunctionComponent<TagsMenuProps> = ({ card }) => {
     dispatch(closeMenu());
   };
 
-  const tagClicked = (tag) => {
+  const tagClicked = (tag: Tag) => {
+    if (!card) {
+      return;
+    }
+
     if (card.tags.includes(tag.id)) {
       dispatch(removeTagFromCard({ id: card.id, tagId: tag.id }));
       dispatch(setCurrentSelectedCard({ ...card, tags: [...card.tags.filter((tagId) => tagId !== tag.id)] }));
@@ -63,6 +69,10 @@ const TagsMenu: React.FunctionComponent<TagsMenuProps> = ({ card }) => {
         <span className="text-gray-600 my-2 font-semibold">Tags</span>
         <div className="flex flex-col w-full gap-1 font-bold">
           {tagsToShow.map((tag) => {
+            if (!card) {
+              return;
+            }
+
             const isSelected = card.tags.includes(tag.id);
             return <TagOption key={tag.id} tag={tag} isSelected={isSelected} editTag={handleEditTag} tagClicked={tagClicked} />;
           })}

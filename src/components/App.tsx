@@ -103,8 +103,8 @@ const App: React.FunctionComponent = () => {
           )}
         </Droppable>
       </DragDropContext>
-      {currentSelectedCard && <CardModal card={currentSelectedCard} />}
-      {currentSelectedList && <ListOptionsMenu list={currentSelectedList} />}
+      {currentSelectedCard && <CardModal />}
+      {currentSelectedList && <ListOptionsMenu />}
     </div>
   );
 };

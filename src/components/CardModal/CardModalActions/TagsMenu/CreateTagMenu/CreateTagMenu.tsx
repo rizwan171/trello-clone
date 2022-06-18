@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, SetStateAction, useEffect, useState } from "react";
 import { MdClose, MdArrowBack, MdClear } from "react-icons/md";
 import TagColourOption from "./TagColourOption/TagColourOption";
 import { NO_COLOUR, TAG_COLOURS } from "../../../../../constants/TagColours";
-import { useDispatch, useSelector } from "react-redux";
 import { setSelectedTagColour } from "../../../../../features/selectedTagColourSlice";
 import { createTag, deleteTag, updateTag } from "../../../../../features/tagsSlice";
 import { clearCreateTagMenuData } from "../../../../../features/createTagMenuDataSlice";
 import { closeMenu, showTagsMenu } from "../../../../../features/modalActionMenusVisibilitySlice";
 import { removeTagFromAllCards } from "../../../../../features/cardsSlice";
 import { setCurrentSelectedCard } from "../../../../../features/currentSelectedCardSlice";
+import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
 
 const CreateTagMenu: React.FunctionComponent = () => {
-  const dispatch = useDispatch();
-  const currentSelectedCard = useSelector((state) => state.currentSelectedCard.value);
-  const selectedTagColour = useSelector((state) => state.selectedTagColour.value);
-  const tagData = useSelector((state) => state.createTagMenuData.value);
+  const dispatch = useAppDispatch();
+  const currentSelectedCard = useAppSelector((state) => state.currentSelectedCard.value);
+  const selectedTagColour = useAppSelector((state) => state.selectedTagColour.value);
+  const tagData = useAppSelector((state) => state.createTagMenuData.value);
   const [tagName, setTagName] = useState("");
   const [titleText, setTitleText] = useState("New Tag");
   const [buttonText, setButtonText] = useState("Create");
@@ -37,14 +37,18 @@ const CreateTagMenu: React.FunctionComponent = () => {
     setTitleText("New Tag");
     setButtonText("Create");
     dispatch(setSelectedTagColour(""));
-    dispatch(clearCreateTagMenuData({}));
+    dispatch(clearCreateTagMenuData());
   };
 
-  const handleOnChange = (e) => {
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTagName(e.target.value);
   };
 
   const handleCreateTag = () => {
+    if (!selectedTagColour) {
+      return;
+    }
+
     if (tagData) {
       dispatch(updateTag({ ...tagData, name: tagName, colour: selectedTagColour }));
     } else {
@@ -54,11 +58,15 @@ const CreateTagMenu: React.FunctionComponent = () => {
   };
 
   const handleDeleteTag = () => {
+    if (!tagData || !currentSelectedCard) {
+      return;
+    }
+
     dispatch(deleteTag(tagData.id));
     dispatch(removeTagFromAllCards(tagData.id));
 
-    let updatedTags = [...currentSelectedCard.tags]
-    const tagIndex = updatedTags.indexOf(tagData.tagId);
+    const updatedTags = [...currentSelectedCard.tags];
+    const tagIndex = updatedTags.indexOf(tagData.id);
     updatedTags.splice(tagIndex, 1);
     dispatch(setCurrentSelectedCard({ ...currentSelectedCard, tags: updatedTags }));
     dispatch(showTagsMenu());

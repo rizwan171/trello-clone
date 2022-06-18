@@ -6,7 +6,7 @@ import { deleteAllListCards, copyAllCardsToNewList } from "../../../features/car
 import { clearSelectedList } from "../../../features/currentSelectedListSlice";
 import { removeList, copyList } from "../../../features/listsSlice";
 
-const ListOptionsMenu = ({ list }) => {
+const ListOptionsMenu = () => {
   const dispatch = useDispatch();
   const ref = useRef();
   const lists = useSelector((state) => state.lists.value);

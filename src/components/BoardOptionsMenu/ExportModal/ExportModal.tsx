@@ -1,4 +1,4 @@
-import { SetStateAction, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useAppSelector } from "../../../app/hooks";
 import ExportModalProps from "../../../types/components/ExportModalProps";
 
@@ -6,7 +6,7 @@ const ExportModal: React.FunctionComponent<ExportModalProps> = ({ closeExportMod
   const lists = useAppSelector((state) => state.lists.value);
   const [selectedListId, setSelectedListId] = useState("");
 
-  const handleChange = (e: { target: { value: SetStateAction<string>; }; }) => {
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedListId(e.target.value);
   };
 
