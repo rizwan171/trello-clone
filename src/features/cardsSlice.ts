@@ -14,6 +14,10 @@ import {
   CopyAllCardsToNewListParams,
   AddTagToCardParams,
   RemoveTagFromCardParams,
+  RemoveTagFromAllCardsParams,
+  AddFilesToCardParams,
+  RemoveFileFromCardParams,
+  UpdateFileInCardParams,
 } from "../types/reducers/CardsSlice";
 
 const cardsData: Card[] = JSON.parse(localStorage.getItem("cards") || "[]");
@@ -31,7 +35,7 @@ export const cardsSlice = createSlice({
     },
     updateCardTitle: (state: CardsState, action: PayloadAction<UpdateCardTitleParams>) => {
       state.value.map((card) => {
-        if (card.id === action.payload.id) {
+        if (card.id === action.payload.cardId) {
           card.title = action.payload.title;
         }
         return card;
@@ -40,7 +44,7 @@ export const cardsSlice = createSlice({
     },
     updateCardDescription: (state: CardsState, action: PayloadAction<UpdateCardDescriptionParams>) => {
       state.value.map((card) => {
-        if (card.id === action.payload.id) {
+        if (card.id === action.payload.cardId) {
           card.description = action.payload.description;
         }
         return card;
@@ -64,7 +68,7 @@ export const cardsSlice = createSlice({
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
     copyCardToList: (state: CardsState, action: PayloadAction<CopyCardToListParams>) => {
-      const cardToCopy = state.value.find((card) => card.id === action.payload.id);
+      const cardToCopy = state.value.find((card) => card.id === action.payload.cardId);
       if (cardToCopy) {
         state.value.push({
           ...cardToCopy,
@@ -76,8 +80,8 @@ export const cardsSlice = createSlice({
     },
     moveCardToList: (state: CardsState, action: PayloadAction<MoveCardToListParams>) => {
       state.value.map((card) => {
-        if (card.id === action.payload.id) {
-          card.listId = action.payload.listId;
+        if (card.id === action.payload.cardId) {
+          card.listId = action.payload.destListId;
         }
 
         return card;
@@ -86,16 +90,16 @@ export const cardsSlice = createSlice({
     },
     copyAllCardsToNewList: (state: CardsState, action: PayloadAction<CopyAllCardsToNewListParams>) => {
       const cardsToCopy = state.value
-        .filter((card) => card.listId === action.payload.from)
+        .filter((card) => card.listId === action.payload.sourceListId)
         .map((card) => {
-          return { ...card, id: uuidv4(), listId: action.payload.to };
+          return { ...card, id: uuidv4(), listId: action.payload.destListId };
         });
       state.value.push(...cardsToCopy);
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
     addTagToCard: (state: CardsState, action: PayloadAction<AddTagToCardParams>) => {
       state.value.map((card) => {
-        if (card.id === action.payload.id) {
+        if (card.id === action.payload.cardId) {
           card.tags.push(action.payload.tagId);
         }
         return card;
@@ -104,7 +108,7 @@ export const cardsSlice = createSlice({
     },
     removeTagFromCard: (state: CardsState, action: PayloadAction<RemoveTagFromCardParams>) => {
       state.value.map((card) => {
-        if (card.id === action.payload.id) {
+        if (card.id === action.payload.cardId) {
           const tagIndex = card.tags.indexOf(action.payload.tagId);
           card.tags.splice(tagIndex, 1);
         }
@@ -112,40 +116,37 @@ export const cardsSlice = createSlice({
       });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    removeTagFromAllCards: (state, action) => {
+    removeTagFromAllCards: (state: CardsState, action: PayloadAction<RemoveTagFromAllCardsParams>) => {
       state.value.map((card) => {
-        const tagIndex = card.tags.indexOf(action.payload.tagId);
+        const tagIndex = card.tags.indexOf(action.payload);
         card.tags.splice(tagIndex, 1);
         return card;
       });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    addFilesToCard: (state, action) => {
+    addFilesToCard: (state: CardsState, action: PayloadAction<AddFilesToCardParams>) => {
       state.value.map((card) => {
         if (card.id === action.payload.cardId) {
-          card.attachments = [...card.attachments, ...action.payload.upload];
+          card.attachments = [...card.attachments, ...action.payload.uploadedFiles];
         }
         return card;
       });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    removeFileFromCard: (state, action) => {
+    removeFileFromCard: (state: CardsState, action: PayloadAction<RemoveFileFromCardParams>) => {
       state.value.map((card) => {
         if (card.id === action.payload.cardId) {
-          card.attachments = card.attachments.filter((item) => item.fileId !== action.payload.id);
+          card.attachments = card.attachments.filter((file) => file.id !== action.payload.fileId);
         }
         return card;
       });
       localStorage.setItem("cards", JSON.stringify([...state.value]));
     },
-    updateFileInCard: (state, action) => {
+    updateFileInCard: (state: CardsState, action: PayloadAction<UpdateFileInCardParams>) => {
       state.value.map((card) => {
         if (card.id === action.payload.cardId) {
-          const index = card.attachments.findIndex((item) => item.fileId === action.payload.id);
-          console.log("act1", index);
-          console.log("act1", action.payload.name);
-
-          card.attachments[index].name = action.payload.name;
+          const index = card.attachments.findIndex((file) => file.id === action.payload.fileId);
+          card.attachments[index].name = action.payload.fileName;
         }
         console.log("act", card.attachments);
         return card;

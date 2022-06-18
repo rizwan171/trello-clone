@@ -42,10 +42,10 @@ const TagsMenu: React.FunctionComponent = () => {
     }
 
     if (card.tags.includes(tag.id)) {
-      dispatch(removeTagFromCard({ id: card.id, tagId: tag.id }));
+      dispatch(removeTagFromCard({ cardId: card.id, tagId: tag.id }));
       dispatch(setCurrentSelectedCard({ ...card, tags: [...card.tags.filter((tagId) => tagId !== tag.id)] }));
     } else {
-      dispatch(addTagToCard({ id: card.id, tagId: tag.id }));
+      dispatch(addTagToCard({ cardId: card.id, tagId: tag.id }));
       dispatch(setCurrentSelectedCard({ ...card, tags: [...card.tags, tag.id] }));
     }
   };

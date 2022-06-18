@@ -1,12 +1,11 @@
 import { useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
-import { useAppSelector } from "../../../../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../../../app/hooks";
 import { setSelectedTagColour } from "../../../../../../features/selectedTagColourSlice";
 import TagColourOptionProps from "../../../../../../types/components/TagColourOptionProps";
 
 const TagColourOption: React.FunctionComponent<TagColourOptionProps> = ({ colour }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const selectedTagColour = useAppSelector((state) => state.selectedTagColour.value);
   let styles = "h-11 w-12 rounded-md cursor-pointer";
   styles += colour == selectedTagColour ? " ring-2 ring-trello-blue-100" : "";

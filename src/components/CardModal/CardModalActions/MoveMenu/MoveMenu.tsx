@@ -9,7 +9,7 @@ const MoveMenu: React.FunctionComponent = () => {
   const card = useAppSelector((state) => state.currentSelectedCard.value);
 
   const lists = useAppSelector((state) => state.lists.value);
-  const [selectedList, setSelectedList] = useState("");
+  const [selectedListId, setSelectedListId] = useState("");
 
   const handleClose = () => {
     dispatch(closeMenu());
@@ -20,7 +20,7 @@ const MoveMenu: React.FunctionComponent = () => {
       return;
     }
 
-    dispatch(moveCardToList({ id: card.id, listId: selectedList }));
+    dispatch(moveCardToList({ cardId: card.id, destListId: selectedListId }));
     handleClose();
   };
 
@@ -36,8 +36,8 @@ const MoveMenu: React.FunctionComponent = () => {
         <select
           name="lists"
           className="rounded-sm p-2 w-full max-w-full overflow-ellipsis"
-          value={selectedList}
-          onChange={(e) => setSelectedList(e.target.value)}
+          value={selectedListId}
+          onChange={(e) => setSelectedListId(e.target.value)}
         >
           <option value="" selected disabled hidden>
             Select list

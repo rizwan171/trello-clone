@@ -3,3 +3,9 @@ import ModalActionMenuVisibilityData from "../global/ModalActionMenuVisibilityDa
 export default interface ModalActionMenuVisibilityState {
   value: ModalActionMenuVisibilityData;
 }
+
+export type ShowAttachmentMenuParams = number;
+
+export type ShowAttachmentDeleteMenuParams = number;
+
+export type ShowAttachmentEditMenuParams = number;

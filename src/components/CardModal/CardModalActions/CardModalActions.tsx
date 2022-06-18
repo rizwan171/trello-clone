@@ -1,8 +1,6 @@
-import { useDispatch } from "react-redux";
 import { AiOutlineTag, AiOutlineDelete, AiOutlinePaperClip } from "react-icons/ai";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import { MdOutlineContentCopy } from "react-icons/md";
-import { useAppSelector } from "react-redux";
 import {
   showCopyMenu,
   showDeleteMenu,
@@ -18,7 +16,7 @@ import DeleteMenu from "./DeleteMenu/DeleteMenu";
 import AttachmentMenu from "./AttachmentMenu/AttachmentMenu";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 
-const CardModalActions = () => {
+const CardModalActions: React.FunctionComponent = () => {
   const dispatch = useAppDispatch();
   const tagsMenuOpen = useAppSelector((state) => state.modalActionMenusVisibility.value.tagsMenuOpen);
   const createTagsMenuOpen = useAppSelector((state) => state.modalActionMenusVisibility.value.createTagsMenuOpen);
@@ -43,7 +41,7 @@ const CardModalActions = () => {
     dispatch(showDeleteMenu());
   };
 
-  const handleShowAttachmentMenu = (id) => {
+  const handleShowAttachmentMenu = (id: number) => {
     dispatch(showAttachmentMenu(id));
   };
 

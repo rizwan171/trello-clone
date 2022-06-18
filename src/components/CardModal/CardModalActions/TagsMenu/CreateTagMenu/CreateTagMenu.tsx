@@ -1,4 +1,4 @@
-import { ChangeEvent, SetStateAction, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { MdClose, MdArrowBack, MdClear } from "react-icons/md";
 import TagColourOption from "./TagColourOption/TagColourOption";
 import { NO_COLOUR, TAG_COLOURS } from "../../../../../constants/TagColours";

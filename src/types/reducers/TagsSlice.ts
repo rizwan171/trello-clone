@@ -5,4 +5,5 @@ export default interface TagsState {
 }
 
 export type CreateTagParams = Omit<Tag, "id">;
+
 export type UpdateTagParams = Tag;

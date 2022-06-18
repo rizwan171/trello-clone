@@ -1,5 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
-import ModalActionMenuVisibilityState from "../types/reducers/ModalActionMenuVisibilitySlice";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import ModalActionMenuVisibilityState, {
+  ShowAttachmentDeleteMenuParams,
+  ShowAttachmentEditMenuParams,
+  ShowAttachmentMenuParams,
+} from "../types/reducers/ModalActionMenuVisibilitySlice";
 
 const initialState: ModalActionMenuVisibilityState = {
   value: {
@@ -62,7 +66,7 @@ export const modalActionMenusVisibilitySlice = createSlice({
         deleteMenuOpen: true,
       };
     },
-    showAttachmentMenu: (state, action) => {
+    showAttachmentMenu: (state: ModalActionMenuVisibilityState, action: PayloadAction<ShowAttachmentMenuParams>) => {
       state.value = {
         ...initialState.value,
         attachmentMenuOpen: {
@@ -71,21 +75,21 @@ export const modalActionMenusVisibilitySlice = createSlice({
         },
       };
     },
-    showAttachmentDeleteMenu: (state, action) => {
+    showAttachmentDeleteMenu: (state: ModalActionMenuVisibilityState, action: PayloadAction<ShowAttachmentDeleteMenuParams>) => {
       state.value = {
         ...initialState.value,
         attachmentDeleteMenuOpen: {
           status: true,
-          id: action.payload.id,
+          id: action.payload,
         },
       };
     },
-    showAttachmentEditMenu: (state, action) => {
+    showAttachmentEditMenu: (state: ModalActionMenuVisibilityState, action: PayloadAction<ShowAttachmentEditMenuParams>) => {
       state.value = {
         ...initialState.value,
         attachmentEditMenuOpen: {
           status: true,
-          id: action.payload.id,
+          id: action.payload,
         },
       };
     },

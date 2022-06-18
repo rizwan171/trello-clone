@@ -1,26 +1,31 @@
 import React, { useState } from "react";
 import { MdClose } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { updateFileInCard } from "../../../features/cardsSlice";
 import { setCurrentSelectedCard } from "../../../features/currentSelectedCardSlice";
 import { closeMenu } from "../../../features/modalActionMenusVisibilitySlice";
+import AttachmentEditMenuProps from "../../../types/components/AttachmentEditMenuProps";
 
-const AttachmentEditMenu = ({ id, name }) => {
-  const [fileName, setFileName] = useState(name);
-  const card = useSelector((state) => state.currentSelectedCard.value);
-  const dispatch = useDispatch();
+const AttachmentEditMenu: React.FunctionComponent<AttachmentEditMenuProps> = ({ fileId, fileName }) => {
+  const dispatch = useAppDispatch();
+  const card = useAppSelector((state) => state.currentSelectedCard.value);
+  const [editableFileName, setEditableFileName] = useState(fileName);
 
   const handleEdit = () => {
-    dispatch(updateFileInCard({ cardId: card.id, id, name: fileName }));
-    const index = card.attachments.findIndex((item) => item.fileId === id);
-    let attachments = card.attachments.map((item) => {
-      if (item.fileId === id) {
-        return { fileId: id, date: item.date, name: fileName };
+    if (!card) {
+      return;
+    }
+
+    dispatch(updateFileInCard({ cardId: card.id, fileId, fileName: editableFileName }));
+    const index = card.attachments.findIndex((item) => item.id === fileId);
+    const attachments = card.attachments.map((item) => {
+      if (item.id === fileId) {
+        return { id: fileId, date: item.date, name: editableFileName };
       }
       return item;
     });
     if (index !== -1) {
-      dispatch(setCurrentSelectedCard({ ...card, attachments }));
+      dispatch(setCurrentSelectedCard({ ...card, attachments: [...attachments] }));
     }
 
     handleClose();
@@ -44,8 +49,8 @@ const AttachmentEditMenu = ({ id, name }) => {
         <input
           type="text"
           autoFocus
-          onChange={(e) => setFileName(e.target.value.trim())}
-          value={fileName}
+          onChange={(e) => setEditableFileName(e.target.value.trim())}
+          value={editableFileName}
           className="w-full h-9 py-1 px-2 border-1 mb-2 border-gray-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100"
           placeholder="Change attachment name"
         />

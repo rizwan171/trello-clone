@@ -8,7 +8,7 @@ const CopyMenu: React.FunctionComponent = () => {
   const dispatch = useAppDispatch();
   const card = useAppSelector((state) => state.currentSelectedCard.value);
   const lists = useAppSelector((state) => state.lists.value);
-  const [selectedList, setSelectedList] = useState("");
+  const [selectedListId, setSelectedListId] = useState("");
 
   const handleClose = () => {
     dispatch(closeMenu());
@@ -19,7 +19,7 @@ const CopyMenu: React.FunctionComponent = () => {
       return;
     }
 
-    dispatch(copyCardToList({ id: card.id, listId: selectedList }));
+    dispatch(copyCardToList({ cardId: card.id, destListId: selectedListId }));
     handleClose();
   };
 
@@ -35,8 +35,8 @@ const CopyMenu: React.FunctionComponent = () => {
         <select
           name="lists"
           className="rounded-sm p-2 w-full max-w-full overflow-ellipsis"
-          value={selectedList}
-          onChange={(e) => setSelectedList(e.target.value)}
+          value={selectedListId}
+          onChange={(e) => setSelectedListId(e.target.value)}
         >
           <option value="" selected disabled hidden>
             Select list

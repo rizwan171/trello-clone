@@ -1,19 +1,23 @@
+import { useAppSelector, useAppDispatch } from "../../../app/hooks";
 import localforage from "localforage";
-import React from "react";
 import { MdClose } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
 import { removeFileFromCard } from "../../../features/cardsSlice";
 import { setCurrentSelectedCard } from "../../../features/currentSelectedCardSlice";
 import { closeMenu } from "../../../features/modalActionMenusVisibilitySlice";
+import AttachmentDeleteMenuProps from "../../../types/components/AttatchmentDeleteMenuProps";
 
-const AttachmentDeleteMenu = ({ id }) => {
-  const card = useSelector((state) => state.currentSelectedCard.value);
-  const dispatch = useDispatch();
+const AttachmentDeleteMenu: React.FunctionComponent<AttachmentDeleteMenuProps> = ({ fileId }) => {
+  const dispatch = useAppDispatch();
+  const card = useAppSelector((state) => state.currentSelectedCard.value);
 
   const handleDelete = () => {
-    localforage.removeItem(id);
-    dispatch(removeFileFromCard({ cardId: card.id, id }));
-    dispatch(setCurrentSelectedCard({ ...card, attachments: card.attachments.filter((item) => item.fileId !== id) }));
+    if (!card) {
+      return;
+    }
+
+    localforage.removeItem(fileId);
+    dispatch(removeFileFromCard({ cardId: card.id, fileId }));
+    dispatch(setCurrentSelectedCard({ ...card, attachments: card.attachments.filter((file) => file.id !== fileId) }));
     handleClose();
   };
 
