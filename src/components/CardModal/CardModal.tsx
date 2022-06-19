@@ -28,7 +28,7 @@ const CardModal: React.FunctionComponent = () => {
       setListName(cardList ? cardList.title : "");
     }
 
-    document.addEventListener("keydown", () => close);
+    document.addEventListener("keydown", close);
   }, []);
 
   useEffect(() => {
@@ -39,10 +39,11 @@ const CardModal: React.FunctionComponent = () => {
     }
   }, [editableTitle]);
 
-  const close = (e: KeyboardEvent) => {
+  // React.KeyboardEvent is not valid for document event handers, which must use globalThis
+  const close = (e: globalThis.KeyboardEvent) => {
     if (e.code === "Escape") {
       closeModal();
-      document.removeEventListener("keydown", () => close);
+      document.removeEventListener("keydown", close);
     }
   };
 
