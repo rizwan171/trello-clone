@@ -66,9 +66,7 @@ const App: React.FunctionComponent = () => {
 
         const sourceListCards = cards.filter((card) => card.listId === source.droppableId && card.id !== draggingCard.id);
         const destListCards = cards.filter((card) => card.listId === destination.droppableId);
-        const otherCards = cards.filter(
-          (card) => card.listId !== source.droppableId && card.listId !== destination.droppableId
-        );
+        const otherCards = cards.filter((card) => card.listId !== source.droppableId && card.listId !== destination.droppableId);
 
         destListCards.splice(destination.index, 0, copyOfDraggingCard);
 
