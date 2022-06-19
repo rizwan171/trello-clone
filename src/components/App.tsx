@@ -10,7 +10,6 @@ import { updateAllCards } from "../features/cardsSlice";
 import CardModal from "./CardModal/CardModal";
 import ListOptionsMenu from "./List/ListOptionsMenu/ListOptionsMenu";
 import { setNewBoardState } from "../features/boardSlice";
-import Card from "../types/global/Card";
 
 const App: React.FunctionComponent = () => {
   const dispatch = useAppDispatch();
@@ -45,15 +44,15 @@ const App: React.FunctionComponent = () => {
 
       dispatch(updateAllLists(newListsOrder));
     } else {
-      const draggingCard = cards.find((card: Card) => card.id === draggableId);
+      const draggingCard = cards.find((card) => card.id === draggableId);
       if (!draggingCard) {
         return;
       }
 
       // within the same list
       if (source.droppableId === destination.droppableId) {
-        const listCards = cards.filter((card: Card) => card.listId == destination.droppableId);
-        const otherCards = cards.filter((card: Card) => card.listId !== destination.droppableId);
+        const listCards = cards.filter((card) => card.listId == destination.droppableId);
+        const otherCards = cards.filter((card) => card.listId !== destination.droppableId);
 
         listCards.splice(source.index, 1);
         listCards.splice(destination.index, 0, draggingCard);
@@ -65,10 +64,10 @@ const App: React.FunctionComponent = () => {
         const copyOfDraggingCard = { ...draggingCard };
         copyOfDraggingCard.listId = destination.droppableId;
 
-        const sourceListCards = cards.filter((card: Card) => card.listId === source.droppableId && card.id !== draggingCard.id);
-        const destListCards = cards.filter((card: Card) => card.listId === destination.droppableId);
+        const sourceListCards = cards.filter((card) => card.listId === source.droppableId && card.id !== draggingCard.id);
+        const destListCards = cards.filter((card) => card.listId === destination.droppableId);
         const otherCards = cards.filter(
-          (card: Card) => card.listId !== source.droppableId && card.listId !== destination.droppableId
+          (card) => card.listId !== source.droppableId && card.listId !== destination.droppableId
         );
 
         destListCards.splice(destination.index, 0, copyOfDraggingCard);
