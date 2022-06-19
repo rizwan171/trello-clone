@@ -1,5 +1,5 @@
-# Development Guidelines
-This document details some guidelines to follow when working on this project
+# Git Practices
+This document details Git guidelines to follow when working on this project
 
 ## Issues
 - All work should be captured in an Issue
@@ -15,8 +15,7 @@ git pull
 git checkout -b your-branch-name-here
 ```
 - Name your branches by prefixing TC, followed by the issue number, and a short name corresponding to the task e.g.
-	- We have Issue #1: Add the required libraries for the project
-	- An appropriate branch name would be `TC-1-add-required-libraries`
+	- For Issue #1: Add the required libraries for the project, an appropriate branch name would be `TC-1-add-required-libraries`
 
 ## Commits
 - Commits should have an appropriate message describing what has been added/changed/removed in that commit
@@ -47,18 +46,18 @@ git checkout -b your-branch-name-here
 	- Carry out testing, if required
 - Once you are happy with the code, you can approve the PR from the Files Changed tab on GitHub, clicking Review Changes, and choosing Approve 
 - **Note: PRs require at least 1 approval before merging. This can be bypassed by admins but it is recommended to get 1 approval before merging**
-### Rebasing
-- When it comes time to merge your branch, rebase your branch with the latest main before doing so. 
-	- Note: squashing your commits may make this easier, but is not enforced. the decision to/not to squash is entirely up to you
+### Rebasing & Conflicts
+- When it comes time to merge your branch, you may rebase your branch with the latest main before doing so. 
+	- Note: squashing your commits may make this easier, but is not enforced. The decision to/not to squash is entirely up to you
 - Ensure you have the latest version of the main branch
 ```
 git checkout main
 git pull
 ```
-- Checkout your branch and rebase
+- Checkout your branch and rebase the commits you've made onto main
 ```
 git checkout your-branch-name-here
-git rebase main
+git rebase --onto main your-branch-name-here HEAD~5 //replace 5 with the amount of commits on your baranch
 ```
 - Resolve any conflicts, and **force push**
 ```
