@@ -4,9 +4,9 @@ import { setSelectedTagColour } from "../../../../../../features/selectedTagColo
 import TagColourOptionProps from "../../../../../../types/components/TagColourOptionProps";
 
 const TagColourOption: React.FunctionComponent<TagColourOptionProps> = ({ colour }) => {
-  const ref = useRef<HTMLDivElement>(null);
   const dispatch = useAppDispatch();
   const selectedTagColour = useAppSelector((state) => state.selectedTagColour.value);
+  const ref = useRef<HTMLDivElement>(null);
   let styles = "h-11 w-12 rounded-md cursor-pointer";
   styles += colour == selectedTagColour ? " ring-2 ring-trello-blue-100" : "";
 

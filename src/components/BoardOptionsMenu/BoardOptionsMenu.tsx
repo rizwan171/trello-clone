@@ -19,7 +19,7 @@ import ExportModal from "./ExportModal/ExportModal";
 import DeleteModal from "./DeleteModal/DeleteModal";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { TabIdentifier } from "../../types/global/TabIdentifier";
-import ExportData from "../../types/global/ExportData";
+import { ExportDataFull, ExportDataList } from "../../types/global/ExportData";
 import ImportData from "../../types/global/ImportData";
 
 const BoardOptionsMenu: React.FunctionComponent = () => {
@@ -94,7 +94,7 @@ const BoardOptionsMenu: React.FunctionComponent = () => {
     setExportModalOpen(false);
   };
 
-  const initiateDownload = (data: ExportData) => {
+  const initiateDownload = (data: ExportDataFull | ExportDataList) => {
     const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(JSON.stringify(data))}`;
     const link = document.createElement("a");
     link.href = jsonString;
@@ -140,18 +140,17 @@ const BoardOptionsMenu: React.FunctionComponent = () => {
     initiateDownload(data);
   };
 
-  // TODO implement once multiple boards implemented
-  // eslint-disable-next-line
-  const handleExportBoard = () => {};
-
   const handleExportList = (listId: string) => {
     if (listId.length > 0) {
-      const data = {
-        list: lists.find((list) => list.id === listId),
-        cards: cards.filter((card) => card.listId === listId),
-      };
+      const list = lists.find((list) => list.id === listId);
+      if (list) {
+        const data = {
+          list,
+          cards: cards.filter((card) => card.listId === listId),
+        };
 
-      initiateDownload(data);
+        initiateDownload(data);
+      }
       closeExportModal();
     }
   };
