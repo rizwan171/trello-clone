@@ -2,7 +2,7 @@ import { FiPlus } from "react-icons/fi";
 import { useAppDispatch } from "../../../app/hooks";
 import { showTagsMenu } from "../../../features/modalActionMenusVisibilitySlice";
 
-const AddTag: React.FunctionComponent = () => {
+const AddTag = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const handleShowTagsMenu = () => {

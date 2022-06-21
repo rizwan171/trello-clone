@@ -2,8 +2,8 @@ import { useAppSelector } from "../../../app/hooks";
 import AddTag from "../AddTag/AddTag";
 import CardModalTag from "./CardModalTag/CardModalTag";
 
-const CardModalTags: React.FunctionComponent = () => {
-  const card = useAppSelector(state => state.currentSelectedCard.value)
+const CardModalTags = (): JSX.Element => {
+  const card = useAppSelector((state) => state.currentSelectedCard.value);
   const tagsToShow = useAppSelector((state) => state.tags.value).filter((tag) => card?.tags.includes(tag.id));
 
   return (

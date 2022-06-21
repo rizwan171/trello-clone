@@ -11,7 +11,7 @@ import CardModal from "./CardModal/CardModal";
 import ListOptionsMenu from "./List/ListOptionsMenu/ListOptionsMenu";
 import { setNewBoardState } from "../features/boardSlice";
 
-const App: React.FunctionComponent = () => {
+const App = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const board = useAppSelector((state) => state.board.value);
   const lists = useAppSelector((state) => state.lists.value);

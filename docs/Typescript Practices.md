@@ -41,19 +41,19 @@ type Type2 = {
 
 ## Development Notes
 ### Typescript for React Function Components
-- Function Components should have `React.FunctionComponent` as their type
-- If the function has props, a type definition for the component's props should be created under `src/types/components` and used in `React.FunctionComponent` i.e.
+- Function Components should have `JSX.Element` as their type
+- If the function has props, a type definition for the component's props should be created under `src/types/components` and used to type the props i.e.
 ```javascript
 export default interface ComponentProps {
   prop1: string
 }
 ...
 ...
-const Component: React.FunctionComponent<ComponentProps> = ({ prop1 }) => {
+const Component = ({ prop1 }: ComponentProps): JSX.Element => {
   // code here
 }
 ```
-- Note: `React.FC` is available but that is not preferred. 
+- Note: `React.FC/React.FunctionComponent` is available but that is not preferred. 
   - See the "Why is React.FC discouraged?" on https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/function_components
 
 ### useRef

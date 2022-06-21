@@ -22,7 +22,7 @@ import { TabIdentifier } from "../../types/global/TabIdentifier";
 import { ExportDataFull, ExportDataList } from "../../types/global/ExportData";
 import ImportData from "../../types/global/ImportData";
 
-const BoardOptionsMenu: React.FunctionComponent = () => {
+const BoardOptionsMenu = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const board = useAppSelector((state) => state.board.value);
   const lists = useAppSelector((state) => state.lists.value);

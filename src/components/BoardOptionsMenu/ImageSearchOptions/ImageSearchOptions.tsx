@@ -1,4 +1,4 @@
-const ImageSearchOptions: React.FunctionComponent = () => {
+const ImageSearchOptions = (): JSX.Element => {
   return (
     <div className="flex flex-col">
       <input

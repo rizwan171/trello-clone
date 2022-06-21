@@ -8,7 +8,7 @@ import CardModalTags from "./CardModalTags/CardModalTags";
 import CardModalAttachment from "./CardModalAttachments/CardModalAttachment";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
-const CardModal: React.FunctionComponent = () => {
+const CardModal = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const card = useAppSelector((state) => state.currentSelectedCard.value);
   const lists = useAppSelector((state) => state.lists.value);

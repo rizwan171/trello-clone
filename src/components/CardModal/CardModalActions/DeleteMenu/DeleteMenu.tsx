@@ -4,7 +4,7 @@ import { deleteCard } from "../../../../features/cardsSlice";
 import { clearSelectedCard } from "../../../../features/currentSelectedCardSlice";
 import { closeMenu } from "../../../../features/modalActionMenusVisibilitySlice";
 
-const DeleteMenu: React.FunctionComponent = () => {
+const DeleteMenu = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const card = useAppSelector((state) => state.currentSelectedCard.value);
 

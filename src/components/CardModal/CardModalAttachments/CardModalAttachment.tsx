@@ -66,7 +66,7 @@ const getFileExtension = (fileName: string) => {
   return arr[arr.length - 1];
 };
 
-const CardModalAttachment: React.FunctionComponent = () => {
+const CardModalAttachment = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const card = useAppSelector((state) => state.currentSelectedCard.value);
   const attachmentMenuOpen = useAppSelector((state) => state.modalActionMenusVisibility.value.attachmentMenuOpen);

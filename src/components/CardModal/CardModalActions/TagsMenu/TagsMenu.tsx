@@ -8,7 +8,7 @@ import { closeMenu, showCreateTagMenu } from "../../../../features/modalActionMe
 import Tag from "../../../../types/global/Tag";
 import TagOption from "./TagOption/TagOption";
 
-const TagsMenu: React.FunctionComponent = () => {
+const TagsMenu = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const card = useAppSelector((state) => state.currentSelectedCard.value);
   const tags = useAppSelector((state) => state.tags.value);

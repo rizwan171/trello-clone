@@ -6,7 +6,7 @@ import { setCurrentSelectedCard } from "../../../features/currentSelectedCardSli
 import { closeMenu } from "../../../features/modalActionMenusVisibilitySlice";
 import AttachmentDeleteMenuProps from "../../../types/components/AttatchmentDeleteMenuProps";
 
-const AttachmentDeleteMenu: React.FunctionComponent<AttachmentDeleteMenuProps> = ({ fileId }) => {
+const AttachmentDeleteMenu = ({ fileId }: AttachmentDeleteMenuProps): JSX.Element => {
   const dispatch = useAppDispatch();
   const card = useAppSelector((state) => state.currentSelectedCard.value);
 

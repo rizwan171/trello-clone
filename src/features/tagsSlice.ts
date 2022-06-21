@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 import Tag from "../types/global/Tag";
-import TagsState, { CreateTagParams, UpdateTagParams } from "../types/reducers/TagsSlice";
+import TagsState, { CreateTagParams, DeleteTagParams, UpdateTagParams } from "../types/reducers/TagsSlice";
 
 const tagsData: Tag[] = JSON.parse(localStorage.getItem("tags") || "[]");
 const initialState: TagsState = {
@@ -27,10 +27,8 @@ export const tagsSlice = createSlice({
       });
       localStorage.setItem("tags", JSON.stringify([...state.value]));
     },
-    deleteTag: (state, action) => {
-      state.value = state.value.filter((tag) => 
-        tag.id !== action.payload
-      );
+    deleteTag: (state: TagsState, action: PayloadAction<DeleteTagParams>) => {
+      state.value = state.value.filter((tag) => tag.id !== action.payload);
       localStorage.setItem("tags", JSON.stringify([...state.value]));
     },
   },

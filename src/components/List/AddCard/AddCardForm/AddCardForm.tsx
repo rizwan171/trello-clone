@@ -4,7 +4,7 @@ import { useAppDispatch } from "../../../../app/hooks";
 import { addCard } from "../../../../features/cardsSlice";
 import AddCardFormProps from "../../../../types/components/AddCardFormProps";
 
-const AddCardForm: React.FunctionComponent<AddCardFormProps> = ({ setOpen, open, listId }) => {
+const AddCardForm = ({ setOpen, open, listId }: AddCardFormProps): JSX.Element => {
   const dispatch = useAppDispatch();
   const [text, setText] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);

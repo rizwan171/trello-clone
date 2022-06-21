@@ -1,7 +1,7 @@
 import BoardTitle from "./BoardTitle/BoardTitle";
 import BoardOptions from "./BoardOptions/BoardOptions";
 
-const NavBar: React.FunctionComponent = () => {
+const NavBar = (): JSX.Element => {
   return (
     <div className="w-full px-6 pt-3">
       <div className="flex w-full m-1">

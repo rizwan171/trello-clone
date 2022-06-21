@@ -8,7 +8,7 @@ import { addFilesToCard } from "../../../../features/cardsSlice";
 import { setCurrentSelectedCard } from "../../../../features/currentSelectedCardSlice";
 import AttachmentMenuProps from "../../../../types/components/AttachmentMenuProps";
 
-const AttachmentMenu: React.FunctionComponent<AttachmentMenuProps> = ({ update }) => {
+const AttachmentMenu = ({ update }: AttachmentMenuProps): JSX.Element => {
   const hiddenFileInput = useRef<HTMLInputElement>(null);
   const dispatch = useAppDispatch();
   const card = useAppSelector((state) => state.currentSelectedCard.value);

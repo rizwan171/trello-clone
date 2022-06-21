@@ -1,7 +1,7 @@
 import { FiPlus } from "react-icons/fi";
 import AddCardPromptProps from "../../../../types/components/AddCardPromptProps";
 
-const AddCardPrompt: React.FunctionComponent<AddCardPromptProps> = ({ open, setOpen }) => {
+const AddCardPrompt = ({ open, setOpen }: AddCardPromptProps): JSX.Element => {
   const inlineStyle = open ? { height: "min-content" } : { height: 0, overflow: "hidden" };
 
   return (

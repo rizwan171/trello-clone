@@ -1,6 +1,6 @@
 import DeleteModalProps from "../../../types/components/DeleteModalProps";
 
-const DeleteModal: React.FunctionComponent<DeleteModalProps> = ({ closeDeleteModal, handleDeleteBoard }) => {
+const DeleteModal = ({ closeDeleteModal, handleDeleteBoard }: DeleteModalProps): JSX.Element => {
   return (
     <div
       id="cardModal"

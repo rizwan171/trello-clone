@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { moveCardToList } from "../../../../features/cardsSlice";
 import { closeMenu } from "../../../../features/modalActionMenusVisibilitySlice";
 
-const MoveMenu: React.FunctionComponent = () => {
+const MoveMenu = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const card = useAppSelector((state) => state.currentSelectedCard.value);
 

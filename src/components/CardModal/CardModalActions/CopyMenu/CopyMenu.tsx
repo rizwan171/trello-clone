@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { copyCardToList } from "../../../../features/cardsSlice";
 import { closeMenu } from "../../../../features/modalActionMenusVisibilitySlice";
 
-const CopyMenu: React.FunctionComponent = () => {
+const CopyMenu = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const card = useAppSelector((state) => state.currentSelectedCard.value);
   const lists = useAppSelector((state) => state.lists.value);

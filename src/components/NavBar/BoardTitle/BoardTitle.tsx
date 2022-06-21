@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { updateTitle } from "../../../features/boardSlice";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 
-const BoardTitle: React.FunctionComponent = () => {
+const BoardTitle = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const boardData = useAppSelector((state) => state.board.value);
   const [selected, setSelected] = useState(false);

@@ -4,7 +4,7 @@ import { clearSelectedList } from "../../../features/currentSelectedListSlice";
 import { removeList, copyList } from "../../../features/listsSlice";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 
-const ListOptionsMenu: React.FunctionComponent = () => {
+const ListOptionsMenu = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const lists = useAppSelector((state) => state.lists.value);
   const currentSelectedList = useAppSelector((state) => state.currentSelectedList.value);

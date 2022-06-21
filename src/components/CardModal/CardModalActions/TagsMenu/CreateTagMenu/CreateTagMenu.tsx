@@ -10,7 +10,7 @@ import { removeTagFromAllCards } from "../../../../../features/cardsSlice";
 import { setCurrentSelectedCard } from "../../../../../features/currentSelectedCardSlice";
 import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
 
-const CreateTagMenu: React.FunctionComponent = () => {
+const CreateTagMenu = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const currentSelectedCard = useAppSelector((state) => state.currentSelectedCard.value);
   const selectedTagColour = useAppSelector((state) => state.selectedTagColour.value);

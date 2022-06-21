@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import ListCardTagProps from "../../../../types/components/ListCardTagProps";
 
-const ListCardTag: React.FunctionComponent<ListCardTagProps> = ({ tag }) => {
+const ListCardTag = ({ tag }: ListCardTagProps): JSX.Element => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

@@ -6,9 +6,11 @@ import { AiOutlinePaperClip } from "react-icons/ai";
 import ListCardProps from "../../../types/components/ListCardProps";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 
-const ListCard: React.FunctionComponent<ListCardProps> = ({ card, index }) => {
+const ListCard = ({ card, index }: ListCardProps): JSX.Element => {
   const dispatch = useAppDispatch();
-  const tagsToShow = useAppSelector((state) => state.tags.value).filter((tag) => card.tags.includes(tag.id) && tag.colour !== NO_COLOUR);
+  const tagsToShow = useAppSelector((state) => state.tags.value).filter(
+    (tag) => card.tags.includes(tag.id) && tag.colour !== NO_COLOUR
+  );
 
   const openModal = () => {
     dispatch(setCurrentSelectedCard(card));
@@ -28,11 +30,11 @@ const ListCard: React.FunctionComponent<ListCardProps> = ({ card, index }) => {
               </div>
             )}
             {card.attachments.length > 0 && (
-            <div className="flex items-center text-gray-600 pt-2">
-              <AiOutlinePaperClip/>
-              <span className="text-xs pl-1">{ card.attachments.length}</span>  
-            </div>)}
-            
+              <div className="flex items-center text-gray-600 pt-2">
+                <AiOutlinePaperClip />
+                <span className="text-xs pl-1">{card.attachments.length}</span>
+              </div>
+            )}
           </div>
         </div>
       )}
