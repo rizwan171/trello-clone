@@ -1,3 +1,4 @@
+import { UpdateAllTagsParams } from "./../types/reducers/TagsSlice";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 import Tag from "../types/global/Tag";
@@ -31,8 +32,12 @@ export const tagsSlice = createSlice({
       state.value = state.value.filter((tag) => tag.id !== action.payload);
       localStorage.setItem("tags", JSON.stringify([...state.value]));
     },
+    updateAllTags: (state: TagsState, action: PayloadAction<UpdateAllTagsParams>) => {
+      state.value = [...action.payload];
+      localStorage.setItem("tags", JSON.stringify([...state.value]));
+    },
   },
 });
 
-export const { createTag, updateTag, deleteTag } = tagsSlice.actions;
+export const { createTag, updateTag, deleteTag, updateAllTags } = tagsSlice.actions;
 export default tagsSlice.reducer;
