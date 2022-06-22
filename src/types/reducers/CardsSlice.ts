@@ -1,7 +1,7 @@
 import Attachment from "../global/Attachment";
 import Card from "../global/Card";
 
-export interface CardsState {
+export type CardsState = {
   value: Card[];
 }
 
@@ -23,44 +23,44 @@ export type DeleteCardParams = string;
 
 export type DeleteAllListCardsParams = string;
 
-export interface CopyCardToListParams {
+export type CopyCardToListParams = {
   cardId: string;
   destListId: string;
 }
 
-export interface CopyAllCardsToNewListParams {
+export type CopyAllCardsToNewListParams = {
   sourceListId: string;
   destListId: string;
 }
 
-export interface MoveCardToListParams {
+export type MoveCardToListParams = {
   cardId: string;
   destListId: string;
 }
 
-export interface AddTagToCardParams {
+export type AddTagToCardParams = {
   cardId: string;
   tagId: string;
 }
 
-export interface RemoveTagFromCardParams {
+export type RemoveTagFromCardParams = {
   cardId: string;
   tagId: string;
 }
 
 export type RemoveTagFromAllCardsParams = string;
 
-export interface AddFilesToCardParams {
+export type AddFilesToCardParams = {
   cardId: string;
   uploadedFiles: Attachment[];
 }
 
-export interface RemoveFileFromCardParams {
+export type RemoveFileFromCardParams = {
   cardId: string;
   fileId: string;
 }
 
-export interface UpdateFileInCardParams {
+export type UpdateFileInCardParams = {
   cardId: string;
   fileId: string;
   fileName: string;

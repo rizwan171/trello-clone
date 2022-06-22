@@ -1,6 +1,6 @@
 import Card from "../global/Card";
 
-export default interface CurrentSelectedCardState {
+export type CurrentSelectedCardState = {
   value: Card | null;
 }
 

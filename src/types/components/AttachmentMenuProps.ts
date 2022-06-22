@@ -1,3 +1,3 @@
-export default interface AttachmentMenuProps {
+export type AttachmentMenuProps = {
   update: boolean
 }

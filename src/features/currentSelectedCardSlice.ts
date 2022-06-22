@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import CurrentSelectedCardState, { SetCurrentSelectedCardParams } from "../types/reducers/CurrentSelectedCardSlice";
+import { CurrentSelectedCardState, SetCurrentSelectedCardParams } from "../types/reducers/CurrentSelectedCardSlice";
 
 const initialState: CurrentSelectedCardState = {
   value: null,

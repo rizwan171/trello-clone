@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import CardModalTagProps from "../../../../types/components/CardModalTagProps";
+import { CardModalTagProps } from "../../../../types/components/CardModalTagProps";
 
 const CardModalTag = ({ tag }: CardModalTagProps): JSX.Element => {
   const tagRef = useRef<HTMLDivElement>(null);

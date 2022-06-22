@@ -1,6 +1,6 @@
 import Attachment from "../global/Attachment";
 
-export interface AttachmentFile {
+export type AttachmentFile = {
   item: Attachment;
   file: string;
   color: string;

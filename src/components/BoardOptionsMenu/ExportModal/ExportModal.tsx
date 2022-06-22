@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import { useAppSelector } from "../../../app/hooks";
-import ExportModalProps from "../../../types/components/ExportModalProps";
+import { ExportModalProps } from "../../../types/components/ExportModalProps";
 
 const ExportModal = ({ closeExportModal, handleExportList }: ExportModalProps): JSX.Element => {
   const lists = useAppSelector((state) => state.lists.value);

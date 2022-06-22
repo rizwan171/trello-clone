@@ -1,6 +1,6 @@
 import Card from "../global/Card";
 
-export default interface ListCardProps {
+export type ListCardProps = {
   card: Card;
   index: number;
 }

@@ -1,6 +1,6 @@
 import ListOptionsMenuPositionData from "../global/ListOptionsMenuPositionData";
 
-export default interface ListOptionsMenuPositionState {
+export type ListOptionsMenuPositionState = {
   value: ListOptionsMenuPositionData | null;
 }
 

@@ -1,5 +1,5 @@
 import Tag from "../global/Tag";
 
-export default interface CardModalTagProps {
+export type CardModalTagProps = {
   tag: Tag;
 }

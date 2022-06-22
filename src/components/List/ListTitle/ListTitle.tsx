@@ -3,7 +3,7 @@ import { MdMoreHoriz } from "react-icons/md";
 import { editTitle } from "../../../features/listsSlice";
 import { clearSelectedList, setCurrentSelectedList } from "../../../features/currentSelectedListSlice";
 import { sendPositionData } from "../../../features/listOptionsMenuPositionSlice";
-import ListTitleProps from "../../../types/components/ListTitleProps";
+import { ListTitleProps } from "../../../types/components/ListTitleProps";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 
 const ListTitle = ({ list }: ListTitleProps): JSX.Element => {

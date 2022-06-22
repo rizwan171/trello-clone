@@ -3,7 +3,7 @@ import { setCurrentSelectedCard } from "../../../features/currentSelectedCardSli
 import ListCardTag from "./ListCardTag/ListCardTag";
 import { NO_COLOUR } from "../../../constants/TagColours";
 import { AiOutlinePaperClip } from "react-icons/ai";
-import ListCardProps from "../../../types/components/ListCardProps";
+import { ListCardProps } from "../../../types/components/ListCardProps";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 
 const ListCard = ({ card, index }: ListCardProps): JSX.Element => {

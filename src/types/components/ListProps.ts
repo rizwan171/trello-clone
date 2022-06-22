@@ -1,6 +1,6 @@
 import List from "../global/List";
 
-export default interface ListProps {
+export type ListProps = {
   list: List;
   index: number;
 }

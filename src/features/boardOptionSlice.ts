@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import BoardOptionState from "../types/reducers/BoardOptionsSlice";
+import { BoardOptionState } from "../types/reducers/BoardOptionsSlice";
 
 const initialState: BoardOptionState = {
   value: false,

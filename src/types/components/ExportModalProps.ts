@@ -1,4 +1,4 @@
-export default interface ExportModalProps {
+export type ExportModalProps = {
   closeExportModal: () => void;
   handleExportList: (listId: string) => void;
 }

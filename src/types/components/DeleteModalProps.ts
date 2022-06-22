@@ -1,4 +1,4 @@
-export default interface DeleteModalProps {
+export type DeleteModalProps = {
   closeDeleteModal: () => void;
   handleDeleteBoard: () => void;
 }

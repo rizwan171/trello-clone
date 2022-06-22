@@ -1,4 +1,4 @@
-export default interface SelectedTagColourState {
+export type SelectedTagColourState = {
   value: string | null;
 }
 

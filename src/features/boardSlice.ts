@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 import Board from "../types/global/Board";
-import BoardState from "../types/reducers/BoardSlice";
+import { BoardState } from "../types/reducers/BoardSlice";
 
 const boardData: Board = JSON.parse(localStorage.getItem("board") || "{}");
 const initialState: BoardState = {

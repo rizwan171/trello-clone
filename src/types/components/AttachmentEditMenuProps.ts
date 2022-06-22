@@ -1,4 +1,4 @@
-export default interface AttachmentEditMenuProps {
+export type AttachmentEditMenuProps = {
   fileId: string;
   fileName: string;
 }

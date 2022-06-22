@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import SelectedTagColourState, { SetSelectedTagColourParams } from "../types/reducers/SelectedTagColourSlice";
+import { SelectedTagColourState, SetSelectedTagColourParams } from "../types/reducers/SelectedTagColourSlice";
 
 const initialState: SelectedTagColourState = {
   value: null,

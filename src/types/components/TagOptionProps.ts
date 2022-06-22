@@ -1,6 +1,6 @@
 import Tag from "../global/Tag";
 
-export default interface TagOptionProps {
+export type TagOptionProps = {
   tag: Tag;
   isSelected: boolean;
   editTag: (tag: Tag) => void;

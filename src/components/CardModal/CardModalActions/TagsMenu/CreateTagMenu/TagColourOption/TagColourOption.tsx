@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../../../app/hooks";
 import { setSelectedTagColour } from "../../../../../../features/selectedTagColourSlice";
-import TagColourOptionProps from "../../../../../../types/components/TagColourOptionProps";
+import { TagColourOptionProps } from "../../../../../../types/components/TagColourOptionProps";
 
 const TagColourOption = ({ colour }: TagColourOptionProps): JSX.Element => {
   const dispatch = useAppDispatch();

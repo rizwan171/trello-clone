@@ -2,7 +2,7 @@ import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { FiX } from "react-icons/fi";
 import { useAppDispatch } from "../../../../app/hooks";
 import { addCard } from "../../../../features/cardsSlice";
-import AddCardFormProps from "../../../../types/components/AddCardFormProps";
+import { AddCardFormProps } from "../../../../types/components/AddCardFormProps";
 
 const AddCardForm = ({ setOpen, open, listId }: AddCardFormProps): JSX.Element => {
   const dispatch = useAppDispatch();

@@ -4,7 +4,7 @@ import { MdClose } from "react-icons/md";
 import { removeFileFromCard } from "../../../features/cardsSlice";
 import { setCurrentSelectedCard } from "../../../features/currentSelectedCardSlice";
 import { closeMenu } from "../../../features/modalActionMenusVisibilitySlice";
-import AttachmentDeleteMenuProps from "../../../types/components/AttatchmentDeleteMenuProps";
+import { AttachmentDeleteMenuProps } from "../../../types/components/AttatchmentDeleteMenuProps";
 
 const AttachmentDeleteMenu = ({ fileId }: AttachmentDeleteMenuProps): JSX.Element => {
   const dispatch = useAppDispatch();

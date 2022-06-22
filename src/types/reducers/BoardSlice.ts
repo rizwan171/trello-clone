@@ -1,5 +1,5 @@
 import Board from "../global/Board";
 
-export default interface BoardState {
+export type BoardState = {
   value: Board
 }

@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import ModalActionMenuVisibilityState, {
+import {
+  ModalActionMenuVisibilityState,
   ShowAttachmentDeleteMenuParams,
   ShowAttachmentEditMenuParams,
   ShowAttachmentMenuParams,

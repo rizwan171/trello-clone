@@ -1,6 +1,6 @@
 import List from "../global/List";
 
-export default interface CurrentSelectedListState {
+export type CurrentSelectedListState = {
   value: List | null;
 }
 

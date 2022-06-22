@@ -1,5 +1,5 @@
 import List from "../global/List";
 
-export default interface ListTitleProps {
+export type ListTitleProps = {
   list: List;
 }

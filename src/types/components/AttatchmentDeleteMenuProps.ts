@@ -1,3 +1,3 @@
-export default interface AttachmentDeleteMenuProps {
+export type AttachmentDeleteMenuProps = {
   fileId: string;
 }

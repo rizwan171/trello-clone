@@ -20,8 +20,9 @@ type Type2 = {
 - Interface will define a type as an object always
 - If you need to define a type for a single param, use type
 - When defining types:
-  - use interface where possible
-  - type should be used only when typing a single param or deriving a type from another type i.e. `type TypeB = Pick<TypeA, "prop">`
+  - use interface for data objects i.e. board, list, card, tag.
+  - use types elsewhere i.e. props, state, reducer params
+- For more info about type vs interface, see https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/basic_type_example#types-or-interfaces
 
 ### Folder structure
 - All type definitions are stored under `src/types`
@@ -44,7 +45,7 @@ type Type2 = {
 - Function Components should have `JSX.Element` as their type
 - If the function has props, a type definition for the component's props should be created under `src/types/components` and used to type the props i.e.
 ```javascript
-export default interface ComponentProps {
+export type ComponentProps {
   prop1: string
 }
 ...

@@ -1,3 +1,3 @@
-export default interface BoardOptionState {
+export type BoardOptionState = {
   value: boolean;
 }

@@ -1,6 +1,6 @@
 import Tag from "../global/Tag";
 
-export default interface CreateTagMenuDataState {
+export type CreateTagMenuDataState = {
   value: Tag | null;
 }
 

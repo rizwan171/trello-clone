@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { MdClose } from "react-icons/md";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { updateFileInCard } from "../../../features/cardsSlice";
 import { setCurrentSelectedCard } from "../../../features/currentSelectedCardSlice";
 import { closeMenu } from "../../../features/modalActionMenusVisibilitySlice";
-import AttachmentEditMenuProps from "../../../types/components/AttachmentEditMenuProps";
+import { AttachmentEditMenuProps } from "../../../types/components/AttachmentEditMenuProps";
 
 const AttachmentEditMenu = ({ fileId, fileName }: AttachmentEditMenuProps): JSX.Element => {
   const dispatch = useAppDispatch();

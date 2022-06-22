@@ -1,4 +1,4 @@
-import DeleteModalProps from "../../../types/components/DeleteModalProps";
+import { DeleteModalProps } from "../../../types/components/DeleteModalProps";
 
 const DeleteModal = ({ closeDeleteModal, handleDeleteBoard }: DeleteModalProps): JSX.Element => {
   return (

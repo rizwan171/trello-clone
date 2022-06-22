@@ -6,7 +6,7 @@ import { closeMenu } from "../../../../features/modalActionMenusVisibilitySlice"
 import { v4 as uuidv4 } from "uuid";
 import { addFilesToCard } from "../../../../features/cardsSlice";
 import { setCurrentSelectedCard } from "../../../../features/currentSelectedCardSlice";
-import AttachmentMenuProps from "../../../../types/components/AttachmentMenuProps";
+import { AttachmentMenuProps } from "../../../../types/components/AttachmentMenuProps";
 
 const AttachmentMenu = ({ update }: AttachmentMenuProps): JSX.Element => {
   const hiddenFileInput = useRef<HTMLInputElement>(null);

@@ -1,5 +1,5 @@
 import Tag from "../global/Tag";
 
-export default interface ListCardTagProps {
+export type ListCardTagProps = {
   tag: Tag;
 }

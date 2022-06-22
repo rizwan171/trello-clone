@@ -1,6 +1,6 @@
 import Tag from "../global/Tag";
 
-export default interface TagsState {
+export type TagsState = {
   value: Tag[];
 }
 

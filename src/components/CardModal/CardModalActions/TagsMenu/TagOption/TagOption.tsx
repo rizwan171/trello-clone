@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { MdCheck, MdOutlineEdit } from "react-icons/md";
-import TagOptionProps from "../../../../../types/components/TagOptionProps";
+import { TagOptionProps } from "../../../../../types/components/TagOptionProps";
 
 const TagOption = ({ tag, isSelected, editTag, tagClicked }: TagOptionProps): JSX.Element => {
   const tagRef = useRef<HTMLDivElement>(null);

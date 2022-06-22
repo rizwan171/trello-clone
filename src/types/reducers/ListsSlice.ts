@@ -1,6 +1,6 @@
 import List from "../global/List";
 
-export default interface ListsState {
+export type ListsState = {
   value: List[];
 }
 

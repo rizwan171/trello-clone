@@ -1,6 +1,6 @@
 import ModalActionMenuVisibilityData from "../global/ModalActionMenuVisibilityData";
 
-export default interface ModalActionMenuVisibilityState {
+export type ModalActionMenuVisibilityState = {
   value: ModalActionMenuVisibilityData;
 }
 
