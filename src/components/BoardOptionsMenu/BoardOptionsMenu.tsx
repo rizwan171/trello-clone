@@ -104,18 +104,12 @@ const BoardOptionsMenu = () => {
 
   const handleImportAll = async (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      console.log("hit");
-
       const file = e.target.files[0];
       let result: ImportData;
       const fr = new FileReader();
       fr.onload = () => {
         const uploadedFileJson = fr.result as string;
-        console.log("hitt");
-
         if (uploadedFileJson) {
-          console.log("hittt");
-
           result = JSON.parse(uploadedFileJson);
           dispatch(deleteAllLists());
           dispatch(deleteAllCards());
