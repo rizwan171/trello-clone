@@ -69,8 +69,15 @@ const TagsMenu = () => {
           {tagsToShow.map((tag) => {
             if (!card) return;
 
-            const isSelected = card.tags.includes(tag.id);
-            return <TagOption key={tag.id} tag={tag} isSelected={isSelected} editTag={handleEditTag} tagClicked={tagClicked} />;
+            return (
+              <TagOption
+                key={tag.id}
+                tag={tag}
+                isSelected={card.tags.includes(tag.id)}
+                editTag={handleEditTag}
+                tagClicked={tagClicked}
+              />
+            );
           })}
         </div>
         <button
