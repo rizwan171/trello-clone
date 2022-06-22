@@ -16,7 +16,7 @@ import DeleteMenu from "./DeleteMenu/DeleteMenu";
 import AttachmentMenu from "./AttachmentMenu/AttachmentMenu";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 
-const CardModalActions = (): JSX.Element => {
+const CardModalActions = () => {
   const dispatch = useAppDispatch();
   const tagsMenuOpen = useAppSelector((state) => state.modalActionMenusVisibility.value.tagsMenuOpen);
   const createTagsMenuOpen = useAppSelector((state) => state.modalActionMenusVisibility.value.createTagsMenuOpen);

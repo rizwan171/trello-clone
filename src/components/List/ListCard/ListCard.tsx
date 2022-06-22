@@ -6,7 +6,7 @@ import { AiOutlinePaperClip } from "react-icons/ai";
 import { ListCardProps } from "../../../types/components/ListCardProps";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 
-const ListCard = ({ card, index }: ListCardProps): JSX.Element => {
+const ListCard = ({ card, index }: ListCardProps) => {
   const dispatch = useAppDispatch();
   const tagsToShow = useAppSelector((state) => state.tags.value).filter(
     (tag) => card.tags.includes(tag.id) && tag.colour !== NO_COLOUR

@@ -4,7 +4,7 @@ import { deleteCard } from "../../../../features/cardsSlice";
 import { clearSelectedCard } from "../../../../features/currentSelectedCardSlice";
 import { closeMenu } from "../../../../features/modalActionMenusVisibilitySlice";
 
-const DeleteMenu = (): JSX.Element => {
+const DeleteMenu = () => {
   const dispatch = useAppDispatch();
   const card = useAppSelector((state) => state.currentSelectedCard.value);
 
@@ -13,9 +13,7 @@ const DeleteMenu = (): JSX.Element => {
   };
 
   const handleDeleteCard = () => {
-    if (!card) {
-      return;
-    }
+    if (!card) return;
 
     dispatch(deleteCard(card.id));
     dispatch(clearSelectedCard());

@@ -22,7 +22,7 @@ import { TabIdentifier } from "../../types/global/TabIdentifier";
 import { ExportDataFull, ExportDataList } from "../../types/global/ExportData";
 import ImportData from "../../types/global/ImportData";
 
-const BoardOptionsMenu = (): JSX.Element => {
+const BoardOptionsMenu = () => {
   const dispatch = useAppDispatch();
   const board = useAppSelector((state) => state.board.value);
   const lists = useAppSelector((state) => state.lists.value);
@@ -44,9 +44,7 @@ const BoardOptionsMenu = (): JSX.Element => {
     const coloursTab = coloursRef.current;
     const imageSearchTab = imageSearchRef.current;
     const imageUploadTab = imageUploadRef.current;
-    if (!coloursTab || !imageSearchTab || !imageUploadTab) {
-      return;
-    }
+    if (!coloursTab || !imageSearchTab || !imageUploadTab) return;
 
     switch (tabIdentifier) {
       case Constants.COLOURS_TAB_IDENTIFIER:
@@ -70,9 +68,7 @@ const BoardOptionsMenu = (): JSX.Element => {
     const coloursTab = coloursRef.current;
     const imageSearchTab = imageSearchRef.current;
     const imageUploadTab = imageUploadRef.current;
-    if (!coloursTab || !imageSearchTab || !imageUploadTab) {
-      return;
-    }
+    if (!coloursTab || !imageSearchTab || !imageUploadTab) return;
 
     coloursTab.className = coloursTab.className.replace("selected-tab", "");
     imageSearchTab.className = imageSearchTab.className.replace("selected-tab", "");

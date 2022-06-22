@@ -6,7 +6,7 @@ import { sendPositionData } from "../../../features/listOptionsMenuPositionSlice
 import { ListTitleProps } from "../../../types/components/ListTitleProps";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 
-const ListTitle = ({ list }: ListTitleProps): JSX.Element => {
+const ListTitle = ({ list }: ListTitleProps) => {
   const dispatch = useAppDispatch();
   const currentSelectedList = useAppSelector((state) => state.currentSelectedList.value);
   const [selected, setSelected] = useState(false);
@@ -43,9 +43,7 @@ const ListTitle = ({ list }: ListTitleProps): JSX.Element => {
   };
 
   const handleMoreMenu = () => {
-    if (!moreMenuButtonRef.current) {
-      return;
-    }
+    if (!moreMenuButtonRef.current) return;
 
     if (!currentSelectedList) {
       dispatch(sendPositionData({ top: moreMenuButtonRef.current.offsetTop, left: moreMenuButtonRef.current.offsetLeft }));

@@ -4,7 +4,7 @@ import { clearSelectedList } from "../../../features/currentSelectedListSlice";
 import { removeList, copyList } from "../../../features/listsSlice";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 
-const ListOptionsMenu = (): JSX.Element => {
+const ListOptionsMenu = () => {
   const dispatch = useAppDispatch();
   const lists = useAppSelector((state) => state.lists.value);
   const currentSelectedList = useAppSelector((state) => state.currentSelectedList.value);
@@ -46,18 +46,14 @@ const ListOptionsMenu = (): JSX.Element => {
   }, [done]);
 
   const handleCopy = () => {
-    if (!currentSelectedList) {
-      return;
-    }
+    if (!currentSelectedList) return;
 
     dispatch(copyList(currentSelectedList.id));
     setDone(true);
   };
 
   const handleDelete = () => {
-    if (!currentSelectedList) {
-      return;
-    }
+    if (!currentSelectedList) return;
 
     dispatch(deleteAllListCards(currentSelectedList.id));
     dispatch(removeList(currentSelectedList.id));

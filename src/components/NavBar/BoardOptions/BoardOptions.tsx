@@ -2,7 +2,7 @@ import { BiCog } from "react-icons/bi";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { toggleBoardVisibility } from "../../../features/boardOptionSlice";
 
-const BoardOptions = (): JSX.Element => {
+const BoardOptions = () => {
   const dispatch = useAppDispatch();
   const boardOpen = useAppSelector((state) => state.boardOptions.value);
 

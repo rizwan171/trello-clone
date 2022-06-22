@@ -10,7 +10,7 @@ import { removeTagFromAllCards } from "../../../../../features/cardsSlice";
 import { setCurrentSelectedCard } from "../../../../../features/currentSelectedCardSlice";
 import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
 
-const CreateTagMenu = (): JSX.Element => {
+const CreateTagMenu = () => {
   const dispatch = useAppDispatch();
   const currentSelectedCard = useAppSelector((state) => state.currentSelectedCard.value);
   const selectedTagColour = useAppSelector((state) => state.selectedTagColour.value);
@@ -45,9 +45,7 @@ const CreateTagMenu = (): JSX.Element => {
   };
 
   const handleCreateTag = () => {
-    if (!selectedTagColour) {
-      return;
-    }
+    if (!selectedTagColour) return;
 
     if (tagData) {
       dispatch(updateTag({ ...tagData, name: tagName, colour: selectedTagColour }));
@@ -58,9 +56,7 @@ const CreateTagMenu = (): JSX.Element => {
   };
 
   const handleDeleteTag = () => {
-    if (!tagData || !currentSelectedCard) {
-      return;
-    }
+    if (!tagData || !currentSelectedCard) return;
 
     dispatch(deleteTag(tagData.id));
     dispatch(removeTagFromAllCards(tagData.id));

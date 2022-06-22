@@ -66,7 +66,7 @@ const getFileExtension = (fileName: string) => {
   return arr[arr.length - 1];
 };
 
-const CardModalAttachment = (): JSX.Element => {
+const CardModalAttachment = () => {
   const dispatch = useAppDispatch();
   const card = useAppSelector((state) => state.currentSelectedCard.value);
   const attachmentMenuOpen = useAppSelector((state) => state.modalActionMenusVisibility.value.attachmentMenuOpen);
@@ -75,9 +75,7 @@ const CardModalAttachment = (): JSX.Element => {
   const [files, setFiles] = useState<AttachmentFile[]>([]);
 
   useEffect(() => {
-    if (!card) {
-      return;
-    }
+    if (!card) return;
 
     const getAttachments = async () => {
       const result: AttachmentFile[] = [];

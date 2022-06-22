@@ -8,7 +8,7 @@ import { closeMenu, showCreateTagMenu } from "../../../../features/modalActionMe
 import Tag from "../../../../types/global/Tag";
 import TagOption from "./TagOption/TagOption";
 
-const TagsMenu = (): JSX.Element => {
+const TagsMenu = () => {
   const dispatch = useAppDispatch();
   const card = useAppSelector((state) => state.currentSelectedCard.value);
   const tags = useAppSelector((state) => state.tags.value);
@@ -37,9 +37,7 @@ const TagsMenu = (): JSX.Element => {
   };
 
   const tagClicked = (tag: Tag) => {
-    if (!card) {
-      return;
-    }
+    if (!card) return;
 
     if (card.tags.includes(tag.id)) {
       dispatch(removeTagFromCard({ cardId: card.id, tagId: tag.id }));
@@ -69,9 +67,7 @@ const TagsMenu = (): JSX.Element => {
         <span className="text-gray-600 my-2 font-semibold">Tags</span>
         <div className="flex flex-col w-full gap-1 font-bold">
           {tagsToShow.map((tag) => {
-            if (!card) {
-              return;
-            }
+            if (!card) return;
 
             const isSelected = card.tags.includes(tag.id);
             return <TagOption key={tag.id} tag={tag} isSelected={isSelected} editTag={handleEditTag} tagClicked={tagClicked} />;

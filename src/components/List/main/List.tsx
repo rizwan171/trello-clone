@@ -7,7 +7,7 @@ import AddCardForm from "../AddCard/AddCardForm/AddCardForm";
 import { ListProps } from "../../../types/components/ListProps";
 import { useAppSelector } from "../../../app/hooks";
 
-const List = ({ list, index }: ListProps): JSX.Element => {
+const List = ({ list, index }: ListProps) => {
   const cards = useAppSelector((state) => state.cards.value.filter((card) => card.listId === list.id));
   const [open, setOpen] = useState(false);
 

@@ -6,15 +6,13 @@ import { setCurrentSelectedCard } from "../../../features/currentSelectedCardSli
 import { closeMenu } from "../../../features/modalActionMenusVisibilitySlice";
 import { AttachmentEditMenuProps } from "../../../types/components/AttachmentEditMenuProps";
 
-const AttachmentEditMenu = ({ fileId, fileName }: AttachmentEditMenuProps): JSX.Element => {
+const AttachmentEditMenu = ({ fileId, fileName }: AttachmentEditMenuProps) => {
   const dispatch = useAppDispatch();
   const card = useAppSelector((state) => state.currentSelectedCard.value);
   const [editableFileName, setEditableFileName] = useState(fileName);
 
   const handleEdit = () => {
-    if (!card) {
-      return;
-    }
+    if (!card) return;
 
     dispatch(updateFileInCard({ cardId: card.id, fileId, fileName: editableFileName }));
     const index = card.attachments.findIndex((item) => item.id === fileId);

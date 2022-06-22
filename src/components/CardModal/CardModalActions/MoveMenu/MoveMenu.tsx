@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { moveCardToList } from "../../../../features/cardsSlice";
 import { closeMenu } from "../../../../features/modalActionMenusVisibilitySlice";
 
-const MoveMenu = (): JSX.Element => {
+const MoveMenu = () => {
   const dispatch = useAppDispatch();
   const card = useAppSelector((state) => state.currentSelectedCard.value);
 
@@ -16,9 +16,7 @@ const MoveMenu = (): JSX.Element => {
   };
 
   const handleMoveCard = () => {
-    if (!card) {
-      return;
-    }
+    if (!card) return;
 
     dispatch(moveCardToList({ cardId: card.id, destListId: selectedListId }));
     handleClose();

@@ -2,7 +2,7 @@
 This document describes Typescript practices to follow when working on this project.
 
 ## File types
-- Files with JSX elements (i.e. React components) end should with `.tsx`
+- Files with JSX elements (i.e. React components) should end with `.tsx`
 - Other typescript files should end with `.ts`
 
 ## Type Definitions
@@ -37,12 +37,11 @@ type Type2 = {
 - Stored under `src/types/components`
 
 #### Reducers Type
-- Contains type definitions for Redux Toolkit Slices and their respective Reducers (i.e. files under `).
+- Contains type definitions for Redux Toolkit Slices and their respective Reducers (i.e. files under `src/features`).
 - Stored under `src/types/reducers`
 
 ## Development Notes
 ### Typescript for React Function Components
-- Function Components should have `JSX.Element` as their type
 - If the function has props, a type definition for the component's props should be created under `src/types/components` and used to type the props i.e.
 ```javascript
 export type ComponentProps {
@@ -50,12 +49,10 @@ export type ComponentProps {
 }
 ...
 ...
-const Component = ({ prop1 }: ComponentProps): JSX.Element => {
+const Component = ({ prop1 }: ComponentProps) => {
   // code here
 }
 ```
-- Note: `React.FC/React.FunctionComponent` is available but that is not preferred. 
-  - See the "Why is React.FC discouraged?" on https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/function_components
 
 ### useRef
 - When using the `useRef` hook, it must have a type in angle brackets i.e. `useRef<HTMLInputElement>(null)`. Note: the null is important here as without it, typescript will throw an error

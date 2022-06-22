@@ -8,7 +8,7 @@ import CardModalTags from "./CardModalTags/CardModalTags";
 import CardModalAttachment from "./CardModalAttachments/CardModalAttachment";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
-const CardModal = (): JSX.Element => {
+const CardModal = () => {
   const dispatch = useAppDispatch();
   const card = useAppSelector((state) => state.currentSelectedCard.value);
   const lists = useAppSelector((state) => state.lists.value);
@@ -60,21 +60,15 @@ const CardModal = (): JSX.Element => {
   };
 
   const handleUpdateDescription = () => {
-    if (!card || !editableDescription) {
-      return;
-    }
+    if (!card || !editableDescription) return;
 
     dispatch(updateCardDescription({ cardId: card.id, description: editableDescription }));
     dispatch(setCurrentSelectedCard({ ...card, description: editableDescription }));
   };
 
   const handleDesciptionKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (!descriptionRef.current) {
-      return;
-    }
-
     if (e.code === "Escape") {
-      descriptionRef.current.blur();
+      descriptionRef.current?.blur();
     }
   };
 

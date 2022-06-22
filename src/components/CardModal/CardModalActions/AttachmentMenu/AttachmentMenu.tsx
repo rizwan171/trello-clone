@@ -8,7 +8,7 @@ import { addFilesToCard } from "../../../../features/cardsSlice";
 import { setCurrentSelectedCard } from "../../../../features/currentSelectedCardSlice";
 import { AttachmentMenuProps } from "../../../../types/components/AttachmentMenuProps";
 
-const AttachmentMenu = ({ update }: AttachmentMenuProps): JSX.Element => {
+const AttachmentMenu = ({ update }: AttachmentMenuProps) => {
   const hiddenFileInput = useRef<HTMLInputElement>(null);
   const dispatch = useAppDispatch();
   const card = useAppSelector((state) => state.currentSelectedCard.value);
@@ -17,9 +17,7 @@ const AttachmentMenu = ({ update }: AttachmentMenuProps): JSX.Element => {
   if (update) style = "fixed w-72 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4";
 
   const handleFileSelect = async (e: ChangeEvent<HTMLInputElement>) => {
-    if (!card) {
-      return;
-    }
+    if (!card) return;
 
     const files = e.target.files;
     const upload = [];

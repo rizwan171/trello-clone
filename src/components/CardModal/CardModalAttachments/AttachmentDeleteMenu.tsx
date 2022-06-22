@@ -6,14 +6,12 @@ import { setCurrentSelectedCard } from "../../../features/currentSelectedCardSli
 import { closeMenu } from "../../../features/modalActionMenusVisibilitySlice";
 import { AttachmentDeleteMenuProps } from "../../../types/components/AttatchmentDeleteMenuProps";
 
-const AttachmentDeleteMenu = ({ fileId }: AttachmentDeleteMenuProps): JSX.Element => {
+const AttachmentDeleteMenu = ({ fileId }: AttachmentDeleteMenuProps) => {
   const dispatch = useAppDispatch();
   const card = useAppSelector((state) => state.currentSelectedCard.value);
 
   const handleDelete = () => {
-    if (!card) {
-      return;
-    }
+    if (!card) return;
 
     localforage.removeItem(fileId);
     dispatch(removeFileFromCard({ cardId: card.id, fileId }));

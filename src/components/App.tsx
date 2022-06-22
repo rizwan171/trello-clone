@@ -11,7 +11,7 @@ import CardModal from "./CardModal/CardModal";
 import ListOptionsMenu from "./List/ListOptionsMenu/ListOptionsMenu";
 import { setNewBoardState } from "../features/boardSlice";
 
-const App = (): JSX.Element => {
+const App = () => {
   const dispatch = useAppDispatch();
   const board = useAppSelector((state) => state.board.value);
   const lists = useAppSelector((state) => state.lists.value);
@@ -45,9 +45,7 @@ const App = (): JSX.Element => {
       dispatch(updateAllLists(newListsOrder));
     } else {
       const draggingCard = cards.find((card) => card.id === draggableId);
-      if (!draggingCard) {
-        return;
-      }
+      if (!draggingCard) return;
 
       // within the same list
       if (source.droppableId === destination.droppableId) {

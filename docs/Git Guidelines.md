@@ -57,7 +57,7 @@ git pull
 - Checkout your branch and rebase the commits you've made onto main
 ```
 git checkout your-branch-name-here
-git rebase --onto main your-branch-name-here HEAD~5 //replace 5 with the amount of commits on your baranch
+git rebase --onto main your-branch-name-here HEAD~5 //replace 5 with the amount of commits on your branch
 ```
 - Resolve any conflicts, and **force push**
 ```

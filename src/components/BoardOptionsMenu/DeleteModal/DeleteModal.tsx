@@ -1,6 +1,6 @@
 import { DeleteModalProps } from "../../../types/components/DeleteModalProps";
 
-const DeleteModal = ({ closeDeleteModal, handleDeleteBoard }: DeleteModalProps): JSX.Element => {
+const DeleteModal = ({ closeDeleteModal, handleDeleteBoard }: DeleteModalProps) => {
   return (
     <div
       id="cardModal"

@@ -3,7 +3,7 @@ import { FiPlus, FiX } from "react-icons/fi";
 import { addList } from "../../../features/listsSlice";
 import { useAppDispatch } from "../../../app/hooks";
 
-const AddList = (): JSX.Element => {
+const AddList = () => {
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
@@ -86,7 +86,7 @@ const AddList = (): JSX.Element => {
 
 export default AddList;
 
-const Collapse = ({ isOpen, children, className }: CollapseProps): JSX.Element => {
+const Collapse = ({ isOpen, children, className }: CollapseProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const inlineStyle = isOpen ? { height: "100%" } : { height: 0, width: 0 };
 

@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../../../../../app/hooks";
 import { setSelectedTagColour } from "../../../../../../features/selectedTagColourSlice";
 import { TagColourOptionProps } from "../../../../../../types/components/TagColourOptionProps";
 
-const TagColourOption = ({ colour }: TagColourOptionProps): JSX.Element => {
+const TagColourOption = ({ colour }: TagColourOptionProps) => {
   const dispatch = useAppDispatch();
   const selectedTagColour = useAppSelector((state) => state.selectedTagColour.value);
   const ref = useRef<HTMLDivElement>(null);
