@@ -10,8 +10,11 @@ const AddTag = () => {
   };
 
   return (
-    <button className="p-1 rounded-ibsm flex items-center cursor-pointer bg-black bg-opacity-5 hover:bg-opacity-10">
-      <FiPlus className="mr-0.5 text-trello-gray-200" size={25} onClick={handleShowTagsMenu} />
+    <button
+      className="p-1 rounded-ibsm flex items-center cursor-pointer bg-black bg-opacity-5 hover:bg-opacity-10"
+      onClick={handleShowTagsMenu}
+    >
+      <FiPlus className="mr-0.5 text-trello-gray-200" size={25} />
     </button>
   );
 };
