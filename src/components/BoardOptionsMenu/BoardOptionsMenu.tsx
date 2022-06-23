@@ -21,12 +21,14 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { TabIdentifier } from "../../types/global/TabIdentifier";
 import { ExportDataFull, ExportDataList } from "../../types/global/ExportData";
 import ImportData from "../../types/global/ImportData";
+import { updateAllTags } from "../../features/tagsSlice";
 
 const BoardOptionsMenu = () => {
   const dispatch = useAppDispatch();
   const board = useAppSelector((state) => state.board.value);
   const lists = useAppSelector((state) => state.lists.value);
   const cards = useAppSelector((state) => state.cards.value);
+  const tags = useAppSelector((state) => state.tags.value);
   const [exportModalOpen, setExportModalOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const coloursRef = useRef<HTMLButtonElement>(null);
@@ -114,10 +116,12 @@ const BoardOptionsMenu = () => {
           dispatch(updateTitle(result.board.title));
           dispatch(updateAllLists(result.lists));
           dispatch(updateAllCards(result.cards));
-          // TODO add import for tags
+          dispatch(updateAllTags(result.tags));
+          // TODO add import for attachments
         }
-        fr.readAsText(file);
       };
+
+      fr.readAsText(file);
     }
   };
 
@@ -131,6 +135,7 @@ const BoardOptionsMenu = () => {
       board,
       lists: [...lists],
       cards: [...cards],
+      tags: [...tags],
     };
 
     initiateDownload(data);
@@ -143,6 +148,7 @@ const BoardOptionsMenu = () => {
         const data = {
           list,
           cards: cards.filter((card) => card.listId === listId),
+          tags: [...tags],
         };
 
         initiateDownload(data);
