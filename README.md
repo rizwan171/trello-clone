@@ -68,3 +68,18 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Running via Docker
+- Build the image using `docker build -t trello-clone .`
+- Create a container `docker run -d -p 8080:80 trello-clone`
+- Go to `http://localhost:8080`
+
+#### Running on smaller machines/servers i.e. Raspberry Pi
+- On Raspberry Pi's or machines with limited memory, it's possible to get the below messasge or something similar when at the `npm run build` step:
+```
+Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory 
+```
+- To overcome this, build from the Dockerfile.pi
+- Build the image using `docker build -f Dockerfile.pi -t trello-clone .`
+- Create a container `docker run -d -p 8080:80 trello-clone`
+- Go to `http://localhost:8080`
