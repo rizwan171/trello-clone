@@ -2,15 +2,16 @@ import { Draggable } from "react-beautiful-dnd";
 import { setCurrentSelectedCard } from "../../../features/currentSelectedCardSlice";
 import ListCardTag from "./ListCardTag/ListCardTag";
 import { NO_COLOUR } from "../../../constants/TagColours";
-import { AiOutlinePaperClip } from "react-icons/ai";
 import { ListCardProps } from "../../../types/components/ListCardProps";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import ListCardIcons from "./ListCardIcons/ListCardIcons";
 
 const ListCard = ({ card, index }: ListCardProps) => {
   const dispatch = useAppDispatch();
   const tagsToShow = useAppSelector((state) => state.tags.value).filter(
     (tag) => card.tags.includes(tag.id) && tag.colour !== NO_COLOUR
   );
+  const showIcons = card.attachments.length > 0 || card.description.length > 0;
 
   const openModal = () => {
     dispatch(setCurrentSelectedCard(card));
@@ -29,12 +30,7 @@ const ListCard = ({ card, index }: ListCardProps) => {
                 ))}
               </div>
             )}
-            {card.attachments.length > 0 && (
-              <div className="flex items-center text-gray-600 pt-2">
-                <AiOutlinePaperClip />
-                <span className="text-xs pl-1">{card.attachments.length}</span>
-              </div>
-            )}
+            {showIcons && <ListCardIcons card={card} />}
           </div>
         </div>
       )}
