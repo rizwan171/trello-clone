@@ -57,8 +57,8 @@ const CardModalActions = () => {
           <p>Tags</p>
         </button>
         {tagsMenuOpen && <TagsMenu />}
+        {createTagsMenuOpen && <CreateTagMenu />}
       </div>
-      {createTagsMenuOpen && <CreateTagMenu />}
       <h4 className="text-gray-800 text-sm">Actions</h4>
       <div className="flex-col flex">
         <button
