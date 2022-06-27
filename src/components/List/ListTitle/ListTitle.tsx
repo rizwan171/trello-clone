@@ -12,7 +12,7 @@ const ListTitle = ({ list }: ListTitleProps) => {
   const [selected, setSelected] = useState(false);
   const [editableTitle, setEditableTitle] = useState(list.title);
   const [rows, setRows] = useState(1);
-  const moreMenuButtonRef = useRef<HTMLDivElement>(null);
+  const moreMenuButtonRef = useRef<HTMLButtonElement>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
@@ -85,9 +85,9 @@ const ListTitle = ({ list }: ListTitleProps) => {
           {list.title}
         </h2>
       )}
-      <div ref={moreMenuButtonRef} className="hover:bg-trello-gray-500 p-0.5 ml-1.5 rounded-ibsm" onClick={handleMoreMenu}>
+      <button ref={moreMenuButtonRef} className="hover:bg-trello-gray-500 p-0.5 ml-1.5 rounded-ibsm" onClick={handleMoreMenu}>
         <MdMoreHoriz size={20} className="text-trello-gray-200" />
-      </div>
+      </button>
     </div>
   );
 };
