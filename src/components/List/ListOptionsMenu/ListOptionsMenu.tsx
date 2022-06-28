@@ -3,6 +3,7 @@ import { deleteAllListCards, copyAllCardsToNewList } from "../../../features/car
 import { clearSelectedList } from "../../../features/currentSelectedListSlice";
 import { removeList, copyList } from "../../../features/listsSlice";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { MdClose } from "react-icons/md";
 
 const ListOptionsMenu = () => {
   const dispatch = useAppDispatch();
@@ -60,15 +61,29 @@ const ListOptionsMenu = () => {
     dispatch(clearSelectedList());
   };
 
+  const handleClose = () => {
+    dispatch(clearSelectedList());
+  };
+
   return (
-    // TODO add a transition for height when this is shown
-    <div ref={ref} style={styles} className="flex flex-col rounded-sm shadow-xl w-24 text-center fixed bg-trello-gray-400">
-      <button className="w-full p-2 cursor-pointer hover:bg-black hover:bg-opacity-20 rounded-md" onClick={handleCopy}>
-        Copy
+    <div
+      ref={ref}
+      style={styles}
+      className="fixed flex flex-col w-72 min-h-40 text-gray-700 bg-white rounded-ibsm shadow-2xl py-2"
+    >
+      <div className="relative text-center mb-2">
+        <span className="mx-auto py-1">List Actions</span>
+        <MdClose onClick={handleClose} size={20} className="absolute right-0 top-0 z-20 cursor-pointer my-1 mr-3" />
+      </div>
+      <hr className="w-11/12 mx-auto" />
+      <button className="w-full text-left px-3 py-2 cursor-pointer hover:bg-black hover:bg-opacity-10" onClick={handleCopy}>
+        Copy list...
       </button>
       {/* TODO remove cursor not allowed when multiple boards have been implemented */}
-      <button className="w-full p-2 cursor-not-allowed opacity-50 hover:bg-black hover:bg-opacity-20 rounded-md">Move</button>
-      <button className="w-full p-2 cursor-pointer hover:bg-black hover:bg-opacity-20 rounded-md" onClick={handleDelete}>
+      <button className="w-full text-left px-3 py-2 cursor-not-allowed opacity-50 hover:bg-black hover:bg-opacity-10">
+        Move
+      </button>
+      <button className="w-full text-left px-3 py-2 cursor-pointer hover:bg-black hover:bg-opacity-10" onClick={handleDelete}>
         Delete
       </button>
     </div>
