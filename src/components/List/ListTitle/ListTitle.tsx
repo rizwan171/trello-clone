@@ -85,7 +85,7 @@ const ListTitle = ({ list }: ListTitleProps) => {
           {list.title}
         </h2>
       )}
-      <button ref={moreMenuButtonRef} className="hover:bg-trello-gray-500 p-0.5 ml-1.5 rounded-ibsm" onClick={handleMoreMenu}>
+      <button ref={moreMenuButtonRef} className="hover:bg-trello-gray-500 p-1 ml-1.5 rounded-ibsm" onClick={handleMoreMenu}>
         <MdMoreHoriz size={20} className="text-trello-gray-200" />
       </button>
     </div>
