@@ -79,8 +79,7 @@ const CreateTagMenu = () => {
   };
 
   return (
-    // TODO mt-16 should be replaced with something more robust
-    <div className="fixed mt-16 w-72 min-h-40 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4 ">
+    <div className="fixed mt-10 w-72 min-h-40 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4 ">
       <div className="relative text-center mb-2">
         <span className="text-sm block relative z-10">{titleText}</span>
         <MdArrowBack onClick={handleBack} size={20} className="absolute left-0 top-0 z-20 cursor-pointer" />
