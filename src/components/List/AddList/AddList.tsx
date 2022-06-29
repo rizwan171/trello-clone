@@ -1,7 +1,8 @@
-import { useState, useRef, useEffect, ChangeEvent, KeyboardEvent, ReactNode } from "react";
+import { useState, useRef, useEffect, ChangeEvent, KeyboardEvent } from "react";
 import { FiPlus, FiX } from "react-icons/fi";
 import { addList } from "../../../features/listsSlice";
 import { useAppDispatch } from "../../../app/hooks";
+import Collapse from "../../Collapse/Collapse";
 
 const AddList = () => {
   const dispatch = useAppDispatch();
@@ -85,25 +86,3 @@ const AddList = () => {
 };
 
 export default AddList;
-
-const Collapse = ({ isOpen, children, className }: CollapseProps) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const inlineStyle = isOpen ? { height: "100%" } : { height: 0, width: 0 };
-
-  return (
-    <div
-      ref={ref}
-      aria-hidden={!isOpen}
-      style={inlineStyle}
-      className={"transition-height ease overflow-hidden duration-100 " + className}
-    >
-      {children}
-    </div>
-  );
-};
-
-interface CollapseProps {
-  isOpen: boolean;
-  children: ReactNode;
-  className?: string;
-}
