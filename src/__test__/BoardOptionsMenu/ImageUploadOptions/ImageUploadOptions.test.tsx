@@ -1,9 +1,9 @@
-import TestRenderer from "react-test-renderer";
+import { render } from "@testing-library/react";
 import ImageUploadOptions from "../../../components/BoardOptionsMenu/ImageUploadOptions/ImageUploadOptions";
 
 describe("ImageUploadOptions", () => {
   it("should render successfully", () => {
-    const component = TestRenderer.create(<ImageUploadOptions />);
-    expect(component.toJSON()).toMatchSnapshot();
+    const component = render(<ImageUploadOptions />);
+    expect(component.asFragment()).toMatchSnapshot();
   });
 });

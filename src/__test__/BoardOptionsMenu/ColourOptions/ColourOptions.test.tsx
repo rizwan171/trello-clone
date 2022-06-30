@@ -1,9 +1,9 @@
-import TestRenderer from "react-test-renderer";
+import { render } from "@testing-library/react";
 import ColorOptions from "../../../components/BoardOptionsMenu/ColourOptions/ColourOptions";
 
 describe("ColourOptions", () => {
   it("should render successfully", () => {
-    const component = TestRenderer.create(<ColorOptions />);
-    expect(component.toJSON()).toMatchSnapshot();
+    const component = render(<ColorOptions />);
+    expect(component.asFragment()).toMatchSnapshot();
   });
 });
