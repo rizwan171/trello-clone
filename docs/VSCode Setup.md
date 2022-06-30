@@ -4,6 +4,8 @@
 - Tailwind CSS Intellisense 
 - Visual Studio IntelliCode
 - ES7+ React/Redux/React-Native/JS snippets
+- Jest Snippets
+- Jest
 
 ## Settings
 **Note: All settings related changes will be done in the VSCode settings tab. Changes made in the User tab will apply globally to VSCode. Changes made in the Workspace tab will apply only to this repo**
@@ -48,6 +50,11 @@ By default, emmet doesn't work with JSX. To enable this
 1. Go to Settings
 2. Tick the box for `Format on Save`
 3. (Optional) Tick the box for `Format on Paste`
+
+### 7. Jest Extension
+- The Jest tests can be ran via the Jest extension
+- All that needs to be done is specify the Jest Command Line command in the settings for the Jest extension
+  - This should be set to `npm test -- --config jest.config.js`
 
 ### Misc
 - Untick the box for `Ignore Trim Whitespace`

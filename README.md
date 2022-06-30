@@ -83,3 +83,7 @@ Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap ou
 - Build the image using `docker build -f Dockerfile.pi -t trello-clone .`
 - Create a container `docker run -d -p 8080:80 trello-clone`
 - Go to `http://localhost:8080`
+
+### Running tests locally
+#### Jest Tests
+- Run `npm test` in the terminal
