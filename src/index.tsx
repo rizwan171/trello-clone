@@ -2,7 +2,7 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 
 import App from "./components/App";
-import store from "./app/store";
+import { setupStore } from "./app/store"; "./app/store";
 import "./css/index.css";
 
 const rootDiv = document.getElementById("root");
@@ -11,6 +11,7 @@ if (!rootDiv) {
 }
 
 const root = createRoot(rootDiv);
+const store = setupStore();
 root.render(
   <Provider store={store}>
     <App />
