@@ -18,7 +18,7 @@ const ExportModal = ({ closeExportModal, handleExportList }: ExportModalProps) =
       <div className="relative px-4 w-full max-w-sm h-full md:h-auto mb-36">
         <div className="relative bg-trello-gray-100 rounded-lg shadow dark:bg-gray-700">
           <div className="flex p-6">
-            <div className="">
+            <div>
               <select
                 value={selectedListId}
                 onChange={handleChange}

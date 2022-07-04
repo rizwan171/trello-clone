@@ -17,13 +17,13 @@ describe("DeleteModal", () => {
     expect(asFragment).toMatchSnapshot();
   });
 
-  it("should call close modal", () => {
+  it("should call closeDeleteModal", () => {
     const closeButton = screen.getByText("Cancel");
     fireEvent.click(closeButton);
     expect(mockCloseDeleteFn).toHaveBeenCalled();
   });
 
-  it("should call delete board", () => {
+  it("should call handleDeleteBoard", () => {
     const deleteButton = screen.getByText("Delete");
     fireEvent.click(deleteButton);
     expect(mockHandleDeleteBoardFn).toHaveBeenCalled();
