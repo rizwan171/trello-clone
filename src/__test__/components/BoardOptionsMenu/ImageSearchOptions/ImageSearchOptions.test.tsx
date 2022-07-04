@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import ImageSearchOptions from "../../../components/BoardOptionsMenu/ImageSearchOptions/ImageSearchOptions";
+import ImageSearchOptions from "../../../../components/BoardOptionsMenu/ImageSearchOptions/ImageSearchOptions";
 
 describe("ImageSearchOptions", () => {
   it("should render successfully", () => {
