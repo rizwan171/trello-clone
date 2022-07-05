@@ -223,7 +223,7 @@ const BoardOptionsMenu = () => {
             </div>
             <hr />
             <div className="flex flex-col">
-              <input type="file" id="file" ref={fileInput} onChange={(e) => handleImportAll(e)} className="hidden" />
+              <input type="file" id="file" data-testid="file" ref={fileInput} onChange={(e) => handleImportAll(e)} className="hidden" />
               <button
                 className="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
                 onClick={handleImportAllClick}
