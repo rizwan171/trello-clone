@@ -34,9 +34,15 @@ describe("ExportModal", () => {
   });
 
   it("should update selected list", () => {
-    const selectOptions = screen.getAllByRole("option");
+    const selectOptions = screen.getAllByRole("option") as HTMLOptionElement[];
     // no. of lists + 1 extra default option
+    const expectedOptionValues = ["", "1", "2", "3", "4", "5"];
+    const expectedOptionTexts = ["Select List...", "Test 1", "Test 2", "Test 3", "Test 4", "Test 5"];
+    const actualOptionValues = selectOptions.map((option) => option.value);
+    const actualOptionTexts = selectOptions.map((option) => option.text);
     expect(selectOptions.length).toBe(6);
+    expect(actualOptionValues).toEqual(expectedOptionValues);
+    expect(actualOptionTexts).toEqual(expectedOptionTexts);
 
     const selector = screen.getByRole("combobox") as HTMLSelectElement;
     expect(selector.value).toBe("");
