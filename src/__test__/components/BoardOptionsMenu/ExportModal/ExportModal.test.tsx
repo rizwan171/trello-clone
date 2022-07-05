@@ -41,8 +41,8 @@ describe("ExportModal", () => {
     const actualOptionValues = selectOptions.map((option) => option.value);
     const actualOptionTexts = selectOptions.map((option) => option.text);
     expect(selectOptions.length).toBe(6);
-    expect(actualOptionValues).toEqual(expectedOptionValues);
-    expect(actualOptionTexts).toEqual(expectedOptionTexts);
+    expect(actualOptionValues).toStrictEqual(expectedOptionValues);
+    expect(actualOptionTexts).toStrictEqual(expectedOptionTexts);
 
     const selector = screen.getByRole("combobox") as HTMLSelectElement;
     expect(selector.value).toBe("");
