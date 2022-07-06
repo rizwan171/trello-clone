@@ -74,8 +74,8 @@ describe("BoardOptionsMenu", () => {
     const mockDownloadLink = document.createElement("a");
     const mockClick = jest.fn();
     const mockRemove = jest.fn();
-    jest.spyOn(mockDownloadLink, "click").mockImplementation(() => mockClick);
-    jest.spyOn(mockDownloadLink, "remove").mockImplementation(() => mockRemove);
+    jest.spyOn(mockDownloadLink, "click").mockImplementation(mockClick);
+    jest.spyOn(mockDownloadLink, "remove").mockImplementation(mockRemove);
     jest.spyOn(document, "createElement").mockImplementation(() => mockDownloadLink);
 
     const expectedJson = {
