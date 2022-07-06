@@ -1,4 +1,4 @@
-import { fireEvent, RenderResult, screen } from "@testing-library/react";
+import { fireEvent, RenderResult } from "@testing-library/react";
 import ExportModal from "../../../../components/BoardOptionsMenu/ExportModal/ExportModal";
 import { renderWithProviders } from "../../../utils/test-utils";
 
@@ -34,7 +34,7 @@ describe("ExportModal", () => {
   });
 
   it("should update selected list", () => {
-    const selectOptions = screen.getAllByRole("option") as HTMLOptionElement[];
+    const selectOptions = component.getAllByRole("option") as HTMLOptionElement[];
     // no. of lists + 1 extra default option
     const expectedOptionValues = ["", "1", "2", "3", "4", "5"];
     const expectedOptionTexts = ["Select List...", "Test 1", "Test 2", "Test 3", "Test 4", "Test 5"];
@@ -44,7 +44,7 @@ describe("ExportModal", () => {
     expect(actualOptionValues).toStrictEqual(expectedOptionValues);
     expect(actualOptionTexts).toStrictEqual(expectedOptionTexts);
 
-    const selector = screen.getByRole("combobox") as HTMLSelectElement;
+    const selector = component.getByRole("combobox") as HTMLSelectElement;
     expect(selector.value).toEqual("");
 
     fireEvent.select(selector, { target: { value: "1" } });
@@ -55,18 +55,18 @@ describe("ExportModal", () => {
   });
 
   it("should call handleExportList", () => {
-    const selector = screen.getByRole("combobox") as HTMLSelectElement;
+    const selector = component.getByRole("combobox") as HTMLSelectElement;
     fireEvent.select(selector, { target: { value: "1" } });
     expect(selector.value).toEqual("1");
 
-    const exportButton = screen.getByText("Export");
+    const exportButton = component.getByText("Export");
     fireEvent.click(exportButton);
 
     expect(mockHandleExportList).toHaveBeenCalled();
   });
 
   it("should call closeExportModal", () => {
-    const closeButton = screen.getByText("Cancel");
+    const closeButton = component.getByText("Cancel");
     fireEvent.click(closeButton);
     expect(mockCloseExportModal).toHaveBeenCalled();
   });

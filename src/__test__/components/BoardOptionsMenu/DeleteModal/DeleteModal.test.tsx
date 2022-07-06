@@ -1,4 +1,4 @@
-import { fireEvent, render, RenderResult, screen } from "@testing-library/react";
+import { fireEvent, render, RenderResult } from "@testing-library/react";
 import DeleteModal from "../../../../components/BoardOptionsMenu/DeleteModal/DeleteModal";
 
 describe("DeleteModal", () => {
@@ -18,13 +18,13 @@ describe("DeleteModal", () => {
   });
 
   it("should call closeDeleteModal", () => {
-    const closeButton = screen.getByText("Cancel");
+    const closeButton = component.getByText("Cancel");
     fireEvent.click(closeButton);
     expect(mockCloseDeleteFn).toHaveBeenCalled();
   });
 
   it("should call handleDeleteBoard", () => {
-    const deleteButton = screen.getByText("Delete");
+    const deleteButton = component.getByText("Delete");
     fireEvent.click(deleteButton);
     expect(mockHandleDeleteBoardFn).toHaveBeenCalled();
   });
