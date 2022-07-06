@@ -95,8 +95,8 @@ describe("BoardOptionsMenu", () => {
     const exportAllButton = component.getByText("Export All") as HTMLButtonElement;
     fireEvent.click(exportAllButton);
 
-    expect(mockDownloadLink.href).toBe(expectedHref);
-    expect(mockDownloadLink.download).toBe("data.json");
+    expect(mockDownloadLink.href).toEqual(expectedHref);
+    expect(mockDownloadLink.download).toEqual("data.json");
     expect(mockClick).toHaveBeenCalled();
     expect(mockRemove).toHaveBeenCalled();
   });

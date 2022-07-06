@@ -40,24 +40,24 @@ describe("ExportModal", () => {
     const expectedOptionTexts = ["Select List...", "Test 1", "Test 2", "Test 3", "Test 4", "Test 5"];
     const actualOptionValues = selectOptions.map((option) => option.value);
     const actualOptionTexts = selectOptions.map((option) => option.text);
-    expect(selectOptions.length).toBe(6);
+    expect(selectOptions.length).toEqual(6);
     expect(actualOptionValues).toStrictEqual(expectedOptionValues);
     expect(actualOptionTexts).toStrictEqual(expectedOptionTexts);
 
     const selector = screen.getByRole("combobox") as HTMLSelectElement;
-    expect(selector.value).toBe("");
+    expect(selector.value).toEqual("");
 
     fireEvent.select(selector, { target: { value: "1" } });
-    expect(selector.value).toBe("1");
+    expect(selector.value).toEqual("1");
 
     fireEvent.select(selector, { target: { value: "4" } });
-    expect(selector.value).toBe("4");
+    expect(selector.value).toEqual("4");
   });
 
   it("should call handleExportList", () => {
     const selector = screen.getByRole("combobox") as HTMLSelectElement;
     fireEvent.select(selector, { target: { value: "1" } });
-    expect(selector.value).toBe("1");
+    expect(selector.value).toEqual("1");
 
     const exportButton = screen.getByText("Export");
     fireEvent.click(exportButton);
