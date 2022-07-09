@@ -9,7 +9,9 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
+    "plugin:jest/style"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -27,5 +29,12 @@
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off"
-  }
+  },
+  "overrides": [
+    {
+      // only runs eslint-testing-library against test files
+      "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+      "extends": ["plugin:testing-library/react"]
+    }
+  ]
 }
