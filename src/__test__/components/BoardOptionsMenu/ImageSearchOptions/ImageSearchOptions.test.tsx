@@ -3,7 +3,7 @@ import ImageSearchOptions from "../../../../components/BoardOptionsMenu/ImageSea
 
 describe("ImageSearchOptions", () => {
   it("should render successfully", () => {
-    const component = render(<ImageSearchOptions />);
-    expect(component.asFragment()).toMatchSnapshot();
+    const view = render(<ImageSearchOptions />);
+    expect(view.asFragment()).toMatchSnapshot();
   });
 });

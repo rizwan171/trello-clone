@@ -3,7 +3,7 @@ import ColorOptions from "../../../../components/BoardOptionsMenu/ColourOptions/
 
 describe("ColourOptions", () => {
   it("should render successfully", () => {
-    const component = render(<ColorOptions />);
-    expect(component.asFragment()).toMatchSnapshot();
+    const view = render(<ColorOptions />);
+    expect(view.asFragment()).toMatchSnapshot();
   });
 });

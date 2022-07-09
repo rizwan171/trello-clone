@@ -1,30 +1,34 @@
-import { fireEvent, render, RenderResult } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import DeleteModal from "../../../../components/BoardOptionsMenu/DeleteModal/DeleteModal";
 
 describe("DeleteModal", () => {
-  const mockCloseDeleteFn = jest.fn();
-  const mockHandleDeleteBoardFn = jest.fn();
-
-  let component: RenderResult;
-  let asFragment: DocumentFragment;
+  let mockCloseDeleteFn: jest.Mock;
+  let mockHandleDeleteBoardFn: jest.Mock;
 
   beforeEach(() => {
-    component = render(<DeleteModal closeDeleteModal={mockCloseDeleteFn} handleDeleteBoard={mockHandleDeleteBoardFn} />);
-    asFragment = component.asFragment();
+    mockCloseDeleteFn = jest.fn();
+    mockHandleDeleteBoardFn = jest.fn();
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it("should render successfully", () => {
-    expect(asFragment).toMatchSnapshot();
+    const view = render(<DeleteModal closeDeleteModal={mockCloseDeleteFn} handleDeleteBoard={mockHandleDeleteBoardFn} />);
+    expect(view.asFragment()).toMatchSnapshot();
   });
 
   it("should call closeDeleteModal", () => {
-    const closeButton = component.getByText("Cancel");
+    render(<DeleteModal closeDeleteModal={mockCloseDeleteFn} handleDeleteBoard={mockHandleDeleteBoardFn} />);
+    const closeButton = screen.getByText("Cancel");
     fireEvent.click(closeButton);
     expect(mockCloseDeleteFn).toHaveBeenCalled();
   });
 
   it("should call handleDeleteBoard", () => {
-    const deleteButton = component.getByText("Delete");
+    render(<DeleteModal closeDeleteModal={mockCloseDeleteFn} handleDeleteBoard={mockHandleDeleteBoardFn} />);
+    const deleteButton = screen.getByText("Delete");
     fireEvent.click(deleteButton);
     expect(mockHandleDeleteBoardFn).toHaveBeenCalled();
   });

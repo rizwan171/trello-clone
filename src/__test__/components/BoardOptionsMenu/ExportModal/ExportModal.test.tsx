@@ -1,72 +1,86 @@
-import { fireEvent, RenderResult } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
+import { RootState } from "../../../../app/store";
 import ExportModal from "../../../../components/BoardOptionsMenu/ExportModal/ExportModal";
-import { renderWithProviders } from "../../../utils/test-utils";
+import { renderWithProviders } from "../../../utils/renderUtils";
 
 describe("ExportModal", () => {
-  const mockCloseExportModal = jest.fn();
-  const mockHandleExportList = jest.fn();
-
-  let component: RenderResult;
-  let asFragment: DocumentFragment;
+  let mockCloseExportModal: jest.Mock;
+  let mockHandleExportList: jest.Mock;
+  let initialState: Partial<RootState>;
 
   beforeEach(() => {
-    component = renderWithProviders(
-      <ExportModal closeExportModal={mockCloseExportModal} handleExportList={mockHandleExportList} />,
-      {
-        preloadedState: {
-          lists: {
-            value: [
-              { id: "1", title: "Test 1" },
-              { id: "2", title: "Test 2" },
-              { id: "3", title: "Test 3" },
-              { id: "4", title: "Test 4" },
-              { id: "5", title: "Test 5" },
-            ],
-          },
-        },
-      }
-    );
-    asFragment = component.asFragment();
+    mockCloseExportModal = jest.fn();
+    mockHandleExportList = jest.fn();
+
+    initialState = {
+      lists: {
+        value: [
+          { id: "1", title: "Test 1" },
+          { id: "2", title: "Test 2" },
+          { id: "3", title: "Test 3" },
+          { id: "4", title: "Test 4" },
+          { id: "5", title: "Test 5" },
+        ],
+      },
+    };
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it("should render successfully", () => {
-    expect(asFragment).toMatchSnapshot();
+    const view = renderWithProviders(
+      <ExportModal closeExportModal={mockCloseExportModal} handleExportList={mockHandleExportList} />,
+      { preloadedState: initialState }
+    );
+    expect(view.asFragment()).toMatchSnapshot();
   });
 
   it("should update selected list", () => {
-    const selectOptions = component.getAllByRole("option") as HTMLOptionElement[];
-    // no. of lists + 1 extra default option
-    const expectedOptionValues = ["", "1", "2", "3", "4", "5"];
-    const expectedOptionTexts = ["Select List...", "Test 1", "Test 2", "Test 3", "Test 4", "Test 5"];
-    const actualOptionValues = selectOptions.map((option) => option.value);
-    const actualOptionTexts = selectOptions.map((option) => option.text);
-    expect(selectOptions.length).toEqual(6);
+    renderWithProviders(<ExportModal closeExportModal={mockCloseExportModal} handleExportList={mockHandleExportList} />, {
+      preloadedState: initialState,
+    });
+    const selector = screen.getByRole("combobox") as HTMLSelectElement;
+    expect(selector.value).toBe("");
+    expect(selector.options).toHaveLength(6);
+
+    const expectedOptionValues = initialState.lists?.value.map((option) => option.id);
+    expectedOptionValues?.unshift("");
+    const actualOptionValues = [...selector.options].map((option) => option.value);
     expect(actualOptionValues).toStrictEqual(expectedOptionValues);
+
+    const expectedOptionTexts = initialState.lists?.value.map((option) => option.title);
+    expectedOptionTexts?.unshift("Select List...");
+    const actualOptionTexts = [...selector.options].map((option) => option.text);
     expect(actualOptionTexts).toStrictEqual(expectedOptionTexts);
 
-    const selector = component.getByRole("combobox") as HTMLSelectElement;
-    expect(selector.value).toEqual("");
-
     fireEvent.select(selector, { target: { value: "1" } });
-    expect(selector.value).toEqual("1");
+    expect(selector.value).toBe("1");
 
     fireEvent.select(selector, { target: { value: "4" } });
-    expect(selector.value).toEqual("4");
+    expect(selector.value).toBe("4");
   });
 
   it("should call handleExportList", () => {
-    const selector = component.getByRole("combobox") as HTMLSelectElement;
+    renderWithProviders(<ExportModal closeExportModal={mockCloseExportModal} handleExportList={mockHandleExportList} />, {
+      preloadedState: initialState,
+    });
+    const selector = screen.getByRole("combobox") as HTMLSelectElement;
     fireEvent.select(selector, { target: { value: "1" } });
-    expect(selector.value).toEqual("1");
+    expect(selector.value).toBe("1");
 
-    const exportButton = component.getByText("Export");
+    const exportButton = screen.getByText("Export");
     fireEvent.click(exportButton);
 
     expect(mockHandleExportList).toHaveBeenCalled();
   });
 
   it("should call closeExportModal", () => {
-    const closeButton = component.getByText("Cancel");
+    renderWithProviders(<ExportModal closeExportModal={mockCloseExportModal} handleExportList={mockHandleExportList} />, {
+      preloadedState: initialState,
+    });
+    const closeButton = screen.getByText("Cancel");
     fireEvent.click(closeButton);
     expect(mockCloseExportModal).toHaveBeenCalled();
   });

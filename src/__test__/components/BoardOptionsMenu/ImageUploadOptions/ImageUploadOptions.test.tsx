@@ -3,7 +3,7 @@ import ImageUploadOptions from "../../../../components/BoardOptionsMenu/ImageUpl
 
 describe("ImageUploadOptions", () => {
   it("should render successfully", () => {
-    const component = render(<ImageUploadOptions />);
-    expect(component.asFragment()).toMatchSnapshot();
+    const view = render(<ImageUploadOptions />);
+    expect(view.asFragment()).toMatchSnapshot();
   });
 });

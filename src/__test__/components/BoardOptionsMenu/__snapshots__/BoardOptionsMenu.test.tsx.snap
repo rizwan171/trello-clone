@@ -275,6 +275,7 @@ exports[`BoardOptionsMenu should render successfully 1`] = `
         >
           <input
             class="hidden"
+            data-testid="file"
             id="file"
             type="file"
           />

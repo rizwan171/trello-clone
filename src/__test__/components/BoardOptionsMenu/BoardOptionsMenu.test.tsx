@@ -1,13 +1,13 @@
-import { fireEvent, RenderResult } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
+import { RootState } from "../../../app/store";
 import BoardOptionsMenu from "../../../components/BoardOptionsMenu/BoardOptionsMenu";
-import { renderWithProviders } from "../../utils/test-utils";
+import { renderWithProviders } from "../../utils/renderUtils";
 
 describe("BoardOptionsMenu", () => {
-  let component: RenderResult;
-  let asFragment: DocumentFragment;
+  let initialState: Partial<RootState>;
 
   beforeEach(() => {
-    const initialState = {
+    initialState = {
       board: {
         value: {
           id: "1",
@@ -28,9 +28,6 @@ describe("BoardOptionsMenu", () => {
         ],
       },
     };
-
-    component = renderWithProviders(<BoardOptionsMenu />, { preloadedState: initialState });
-    asFragment = component.asFragment();
   });
 
   afterEach(() => {
@@ -38,13 +35,15 @@ describe("BoardOptionsMenu", () => {
   });
 
   it("should render successfully", () => {
-    expect(asFragment).toMatchSnapshot();
+    const view = renderWithProviders(<BoardOptionsMenu />, { preloadedState: initialState });
+    expect(view.asFragment()).toMatchSnapshot();
   });
 
   it("should change selected tab", () => {
-    const colourBackgroundTab = component.getByText("Colour") as HTMLButtonElement;
-    const imageSearchBackgroundTab = component.getByText("Image Search") as HTMLButtonElement;
-    const imageUploadBackgroundTab = component.getByText("Image Upload") as HTMLButtonElement;
+    renderWithProviders(<BoardOptionsMenu />, { preloadedState: initialState });
+    const colourBackgroundTab = screen.getByText("Colour") as HTMLButtonElement;
+    const imageSearchBackgroundTab = screen.getByText("Image Search") as HTMLButtonElement;
+    const imageUploadBackgroundTab = screen.getByText("Image Upload") as HTMLButtonElement;
 
     expect(colourBackgroundTab.className).toContain("selected-tab");
     expect(imageSearchBackgroundTab.className).not.toContain("selected-tab");
@@ -62,8 +61,9 @@ describe("BoardOptionsMenu", () => {
   });
 
   it("should open file upload window", () => {
-    const importAllButton = component.getByText("Import All") as HTMLButtonElement;
-    const fileInput = component.getByTestId("file") as HTMLInputElement;
+    renderWithProviders(<BoardOptionsMenu />, { preloadedState: initialState });
+    const importAllButton = screen.getByText("Import All") as HTMLButtonElement;
+    const fileInput = screen.getByTestId("file") as HTMLInputElement;
     const clickSpy = jest.spyOn(fileInput, "click");
 
     fireEvent.click(importAllButton);
@@ -71,6 +71,7 @@ describe("BoardOptionsMenu", () => {
   });
 
   it("should export all successfully", () => {
+    renderWithProviders(<BoardOptionsMenu />, { preloadedState: initialState });
     const mockDownloadLink = document.createElement("a");
     const mockClick = jest.fn();
     const mockRemove = jest.fn();
@@ -92,11 +93,11 @@ describe("BoardOptionsMenu", () => {
       ],
     };
     const expectedHref = `data:text/json;chatset=utf-8,${encodeURIComponent(JSON.stringify(expectedJson))}`;
-    const exportAllButton = component.getByText("Export All") as HTMLButtonElement;
+    const exportAllButton = screen.getByText("Export All") as HTMLButtonElement;
     fireEvent.click(exportAllButton);
 
     expect(mockDownloadLink.href).toEqual(expectedHref);
-    expect(mockDownloadLink.download).toEqual("data.json");
+    expect(mockDownloadLink.download).toBe("data.json");
     expect(mockClick).toHaveBeenCalled();
     expect(mockRemove).toHaveBeenCalled();
   });
