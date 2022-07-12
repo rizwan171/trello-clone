@@ -1,4 +1,4 @@
-import { fireEvent, screen } from "@testing-library/react";
+import { cleanup, fireEvent, screen } from "@testing-library/react";
 import { RootState } from "../../../app/store";
 import BoardOptionsMenu from "../../../components/BoardOptionsMenu/BoardOptionsMenu";
 import { renderWithProviders } from "../../utils/renderUtils";
@@ -15,10 +15,16 @@ describe("BoardOptionsMenu", () => {
         },
       },
       lists: {
-        value: [{ id: "1", title: "Test List" }],
+        value: [
+          { id: "1", title: "Test List 1" },
+          { id: "2", title: "Test List 2" },
+        ],
       },
       cards: {
-        value: [],
+        value: [
+          { id: "1", listId: "1", title: "Card 1", description: "Desc 1", tags: ["1"], attachments: [] },
+          { id: "2", listId: "2", title: "Card 2", description: "Desc 2", tags: ["1", "2"], attachments: [] },
+        ],
       },
       tags: {
         value: [
@@ -32,6 +38,7 @@ describe("BoardOptionsMenu", () => {
 
   afterEach(() => {
     jest.clearAllMocks();
+    cleanup();
   });
 
   it("should render successfully", () => {
@@ -70,22 +77,31 @@ describe("BoardOptionsMenu", () => {
     expect(clickSpy).toHaveBeenCalled();
   });
 
+
   it("should export all successfully", () => {
     renderWithProviders(<BoardOptionsMenu />, { preloadedState: initialState });
-    const mockDownloadLink = document.createElement("a");
+
     const mockClick = jest.fn();
     const mockRemove = jest.fn();
+    const mockDownloadLink = document.createElement("a");
+
     jest.spyOn(mockDownloadLink, "click").mockImplementation(mockClick);
     jest.spyOn(mockDownloadLink, "remove").mockImplementation(mockRemove);
-    jest.spyOn(document, "createElement").mockImplementation(() => mockDownloadLink);
+    jest.spyOn(document, "createElement").mockImplementationOnce(() => mockDownloadLink);
 
     const expectedJson = {
       board: {
         id: "1",
         title: "Test Board",
       },
-      lists: [{ id: "1", title: "Test List" }],
-      cards: [],
+      lists: [
+        { id: "1", title: "Test List 1" },
+        { id: "2", title: "Test List 2" },
+      ],
+      cards: [
+        { id: "1", listId: "1", title: "Card 1", description: "Desc 1", tags: ["1"], attachments: [] },
+        { id: "2", listId: "2", title: "Card 2", description: "Desc 2", tags: ["1", "2"], attachments: [] },
+      ],
       tags: [
         { id: "1", name: "To Do", colour: "#592941" },
         { id: "2", name: "Doing", colour: "#498467" },
@@ -101,4 +117,5 @@ describe("BoardOptionsMenu", () => {
     expect(mockClick).toHaveBeenCalled();
     expect(mockRemove).toHaveBeenCalled();
   });
+
 });
