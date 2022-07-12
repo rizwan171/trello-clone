@@ -131,4 +131,5 @@ describe("BoardOptionsMenu", () => {
     expect(mockClick).toHaveBeenCalled();
     expect(mockRemove).toHaveBeenCalled();
   });
-};);
+
+});
