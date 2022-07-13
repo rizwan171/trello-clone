@@ -10,7 +10,7 @@ exports[`ExportModal should render successfully 1`] = `
       class="relative px-4 w-full max-w-sm h-full md:h-auto mb-36"
     >
       <div
-        class="relative bg-trello-gray-100 rounded-lg shadow dark:bg-gray-700"
+        class="relative bg-trello-gray-100 rounded-lg shadow"
       >
         <div
           class="flex p-6"
@@ -57,13 +57,13 @@ exports[`ExportModal should render successfully 1`] = `
           class="flex items-center px-6 pb-6"
         >
           <button
-            class="text-white bg-trello-green-100 hover:bg-trello-green-200 text-base rounded-lg px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            class="text-white bg-trello-green-100 hover:bg-trello-green-200 text-base rounded-lg px-5 py-2.5 text-center"
             type="button"
           >
             Export
           </button>
           <button
-            class="text-gray-600 bg-gray-300 text-base rounded-lg ml-2 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            class="text-gray-600 bg-gray-300 text-base rounded-lg ml-2 px-5 py-2.5 text-center hover:bg-gray-400"
             type="button"
           >
             Cancel

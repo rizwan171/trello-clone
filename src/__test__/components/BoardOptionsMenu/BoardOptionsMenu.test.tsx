@@ -81,12 +81,13 @@ describe("BoardOptionsMenu", () => {
     renderWithProviders(<BoardOptionsMenu />, { preloadedState: initialState });
     const exportListButton = screen.getByText(/Export List/) as HTMLButtonElement;
     expect(exportListButton).toBeInTheDocument();
+    
+     fireEvent.click(exportListButton);
 
     const exportSelector = screen.getByRole("combobox") as HTMLSelectElement;
     const exportButton = screen.getAllByText("Export").filter((e: HTMLElement) => e.tagName === "BUTTON")[0] as HTMLButtonElement;
     const cancelButton = screen.getByText("Cancel") as HTMLButtonElement;
-
-    fireEvent.click(exportListButton);
+    expect(exportSelector).toBeInTheDocument();
     expect(exportSelector.options).toHaveLength(3);
     expect(exportButton).toBeInTheDocument();
     expect(cancelButton).toBeInTheDocument();
@@ -131,5 +132,4 @@ describe("BoardOptionsMenu", () => {
     expect(mockClick).toHaveBeenCalled();
     expect(mockRemove).toHaveBeenCalled();
   });
-
 });
