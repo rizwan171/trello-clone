@@ -79,10 +79,10 @@ describe("BoardOptionsMenu", () => {
 
   it("should open export list modal", () => {
     renderWithProviders(<BoardOptionsMenu />, { preloadedState: initialState });
-    const exportListButton = screen.getByText(/Export List/) as HTMLButtonElement;
+    const exportListButton = screen.getByText("Export List") as HTMLButtonElement;
     expect(exportListButton).toBeInTheDocument();
-    
-     fireEvent.click(exportListButton);
+
+    fireEvent.click(exportListButton);
 
     const exportSelector = screen.getByRole("combobox") as HTMLSelectElement;
     const exportButton = screen.getAllByText("Export").filter((e: HTMLElement) => e.tagName === "BUTTON")[0] as HTMLButtonElement;
@@ -93,13 +93,54 @@ describe("BoardOptionsMenu", () => {
     expect(cancelButton).toBeInTheDocument();
   });
 
+  it("should export the selected list data", () => {
+    renderWithProviders(<BoardOptionsMenu />, { preloadedState: initialState });
+
+    const expectedJson = {
+      list: { id: "1", title: "Test List 1" },
+      cards: [{ id: "1", listId: "1", title: "Card 1", description: "Desc 1", tags: ["1"], attachments: [] }],
+      tags: [
+        { id: "1", name: "To Do", colour: "#592941" },
+        { id: "2", name: "Doing", colour: "#498467" },
+        { id: "3", name: "Done", colour: "#EDE5A6" },
+      ],
+    };
+    const expectedHref = `data:text/json;chatset=utf-8,${encodeURIComponent(JSON.stringify(expectedJson))}`;
+
+    const exportListButton = screen.getByText("Export List") as HTMLButtonElement;
+    fireEvent.click(exportListButton);
+
+    const mockClick = jest.fn();
+    const mockRemove = jest.fn();
+    const mockDownloadLink = document.createElement("a");
+    jest.spyOn(mockDownloadLink, "click").mockImplementation(mockClick);
+    jest.spyOn(mockDownloadLink, "remove").mockImplementation(mockRemove);
+    jest.spyOn(document, "createElement").mockImplementationOnce(() => mockDownloadLink);
+
+    const exportSelector = screen.getByRole("combobox") as HTMLSelectElement;
+    const exportButton = screen.getAllByText("Export").filter((e: HTMLElement) => e.tagName === "BUTTON")[0] as HTMLButtonElement;
+
+    fireEvent.change(exportSelector, { target: { value: "1" } });
+    expect(exportSelector.selectedOptions).toHaveLength(1);
+    expect(exportSelector.selectedOptions[0].value).toBe("1");
+    expect(exportSelector.selectedOptions[0].textContent).toBe("Test List 1");
+
+    fireEvent.click(exportButton);
+
+    expect(mockDownloadLink.href).toEqual(expectedHref);
+    expect(mockDownloadLink.download).toBe("data.json");
+    expect(mockClick).toHaveBeenCalled();
+    expect(mockRemove).toHaveBeenCalled();
+    expect(exportSelector).not.toBeInTheDocument();
+    expect(exportButton).not.toBeInTheDocument();
+  });
+
   it("should export all successfully", () => {
     renderWithProviders(<BoardOptionsMenu />, { preloadedState: initialState });
 
     const mockClick = jest.fn();
     const mockRemove = jest.fn();
     const mockDownloadLink = document.createElement("a");
-
     jest.spyOn(mockDownloadLink, "click").mockImplementation(mockClick);
     jest.spyOn(mockDownloadLink, "remove").mockImplementation(mockRemove);
     jest.spyOn(document, "createElement").mockImplementationOnce(() => mockDownloadLink);
