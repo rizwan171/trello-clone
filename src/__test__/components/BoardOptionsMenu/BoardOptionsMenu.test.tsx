@@ -93,6 +93,21 @@ describe("BoardOptionsMenu", () => {
     expect(cancelButton).toBeInTheDocument();
   });
 
+  it("should close export list modal", () => {
+    renderWithProviders(<BoardOptionsMenu />, { preloadedState: initialState });
+    const exportListButton = screen.getByText("Export List") as HTMLButtonElement;
+
+    fireEvent.click(exportListButton);
+    const exportSelector = screen.getByRole("combobox") as HTMLSelectElement;
+    const exportButton = screen.getAllByText("Export").filter((e: HTMLElement) => e.tagName === "BUTTON")[0] as HTMLButtonElement;
+    const cancelButton = screen.getByText("Cancel") as HTMLButtonElement;
+
+    fireEvent.click(cancelButton);
+    expect(exportSelector).not.toBeInTheDocument();
+    expect(exportButton).not.toBeInTheDocument();
+    expect(cancelButton).not.toBeInTheDocument();
+  });
+
   it("should export the selected list data", () => {
     renderWithProviders(<BoardOptionsMenu />, { preloadedState: initialState });
 
@@ -172,5 +187,54 @@ describe("BoardOptionsMenu", () => {
     expect(mockDownloadLink.download).toBe("data.json");
     expect(mockClick).toHaveBeenCalled();
     expect(mockRemove).toHaveBeenCalled();
+  });
+
+  it("should open delete modal", () => {
+    renderWithProviders(<BoardOptionsMenu />, { preloadedState: initialState });
+
+    const deleteBoardButton = screen.getByText("Delete Board") as HTMLButtonElement;
+    expect(deleteBoardButton).toBeInTheDocument();
+
+    fireEvent.click(deleteBoardButton);
+    const deleteModalText = screen.getByText(
+      "Are you sure you want to delete this board and all its contents? The data will not be recoverable after deleting."
+    ) as HTMLParagraphElement;
+    const deleteButton = screen.getAllByText("Delete").filter((e: HTMLElement) => e.tagName === "BUTTON")[0] as HTMLButtonElement;
+    const cancelButton = screen.getByText("Cancel") as HTMLButtonElement;
+    expect(deleteModalText).toBeInTheDocument();
+    expect(deleteButton).toBeInTheDocument();
+    expect(cancelButton).toBeInTheDocument();
+  });
+
+  it("should close delete modal", () => {
+    renderWithProviders(<BoardOptionsMenu />, { preloadedState: initialState });
+
+    const deleteBoardButton = screen.getByText("Delete Board") as HTMLButtonElement;
+
+    fireEvent.click(deleteBoardButton);
+    const deleteModalText = screen.getByText(
+      "Are you sure you want to delete this board and all its contents? The data will not be recoverable after deleting."
+    ) as HTMLParagraphElement;
+    const deleteButton = screen.getAllByText("Delete").filter((e: HTMLElement) => e.tagName === "BUTTON")[0] as HTMLButtonElement;
+    const cancelButton = screen.getByText("Cancel") as HTMLButtonElement;
+
+    fireEvent.click(cancelButton);
+    expect(deleteModalText).not.toBeInTheDocument();
+    expect(deleteButton).not.toBeInTheDocument();
+    expect(cancelButton).not.toBeInTheDocument();
+  });
+
+  it("should delete board data", () => {
+    const { store } = renderWithProviders(<BoardOptionsMenu />, { preloadedState: initialState });
+
+    const deleteBoardButton = screen.getByText("Delete Board") as HTMLButtonElement;
+
+    fireEvent.click(deleteBoardButton);
+    const stateBeforeDeleting = { ...store.getState() };
+    const deleteButton = screen.getAllByText("Delete").filter((e: HTMLElement) => e.tagName === "BUTTON")[0] as HTMLButtonElement;
+
+    fireEvent.click(deleteButton);
+    const stateAfterDeleting = { ...store.getState() };
+    expect(stateAfterDeleting).not.toBe(stateBeforeDeleting);
   });
 });
