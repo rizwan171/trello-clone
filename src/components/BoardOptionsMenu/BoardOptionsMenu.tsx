@@ -102,7 +102,7 @@ const BoardOptionsMenu = () => {
     link.remove();
   };
 
-  const handleImportAll = async (e: ChangeEvent<HTMLInputElement>) => {
+  const handleImportAll = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const file = e.target.files[0];
       let result: ImportData;
@@ -113,6 +113,7 @@ const BoardOptionsMenu = () => {
           result = JSON.parse(uploadedFileJson);
           dispatch(deleteAllLists());
           dispatch(deleteAllCards());
+          // TODO update board id here
           dispatch(updateTitle(result.board.title));
           dispatch(updateAllLists(result.lists));
           dispatch(updateAllCards(result.cards));

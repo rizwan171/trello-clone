@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, screen } from "@testing-library/react";
+import { cleanup, fireEvent, screen, waitFor } from "@testing-library/react";
 import { RootState } from "../../../app/store";
 import BoardOptionsMenu from "../../../components/BoardOptionsMenu/BoardOptionsMenu";
 import { renderWithProviders } from "../../utils/renderUtils";
@@ -67,14 +67,55 @@ describe("BoardOptionsMenu", () => {
     expect(imageSearchBackgroundTab.className).not.toContain("selected-tab");
   });
 
-  it("should open file upload window", () => {
+  it("should open file upload input window", () => {
     renderWithProviders(<BoardOptionsMenu />, { preloadedState: initialState });
     const importAllButton = screen.getByText("Import All") as HTMLButtonElement;
+    expect(importAllButton).toBeInTheDocument();
+
     const fileInput = screen.getByTestId("file") as HTMLInputElement;
     const clickSpy = jest.spyOn(fileInput, "click");
 
     fireEvent.click(importAllButton);
     expect(clickSpy).toHaveBeenCalled();
+  });
+
+  it("should import data successfully", async () => {
+    const { store } = renderWithProviders(<BoardOptionsMenu />, { preloadedState: initialState });
+    const stateBeforeImport = store.getState();
+    const fileInput = screen.getByTestId("file") as HTMLInputElement;
+
+    const importDataJson = {
+      board: {
+        id: "1",
+        title: "Imported Board",
+      },
+      lists: [
+        { id: "1", title: "Imported List 1" },
+        { id: "2", title: "Imported List 2" },
+      ],
+      cards: [
+        { id: "1", listId: "1", title: "Imported Card 1", description: "Desc 1", tags: ["1"], attachments: [] },
+        { id: "2", listId: "2", title: "Imported Card 2", description: "Desc 2", tags: ["1", "2"], attachments: [] },
+      ],
+      tags: [
+        { id: "1", name: "Imported Tag 1", colour: "#FFFFFF" },
+        { id: "2", name: "Imported Tag 2", colour: "#000000" },
+      ],
+    };
+    const importDataBlob = new Blob([JSON.stringify(importDataJson)], { type: "application/json" });
+    const importDataFile = new File([importDataBlob], "import.json");
+
+    fireEvent.change(fileInput, { target: { files: [importDataFile] } });
+    await waitFor(() => {
+      // wait for store to be updated after reading import file
+      expect(store.getState()).not.toEqual(stateBeforeImport);
+    });
+
+    const stateAfterImport = store.getState();
+    expect(stateAfterImport.board.value).toEqual(importDataJson.board);
+    expect(stateAfterImport.lists.value).toEqual(importDataJson.lists);
+    expect(stateAfterImport.cards.value).toEqual(importDataJson.cards);
+    expect(stateAfterImport.tags.value).toEqual(importDataJson.tags);
   });
 
   it("should open export list modal", () => {
@@ -235,6 +276,6 @@ describe("BoardOptionsMenu", () => {
 
     fireEvent.click(deleteButton);
     const stateAfterDeleting = { ...store.getState() };
-    expect(stateAfterDeleting).not.toBe(stateBeforeDeleting);
+    expect(stateAfterDeleting).not.toEqual(stateBeforeDeleting);
   });
 });
