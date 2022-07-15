@@ -5,7 +5,8 @@ module.exports = {
   verbose: true,
   json: true,
   testLocationInResults: true,
-  setupFilesAfterEnv: ["<rootDir>/src/__test__/utils/setupTests.js"],
+  rootDir: "src/tests",
+  setupFilesAfterEnv: ["<rootDir>/utils/setupTests.js"],
   transform: {
     "^.+\\.(ts|tsx)?$": "ts-jest",
     "^.+\\.(js|jsx)$": "babel-jest",
