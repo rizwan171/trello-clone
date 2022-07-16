@@ -5,6 +5,7 @@ import type { PreloadedState } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { AppStore, RootState, setupStore } from "../../app/store";
 
+// See https://redux.js.org/usage/writing-tests#setting-up-a-reusable-test-render-function
 interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
   preloadedState?: PreloadedState<RootState>;
   store?: AppStore;
