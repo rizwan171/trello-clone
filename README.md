@@ -92,4 +92,4 @@ Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap ou
 
 #### Jest Tests
 
-- Run `npm test` in the terminal
+- Run `yarn test` in the terminal
