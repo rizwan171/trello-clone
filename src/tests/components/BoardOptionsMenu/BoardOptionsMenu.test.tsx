@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, screen, waitFor } from "@testing-library/react";
+import { fireEvent, screen, waitFor } from "@testing-library/react";
 import { RootState } from "../../../app/store";
 import BoardOptionsMenu from "../../../components/BoardOptionsMenu/BoardOptionsMenu";
 import { renderWithProviders } from "../../utils/renderUtils";
@@ -38,7 +38,6 @@ describe("BoardOptionsMenu", () => {
 
   afterEach(() => {
     jest.clearAllMocks();
-    cleanup();
   });
 
   it("should render successfully", () => {
