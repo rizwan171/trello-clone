@@ -21,13 +21,15 @@ const AttachmentMenu = ({ update }: AttachmentMenuProps) => {
 
     const files = e.target.files;
     const upload = [];
+    const setFilePromises = [];
     if (files) {
       for (let i = 0; i < files.length; i++) {
         const id = uuidv4();
         const date = JSON.stringify(new Date());
-        await localforage.setItem(id, files[i]);
+        setFilePromises.push(localforage.setItem(id, files[i]));
         upload.push({ id, date, name: files[i].name });
       }
+      await Promise.all(setFilePromises);
     }
 
     dispatch(addFilesToCard({ cardId: card.id, uploadedFiles: [...upload] }));
@@ -42,8 +44,13 @@ const AttachmentMenu = ({ update }: AttachmentMenuProps) => {
   return (
     <div className={style}>
       <div className="relative text-center mb-2">
-        <span className="text-sm block relative z-10">Attach From... </span>
-        <MdClose onClick={handleClose} size={20} className="absolute right-0 top-0 z-20 cursor-pointer" />
+        <span className="text-sm block relative z-10">Attach From...</span>
+        <MdClose
+          data-testid="attachment-menu-close"
+          onClick={handleClose}
+          size={20}
+          className="absolute right-0 top-0 z-20 cursor-pointer"
+        />
       </div>
       <hr />
       <div className="flex flex-col mt-2 text-sm">
@@ -53,7 +60,15 @@ const AttachmentMenu = ({ update }: AttachmentMenuProps) => {
         >
           Upload from computer
         </button>
-        <input multiple className="hidden" type="file" name="file" onChange={handleFileSelect} ref={hiddenFileInput} />
+        <input
+          data-testid="attachment-menu-file-upload"
+          multiple
+          className="hidden"
+          type="file"
+          name="file"
+          onChange={handleFileSelect}
+          ref={hiddenFileInput}
+        />
       </div>
     </div>
   );
