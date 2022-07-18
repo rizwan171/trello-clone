@@ -246,6 +246,16 @@ it("should call mock prop after click", () => {
 
 - Note: the above also applies if you're using `renderWithProviders`
 
+### Clearing mocks if used
+
+- If your test defines any mocks or spys, make sure to add an `afterEach` block that clears the mocks after each test
+
+```javascript
+afterEach(() => {
+  jest.clearAllMocks();
+})
+```
+
 ### Things to watch out for
 
 #### Be careful when mocking `document` methods that manipulate the dom i.e. `createElement`
