@@ -45,13 +45,11 @@ describe("ExportModal", () => {
     expect(selector.value).toBe("");
     expect(selector.options).toHaveLength(6);
 
-    const expectedOptionValues = initialState.lists?.value.map((option) => option.id);
-    expectedOptionValues?.unshift("");
+    const expectedOptionValues = ["", "1", "2", "3", "4", "5"];
     const actualOptionValues = [...selector.options].map((option) => option.value);
     expect(actualOptionValues).toStrictEqual(expectedOptionValues);
 
-    const expectedOptionTexts = initialState.lists?.value.map((option) => option.title);
-    expectedOptionTexts?.unshift("Select List...");
+    const expectedOptionTexts = ["Select List...", "Test 1", "Test 2", "Test 3", "Test 4", "Test 5"];
     const actualOptionTexts = [...selector.options].map((option) => option.text);
     expect(actualOptionTexts).toStrictEqual(expectedOptionTexts);
 
