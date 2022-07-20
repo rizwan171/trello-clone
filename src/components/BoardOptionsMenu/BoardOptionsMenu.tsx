@@ -102,7 +102,7 @@ const BoardOptionsMenu = () => {
     link.remove();
   };
 
-  const handleImportAll = async (e: ChangeEvent<HTMLInputElement>) => {
+  const handleImportAll = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const file = e.target.files[0];
       let result: ImportData;
@@ -113,6 +113,7 @@ const BoardOptionsMenu = () => {
           result = JSON.parse(uploadedFileJson);
           dispatch(deleteAllLists());
           dispatch(deleteAllCards());
+          // TODO update board id here
           dispatch(updateTitle(result.board.title));
           dispatch(updateAllLists(result.lists));
           dispatch(updateAllCards(result.cards));
@@ -223,7 +224,7 @@ const BoardOptionsMenu = () => {
             </div>
             <hr />
             <div className="flex flex-col">
-              <input type="file" id="file" ref={fileInput} onChange={(e) => handleImportAll(e)} className="hidden" />
+              <input type="file" id="file" data-testid="file" ref={fileInput} onChange={(e) => handleImportAll(e)} className="hidden" />
               <button
                 className="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
                 onClick={handleImportAllClick}

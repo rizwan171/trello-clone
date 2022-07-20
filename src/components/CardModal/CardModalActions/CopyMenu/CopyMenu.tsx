@@ -36,7 +36,7 @@ const CopyMenu = () => {
           value={selectedListId}
           onChange={(e) => setSelectedListId(e.target.value)}
         >
-          <option value="" selected disabled hidden>
+          <option value="" disabled hidden>
             Select list
           </option>
           {lists.map((list) => (

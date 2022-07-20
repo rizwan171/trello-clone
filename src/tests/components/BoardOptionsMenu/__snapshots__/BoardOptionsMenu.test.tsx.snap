@@ -1,0 +1,495 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BoardOptionsMenu should render successfully 1`] = `
+<DocumentFragment>
+  <div
+    class="h-full w-1/5 fixed z-10 top-0 right-0 bg-trello-gray-300 text-white"
+  >
+    <div
+      class="px-8 py-4"
+    >
+      <p
+        class="text-2xl"
+      >
+        Board Options
+      </p>
+    </div>
+    <div
+      class="px-8 text-xl h-full"
+    >
+      <div
+        class="mb-4"
+      >
+        <div
+          class="flex mb-2"
+        >
+          <svg
+            class="mr-3 mt-auto"
+            fill="currentColor"
+            height="25"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 1024 1024"
+            width="25"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32zm-40 632H136v-39.9l138.5-164.3 150.1 178L658.1 489 888 761.6V792zm0-129.8L664.2 396.8c-3.2-3.8-9-3.8-12.2 0L424.6 666.4l-144-170.7c-3.2-3.8-9-3.8-12.2 0L136 652.7V232h752v430.2zM304 456a88 88 0 1 0 0-176 88 88 0 0 0 0 176zm0-116c15.5 0 28 12.5 28 28s-12.5 28-28 28-28-12.5-28-28 12.5-28 28-28z"
+            />
+          </svg>
+          <p>
+            Background
+          </p>
+        </div>
+        <hr />
+        <div
+          class="flex"
+        >
+          <button
+            class="py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base selected-tab"
+          >
+            Colour
+          </button>
+          <button
+            class="py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base"
+          >
+            Image Search
+          </button>
+          <button
+            class="py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base"
+          >
+            Image Upload
+          </button>
+        </div>
+        <div
+          class="h-52 max-h-96 w-full bg-trello-gray-500 rounded-md text-black p-1 scroll-y-hidden"
+        >
+          <div
+            class="grid grid-cols-6 gap-1"
+          >
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+            <div
+              class="text-center bg-green-700 rounded-md p-1"
+            >
+              1
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="mb-4"
+      >
+        <div
+          class="flex items-center"
+        >
+          <svg
+            class="mr-3 mb-1"
+            fill="currentColor"
+            height="25"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 1024 1024"
+            width="25"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M518.3 459a8 8 0 0 0-12.6 0l-112 141.7a7.98 7.98 0 0 0 6.3 12.9h73.9V856c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V613.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 459z"
+            />
+            <path
+              d="M811.4 366.7C765.6 245.9 648.9 160 512.2 160S258.8 245.8 213 366.6C127.3 389.1 64 467.2 64 560c0 110.5 89.5 200 199.9 200H304c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8h-40.1c-33.7 0-65.4-13.4-89-37.7-23.5-24.2-36-56.8-34.9-90.6.9-26.4 9.9-51.2 26.2-72.1 16.7-21.3 40.1-36.8 66.1-43.7l37.9-9.9 13.9-36.6c8.6-22.8 20.6-44.1 35.7-63.4a245.6 245.6 0 0 1 52.4-49.9c41.1-28.9 89.5-44.2 140-44.2s98.9 15.3 140 44.2c19.9 14 37.5 30.8 52.4 49.9 15.1 19.3 27.1 40.7 35.7 63.4l13.8 36.5 37.8 10C846.1 454.5 884 503.8 884 560c0 33.1-12.9 64.3-36.3 87.7a123.07 123.07 0 0 1-87.6 36.3H720c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h40.1C870.5 760 960 670.5 960 560c0-92.7-63.1-170.7-148.6-193.3z"
+            />
+          </svg>
+          <p
+            class="mb-2"
+          >
+            Import
+          </p>
+        </div>
+        <hr />
+        <div
+          class="flex flex-col"
+        >
+          <input
+            class="hidden"
+            data-testid="file"
+            id="file"
+            type="file"
+          />
+          <button
+            class="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
+          >
+            <svg
+              class="mr-2"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 1024 1024"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 0 0-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"
+              />
+            </svg>
+            Import All
+          </button>
+          <button
+            class="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
+          >
+            <svg
+              class="mr-2"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 1024 1024"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 0 0-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"
+              />
+            </svg>
+            Import Board
+          </button>
+          <button
+            class="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
+          >
+            <svg
+              class="mr-2"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 1024 1024"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 0 0-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"
+              />
+            </svg>
+            Import List
+          </button>
+        </div>
+      </div>
+      <div
+        class="mb-4"
+      >
+        <div
+          class="flex items-center"
+        >
+          <svg
+            class="mr-3 mb-1"
+            fill="currentColor"
+            height="25"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 1024 1024"
+            width="25"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M624 706.3h-74.1V464c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v242.3H400c-6.7 0-10.4 7.7-6.3 12.9l112 141.7a8 8 0 0 0 12.6 0l112-141.7c4.1-5.2.4-12.9-6.3-12.9z"
+            />
+            <path
+              d="M811.4 366.7C765.6 245.9 648.9 160 512.2 160S258.8 245.8 213 366.6C127.3 389.1 64 467.2 64 560c0 110.5 89.5 200 199.9 200H304c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8h-40.1c-33.7 0-65.4-13.4-89-37.7-23.5-24.2-36-56.8-34.9-90.6.9-26.4 9.9-51.2 26.2-72.1 16.7-21.3 40.1-36.8 66.1-43.7l37.9-9.9 13.9-36.6c8.6-22.8 20.6-44.1 35.7-63.4a245.6 245.6 0 0 1 52.4-49.9c41.1-28.9 89.5-44.2 140-44.2s98.9 15.3 140 44.2c19.9 14 37.5 30.8 52.4 49.9 15.1 19.3 27.1 40.7 35.7 63.4l13.8 36.5 37.8 10C846.1 454.5 884 503.8 884 560c0 33.1-12.9 64.3-36.3 87.7a123.07 123.07 0 0 1-87.6 36.3H720c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h40.1C870.5 760 960 670.5 960 560c0-92.7-63.1-170.7-148.6-193.3z"
+            />
+          </svg>
+          <p
+            class="mb-2"
+          >
+            Export
+          </p>
+        </div>
+        <hr />
+        <div
+          class="flex flex-col"
+        >
+          <button
+            class="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 items-center text-base shadow-md rounded-md"
+          >
+            <svg
+              class="mr-2"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 1024 1024"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M505.7 661a8 8 0 0 0 12.6 0l112-141.7c4.1-5.2.4-12.9-6.3-12.9h-74.1V168c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v338.3H400c-6.7 0-10.4 7.7-6.3 12.9l112 141.8zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"
+              />
+            </svg>
+            Export All
+          </button>
+          <button
+            class="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
+          >
+            <svg
+              class="mr-2"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 1024 1024"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M505.7 661a8 8 0 0 0 12.6 0l112-141.7c4.1-5.2.4-12.9-6.3-12.9h-74.1V168c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v338.3H400c-6.7 0-10.4 7.7-6.3 12.9l112 141.8zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"
+              />
+            </svg>
+            Export Board
+          </button>
+          <button
+            class="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
+          >
+            <svg
+              class="mr-2"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 1024 1024"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M505.7 661a8 8 0 0 0 12.6 0l112-141.7c4.1-5.2.4-12.9-6.3-12.9h-74.1V168c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v338.3H400c-6.7 0-10.4 7.7-6.3 12.9l112 141.8zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"
+              />
+            </svg>
+            Export List
+          </button>
+        </div>
+      </div>
+      <div>
+        <div
+          class="flex items-center"
+        >
+          <svg
+            class="mr-3 mb-2"
+            fill="currentColor"
+            height="25"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="25"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g>
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M17 6h5v2h-2v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8H2V6h5V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3zm1 2H6v12h12V8zm-4.586 6l1.768 1.768-1.414 1.414L12 15.414l-1.768 1.768-1.414-1.414L10.586 14l-1.768-1.768 1.414-1.414L12 12.586l1.768-1.768 1.414 1.414L13.414 14zM9 4v2h6V4H9z"
+              />
+            </g>
+          </svg>
+          <p
+            class="mb-2"
+          >
+            Delete
+          </p>
+        </div>
+        <hr />
+        <div
+          class="flex flex-col"
+        >
+          <button
+            class="flex py-2 px-3 mt-2 mb-2 bg-red-600 hover:bg-red-800 text-white items-center text-base shadow-md rounded-md"
+          >
+            <svg
+              class="mr-2"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h24v24H0V0z"
+                fill="none"
+              />
+              <path
+                d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"
+              />
+            </svg>
+            Delete Board
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

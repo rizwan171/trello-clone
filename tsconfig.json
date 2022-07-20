@@ -9,7 +9,6 @@
     "strictNullChecks": true,
     "noImplicitThis": true,
     "alwaysStrict": true,
-    "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
@@ -28,6 +27,6 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src", "src/tests"
   ]
 }
