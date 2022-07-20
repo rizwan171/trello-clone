@@ -248,13 +248,13 @@ it("should call mock prop after click", () => {
 
 ### Things to watch out for
 
-#### Be careful when mocking `document` methods that manipulate the dom i.e. `creatElement`
+#### Be careful when mocking `document` methods that manipulate the dom i.e. `createElement`
 
 - When mocking a method like `createElement`, make sure to use `mockImplementationOnce` instead of `mockImplementation`
 - This is because if you mock this before a React rerender, the rerender will result in an error as it also uses `createElement`, which you have mocked for the entirety of the test if you use `mockImplementation`.
 - This is not an issue with `mockImplementationOnce` as after the `createElement` you expect to happen, the mock is not used for subsequent calls to `createElement`, meaning the rerender can happen without an issue
 
-#### Be careful of the order of your `document` mocks that manipulate the dom i.e. `creatElement`
+#### Be careful of the order of your `document` mocks that manipulate the dom i.e. `createElement`
 
 - Related to the above, if you mock a method like `createElement`, and expect it to happen after something rerenders, you should call your action that triggers the rerender and then define your mock i.e.
 
