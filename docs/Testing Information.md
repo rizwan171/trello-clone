@@ -246,6 +246,26 @@ it("should call mock prop after click", () => {
 
 - Note: the above also applies if you're using `renderWithProviders`
 
+### Clearing mocks if used
+
+- If your test defines any mocks or spys, make sure to add an `afterEach` block that clears the mocks after each test
+
+```javascript
+afterEach(() => {
+  jest.clearAllMocks();
+});
+```
+
+### Resetting fake timers if used
+
+- If your test uses any fake timers in a test i.e. `jest.useFakeTimers()`, make sure to add an `afterEach` block that resets the timers after each test
+
+```javascript
+afterEach(() => {
+  jest.clearAllTimers();
+});
+```
+
 ### Things to watch out for
 
 #### Be careful when mocking `document` methods that manipulate the dom i.e. `createElement`
@@ -302,7 +322,7 @@ it("should do something", () => {
   fireEvent.click(button);
 
   // will not be true
-  waitFor(() => {
+  await waitFor(() => {
     expect(stateAfter).not.toEqual(stateOfComponentBefore);
   })
   // other expect statements
@@ -310,3 +330,36 @@ it("should do something", () => {
 ```
 
 - See the `should import data successfully` scenario in [Board Options Menu test](../src/tests/components/BoardOptionsMenu/BoardOptionsMenu.test.tsx) for an example
+
+#### Providing a value for `new Date()` to check
+
+- If you are testing a piece of code that sets dates, it can be hard to check the returned object's date field to ensure it matches what we expect
+- Use `jest.useFakeTimers()` to provide a constant value i.e.
+
+```javascript
+const Component = () => {
+  const date = new Date()
+  return <div>{date}</div>
+}
+
+// test
+it ("should be created with date", () => {
+ // naming only for demonstration. in your test, this should be named
+ // appropriately, either simply "date" or something more descriptive if needed
+  const dateWeDefinedHere = new Date();
+  jest.useFakeTimers()..setSystemTime(dateWeDefinedHere)
+
+  //render component here and get the element
+
+  expect(divElementText).toBe(dateWeDefinedHere);
+})
+```
+
+- See the `should save a single uploaded file successfully` scenario in [Attachment Menu test](../src/tests/components/CardModal/CardModalActions/AttachmentMenu/AttachmentMenu.test.tsx) for an example
+
+#### Mocking localforage `setItem` to verify it has been called
+
+- Spying on `setItem` does not seem to work i.e. `jest.spyOn(localforage, "setItem")`
+- To verify this has been called, you need to provide a mock for `setItem` and expect that mock to be called i.e.
+
+- See the `should save a single uploaded file successfully` scenario in [Attachment Menu test](../src/tests/components/CardModal/CardModalActions/AttachmentMenu/AttachmentMenu.test.tsx) for an example

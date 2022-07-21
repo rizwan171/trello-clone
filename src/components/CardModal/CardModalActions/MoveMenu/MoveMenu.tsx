@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MdClose } from "react-icons/md";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { moveCardToList } from "../../../../features/cardsSlice";
+import { setCurrentSelectedCard } from "../../../../features/currentSelectedCardSlice";
 import { closeMenu } from "../../../../features/modalActionMenusVisibilitySlice";
 
 const MoveMenu = () => {
@@ -19,6 +20,7 @@ const MoveMenu = () => {
     if (!card) return;
 
     dispatch(moveCardToList({ cardId: card.id, destListId: selectedListId }));
+    dispatch(setCurrentSelectedCard({ ...card, listId: selectedListId }));
     handleClose();
   };
 
@@ -26,7 +28,12 @@ const MoveMenu = () => {
     <div className="fixed mt-10 w-72 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4">
       <div className="relative text-center mb-2">
         <span className="text-sm block relative z-10">Move Card</span>
-        <MdClose onClick={handleClose} size={20} className="absolute right-0 top-0 z-20 cursor-pointer" />
+        <MdClose
+          data-testid="close-icon"
+          onClick={handleClose}
+          size={20}
+          className="absolute right-0 top-0 z-20 cursor-pointer"
+        />
       </div>
       <hr />
       <div className="flex flex-col mt-2 text-sm">
