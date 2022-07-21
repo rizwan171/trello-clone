@@ -8,7 +8,7 @@ describe("AddTag", () => {
     expect(view.asFragment()).toMatchSnapshot();
   });
 
-  it("should show tags menu", () => {
+  it("should show add tag menu", () => {
     const { store } = renderWithProviders(<AddTag />);
     const addTagButton = screen.getByRole("button") as HTMLButtonElement;
     expect(addTagButton).toBeInTheDocument();
