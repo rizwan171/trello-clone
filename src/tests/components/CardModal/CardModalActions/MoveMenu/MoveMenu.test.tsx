@@ -100,10 +100,6 @@ describe("MoveMenu", () => {
 
     fireEvent.click(moveButton);
 
-    await waitFor(() => {
-      expect(store.getState()).not.toEqual(stateBeforeMove);
-    });
-
     const stateAfterMove = store.getState();
     expect(stateAfterMove.cards.value).toHaveLength(1);
     const copiedCard = stateAfterMove.cards.value[0];
