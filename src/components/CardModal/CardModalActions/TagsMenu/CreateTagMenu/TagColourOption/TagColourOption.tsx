@@ -21,7 +21,7 @@ const TagColourOption = ({ colour }: TagColourOptionProps) => {
   };
 
   return (
-    <div ref={ref} className={styles} onClick={setSelectedColour}>
+    <div data-testid="tag-colour-option-container" ref={ref} className={styles}  onClick={setSelectedColour}>
       <div className="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"></div>
     </div>
   );

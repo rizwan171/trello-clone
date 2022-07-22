@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagColourOption should render successfully for a non-selected tag 1`] = `
+<DocumentFragment>
+  <div
+    class="h-11 w-12 rounded-md cursor-pointer"
+    data-testid="tag-colour-option-container"
+    style="background: rgb(255, 255, 255);"
+  >
+    <div
+      class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TagColourOption should render successfully for a selected tag 1`] = `
+<DocumentFragment>
+  <div
+    class="h-11 w-12 rounded-md cursor-pointer ring-2 ring-trello-blue-100"
+    data-testid="tag-colour-option-container"
+    style="background: rgb(134, 186, 144);"
+  >
+    <div
+      class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+    />
+  </div>
+</DocumentFragment>
+`;
