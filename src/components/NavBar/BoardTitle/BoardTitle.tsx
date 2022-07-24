@@ -38,7 +38,7 @@ const BoardTitle = () => {
         <input
           type="text"
           value={editableTitle}
-          id="rounded-email"
+          data-testid="board-title-input"
           autoFocus
           size={width}
           onFocus={handleOnFocus}
