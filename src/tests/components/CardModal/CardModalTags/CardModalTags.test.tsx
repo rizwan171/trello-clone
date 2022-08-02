@@ -21,17 +21,17 @@ describe("CardModalTags", () => {
         value: [
           {
             id: "1",
-            name: "",
+            name: "Tag 1",
             colour: "#399e5a",
           },
           {
             id: "2",
-            name: "",
+            name: "Tag 2",
             colour: "#5ABCB9",
           },
           {
             id: "3",
-            name: "",
+            name: "Tag 3",
             colour: "#26532b",
           },
         ],
