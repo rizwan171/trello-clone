@@ -1,9 +1,9 @@
-import { renderWithProviders } from "../../utils/renderUtils";
 import NavBar from "../../../components/NavBar/NavBar";
+import { render } from "@testing-library/react";
 
 describe("NavBar", () => {
   it("should render successfully", () => {
-    const view = renderWithProviders(<NavBar />);
+    const view = render(<NavBar />);
     expect(view.asFragment()).toMatchSnapshot();
   });
 });
