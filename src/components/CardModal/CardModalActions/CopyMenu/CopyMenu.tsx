@@ -25,7 +25,12 @@ const CopyMenu = () => {
     <div className="fixed mt-10 w-72 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4">
       <div className="relative text-center mb-2">
         <span className="text-sm block relative z-10">Copy Card</span>
-        <MdClose onClick={handleClose} size={20} className="absolute right-0 top-0 z-20 cursor-pointer" />
+        <MdClose
+          data-testid="close-icon"
+          onClick={handleClose}
+          size={20}
+          className="absolute right-0 top-0 z-20 cursor-pointer"
+        />
       </div>
       <hr />
       <div className="flex flex-col mt-2 text-sm">
