@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardModalTags should render successfully 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col text-sm text-gray-700"
+  >
+    <p
+      class="mb-2"
+    >
+      Tags
+    </p>
+    <div
+      class="flex gap-1 flex-wrap mb-4"
+    >
+      <div
+        class="flex items-center gap-1 py-1 px-2 rounded-sm font-semibold text-white"
+        style="background: rgb(57, 158, 90);"
+      >
+        <p>
+          Tag 1
+        </p>
+      </div>
+      <div
+        class="flex items-center gap-1 py-1 px-2 rounded-sm font-semibold text-white"
+        style="background: rgb(90, 188, 185);"
+      >
+        <p>
+          Tag 2
+        </p>
+      </div>
+      <button
+        class="p-1 rounded-ibsm flex items-center cursor-pointer bg-black bg-opacity-5 hover:bg-opacity-10"
+      >
+        <svg
+          class="mr-0.5 text-trello-gray-200"
+          fill="none"
+          height="25"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="25"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="12"
+            x2="12"
+            y1="5"
+            y2="19"
+          />
+          <line
+            x1="5"
+            x2="19"
+            y1="12"
+            y2="12"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

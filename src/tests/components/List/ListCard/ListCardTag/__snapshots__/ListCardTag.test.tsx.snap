@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListCardTag should render successfully 1`] = `
+<DocumentFragment>
+  <div
+    class="rounded-ibsm p-1"
+    style="background: rgb(255, 50, 68);"
+  >
+    Tag 1
+  </div>
+</DocumentFragment>
+`;
