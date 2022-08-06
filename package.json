@@ -25,7 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest -c jest.config.js --watch",
+    "test": "jest -c jest.config.js",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.(ts|tsx)"
   },
