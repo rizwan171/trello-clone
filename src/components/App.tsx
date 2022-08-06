@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { DragDropContext, DragUpdate, Droppable } from "react-beautiful-dnd";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import List from "./List/main/List";
+import List from "./List/List";
 import AddList from "./List/AddList/AddList";
 import NavBar from "./NavBar/NavBar";
 import BoardOptionsMenu from "./BoardOptionsMenu/BoardOptionsMenu";

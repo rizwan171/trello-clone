@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import ListTitle from "../ListTitle/ListTitle";
-import ListCard from "../ListCard/ListCard";
+import ListTitle from "./ListTitle/ListTitle";
+import ListCard from "./ListCard/ListCard";
 import { Droppable, Draggable } from "react-beautiful-dnd";
-import AddCardPrompt from "../AddCard/AddCardPrompt/AddCardPrompt";
-import AddCardForm from "../AddCard/AddCardForm/AddCardForm";
-import { ListProps } from "../../../types/components/ListProps";
-import { useAppSelector } from "../../../app/hooks";
+import AddCardPrompt from "./AddCard/AddCardPrompt/AddCardPrompt";
+import AddCardForm from "./AddCard/AddCardForm/AddCardForm";
+import { ListProps } from "../../types/components/ListProps";
+import { useAppSelector } from "../../app/hooks";
 
 const List = ({ list, index }: ListProps) => {
   const cards = useAppSelector((state) => state.cards.value.filter((card) => card.listId === list.id));
