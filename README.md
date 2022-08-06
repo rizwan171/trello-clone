@@ -91,5 +91,5 @@ Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap ou
 ### Running tests locally
 
 #### Jest Tests
-
-- Run `yarn test` in the terminal
+- Run `yarn test` to run all tests
+- Run `yarn test --watch` to run the tests in watch mode
