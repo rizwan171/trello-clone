@@ -72,10 +72,6 @@ describe("DeleteMenu", () => {
 
     fireEvent.click(deleteButton);
 
-    await waitFor(() => {
-      expect(store.getState()).not.toEqual(stateBeforeDelete);
-    });
-
     const stateAfterDelete = store.getState();
     expect(stateAfterDelete.cards.value).toHaveLength(0);
     expect(stateAfterDelete.currentSelectedCard.value).toBeNull();

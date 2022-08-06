@@ -98,10 +98,6 @@ describe("CopyMenu", () => {
 
     fireEvent.click(copyButton);
 
-    await waitFor(() => {
-      expect(store.getState()).not.toEqual(stateBeforeCopy);
-    });
-
     const stateAfterCopy = store.getState();
     expect(stateAfterCopy.cards.value).toHaveLength(2);
     const copiedCard = stateAfterCopy.cards.value[1];
