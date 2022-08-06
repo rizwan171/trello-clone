@@ -1,4 +1,4 @@
-import { fireEvent, screen, waitFor } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
 import { RootState } from "../../../../../app/store";
 import DeleteMenu from "../../../../../components/CardModal/CardModalActions/DeleteMenu/DeleteMenu";
 import { renderWithProviders } from "../../../../utils/renderUtils";

@@ -1,5 +1,5 @@
+import { render } from "@testing-library/react";
 import ListCardTag from "../../../../../components/List/ListCard/ListCardTag/ListCardTag";
-import { renderWithProviders } from "../../../../utils/renderUtils";
 
 describe("ListCardTag", () => {
   it("should render successfully", () => {
@@ -9,7 +9,7 @@ describe("ListCardTag", () => {
       colour: "#FF3244",
     };
 
-    const view = renderWithProviders(<ListCardTag tag={tag} />);
+    const view = render(<ListCardTag tag={tag} />);
     expect(view.asFragment()).toMatchSnapshot();
   });
 });
