@@ -20,7 +20,7 @@ const ListCard = ({ card, index }: ListCardProps) => {
   return (
     <Draggable draggableId={card.id} index={index}>
       {(provided) => (
-        <div ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps} onClick={openModal}>
+        <div data-testid="list-card-container" ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps} onClick={openModal}>
           <div className="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words">
             <p>{card.title}</p>
             {card.tags.length > 0 && (
