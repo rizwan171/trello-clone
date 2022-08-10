@@ -22,6 +22,7 @@ export function renderWithProviders(
   return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
 }
 
+// See the "Rendering a component that is a Draggable" section in docs/Testing Information.md
 export function renderDraggableWithProviders(
   ui: React.ReactElement,
   { preloadedState = {}, store = setupStore(preloadedState), ...renderOptions }: ExtendedRenderOptions = {},

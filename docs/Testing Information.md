@@ -88,7 +88,7 @@ describe("Component", () => {
 });
 ```
 
-#### Rendering with component with Redux bits i.e. dispatch and/or useSelector
+#### Rendering a component with Redux bits i.e. dispatch and/or useSelector
 
 - Use the `renderWithProviders` method defined in `src/tests/renderUtils.tsx` to render the component in each `it` block
 - This method takes an object to create an initial state for testing. This object should be instantiated in a `beforeEach` block
@@ -110,6 +110,52 @@ describe('Component', () => {
   })
 
 })
+```
+
+#### Rendering a component that is a Draggable
+- Use the `renderDraggableWithProviders` method defined in `src/tests/renderUtils.tsx` to render the component in each `it` block
+- This is very similar to `renderWithProviders`, but expects a couple extra parameters: an onDragEnd function, and a direction value
+  - **Note: For the purposes of testing a Draggable, the onDragEnd paramter can always be a jest mock. This parameter is required as part of `renderDraggableWithProviders` so that the jest mocks can be contained within the test files, and not be defined within the utils file**
+  - direction is the orientation of your `Droppable`. This, by default, is vertical, but can also be horizontal
+- Due to how React Beautiful DnD works, a `Draggable` must always be rendered within a parent `Droppable`. This is stated in the [docs by Atlassian](https://github.com/atlassian/react-beautiful-dnd/blob/master/docs/api/draggable.md).
+- `render` or `renderWithProviders` will fail to render a `Draggable` that is not wrapped in a `Droppable`
+- `Droppable` must also be contained within a root `DragDropContext`, as stated [in the docs](https://github.com/atlassian/react-beautiful-dnd/blob/master/docs/api/drag-drop-context.md). As Atlassian mention, You can think of `DragDropContext` as having a similar purpose to the react-redux Provider component.
+- An example usage of `renderDraggableWithProviders` can be seen in [ListCard.test.tsx](../src/tests/components/List/ListCard/ListCard.test.tsx)
+
+Example:
+
+```javascript
+// DraggableComponent.js
+const DraggableComponent = () => {
+  return (
+    <Draggable draggableId={id} index={index}>
+      ...
+    </Draggable>
+  )
+}
+
+//DraggableComponent.test.js
+describe('Component', () => {
+  let initialState: Partial<RootState>;
+  let onDragEnd: jest.Mock;
+
+  beforeEach(() => {
+    initialState = {
+      ...
+    }
+
+    onDragEnd = jest.fn()
+  })
+
+  // make sure to clear the mocks after each test
+  afterEach(() => jest.clearAllMocks())
+
+  it ('should do something', () => {
+    renderDraggableWithProviders(<DraggableComponent />, { preloadedState: initialState }, onDragEnd);
+  })
+
+})
+
 ```
 
 #### Getting elements after rendering
