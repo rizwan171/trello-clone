@@ -12,6 +12,7 @@ exports[`TagOption should render successfully when not selected 1`] = `
     >
       <span
         class="ml-2"
+        data-testid="tag-option-name"
       >
         Test Tag
       </span>
@@ -51,11 +52,13 @@ exports[`TagOption should render successfully when selected 1`] = `
     >
       <span
         class="ml-2"
+        data-testid="tag-option-name"
       >
         Test Tag
       </span>
       <svg
         class="ml-auto mr-2"
+        data-testid="tag-selected-icon"
         fill="currentColor"
         height="20"
         stroke="currentColor"
