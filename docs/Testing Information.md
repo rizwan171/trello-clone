@@ -473,3 +473,53 @@ it ("should be created with date", () => {
 - To verify this has been called, you need to provide a mock for `setItem` and expect that mock to be called i.e.
 
 - See the `should save a single uploaded file successfully` scenario in [Attachment Menu test](../src/tests/components/CardModal/CardModalActions/AttachmentMenu/AttachmentMenu.test.tsx) for an example
+
+#### Use the `.toHaveTextContent` matcher when checking an elements textr
+
+- When checking an element for `element.textContent`, it is preferred to use the
+
+```javascript
+it("should have expected text content", () => {
+  ...
+
+  const element = screen.getByTestId("test-id");
+  expect(element).toHaveTextContent("Element Text");
+})
+```
+
+- See the `should update search results with just the tag being searched for` scenario in the [Tags Menu test](../src/tests/components/CardModal/CardModalActions/TagsMenu/TagsMenu.test.tsx) for an example
+
+#### Checking elements on screen after an action that should cause a rerender
+
+- When testing an action should update the UI, `rerender` should be used to correctly rerender the component after the action is performed
+- The `rerender` method can be extracted from the `render` method
+  - **Note: the `rerender` method can also be extracted from the custom render methods that are defined in [renderUtils](../src/tests/utils/renderUtils.tsx)**
+
+```javascript
+it("example", () => {
+  const { rerender } = render(<Component />)
+  ...
+  const { rerender } = renderWithProviders(<Component />, ...)
+  ...
+  const { rerender } = renderDraggableWithProviders(<Component />, ...)
+})
+```
+
+- When using `rerender`, simply call it after your action that should trigger a rerender
+
+```javascript
+it("should exist after rerender", () => {
+  const { rerender } = render(<Component />);
+
+  const button = screen.getByText("Click me to show element");
+  expect(screen.queryByText("Element to be shown")).not.toBeInTheDocument();
+
+  button.click();
+
+  rerender(<Component />);
+  expect(screen.getByText("Element to be shown")).toBeInTheDocument();
+});
+```
+
+- Note: `rerender` only needs to be called with the component, even when extracting it from the custom render methods.
+- See the `should update search results with just the tag being searched for` scenario in the [Tags Menu test](../src/tests/components/CardModal/CardModalActions/TagsMenu/TagsMenu.test.tsx) for an example
