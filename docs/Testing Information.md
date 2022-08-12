@@ -523,3 +523,47 @@ it("should exist after rerender", () => {
 
 - Note: `rerender` only needs to be called with the component, even when extracting it from the custom render methods.
 - See the `should update search results with just the tag being searched for` scenario in the [Tags Menu test](../src/tests/components/CardModal/CardModalActions/TagsMenu/TagsMenu.test.tsx) for an example
+
+#### Testing code that has a `.scrollIntoView()` call
+
+- jsdom does not implement `scrollIntoView`, causing an error when running tests for components that have a call to it
+  - See https://stackoverflow.com/questions/53271193/typeerror-scrollintoview-is-not-a-function
+  - and https://github.com/jsdom/jsdom/issues/1695
+- To overcome this, in your test, define a mock and set `Element.prototype.scrollIntoView` to your mock
+
+```javascript
+describe("Component", () => {
+  let mockScrollIntoView: jesst.Mock;
+
+  beforeEach(() => {
+    mockScrollIntoView = jest.fn();
+    Element.prototype.scrollIntoView = mockScrollIntoView;
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it("should call scrollIntoView when rendered", () => {
+    render(<ComponentA />);
+    expect(mockScrollIntoView).toHaveBeenCalled();
+  });
+});
+```
+
+- See the `should add a list when enter pressed in the title input` scenario in the [AddList test](../src/tests/components/List/AddList/AddList.test.tsx) for an example
+
+#### Firing a `keyPress` event when testing
+
+- When firing a `keyPress` event, the `charCode` must be defined along with other properties you expect to use e.g. if your `keyPress` handler checks the `key` property of the event, you must pass `key` and `charCode` to the event
+  - See https://github.com/testing-library/react-testing-library/issues/269#issuecomment-455854112
+
+```javascript
+it('should fire keyPress event properly', () => {
+  ...
+
+  fireEvent.keyPress(element, { key: "Enter", charCode: 13 });
+});
+```
+
+- See [AddList test](../src/tests/components/List/AddList/AddList.test.tsx) for an example
