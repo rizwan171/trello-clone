@@ -193,6 +193,26 @@ it("should do something", () => {
 });
 ```
 
+#### Interacting with elements i.e. firing different events like click, change, etc.
+
+- To fire an event for an element, use `fireEvent` from React Testing Library
+- This object has a bunch of functions that can be called to trigger certain events like `.click()`, `.change()`, `.keyPress()`
+  - For more info, see https://testing-library.com/docs/dom-testing-library/api-events/
+- These functions usually take 2 paramters: the element to fire an event for, and an event object to pass
+  - Note: for events like `.click()`, it is sufficient to pass just the element as a parameter
+
+```javascript
+it("should fire events", () => {
+  ...
+  const element = screen.getByTestId("element id");
+
+  fireEvent.click(element);
+
+  fireEvent.change(element, { target: { value: "Text" }});
+
+})
+```
+
 #### Checking objects or variables are a value we expect, equal, or have the right length etc.
 
 - To check an object, variable, or element's proprty is what we expect, use the `expect` method with the appropriate Jest/React Testing Library matchers e.g.
@@ -514,7 +534,7 @@ it("should exist after rerender", () => {
   const button = screen.getByText("Click me to show element");
   expect(screen.queryByText("Element to be shown")).not.toBeInTheDocument();
 
-  button.click();
+  fireEvent.click(button);
 
   rerender(<Component />);
   expect(screen.getByText("Element to be shown")).toBeInTheDocument();
