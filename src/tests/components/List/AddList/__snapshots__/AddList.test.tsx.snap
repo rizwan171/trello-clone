@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddList should render successfully when rendered, opened, and closed 1`] = `
+<DocumentFragment>
+  <div
+    class=""
+  >
+    <div
+      aria-hidden="false"
+      class="transition-height ease overflow-hidden duration-500 undefined"
+      style="height: 100%;"
+    >
+      <div
+        class="w-32 flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-2 m-1"
+      >
+        <svg
+          fill="none"
+          height="20"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="12"
+            x2="12"
+            y1="5"
+            y2="19"
+          />
+          <line
+            x1="5"
+            x2="19"
+            y1="12"
+            y2="12"
+          />
+        </svg>
+        <h2
+          class="flex-1"
+        >
+          Add a list
+        </h2>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`AddList should render successfully when rendered, opened, and closed 2`] = `
+<DocumentFragment>
+  <div
+    class="shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-2 flex flex-col list-wrapper"
+  >
+    <div
+      aria-hidden="false"
+      class="transition-height ease overflow-hidden duration-500 h-full"
+      style="height: 100%;"
+    >
+      <div>
+        <input
+          class="w-full text-left box-border outline-none border-2 border-trello-blue-100 shadow bg-white hover:bg-trello-gray-400 rounded-md p-2"
+          data-testid="add-list-title-input"
+          placeholder="Type something..."
+          type="text"
+          value=""
+        />
+        <div
+          class="flex items-center mt-2"
+        >
+          <button
+            class="py-2 px-3 bg-trello-green-100 hover:bg-trello-green-200 text-white transition ease-in duration-200 text-center text-base shadow-md rounded-md"
+            type="button"
+          >
+            Add List
+          </button>
+          <svg
+            class="text-trello-gray-200 hover:bg-trello-gray-500 cursor-pointer rounded-full ml-1 p-1"
+            data-testid="add-list-close-icon"
+            fill="none"
+            height="36"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="18"
+              x2="6"
+              y1="6"
+              y2="18"
+            />
+            <line
+              x1="6"
+              x2="18"
+              y1="6"
+              y2="18"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`AddList should render successfully when rendered, opened, and closed 3`] = `
+<DocumentFragment>
+  <div
+    class=""
+  >
+    <div
+      aria-hidden="false"
+      class="transition-height ease overflow-hidden duration-500 undefined"
+      style="height: 100%;"
+    >
+      <div
+        class="w-32 flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-2 m-1"
+      >
+        <svg
+          fill="none"
+          height="20"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="12"
+            x2="12"
+            y1="5"
+            y2="19"
+          />
+          <line
+            x1="5"
+            x2="19"
+            y1="12"
+            y2="12"
+          />
+        </svg>
+        <h2
+          class="flex-1"
+        >
+          Add a list
+        </h2>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
