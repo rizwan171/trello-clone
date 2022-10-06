@@ -7,6 +7,7 @@ const AddCardPrompt = ({ open, setOpen }: AddCardPromptProps) => {
   return (
     <div className="flex flex-col transition-height ease-in-out duration-100" style={inlineStyle}>
       <div
+        data-testid="add-card-prompt-container"
         className="flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-1 mt-1"
         onClick={() => setOpen(true)}
       >
