@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddCardForm should render successfully when closed 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col transition-height ease-in-out duration-200"
+    style="height: 0px; overflow: hidden;"
+  >
+    <textarea
+      class="resize-none w-full box-border outline-none shadow bg-white rounded-md p-2 my-1.5"
+      data-testid="add-card-input"
+      placeholder="Type something..."
+    />
+    <div
+      class="flex items-center mt-1.5"
+    >
+      <button
+        class="py-2 px-3 bg-trello-green-100 hover:bg-trello-green-200 text-white transition ease-in duration-200 text-center text-base shadow-md rounded-md"
+        type="button"
+      >
+        Add Card
+      </button>
+      <svg
+        class="text-trello-gray-200 hover:bg-trello-gray-500 cursor-pointer rounded-full ml-1 p-1"
+        data-testid="add-card-close"
+        fill="none"
+        height="36"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="36"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="18"
+          x2="6"
+          y1="6"
+          y2="18"
+        />
+        <line
+          x1="6"
+          x2="18"
+          y1="6"
+          y2="18"
+        />
+      </svg>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`AddCardForm should render successfully when open 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col transition-height ease-in-out duration-200"
+  >
+    <textarea
+      class="resize-none w-full box-border outline-none shadow bg-white rounded-md p-2 my-1.5"
+      data-testid="add-card-input"
+      placeholder="Type something..."
+    />
+    <div
+      class="flex items-center mt-1.5"
+    >
+      <button
+        class="py-2 px-3 bg-trello-green-100 hover:bg-trello-green-200 text-white transition ease-in duration-200 text-center text-base shadow-md rounded-md"
+        type="button"
+      >
+        Add Card
+      </button>
+      <svg
+        class="text-trello-gray-200 hover:bg-trello-gray-500 cursor-pointer rounded-full ml-1 p-1"
+        data-testid="add-card-close"
+        fill="none"
+        height="36"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="36"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="18"
+          x2="6"
+          y1="6"
+          y2="18"
+        />
+        <line
+          x1="6"
+          x2="18"
+          y1="6"
+          y2="18"
+        />
+      </svg>
+    </div>
+  </div>
+</DocumentFragment>
+`;

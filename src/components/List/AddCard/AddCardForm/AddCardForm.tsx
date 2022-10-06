@@ -50,6 +50,7 @@ const AddCardForm = ({ setOpen, open, listId }: AddCardFormProps) => {
   return (
     <div className="flex flex-col transition-height ease-in-out duration-200" style={inlineStyle}>
       <textarea
+        data-testid="add-card-input"
         ref={inputRef}
         value={text}
         placeholder="Type something..."
@@ -67,6 +68,7 @@ const AddCardForm = ({ setOpen, open, listId }: AddCardFormProps) => {
           Add Card
         </button>
         <FiX
+          data-testid="add-card-close"
           onClick={handleClose}
           size={36}
           className="text-trello-gray-200 hover:bg-trello-gray-500 cursor-pointer rounded-full ml-1 p-1"

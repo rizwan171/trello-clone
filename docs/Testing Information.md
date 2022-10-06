@@ -553,7 +553,7 @@ it("should exist after rerender", () => {
 
 ```javascript
 describe("Component", () => {
-  let mockScrollIntoView: jesst.Mock;
+  let mockScrollIntoView: jest.Mock;
 
   beforeEach(() => {
     mockScrollIntoView = jest.fn();
