@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AttatchmentEditMenu should render successfully 1`] = `
+<DocumentFragment>
+  <div
+    class="fixed mt-16 w-80 ml-24 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4"
+  >
+    <div
+      class="relative text-center mb-2"
+    >
+      <span
+        class="text-sm block relative z-10"
+      >
+        Edit attachment?
+      </span>
+      <svg
+        class="absolute right-0 top-0 z-20 cursor-pointer"
+        data-testid="attachment-edit-menu-close"
+        fill="currentColor"
+        height="20"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+        />
+      </svg>
+    </div>
+    <hr />
+    <div
+      class="flex flex-col mt-2 text-sm"
+    >
+      <span
+        class="font-medium pb-2"
+      >
+        Link name
+      </span>
+      <input
+        class="w-full h-9 py-1 px-2 border-1 mb-2 border-gray-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100"
+        data-testid="attachment-edit-menu-input"
+        placeholder="Change attachment name"
+        type="text"
+        value="Test File Name"
+      />
+      <button
+        class="p-2 mt-2 w-32 bg-trello-blue-100 hover:bg-trello-blue-200 text-white font-semibold items-center text-sm shadow-sm rounded-sm"
+      >
+        Update
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
