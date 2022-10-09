@@ -30,23 +30,16 @@ describe("AddCardForm", () => {
     jest.clearAllMocks();
   });
 
-  it("should render successfully when open", () => {
-    const view = renderWithProviders(<AddCardForm setOpen={mockSetOpen} open={true} listId={"1"} />, {
+  it("should render successfully", () => {
+    const view = renderWithProviders(<AddCardForm setOpen={mockSetOpen} listId={"1"} />, {
       preloadedState: initialState,
     });
     expect(mockScrollIntoView).toHaveBeenCalled();
     expect(view.asFragment()).toMatchSnapshot();
   });
 
-  it("should render successfully when closed", () => {
-    const view = renderWithProviders(<AddCardForm setOpen={mockSetOpen} open={false} listId={"1"} />, {
-      preloadedState: initialState,
-    });
-    expect(view.asFragment()).toMatchSnapshot();
-  });
-
   it("should add a card", () => {
-    const { store } = renderWithProviders(<AddCardForm setOpen={mockSetOpen} open={true} listId={"1"} />, {
+    const { store } = renderWithProviders(<AddCardForm setOpen={mockSetOpen} listId={"1"} />, {
       preloadedState: initialState,
     });
     expect(store.getState().cards.value).toHaveLength(0);
@@ -68,7 +61,7 @@ describe("AddCardForm", () => {
   });
 
   it("should close the add card form", () => {
-    renderWithProviders(<AddCardForm setOpen={mockSetOpen} open={true} listId={"1"} />, {
+    renderWithProviders(<AddCardForm setOpen={mockSetOpen} listId={"1"} />, {
       preloadedState: initialState,
     });
 
