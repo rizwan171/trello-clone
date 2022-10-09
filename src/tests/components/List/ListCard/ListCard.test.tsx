@@ -1,7 +1,7 @@
 import { fireEvent, screen } from "@testing-library/react";
 import { RootState } from "../../../../app/store";
 import ListCard from "../../../../components/List/ListCard/ListCard";
-import { renderDraggableWithProviders, renderWithProviders } from "../../../utils/renderUtils";
+import { renderDraggableWithProviders } from "../../../utils/renderUtils";
 
 describe("ListCard", () => {
   let initialState: Partial<RootState>;
