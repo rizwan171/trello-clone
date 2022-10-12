@@ -610,3 +610,4 @@ it("should show, hide, and then show element again", () => {
   expect(element).toBeInTheDocument();
 });
 ```
+- See the `should not update title on blur` scenario in the [ListTitle test](../src/tests/components/List/ListTitle/ListTitle.test.tsx) for an example
