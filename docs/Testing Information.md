@@ -587,3 +587,26 @@ it('should fire keyPress event properly', () => {
 ```
 
 - See [AddList test](../src/tests/components/List/AddList/AddList.test.tsx) for an example
+
+#### Getting an element after multiple rerenders
+
+- If you are testing a workflow where an element is present, disappears, and then reappers, you have to get the element again
+
+```javascript
+it("should show, hide, and then show element again", () => {
+  let element = screen.getByText("Element");
+  expect(element).toBeInTheDocument();
+
+  fireEvent.click(button); //hides element
+  expect(element).not.toBeInTheDocument();
+
+  fireEvent.click(button2); // shows element again
+
+  ...
+  // expect(element).toBeInTheDocument(); WILL NOT WORK
+  ...
+  // instead, find element again and then expect
+  element = screen.getByText("Element");
+  expect(element).toBeInTheDocument();
+});
+```

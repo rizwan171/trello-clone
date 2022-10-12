@@ -30,6 +30,7 @@ exports[`List should render successfully when add card form is closed 1`] = `
         >
           <svg
             class="text-trello-gray-200"
+            data-testid="list-title-more-menu-button"
             fill="currentColor"
             height="20"
             stroke="currentColor"
@@ -299,6 +300,7 @@ exports[`List should render successfully when add card form is open 1`] = `
         >
           <svg
             class="text-trello-gray-200"
+            data-testid="list-title-more-menu-button"
             fill="currentColor"
             height="20"
             stroke="currentColor"
@@ -568,6 +570,7 @@ exports[`List should render successfully when add card form is open 2`] = `
         >
           <svg
             class="text-trello-gray-200"
+            data-testid="list-title-more-menu-button"
             fill="currentColor"
             height="20"
             stroke="currentColor"
