@@ -1,4 +1,4 @@
-import { fireEvent, screen, waitFor } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
 import { RootState } from "../../../../app/store";
 import ListTitle from "../../../../components/List/ListTitle/ListTitle";
 import List from "../../../../types/global/List";
@@ -26,10 +26,6 @@ describe("ListTitle", () => {
         value: null,
       },
     };
-  });
-
-  afterEach(() => {
-    jest.clearAllMocks();
   });
 
   it("should render successfully", () => {
