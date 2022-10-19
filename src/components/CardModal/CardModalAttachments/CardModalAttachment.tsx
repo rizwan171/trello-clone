@@ -25,31 +25,31 @@ const CardModalAttachment = () => {
   useEffect(() => {
     if (!card) return;
 
+    const getAttachments = async (card: Card) => {
+      const result: AttachmentFile[] = [];
+      await Promise.all(
+        card.attachments.map(async (item) => {
+          const file: File | null = await localforage.getItem(item.id);
+          if (file) {
+            const url = URL.createObjectURL(file);
+            const fileExtension = getFileExtension(file.name);
+            let color = ATTACHMENT_BG_COLOURS[randomInt(0, ATTACHMENT_BG_COLOURS.length)];
+            let isImage = true;
+            if (fileExtension !== "png") {
+              isImage = false;
+              color = NON_PNG_BG_COLOUR;
+            }
+            // TODO: replace with dominant color - right now it is random
+            result.push({ item, file: url, color, isImage, fileExtension });
+          }
+        })
+      );
+
+      setFiles(result);
+    };
+
     getAttachments(card);
   }, [card]);
-
-  const getAttachments = async (card: Card) => {
-    const result: AttachmentFile[] = [];
-    await Promise.all(
-      card.attachments.map(async (item) => {
-        const file: File | null = await localforage.getItem(item.id);
-        if (file) {
-          const url = URL.createObjectURL(file);
-          const fileExtension = getFileExtension(file.name);
-          let color = ATTACHMENT_BG_COLOURS[randomInt(0, ATTACHMENT_BG_COLOURS.length)];
-          let isImage = true;
-          if (fileExtension !== "png") {
-            isImage = false;
-            color = NON_PNG_BG_COLOUR;
-          }
-          // TODO: replace with dominant color - right now it is random
-          result.push({ item, file: url, color, isImage, fileExtension });
-        }
-      })
-    );
-
-    setFiles(result);
-  };
 
   const randomInt = (min: number, max: number) => {
     // min and max included
@@ -57,7 +57,9 @@ const CardModalAttachment = () => {
   };
 
   const getRelativeDate = (date: string) => {
-    const difference = Number(new Date()) - Number(new Date(JSON.parse(date)));
+    const now = new Date().getTime();
+    const dateAdded = new Date(date).getTime();
+    const difference = Math.abs(now - dateAdded);
     const minute = 60 * 1000;
     const hour = minute * 60;
     const day = hour * 24;
