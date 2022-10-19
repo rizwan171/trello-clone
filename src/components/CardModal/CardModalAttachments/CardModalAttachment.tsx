@@ -11,60 +11,8 @@ import AttachmentEditMenu from "./AttachmentEditMenu";
 import AttachmentMenu from "../CardModalActions/AttachmentMenu/AttachmentMenu";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { AttachmentFile } from "../../../types/components/CardModalAttachment";
-
-const randomInt = (min: number, max: number) => {
-  // min and max included
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
-
-const arrColors = [
-  "#aacaaa", // green
-  "#6f8493",
-  "#d4a096",
-  "#bfa440",
-  "#c7cf6c",
-  "#aacaaa",
-  "#b24b63",
-  "#4d77e7",
-  "#b55799",
-  "#aacaaa",
-  "#4ab6c2",
-  "#aacaaa",
-  "#cbb086",
-  "#99d372",
-  "#aacaaa",
-];
-
-const getRelativeDate = (date: string) => {
-  const difference = Number(new Date()) - Number(new Date(JSON.parse(date)));
-  const minute = 60 * 1000;
-  const hour = minute * 60;
-  const day = hour * 24;
-  const month = day * 30;
-  const year = day * 365;
-
-  switch (true) {
-    case difference < minute:
-      return "Added less than a minute ago";
-    case difference < hour:
-      return `Added ${Math.round(difference / minute)} minutes ago`;
-    case difference < day:
-      return `Added ${Math.round(difference / hour)} hours ago`;
-    case difference < month:
-      return `Added ${Math.round(difference / day)} days ago`;
-    case difference < year:
-      return `Added ${Math.round(difference / month)} months ago`;
-    case difference > year:
-      return `Added ${Math.round(difference / year)} years ago`;
-    default:
-      return "";
-  }
-};
-
-const getFileExtension = (fileName: string) => {
-  const arr = fileName.split(".");
-  return arr[arr.length - 1];
-};
+import { ATTACHMENT_BG_COLOURS } from "../../../constants/AttachmentBackgroundColours";
+import Card from "../../../types/global/Card";
 
 const CardModalAttachment = () => {
   const dispatch = useAppDispatch();
@@ -77,31 +25,67 @@ const CardModalAttachment = () => {
   useEffect(() => {
     if (!card) return;
 
-    const getAttachments = async () => {
-      const result: AttachmentFile[] = [];
-      await Promise.all(
-        card.attachments.map(async (item) => {
-          const file: File | null = await localforage.getItem(item.id);
-          if (file) {
-            const url = URL.createObjectURL(file);
-            const fileExtension = getFileExtension(file.name);
-            let color = arrColors[randomInt(0, arrColors.length)];
-            let isImage = true;
-            if (fileExtension !== "png") {
-              isImage = false;
-              color = "rgb(229 231 235)";
-            }
-            // TODO: replace with dominant color - right now it is random
-            result.push({ item, file: url, color, isImage, fileExtension });
-          }
-        })
-      );
-
-      setFiles(result);
-    };
-
-    getAttachments();
+    getAttachments(card);
   }, [card]);
+
+  const getAttachments = async (card: Card) => {
+    const result: AttachmentFile[] = [];
+    await Promise.all(
+      card.attachments.map(async (item) => {
+        const file: File | null = await localforage.getItem(item.id);
+        if (file) {
+          const url = URL.createObjectURL(file);
+          const fileExtension = getFileExtension(file.name);
+          let color = ATTACHMENT_BG_COLOURS[randomInt(0, ATTACHMENT_BG_COLOURS.length)];
+          let isImage = true;
+          if (fileExtension !== "png") {
+            isImage = false;
+            color = "rgb(229 231 235)";
+          }
+          // TODO: replace with dominant color - right now it is random
+          result.push({ item, file: url, color, isImage, fileExtension });
+        }
+      })
+    );
+
+    setFiles(result);
+  };
+
+  const randomInt = (min: number, max: number) => {
+    // min and max included
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
+
+  const getRelativeDate = (date: string) => {
+    const difference = Number(new Date()) - Number(new Date(JSON.parse(date)));
+    const minute = 60 * 1000;
+    const hour = minute * 60;
+    const day = hour * 24;
+    const month = day * 30;
+    const year = day * 365;
+
+    switch (true) {
+      case difference < minute:
+        return "Added less than a minute ago";
+      case difference < hour:
+        return `Added ${Math.round(difference / minute)} minutes ago`;
+      case difference < day:
+        return `Added ${Math.round(difference / hour)} hours ago`;
+      case difference < month:
+        return `Added ${Math.round(difference / day)} days ago`;
+      case difference < year:
+        return `Added ${Math.round(difference / month)} months ago`;
+      case difference > year:
+        return `Added ${Math.round(difference / year)} years ago`;
+      default:
+        return "";
+    }
+  };
+
+  const getFileExtension = (fileName: string) => {
+    const arr = fileName.split(".");
+    return arr[arr.length - 1];
+  };
 
   const handleShowAttachmentDeleteModal = (id: string) => {
     dispatch(showAttachmentDeleteMenu(id));

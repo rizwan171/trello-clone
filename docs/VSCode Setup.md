@@ -85,3 +85,5 @@ By default, emmet doesn't work with JSX. To enable this
 - npm
 - npm Intellisense
 - vscode-icons
+- colorize
+  - NOTE: make sure to include javascript, javascriptreact, typescript, typescriptreact in the colorize.languages settings array 
