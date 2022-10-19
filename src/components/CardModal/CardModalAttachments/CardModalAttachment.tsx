@@ -11,7 +11,7 @@ import AttachmentEditMenu from "./AttachmentEditMenu";
 import AttachmentMenu from "../CardModalActions/AttachmentMenu/AttachmentMenu";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { AttachmentFile } from "../../../types/components/CardModalAttachment";
-import { ATTACHMENT_BG_COLOURS } from "../../../constants/AttachmentBackgroundColours";
+import { ATTACHMENT_BG_COLOURS, NON_PNG_BG_COLOUR } from "../../../constants/AttachmentBackgroundColours";
 import Card from "../../../types/global/Card";
 
 const CardModalAttachment = () => {
@@ -40,7 +40,7 @@ const CardModalAttachment = () => {
           let isImage = true;
           if (fileExtension !== "png") {
             isImage = false;
-            color = "rgb(229 231 235)";
+            color = NON_PNG_BG_COLOUR;
           }
           // TODO: replace with dominant color - right now it is random
           result.push({ item, file: url, color, isImage, fileExtension });

@@ -15,3 +15,5 @@ export const ATTACHMENT_BG_COLOURS = [
   "#99d372",
   "#aacaaa",
 ];
+
+export const NON_PNG_BG_COLOUR = "#E5E7EB";
