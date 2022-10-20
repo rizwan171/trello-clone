@@ -117,7 +117,7 @@ describe("AttachmentMenu", () => {
     expect(selectedCardAfterUpdate?.attachments).toHaveLength(1);
     expect(selectedCardAfterUpdate?.attachments[0].id).toBeDefined();
     expect(selectedCardAfterUpdate?.attachments[0].name).toBe(uploadedFile.name);
-    expect(selectedCardAfterUpdate?.attachments[0].date).toBe(JSON.stringify(date));
+    expect(selectedCardAfterUpdate?.attachments[0].date).toBe(date.toISOString());
     expect(stateAfterUpdate.modalActionMenusVisibility.value.attachmentMenuOpen.status).toBeFalsy();
   });
 
@@ -153,7 +153,7 @@ describe("AttachmentMenu", () => {
     selectedCardAfterUpdate?.attachments.forEach((attachment, index) => {
       expect(attachment.id).toBeDefined();
       expect(attachment.name).toBe(uploadedFiles[index].name);
-      expect(attachment.date).toBe(JSON.stringify(date));
+      expect(attachment.date).toBe(date.toISOString());
     });
     expect(stateAfterUpdate.modalActionMenusVisibility.value.attachmentMenuOpen.status).toBeFalsy();
   });
