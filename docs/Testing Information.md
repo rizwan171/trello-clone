@@ -610,4 +610,52 @@ it("should show, hide, and then show element again", () => {
   expect(element).toBeInTheDocument();
 });
 ```
+
 - See the `should not update title on blur` scenario in the [ListTitle test](../src/tests/components/List/ListTitle/ListTitle.test.tsx) for an example
+
+#### Testing a component with an async `useEffect`
+
+- A component with an async `useEffect` hook needs to be tested slightly differently
+- Use `waitFor` to get an element that should be present on screen and then carry out your assertions
+
+```javascript
+it("will fail", () => {
+  const view = render(<ComponentWithAsyncUseEffect />);
+  expect(view.asFragment()).toMatchSnapshot();
+});
+
+it("will pass", async () => {
+  const view = render(<ComponentWithAsyncUseEffect />);
+
+  await waitFor(() => screen.findByText("some element that should be present"));
+
+  expect(view.asFragment()).toMatchSnapshot();
+});
+```
+
+- See the `should render successfully` scenario in the [CardModalAttachment test](../src/tests/components/CardModal/CardModalAttachments/CardModalAttachment.test.tsx) for an example
+
+#### Mocking return values for functions
+
+- Use `mockReturnValue` to mock every call to that function
+
+```javascript
+someFunction = jest.fn().mockReturnValue(0);
+...
+expect(someFunction()).toBe(0);
+expect(someFunction()).toBe(0);
+expect(someFunction()).toBe(0);
+```
+
+- Use `mockReturnValueOnce` to mock one call to that function
+  - NOTE: this can be chained for multiple calls
+
+```javascript
+someFunction = jest.fn().mockReturnValueOnce(0).mockReturnValueOnce(2).mockReturnValueOnce(3);
+...
+expect(someFunction()).toBe(0);
+expect(someFunction()).toBe(1);
+expect(someFunction()).toBe(2);
+```
+
+- See the `beforeEach` block in the [CardModalAttachment test](../src/tests/components/CardModal/CardModalAttachments/CardModalAttachment.test.tsx) for an example

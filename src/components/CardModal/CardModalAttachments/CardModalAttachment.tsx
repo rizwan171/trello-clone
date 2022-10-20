@@ -167,7 +167,7 @@ const CardModalAttachment = () => {
             className="gap-2 py-1 px-2 mb-2 w-44  text-center bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
             onClick={() => handleShowAttachmentMenuModal(2)}
           >
-            <p>Add an attachment</p>
+            Add an attachment
           </button>
           {attachmentMenuOpen.status && attachmentMenuOpen.id === 2 && <AttachmentMenu update={true} />}
         </div>
