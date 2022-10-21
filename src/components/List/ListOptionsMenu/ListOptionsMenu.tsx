@@ -73,7 +73,12 @@ const ListOptionsMenu = () => {
     >
       <div className="relative text-center mb-2">
         <span className="mx-auto py-1">List Actions</span>
-        <MdClose onClick={handleClose} size={20} className="absolute right-0 top-0 z-20 cursor-pointer my-1 mr-3" />
+        <MdClose
+          data-testid="list-options-menu-close-icon"
+          onClick={handleClose}
+          size={20}
+          className="absolute right-0 top-0 z-20 cursor-pointer my-1 mr-3"
+        />
       </div>
       <hr className="w-11/12 mx-auto" />
       <button className="w-full text-left px-3 py-2 cursor-pointer hover:bg-black hover:bg-opacity-10" onClick={handleCopy}>
