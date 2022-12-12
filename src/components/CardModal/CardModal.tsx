@@ -41,7 +41,7 @@ const CardModal = () => {
 
   // React.KeyboardEvent is not valid for document event handers, which must use globalThis
   const close = (e: globalThis.KeyboardEvent) => {
-    if (e.code === "Escape") {
+    if (e.key === "Escape") {
       closeModal();
       document.removeEventListener("keydown", close);
     }
@@ -66,8 +66,8 @@ const CardModal = () => {
     dispatch(setCurrentSelectedCard({ ...card, description: editableDescription }));
   };
 
-  const handleDesciptionKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.code === "Escape") {
+  const handleDescriptionKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Escape") {
       descriptionRef.current?.blur();
     }
   };
@@ -135,7 +135,7 @@ const CardModal = () => {
             className="text-gray-400 bg-transparent hover:bg-black hover:bg-opacity-10 hover:text-gray-600 rounded-lg text-sm p-2 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
             onClick={closeModal}
           >
-            <MdClose size={20} />
+            <MdClose size={20} data-testid="card-modal-close-icon" />
           </button>
         </div>
         <div className="flex w-full h-full">
@@ -145,15 +145,13 @@ const CardModal = () => {
               <FiAlignLeft size={20} />
               <p>Description</p>
             </div>
-            {card && card.description.trim().length < 0 ? (
-              <p>{card.description}</p>
-            ) : (
+            {card && (
               <textarea
                 ref={descriptionRef}
                 value={editableDescription}
                 onChange={handleDescriptionChange}
                 onBlur={handleUpdateDescription}
-                onKeyDown={handleDesciptionKeyDown}
+                onKeyDown={handleDescriptionKeyDown}
                 placeholder="Add some more detail here..."
                 className="text-gray-600 p-2 bg-black bg-opacity-5 rounded-ibsm h-44"
               />
