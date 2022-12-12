@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Collapse should render successfully when closed 1`] = `
+<DocumentFragment>
+  <div
+    aria-hidden="true"
+    class="transition-height ease overflow-hidden duration-500 undefined"
+    style="height: 0px; width: 0px;"
+  >
+    <div>
+      test
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Collapse should render successfully when open 1`] = `
+<DocumentFragment>
+  <div
+    aria-hidden="false"
+    class="transition-height ease overflow-hidden duration-500 undefined"
+    style="height: 100%;"
+  >
+    <div>
+      test
+    </div>
+  </div>
+</DocumentFragment>
+`;
