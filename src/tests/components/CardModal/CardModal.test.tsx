@@ -34,6 +34,10 @@ describe("CardModal", () => {
     };
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render successfully", () => {
     const view = renderWithProviders(<CardModal />, { preloadedState: initialState });
     expect(view.asFragment()).toMatchSnapshot();
