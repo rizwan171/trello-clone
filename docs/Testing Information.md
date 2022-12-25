@@ -88,7 +88,7 @@ describe("Component", () => {
 });
 ```
 
-#### Rendering with component with Redux bits i.e. dispatch and/or useSelector
+#### Rendering a component with Redux bits i.e. dispatch and/or useSelector
 
 - Use the `renderWithProviders` method defined in `src/tests/renderUtils.tsx` to render the component in each `it` block
 - This method takes an object to create an initial state for testing. This object should be instantiated in a `beforeEach` block
@@ -110,6 +110,53 @@ describe('Component', () => {
   })
 
 })
+```
+
+#### Rendering a component that is a Draggable
+
+- Use the `renderDraggableWithProviders` method defined in `src/tests/renderUtils.tsx` to render the component in each `it` block
+- This is very similar to `renderWithProviders`, but expects a couple extra parameters: an onDragEnd function, and a direction value
+  - **Note: For the purposes of testing a Draggable, the onDragEnd paramter can always be a jest mock. This parameter is required as part of `renderDraggableWithProviders` so that the jest mocks can be contained within the test files, and not be defined within the utils file**
+  - direction is the orientation of your `Droppable`. This, by default, is vertical, but can also be horizontal
+- Due to how React Beautiful DnD works, a `Draggable` must always be rendered within a parent `Droppable`. This is stated in the [docs by Atlassian](https://github.com/atlassian/react-beautiful-dnd/blob/master/docs/api/draggable.md).
+- `render` or `renderWithProviders` will fail to render a `Draggable` that is not wrapped in a `Droppable`
+- `Droppable` must also be contained within a root `DragDropContext`, as stated [in the docs](https://github.com/atlassian/react-beautiful-dnd/blob/master/docs/api/drag-drop-context.md). As Atlassian mention, You can think of `DragDropContext` as having a similar purpose to the react-redux Provider component.
+- An example usage of `renderDraggableWithProviders` can be seen in [ListCard.test.tsx](../src/tests/components/List/ListCard/ListCard.test.tsx)
+
+Example:
+
+```javascript
+// DraggableComponent.js
+const DraggableComponent = () => {
+  return (
+    <Draggable draggableId={id} index={index}>
+      ...
+    </Draggable>
+  )
+}
+
+//DraggableComponent.test.js
+describe('Component', () => {
+  let initialState: Partial<RootState>;
+  let onDragEnd: jest.Mock;
+
+  beforeEach(() => {
+    initialState = {
+      ...
+    }
+
+    onDragEnd = jest.fn()
+  })
+
+  // make sure to clear the mocks after each test
+  afterEach(() => jest.clearAllMocks())
+
+  it ('should do something', () => {
+    renderDraggableWithProviders(<DraggableComponent />, { preloadedState: initialState }, onDragEnd);
+  })
+
+})
+
 ```
 
 #### Getting elements after rendering
@@ -146,9 +193,29 @@ it("should do something", () => {
 });
 ```
 
+#### Interacting with elements i.e. firing different events like click, change, etc.
+
+- To fire an event for an element, use `fireEvent` from React Testing Library
+- This object has a bunch of functions that can be called to trigger certain events like `.click()`, `.change()`, `.keyPress()`
+  - For more info, see https://testing-library.com/docs/dom-testing-library/api-events/
+- These functions usually take 2 paramters: the element to fire an event for, and an event object to pass
+  - Note: for events like `.click()`, it is sufficient to pass just the element as a parameter
+
+```javascript
+it("should fire events", () => {
+  ...
+  const element = screen.getByTestId("element id");
+
+  fireEvent.click(element);
+
+  fireEvent.change(element, { target: { value: "Text" }});
+
+})
+```
+
 #### Checking objects or variables are a value we expect, equal, or have the right length etc.
 
-- To check an object, variable, or element's proprty is what we expect, use the `expect` method with the appropriate Jest matchers e.g.
+- To check an object, variable, or element's proprty is what we expect, use the `expect` method with the appropriate Jest/React Testing Library matchers e.g.
 
 ```javascript
 it("should do something", () => {
@@ -185,6 +252,69 @@ it("should do something", () => {
 ```
 
 - Note: the above works for any matcher.
+
+#### Difference between checking if an element exists and checking it doesnt
+
+- To check an element exists, use `getBy` query functions e.g. `getByText`, `getByTestId`
+- This is because when we expect something to exist, we want to be sure it exists, as if it doesn't, it would be a problem.
+- `getBy` query functions will throw an error, so to ensure the element exists, use `getBy`.
+
+```javascript
+it("should exist", () => {
+  const button = screen.getByTestId("id1");
+  expect(button).toBeInTheDocument();
+});
+```
+
+- To check an element should not exist, use `queryBy` query functions e.g. `queryByText`, `queryByTestId`
+- `queryBy` will return null if the element does not exist, making it suitable to use with the `.toBeInTheDocument()` matcher
+  - **Note: `getBy` can actually be used here as well, checking that it throws an exception when the element does not exist. For readability, use `queryBy` to make use of the `.not.toBeInTheDocument()` matcher**
+
+```javascript
+it("should not exist", () => {
+  const button = screen.queryByTestId("non-existent-id");
+  expect(button).not.toBeInTheDocument();
+});
+```
+
+- For more information about jest queries, check out the [Types of Queries page](https://testing-library.com/docs/queries/about/) in the Testing Library docs
+
+#### Using `getAllBy` and `queryAllBy` to check the existence of multiple elements
+
+- To check multiple elements should exist, use `getAllBy` query functions e.g. `getAllByText`, `getAllByTestId`
+- The `.toBeInTheDocument()` matcher can only be used on a single element. To check multiple elements exists, check the length of the result from `getAllBy` is what you expect
+
+```javascript
+it("should all exist", () => {
+  const buttons = screen.getAllByText("button");
+  expect(buttons).toHaveLength(3);
+});
+```
+
+- To check multiple elements should exist, use `queryAllBy` query functions e.g. `queryAllByText`, `queryAllByTestId`
+- As with `getAllBy`, the `.toBeInTheDocument()` matcher can only be used on a single element. To check multiple elements exists, check the length of the result from `queryAllBy` is 0
+
+```javascript
+it("should all not exist", () => {
+  const buttons = screen.queryAllByText("button");
+  expect(buttons).toHaveLength(0);
+});
+```
+
+- **Note: Technically, it is possible to use `.toBeInTheDocument` with a list of multiple elements by looping through the result of `getAllBy`/`queryAllBy` i.e.**
+
+```javascript
+it("using toBeInTheDocument", () => {
+  const buttons = screen.getAllByText("button");
+  buttons.forEach(button => expect(button).toBeInTheDocument());
+  expect(buttons).toHaveLength(3);
+
+  ...
+
+  const buttons = screen.queryAllByText("button");
+  buttons.forEach(button => expect(button).not.toBeInTheDocument());
+});
+```
 
 ### Testing a component with Redux bits
 
@@ -363,3 +493,169 @@ it ("should be created with date", () => {
 - To verify this has been called, you need to provide a mock for `setItem` and expect that mock to be called i.e.
 
 - See the `should save a single uploaded file successfully` scenario in [Attachment Menu test](../src/tests/components/CardModal/CardModalActions/AttachmentMenu/AttachmentMenu.test.tsx) for an example
+
+#### Use the `.toHaveTextContent` matcher when checking an elements textr
+
+- When checking an element for `element.textContent`, it is preferred to use the
+
+```javascript
+it("should have expected text content", () => {
+  ...
+
+  const element = screen.getByTestId("test-id");
+  expect(element).toHaveTextContent("Element Text");
+})
+```
+
+- See the `should update search results with just the tag being searched for` scenario in the [Tags Menu test](../src/tests/components/CardModal/CardModalActions/TagsMenu/TagsMenu.test.tsx) for an example
+
+#### Checking elements on screen after an action that should cause a rerender
+
+- When testing an action should update the UI, `rerender` should be used to correctly rerender the component after the action is performed
+- The `rerender` method can be extracted from the `render` method
+  - **Note: the `rerender` method can also be extracted from the custom render methods that are defined in [renderUtils](../src/tests/utils/renderUtils.tsx)**
+
+```javascript
+it("example", () => {
+  const { rerender } = render(<Component />)
+  ...
+  const { rerender } = renderWithProviders(<Component />, ...)
+  ...
+  const { rerender } = renderDraggableWithProviders(<Component />, ...)
+})
+```
+
+- When using `rerender`, simply call it after your action that should trigger a rerender
+
+```javascript
+it("should exist after rerender", () => {
+  const { rerender } = render(<Component />);
+
+  const button = screen.getByText("Click me to show element");
+  expect(screen.queryByText("Element to be shown")).not.toBeInTheDocument();
+
+  fireEvent.click(button);
+
+  rerender(<Component />);
+  expect(screen.getByText("Element to be shown")).toBeInTheDocument();
+});
+```
+
+- Note: `rerender` only needs to be called with the component, even when extracting it from the custom render methods.
+- See the `should update search results with just the tag being searched for` scenario in the [Tags Menu test](../src/tests/components/CardModal/CardModalActions/TagsMenu/TagsMenu.test.tsx) for an example
+
+#### Testing code that has a `.scrollIntoView()` call
+
+- jsdom does not implement `scrollIntoView`, causing an error when running tests for components that have a call to it
+  - See https://stackoverflow.com/questions/53271193/typeerror-scrollintoview-is-not-a-function
+  - and https://github.com/jsdom/jsdom/issues/1695
+- To overcome this, in your test, define a mock and set `Element.prototype.scrollIntoView` to your mock
+
+```javascript
+describe("Component", () => {
+  let mockScrollIntoView: jest.Mock;
+
+  beforeEach(() => {
+    mockScrollIntoView = jest.fn();
+    Element.prototype.scrollIntoView = mockScrollIntoView;
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it("should call scrollIntoView when rendered", () => {
+    render(<ComponentA />);
+    expect(mockScrollIntoView).toHaveBeenCalled();
+  });
+});
+```
+
+- See the `should add a list when enter pressed in the title input` scenario in the [AddList test](../src/tests/components/List/AddList/AddList.test.tsx) for an example
+
+#### Firing a `keyPress` event when testing
+
+- When firing a `keyPress` event, the `charCode` must be defined along with other properties you expect to use e.g. if your `keyPress` handler checks the `key` property of the event, you must pass `key` and `charCode` to the event
+  - See https://github.com/testing-library/react-testing-library/issues/269#issuecomment-455854112
+
+```javascript
+it('should fire keyPress event properly', () => {
+  ...
+
+  fireEvent.keyPress(element, { key: "Enter", charCode: 13 });
+});
+```
+
+- See [AddList test](../src/tests/components/List/AddList/AddList.test.tsx) for an example
+
+#### Getting an element after multiple rerenders
+
+- If you are testing a workflow where an element is present, disappears, and then reappers, you have to get the element again
+
+```javascript
+it("should show, hide, and then show element again", () => {
+  let element = screen.getByText("Element");
+  expect(element).toBeInTheDocument();
+
+  fireEvent.click(button); //hides element
+  expect(element).not.toBeInTheDocument();
+
+  fireEvent.click(button2); // shows element again
+
+  ...
+  // expect(element).toBeInTheDocument(); WILL NOT WORK
+  ...
+  // instead, find element again and then expect
+  element = screen.getByText("Element");
+  expect(element).toBeInTheDocument();
+});
+```
+
+- See the `should not update title on blur` scenario in the [ListTitle test](../src/tests/components/List/ListTitle/ListTitle.test.tsx) for an example
+
+#### Testing a component with an async `useEffect`
+
+- A component with an async `useEffect` hook needs to be tested slightly differently
+- Use `waitFor` to get an element that should be present on screen and then carry out your assertions
+
+```javascript
+it("will fail", () => {
+  const view = render(<ComponentWithAsyncUseEffect />);
+  expect(view.asFragment()).toMatchSnapshot();
+});
+
+it("will pass", async () => {
+  const view = render(<ComponentWithAsyncUseEffect />);
+
+  await waitFor(() => screen.findByText("some element that should be present"));
+
+  expect(view.asFragment()).toMatchSnapshot();
+});
+```
+
+- See the `should render successfully` scenario in the [CardModalAttachment test](../src/tests/components/CardModal/CardModalAttachments/CardModalAttachment.test.tsx) for an example
+
+#### Mocking return values for functions
+
+- Use `mockReturnValue` to mock every call to that function
+
+```javascript
+someFunction = jest.fn().mockReturnValue(0);
+...
+expect(someFunction()).toBe(0);
+expect(someFunction()).toBe(0);
+expect(someFunction()).toBe(0);
+```
+
+- Use `mockReturnValueOnce` to mock one call to that function
+  - NOTE: this can be chained for multiple calls
+
+```javascript
+someFunction = jest.fn().mockReturnValueOnce(0).mockReturnValueOnce(2).mockReturnValueOnce(3);
+...
+expect(someFunction()).toBe(0);
+expect(someFunction()).toBe(1);
+expect(someFunction()).toBe(2);
+```
+
+- See the `beforeEach` block in the [CardModalAttachment test](../src/tests/components/CardModal/CardModalAttachments/CardModalAttachment.test.tsx) for an example

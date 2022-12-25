@@ -44,7 +44,7 @@ const CreateTagMenu = () => {
     setTagName(e.target.value);
   };
 
-  const handleCreateTag = () => {
+  const handleCreateOrEditTag = () => {
     if (!selectedTagColour) return;
 
     if (tagData) {
@@ -82,13 +82,24 @@ const CreateTagMenu = () => {
     <div className="fixed mt-10 w-72 min-h-40 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4 ">
       <div className="relative text-center mb-2">
         <span className="text-sm block relative z-10">{titleText}</span>
-        <MdArrowBack onClick={handleBack} size={20} className="absolute left-0 top-0 z-20 cursor-pointer" />
-        <MdClose onClick={handleClose} size={20} className="absolute right-0 top-0 z-20 cursor-pointer" />
+        <MdArrowBack
+          data-testid="back-icon"
+          onClick={handleBack}
+          size={20}
+          className="absolute left-0 top-0 z-20 cursor-pointer"
+        />
+        <MdClose
+          data-testid="close-icon"
+          onClick={handleClose}
+          size={20}
+          className="absolute right-0 top-0 z-20 cursor-pointer"
+        />
       </div>
       <hr />
       <div className="flex flex-col mt-2 text-sm">
         <span className="text-gray-600 my-2 font-semibold">Name</span>
         <input
+          data-testid="tag-name-input"
           type="text"
           autoFocus
           value={tagName}
@@ -101,6 +112,7 @@ const CreateTagMenu = () => {
             <TagColourOption key={index} colour={colour} />
           ))}
           <div
+            data-testid="no-colour-option"
             className={
               "h-11 w-12 rounded-md bg-trello-gray-card-modal-buttons cursor-pointer" +
               (selectedTagColour == NO_COLOUR ? " ring-2 ring-trello-blue-100" : "")
@@ -117,7 +129,7 @@ const CreateTagMenu = () => {
           </div>
         </div>
         <button
-          onClick={handleCreateTag}
+          onClick={handleCreateOrEditTag}
           className="p-2 mt-3 bg-trello-blue-100 hover:bg-trello-blue-200 text-white font-semibold items-center text-sm shadow-sm rounded-sm"
         >
           {buttonText}

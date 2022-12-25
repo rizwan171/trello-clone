@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagOption should render successfully when not selected 1`] = `
+<DocumentFragment>
+  <div
+    class="flex h-8"
+  >
+    <div
+      class="items-center flex text-white w-full rounded-ibsm cursor-pointer"
+      data-testid="tag-option-inner-container"
+      style="background: rgb(204, 204, 204);"
+    >
+      <span
+        class="ml-2"
+        data-testid="tag-option-name"
+      >
+        Test Tag
+      </span>
+    </div>
+    <svg
+      class="self-center ml-2 cursor-pointer"
+      data-testid="edit-icon"
+      fill="currentColor"
+      height="20"
+      stroke="currentColor"
+      stroke-width="0"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0 0h24v24H0V0z"
+        fill="none"
+      />
+      <path
+        d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 000-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TagOption should render successfully when selected 1`] = `
+<DocumentFragment>
+  <div
+    class="flex h-8"
+  >
+    <div
+      class="items-center flex text-white w-full rounded-ibsm cursor-pointer"
+      data-testid="tag-option-inner-container"
+      style="background: rgb(204, 204, 204);"
+    >
+      <span
+        class="ml-2"
+        data-testid="tag-option-name"
+      >
+        Test Tag
+      </span>
+      <svg
+        class="ml-auto mr-2"
+        data-testid="tag-selected-icon"
+        fill="currentColor"
+        height="20"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+        />
+      </svg>
+    </div>
+    <svg
+      class="self-center ml-2 cursor-pointer"
+      data-testid="edit-icon"
+      fill="currentColor"
+      height="20"
+      stroke="currentColor"
+      stroke-width="0"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0 0h24v24H0V0z"
+        fill="none"
+      />
+      <path
+        d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83a.996.996 0 000-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;

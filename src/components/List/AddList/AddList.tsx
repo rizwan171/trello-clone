@@ -22,7 +22,7 @@ const AddList = () => {
   };
 
   const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.code === "Enter") {
+    if (e.key === "Enter") {
       handleAddList();
     }
   };
@@ -44,6 +44,7 @@ const AddList = () => {
         <Collapse isOpen={open} className={open ? "h-full" : ""}>
           <div>
             <input
+              data-testid="add-list-title-input"
               type="text"
               ref={inputRef}
               value={title}
@@ -63,6 +64,7 @@ const AddList = () => {
                 Add List
               </button>
               <FiX
+                data-testid="add-list-close-icon"
                 onClick={handleClose}
                 size={36}
                 className="text-trello-gray-200 hover:bg-trello-gray-500 cursor-pointer rounded-full ml-1 p-1"

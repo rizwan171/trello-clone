@@ -25,7 +25,7 @@ const AttachmentMenu = ({ update }: AttachmentMenuProps) => {
     if (files) {
       for (let i = 0; i < files.length; i++) {
         const id = uuidv4();
-        const date = JSON.stringify(new Date());
+        const date = new Date().toISOString();
         setFilePromises.push(localforage.setItem(id, files[i]));
         upload.push({ id, date, name: files[i].name });
       }

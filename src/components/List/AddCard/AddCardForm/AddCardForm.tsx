@@ -4,11 +4,10 @@ import { useAppDispatch } from "../../../../app/hooks";
 import { addCard } from "../../../../features/cardsSlice";
 import { AddCardFormProps } from "../../../../types/components/AddCardFormProps";
 
-const AddCardForm = ({ setOpen, open, listId }: AddCardFormProps) => {
+const AddCardForm = ({ setOpen, listId }: AddCardFormProps) => {
   const dispatch = useAppDispatch();
   const [text, setText] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
-  const inlineStyle = open ? { height: "min-content" } : { height: 0, overflow: "hidden" };
 
   const handleClose = () => {
     setOpen(false);
@@ -16,12 +15,12 @@ const AddCardForm = ({ setOpen, open, listId }: AddCardFormProps) => {
   };
 
   useEffect(() => {
-    if (open && inputRef.current) {
+    if (inputRef.current) {
       inputRef.current.scrollIntoView();
       inputRef.current.focus();
       inputRef.current.setSelectionRange(0, 0);
     }
-  }, [open]);
+  }, []);
 
   const handleOnChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     if (e.target.value !== "\n") {
@@ -48,8 +47,9 @@ const AddCardForm = ({ setOpen, open, listId }: AddCardFormProps) => {
   };
 
   return (
-    <div className="flex flex-col transition-height ease-in-out duration-200" style={inlineStyle}>
+    <div className="flex flex-col transition-height ease-in-out duration-200 h-min">
       <textarea
+        data-testid="add-card-input"
         ref={inputRef}
         value={text}
         placeholder="Type something..."
@@ -67,6 +67,7 @@ const AddCardForm = ({ setOpen, open, listId }: AddCardFormProps) => {
           Add Card
         </button>
         <FiX
+          data-testid="add-card-close"
           onClick={handleClose}
           size={36}
           className="text-trello-gray-200 hover:bg-trello-gray-500 cursor-pointer rounded-full ml-1 p-1"

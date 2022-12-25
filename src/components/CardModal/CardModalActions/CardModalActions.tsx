@@ -50,6 +50,7 @@ const CardModalActions = () => {
       <h4 className="text-gray-800 text-sm">Add to card</h4>
       <div className="flex-col flex">
         <button
+          data-testid="card-modal-actions-tags-button"
           className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
           onClick={handleShowTagsMenu}
         >
@@ -62,6 +63,7 @@ const CardModalActions = () => {
       <h4 className="text-gray-800 text-sm">Actions</h4>
       <div className="flex-col flex">
         <button
+          data-testid="card-modal-actions-copy-button"
           className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
           onClick={handleShowCopyMenu}
         >
@@ -73,6 +75,7 @@ const CardModalActions = () => {
 
       <div className="flex-col flex">
         <button
+          data-testid="card-modal-actions-move-button"
           className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
           onClick={handleShowMoveMenu}
         >
@@ -84,6 +87,7 @@ const CardModalActions = () => {
 
       <div className="flex-col flex">
         <button
+          data-testid="card-modal-actions-delete-button"
           className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
           onClick={handleShowDeleteMenu}
         >
@@ -95,11 +99,12 @@ const CardModalActions = () => {
 
       <div className="flex-col flex">
         <button
+          data-testid="card-modal-actions-attachment-menu-button"
           className="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
           onClick={() => handleShowAttachmentMenu(1)}
         >
           <AiOutlinePaperClip />
-          <p>Attachment</p>
+          <p>Attachments</p>
         </button>
         {attachmentMenuOpen.status && attachmentMenuOpen.id === 1 && <AttachmentMenu update={false} />}
       </div>

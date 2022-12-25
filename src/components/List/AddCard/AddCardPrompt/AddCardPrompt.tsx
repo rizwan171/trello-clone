@@ -1,12 +1,12 @@
 import { FiPlus } from "react-icons/fi";
 import { AddCardPromptProps } from "../../../../types/components/AddCardPromptProps";
 
-const AddCardPrompt = ({ open, setOpen }: AddCardPromptProps) => {
-  const inlineStyle = open ? { height: "min-content" } : { height: 0, overflow: "hidden" };
+const AddCardPrompt = ({ setOpen }: AddCardPromptProps) => {
 
   return (
-    <div className="flex flex-col transition-height ease-in-out duration-100" style={inlineStyle}>
+    <div className="flex flex-col transition-height ease-in-out duration-100 h-min">
       <div
+        data-testid="add-card-prompt-container"
         className="flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-1 mt-1"
         onClick={() => setOpen(true)}
       >

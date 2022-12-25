@@ -6,8 +6,9 @@ import { sendPositionData } from "../../../features/listOptionsMenuPositionSlice
 import { ListTitleProps } from "../../../types/components/ListTitleProps";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 
-const ListTitle = ({ list }: ListTitleProps) => {
+const ListTitle = ({ listId }: ListTitleProps) => {
   const dispatch = useAppDispatch();
+  const list = useAppSelector((state) => state.lists.value.filter((list) => list.id === listId)[0]);
   const currentSelectedList = useAppSelector((state) => state.currentSelectedList.value);
   const [selected, setSelected] = useState(false);
   const [editableTitle, setEditableTitle] = useState(list.title);
@@ -71,7 +72,7 @@ const ListTitle = ({ list }: ListTitleProps) => {
           ref={textAreaRef}
           typeof="text"
           value={editableTitle}
-          id="rounded-email"
+          data-testid="list-title-editable-textarea"
           autoFocus
           rows={rows}
           onFocus={handleOnFocus}
@@ -86,7 +87,7 @@ const ListTitle = ({ list }: ListTitleProps) => {
         </h2>
       )}
       <button ref={moreMenuButtonRef} className="hover:bg-trello-gray-500 p-1 ml-1.5 rounded-ibsm" onClick={handleMoreMenu}>
-        <MdMoreHoriz size={20} className="text-trello-gray-200" />
+        <MdMoreHoriz data-testid="list-title-more-menu-button" size={20} className="text-trello-gray-200" />
       </button>
     </div>
   );

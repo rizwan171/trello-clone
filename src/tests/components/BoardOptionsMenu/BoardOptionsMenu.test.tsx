@@ -178,7 +178,7 @@ describe("BoardOptionsMenu", () => {
     fireEvent.change(exportSelector, { target: { value: "1" } });
     expect(exportSelector.selectedOptions).toHaveLength(1);
     expect(exportSelector.selectedOptions[0].value).toBe("1");
-    expect(exportSelector.selectedOptions[0].textContent).toBe("Test List 1");
+    expect(exportSelector.selectedOptions[0]).toHaveTextContent("Test List 1");
 
     fireEvent.click(exportButton);
 

@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListTitle should render successfully 1`] = `
+<DocumentFragment>
+  <div
+    class="flex items-start select-none cursor-pointer p-1"
+  >
+    <h2
+      class="flex-1 px-1 text-trello-gray-300 font-semibold break-all"
+    >
+      List 1
+    </h2>
+    <button
+      class="hover:bg-trello-gray-500 p-1 ml-1.5 rounded-ibsm"
+    >
+      <svg
+        class="text-trello-gray-200"
+        data-testid="list-title-more-menu-button"
+        fill="currentColor"
+        height="20"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+        />
+      </svg>
+    </button>
+  </div>
+</DocumentFragment>
+`;

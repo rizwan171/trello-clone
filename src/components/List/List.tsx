@@ -27,7 +27,7 @@ const List = ({ list, index }: ListProps) => {
           {...provided.draggableProps}
           className="shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-2 flex flex-col list-wrapper"
         >
-          <ListTitle list={list} />
+          <ListTitle listId={list.id} />
           <Droppable droppableId={list.id}>
             {(provided) => (
               <>
@@ -40,10 +40,10 @@ const List = ({ list, index }: ListProps) => {
                   {cards.map((card, index) => (
                     <ListCard key={card.id} card={card} index={index} />
                   ))}
-                  <AddCardForm listId={list.id} open={open} setOpen={setOpen} />
+                  {open && <AddCardForm listId={list.id} setOpen={setOpen} />}
                   {provided.placeholder}
                 </div>
-                <AddCardPrompt open={!open} setOpen={setOpen} />
+                {!open && <AddCardPrompt setOpen={setOpen} />}
               </>
             )}
           </Droppable>

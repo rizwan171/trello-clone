@@ -1,0 +1,438 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateTagMenu should render successfully for creating a new tag 1`] = `
+<DocumentFragment>
+  <div
+    class="fixed mt-10 w-72 min-h-40 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4 "
+  >
+    <div
+      class="relative text-center mb-2"
+    >
+      <span
+        class="text-sm block relative z-10"
+      >
+        New Tag
+      </span>
+      <svg
+        class="absolute left-0 top-0 z-20 cursor-pointer"
+        data-testid="back-icon"
+        fill="currentColor"
+        height="20"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+        />
+      </svg>
+      <svg
+        class="absolute right-0 top-0 z-20 cursor-pointer"
+        data-testid="close-icon"
+        fill="currentColor"
+        height="20"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+        />
+      </svg>
+    </div>
+    <hr />
+    <div
+      class="flex flex-col mt-2 text-sm"
+    >
+      <span
+        class="text-gray-600 my-2 font-semibold"
+      >
+        Name
+      </span>
+      <input
+        class="w-full h-9 py-1 px-2 border-1 mb-2 border-gray-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100"
+        data-testid="tag-name-input"
+        type="text"
+        value=""
+      />
+      <span
+        class="text-gray-600 my-2 font-semibold"
+      >
+        Select a colour
+      </span>
+      <div
+        class="grid grid-cols-5 gap-2"
+      >
+        <div
+          class="h-11 w-12 rounded-md cursor-pointer"
+          data-testid="tag-colour-option-container"
+          style="background: rgb(110, 231, 183);"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+          />
+        </div>
+        <div
+          class="h-11 w-12 rounded-md cursor-pointer"
+          data-testid="tag-colour-option-container"
+          style="background: rgb(252, 211, 77);"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+          />
+        </div>
+        <div
+          class="h-11 w-12 rounded-md cursor-pointer"
+          data-testid="tag-colour-option-container"
+          style="background: rgb(245, 158, 11);"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+          />
+        </div>
+        <div
+          class="h-11 w-12 rounded-md cursor-pointer"
+          data-testid="tag-colour-option-container"
+          style="background: rgb(239, 68, 68);"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+          />
+        </div>
+        <div
+          class="h-11 w-12 rounded-md cursor-pointer"
+          data-testid="tag-colour-option-container"
+          style="background: rgb(196, 181, 253);"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+          />
+        </div>
+        <div
+          class="h-11 w-12 rounded-md cursor-pointer"
+          data-testid="tag-colour-option-container"
+          style="background: rgb(37, 99, 235);"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+          />
+        </div>
+        <div
+          class="h-11 w-12 rounded-md cursor-pointer"
+          data-testid="tag-colour-option-container"
+          style="background: rgb(96, 165, 250);"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+          />
+        </div>
+        <div
+          class="h-11 w-12 rounded-md cursor-pointer"
+          data-testid="tag-colour-option-container"
+          style="background: rgb(129, 140, 248);"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+          />
+        </div>
+        <div
+          class="h-11 w-12 rounded-md cursor-pointer"
+          data-testid="tag-colour-option-container"
+          style="background: rgb(252, 165, 165);"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+          />
+        </div>
+        <div
+          class="h-11 w-12 rounded-md cursor-pointer"
+          data-testid="tag-colour-option-container"
+          style="background: rgb(75, 85, 99);"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+          />
+        </div>
+        <div
+          class="h-11 w-12 rounded-md bg-trello-gray-card-modal-buttons cursor-pointer"
+          data-testid="no-colour-option"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md flex justify-center items-center"
+          >
+            <svg
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          class="col-span-3 flex flex-col"
+        >
+          <span
+            class="text-gray-600"
+          >
+            No Colour
+          </span>
+          <span
+            class="text-gray-400"
+          >
+            This won't show up on the front of cards
+          </span>
+        </div>
+      </div>
+      <button
+        class="p-2 mt-3 bg-trello-blue-100 hover:bg-trello-blue-200 text-white font-semibold items-center text-sm shadow-sm rounded-sm"
+      >
+        Create
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CreateTagMenu should render successfully for editing an existing tag 1`] = `
+<DocumentFragment>
+  <div
+    class="fixed mt-10 w-72 min-h-40 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4 "
+  >
+    <div
+      class="relative text-center mb-2"
+    >
+      <span
+        class="text-sm block relative z-10"
+      >
+        Edit Tag
+      </span>
+      <svg
+        class="absolute left-0 top-0 z-20 cursor-pointer"
+        data-testid="back-icon"
+        fill="currentColor"
+        height="20"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+        />
+      </svg>
+      <svg
+        class="absolute right-0 top-0 z-20 cursor-pointer"
+        data-testid="close-icon"
+        fill="currentColor"
+        height="20"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        width="20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+        <path
+          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+        />
+      </svg>
+    </div>
+    <hr />
+    <div
+      class="flex flex-col mt-2 text-sm"
+    >
+      <span
+        class="text-gray-600 my-2 font-semibold"
+      >
+        Name
+      </span>
+      <input
+        class="w-full h-9 py-1 px-2 border-1 mb-2 border-gray-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-trello-blue-100"
+        data-testid="tag-name-input"
+        type="text"
+        value="Test Tag"
+      />
+      <span
+        class="text-gray-600 my-2 font-semibold"
+      >
+        Select a colour
+      </span>
+      <div
+        class="grid grid-cols-5 gap-2"
+      >
+        <div
+          class="h-11 w-12 rounded-md cursor-pointer"
+          data-testid="tag-colour-option-container"
+          style="background: rgb(110, 231, 183);"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+          />
+        </div>
+        <div
+          class="h-11 w-12 rounded-md cursor-pointer"
+          data-testid="tag-colour-option-container"
+          style="background: rgb(252, 211, 77);"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+          />
+        </div>
+        <div
+          class="h-11 w-12 rounded-md cursor-pointer"
+          data-testid="tag-colour-option-container"
+          style="background: rgb(245, 158, 11);"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+          />
+        </div>
+        <div
+          class="h-11 w-12 rounded-md cursor-pointer"
+          data-testid="tag-colour-option-container"
+          style="background: rgb(239, 68, 68);"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+          />
+        </div>
+        <div
+          class="h-11 w-12 rounded-md cursor-pointer"
+          data-testid="tag-colour-option-container"
+          style="background: rgb(196, 181, 253);"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+          />
+        </div>
+        <div
+          class="h-11 w-12 rounded-md cursor-pointer"
+          data-testid="tag-colour-option-container"
+          style="background: rgb(37, 99, 235);"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+          />
+        </div>
+        <div
+          class="h-11 w-12 rounded-md cursor-pointer"
+          data-testid="tag-colour-option-container"
+          style="background: rgb(96, 165, 250);"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+          />
+        </div>
+        <div
+          class="h-11 w-12 rounded-md cursor-pointer"
+          data-testid="tag-colour-option-container"
+          style="background: rgb(129, 140, 248);"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+          />
+        </div>
+        <div
+          class="h-11 w-12 rounded-md cursor-pointer"
+          data-testid="tag-colour-option-container"
+          style="background: rgb(252, 165, 165);"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+          />
+        </div>
+        <div
+          class="h-11 w-12 rounded-md cursor-pointer"
+          data-testid="tag-colour-option-container"
+          style="background: rgb(75, 85, 99);"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md"
+          />
+        </div>
+        <div
+          class="h-11 w-12 rounded-md bg-trello-gray-card-modal-buttons cursor-pointer"
+          data-testid="no-colour-option"
+        >
+          <div
+            class="h-full w-full hover:bg-black hover:bg-opacity-20 rounded-md flex justify-center items-center"
+          >
+            <svg
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          class="col-span-3 flex flex-col"
+        >
+          <span
+            class="text-gray-600"
+          >
+            No Colour
+          </span>
+          <span
+            class="text-gray-400"
+          >
+            This won't show up on the front of cards
+          </span>
+        </div>
+      </div>
+      <button
+        class="p-2 mt-3 bg-trello-blue-100 hover:bg-trello-blue-200 text-white font-semibold items-center text-sm shadow-sm rounded-sm"
+      >
+        Update
+      </button>
+      <button
+        class="p-2 mt-1 bg-red-600 hover:bg-red-800 text-white font-semibold items-center text-sm shadow-sm rounded-sm"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

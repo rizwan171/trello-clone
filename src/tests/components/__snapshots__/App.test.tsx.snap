@@ -1,0 +1,4492 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render successfully with board options menu open 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col h-screen box-border w-screen mr-1/5"
+  >
+    <div
+      class="w-full px-6 pt-3"
+    >
+      <div
+        class="flex w-full m-1"
+      >
+        <div
+          class="flex h-14 items-center select-none text-3xl w-full"
+        >
+          <h2
+            class="ml-2 my-auto text-trello-gray-300 font-semibold cursor-pointer"
+          >
+            Board 1
+          </h2>
+        </div>
+        <div
+          class="my-auto"
+        >
+          <button
+            class="flex items-center px-3 py-2 text-lg text-trello-gray-200 bg-trello-gray-500 bg-opacity-50 bg-transparent hover:bg-opacity-100 text-center shadow-md rounded-md"
+            type="button"
+          >
+            <svg
+              class="mr-2"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 16c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.084 0 2 .916 2 2s-.916 2-2 2-2-.916-2-2 .916-2 2-2z"
+              />
+              <path
+                d="m2.845 16.136 1 1.73c.531.917 1.809 1.261 2.73.73l.529-.306A8.1 8.1 0 0 0 9 19.402V20c0 1.103.897 2 2 2h2c1.103 0 2-.897 2-2v-.598a8.132 8.132 0 0 0 1.896-1.111l.529.306c.923.53 2.198.188 2.731-.731l.999-1.729a2.001 2.001 0 0 0-.731-2.732l-.505-.292a7.718 7.718 0 0 0 0-2.224l.505-.292a2.002 2.002 0 0 0 .731-2.732l-.999-1.729c-.531-.92-1.808-1.265-2.731-.732l-.529.306A8.1 8.1 0 0 0 15 4.598V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v.598a8.132 8.132 0 0 0-1.896 1.111l-.529-.306c-.924-.531-2.2-.187-2.731.732l-.999 1.729a2.001 2.001 0 0 0 .731 2.732l.505.292a7.683 7.683 0 0 0 0 2.223l-.505.292a2.003 2.003 0 0 0-.731 2.733zm3.326-2.758A5.703 5.703 0 0 1 6 12c0-.462.058-.926.17-1.378a.999.999 0 0 0-.47-1.108l-1.123-.65.998-1.729 1.145.662a.997.997 0 0 0 1.188-.142 6.071 6.071 0 0 1 2.384-1.399A1 1 0 0 0 11 5.3V4h2v1.3a1 1 0 0 0 .708.956 6.083 6.083 0 0 1 2.384 1.399.999.999 0 0 0 1.188.142l1.144-.661 1 1.729-1.124.649a1 1 0 0 0-.47 1.108c.112.452.17.916.17 1.378 0 .461-.058.925-.171 1.378a1 1 0 0 0 .471 1.108l1.123.649-.998 1.729-1.145-.661a.996.996 0 0 0-1.188.142 6.071 6.071 0 0 1-2.384 1.399A1 1 0 0 0 13 18.7l.002 1.3H11v-1.3a1 1 0 0 0-.708-.956 6.083 6.083 0 0 1-2.384-1.399.992.992 0 0 0-1.188-.141l-1.144.662-1-1.729 1.124-.651a1 1 0 0 0 .471-1.108z"
+              />
+            </svg>
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="h-full w-1/5 fixed z-10 top-0 right-0 bg-trello-gray-300 text-white"
+    >
+      <div
+        class="px-8 py-4"
+      >
+        <p
+          class="text-2xl"
+        >
+          Board Options
+        </p>
+      </div>
+      <div
+        class="px-8 text-xl h-full"
+      >
+        <div
+          class="mb-4"
+        >
+          <div
+            class="flex mb-2"
+          >
+            <svg
+              class="mr-3 mt-auto"
+              fill="currentColor"
+              height="25"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 1024 1024"
+              width="25"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32zm-40 632H136v-39.9l138.5-164.3 150.1 178L658.1 489 888 761.6V792zm0-129.8L664.2 396.8c-3.2-3.8-9-3.8-12.2 0L424.6 666.4l-144-170.7c-3.2-3.8-9-3.8-12.2 0L136 652.7V232h752v430.2zM304 456a88 88 0 1 0 0-176 88 88 0 0 0 0 176zm0-116c15.5 0 28 12.5 28 28s-12.5 28-28 28-28-12.5-28-28 12.5-28 28-28z"
+              />
+            </svg>
+            <p>
+              Background
+            </p>
+          </div>
+          <hr />
+          <div
+            class="flex"
+          >
+            <button
+              class="py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base selected-tab"
+            >
+              Colour
+            </button>
+            <button
+              class="py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base"
+            >
+              Image Search
+            </button>
+            <button
+              class="py-2 px-3 mt-2 mb-2 bg-transparent outline-none border-transparent border-b-4 rounded-sm hover:border-trello-blue-100 hover:border-current text-white items-center text-base"
+            >
+              Image Upload
+            </button>
+          </div>
+          <div
+            class="h-52 max-h-96 w-full bg-trello-gray-500 rounded-md text-black p-1 scroll-y-hidden"
+          >
+            <div
+              class="grid grid-cols-6 gap-1"
+            >
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+              <div
+                class="text-center bg-green-700 rounded-md p-1"
+              >
+                1
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="mb-4"
+        >
+          <div
+            class="flex items-center"
+          >
+            <svg
+              class="mr-3 mb-1"
+              fill="currentColor"
+              height="25"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 1024 1024"
+              width="25"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M518.3 459a8 8 0 0 0-12.6 0l-112 141.7a7.98 7.98 0 0 0 6.3 12.9h73.9V856c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V613.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 459z"
+              />
+              <path
+                d="M811.4 366.7C765.6 245.9 648.9 160 512.2 160S258.8 245.8 213 366.6C127.3 389.1 64 467.2 64 560c0 110.5 89.5 200 199.9 200H304c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8h-40.1c-33.7 0-65.4-13.4-89-37.7-23.5-24.2-36-56.8-34.9-90.6.9-26.4 9.9-51.2 26.2-72.1 16.7-21.3 40.1-36.8 66.1-43.7l37.9-9.9 13.9-36.6c8.6-22.8 20.6-44.1 35.7-63.4a245.6 245.6 0 0 1 52.4-49.9c41.1-28.9 89.5-44.2 140-44.2s98.9 15.3 140 44.2c19.9 14 37.5 30.8 52.4 49.9 15.1 19.3 27.1 40.7 35.7 63.4l13.8 36.5 37.8 10C846.1 454.5 884 503.8 884 560c0 33.1-12.9 64.3-36.3 87.7a123.07 123.07 0 0 1-87.6 36.3H720c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h40.1C870.5 760 960 670.5 960 560c0-92.7-63.1-170.7-148.6-193.3z"
+              />
+            </svg>
+            <p
+              class="mb-2"
+            >
+              Import
+            </p>
+          </div>
+          <hr />
+          <div
+            class="flex flex-col"
+          >
+            <input
+              class="hidden"
+              data-testid="file"
+              id="file"
+              type="file"
+            />
+            <button
+              class="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
+            >
+              <svg
+                class="mr-2"
+                fill="currentColor"
+                height="20"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 1024 1024"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 0 0-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"
+                />
+              </svg>
+              Import All
+            </button>
+            <button
+              class="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
+            >
+              <svg
+                class="mr-2"
+                fill="currentColor"
+                height="20"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 1024 1024"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 0 0-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"
+                />
+              </svg>
+              Import Board
+            </button>
+            <button
+              class="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
+            >
+              <svg
+                class="mr-2"
+                fill="currentColor"
+                height="20"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 1024 1024"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M400 317.7h73.9V656c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V317.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 163a8 8 0 0 0-12.6 0l-112 141.7c-4.1 5.3-.4 13 6.3 13zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"
+                />
+              </svg>
+              Import List
+            </button>
+          </div>
+        </div>
+        <div
+          class="mb-4"
+        >
+          <div
+            class="flex items-center"
+          >
+            <svg
+              class="mr-3 mb-1"
+              fill="currentColor"
+              height="25"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 1024 1024"
+              width="25"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M624 706.3h-74.1V464c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v242.3H400c-6.7 0-10.4 7.7-6.3 12.9l112 141.7a8 8 0 0 0 12.6 0l112-141.7c4.1-5.2.4-12.9-6.3-12.9z"
+              />
+              <path
+                d="M811.4 366.7C765.6 245.9 648.9 160 512.2 160S258.8 245.8 213 366.6C127.3 389.1 64 467.2 64 560c0 110.5 89.5 200 199.9 200H304c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8h-40.1c-33.7 0-65.4-13.4-89-37.7-23.5-24.2-36-56.8-34.9-90.6.9-26.4 9.9-51.2 26.2-72.1 16.7-21.3 40.1-36.8 66.1-43.7l37.9-9.9 13.9-36.6c8.6-22.8 20.6-44.1 35.7-63.4a245.6 245.6 0 0 1 52.4-49.9c41.1-28.9 89.5-44.2 140-44.2s98.9 15.3 140 44.2c19.9 14 37.5 30.8 52.4 49.9 15.1 19.3 27.1 40.7 35.7 63.4l13.8 36.5 37.8 10C846.1 454.5 884 503.8 884 560c0 33.1-12.9 64.3-36.3 87.7a123.07 123.07 0 0 1-87.6 36.3H720c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h40.1C870.5 760 960 670.5 960 560c0-92.7-63.1-170.7-148.6-193.3z"
+              />
+            </svg>
+            <p
+              class="mb-2"
+            >
+              Export
+            </p>
+          </div>
+          <hr />
+          <div
+            class="flex flex-col"
+          >
+            <button
+              class="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 items-center text-base shadow-md rounded-md"
+            >
+              <svg
+                class="mr-2"
+                fill="currentColor"
+                height="20"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 1024 1024"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M505.7 661a8 8 0 0 0 12.6 0l112-141.7c4.1-5.2.4-12.9-6.3-12.9h-74.1V168c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v338.3H400c-6.7 0-10.4 7.7-6.3 12.9l112 141.8zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"
+                />
+              </svg>
+              Export All
+            </button>
+            <button
+              class="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
+            >
+              <svg
+                class="mr-2"
+                fill="currentColor"
+                height="20"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 1024 1024"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M505.7 661a8 8 0 0 0 12.6 0l112-141.7c4.1-5.2.4-12.9-6.3-12.9h-74.1V168c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v338.3H400c-6.7 0-10.4 7.7-6.3 12.9l112 141.8zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"
+                />
+              </svg>
+              Export Board
+            </button>
+            <button
+              class="flex py-2 px-3 mt-2 mb-2 bg-trello-green-100 hover:bg-trello-green-200 text-white items-center text-base shadow-md rounded-md"
+            >
+              <svg
+                class="mr-2"
+                fill="currentColor"
+                height="20"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 1024 1024"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M505.7 661a8 8 0 0 0 12.6 0l112-141.7c4.1-5.2.4-12.9-6.3-12.9h-74.1V168c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v338.3H400c-6.7 0-10.4 7.7-6.3 12.9l112 141.8zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"
+                />
+              </svg>
+              Export List
+            </button>
+          </div>
+        </div>
+        <div>
+          <div
+            class="flex items-center"
+          >
+            <svg
+              class="mr-3 mb-2"
+              fill="currentColor"
+              height="25"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="25"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g>
+                <path
+                  d="M0 0h24v24H0z"
+                  fill="none"
+                />
+                <path
+                  d="M17 6h5v2h-2v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8H2V6h5V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3zm1 2H6v12h12V8zm-4.586 6l1.768 1.768-1.414 1.414L12 15.414l-1.768 1.768-1.414-1.414L10.586 14l-1.768-1.768 1.414-1.414L12 12.586l1.768-1.768 1.414 1.414L13.414 14zM9 4v2h6V4H9z"
+                />
+              </g>
+            </svg>
+            <p
+              class="mb-2"
+            >
+              Delete
+            </p>
+          </div>
+          <hr />
+          <div
+            class="flex flex-col"
+          >
+            <button
+              class="flex py-2 px-3 mt-2 mb-2 bg-red-600 hover:bg-red-800 text-white items-center text-base shadow-md rounded-md"
+            >
+              <svg
+                class="mr-2"
+                fill="currentColor"
+                height="20"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 0h24v24H0V0z"
+                  fill="none"
+                />
+                <path
+                  d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"
+                />
+              </svg>
+              Delete Board
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex px-6 pt-3 lists-wrapper overflow-x-auto"
+      data-rbd-droppable-context-id="4"
+      data-rbd-droppable-id="app"
+      id="lists-wrapper"
+    >
+      <div
+        aria-describedby="rbd-hidden-text-4-hidden-text-53"
+        class="shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-2 flex flex-col list-wrapper"
+        data-rbd-drag-handle-context-id="4"
+        data-rbd-drag-handle-draggable-id="1"
+        data-rbd-draggable-context-id="4"
+        data-rbd-draggable-id="1"
+        draggable="false"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="flex items-start select-none cursor-pointer p-1"
+        >
+          <h2
+            class="flex-1 px-1 text-trello-gray-300 font-semibold break-all"
+          >
+            List 1
+          </h2>
+          <button
+            class="hover:bg-trello-gray-500 p-1 ml-1.5 rounded-ibsm"
+          >
+            <svg
+              class="text-trello-gray-200"
+              data-testid="list-title-more-menu-button"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="overflow-y-auto overflow-x-hidden min-h-4 pb-1.5"
+          data-rbd-droppable-context-id="4"
+          data-rbd-droppable-id="1"
+          id="1"
+        >
+          <div
+            aria-describedby="rbd-hidden-text-4-hidden-text-53"
+            data-rbd-drag-handle-context-id="4"
+            data-rbd-drag-handle-draggable-id="1"
+            data-rbd-draggable-context-id="4"
+            data-rbd-draggable-id="1"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 0
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-4-hidden-text-53"
+            data-rbd-drag-handle-context-id="4"
+            data-rbd-drag-handle-draggable-id="4"
+            data-rbd-draggable-context-id="4"
+            data-rbd-draggable-id="4"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 0
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-4-hidden-text-53"
+            data-rbd-drag-handle-context-id="4"
+            data-rbd-drag-handle-draggable-id="7"
+            data-rbd-draggable-context-id="4"
+            data-rbd-draggable-id="7"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 0
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col transition-height ease-in-out duration-100 h-min"
+        >
+          <div
+            class="flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-1 mt-1"
+            data-testid="add-card-prompt-container"
+          >
+            <svg
+              fill="none"
+              height="20"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="12"
+                x2="12"
+                y1="5"
+                y2="19"
+              />
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+            </svg>
+            <h2
+              class="flex-1 ml-1.5"
+            >
+              Add a card
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-describedby="rbd-hidden-text-4-hidden-text-53"
+        class="shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-2 flex flex-col list-wrapper"
+        data-rbd-drag-handle-context-id="4"
+        data-rbd-drag-handle-draggable-id="2"
+        data-rbd-draggable-context-id="4"
+        data-rbd-draggable-id="2"
+        draggable="false"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="flex items-start select-none cursor-pointer p-1"
+        >
+          <h2
+            class="flex-1 px-1 text-trello-gray-300 font-semibold break-all"
+          >
+            List 2
+          </h2>
+          <button
+            class="hover:bg-trello-gray-500 p-1 ml-1.5 rounded-ibsm"
+          >
+            <svg
+              class="text-trello-gray-200"
+              data-testid="list-title-more-menu-button"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="overflow-y-auto overflow-x-hidden min-h-4 pb-1.5"
+          data-rbd-droppable-context-id="4"
+          data-rbd-droppable-id="2"
+          id="2"
+        >
+          <div
+            aria-describedby="rbd-hidden-text-4-hidden-text-53"
+            data-rbd-drag-handle-context-id="4"
+            data-rbd-drag-handle-draggable-id="2"
+            data-rbd-draggable-context-id="4"
+            data-rbd-draggable-id="2"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 1
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-4-hidden-text-53"
+            data-rbd-drag-handle-context-id="4"
+            data-rbd-drag-handle-draggable-id="5"
+            data-rbd-draggable-context-id="4"
+            data-rbd-draggable-id="5"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 1
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-4-hidden-text-53"
+            data-rbd-drag-handle-context-id="4"
+            data-rbd-drag-handle-draggable-id="8"
+            data-rbd-draggable-context-id="4"
+            data-rbd-draggable-id="8"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 1
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col transition-height ease-in-out duration-100 h-min"
+        >
+          <div
+            class="flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-1 mt-1"
+            data-testid="add-card-prompt-container"
+          >
+            <svg
+              fill="none"
+              height="20"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="12"
+                x2="12"
+                y1="5"
+                y2="19"
+              />
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+            </svg>
+            <h2
+              class="flex-1 ml-1.5"
+            >
+              Add a card
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-describedby="rbd-hidden-text-4-hidden-text-53"
+        class="shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-2 flex flex-col list-wrapper"
+        data-rbd-drag-handle-context-id="4"
+        data-rbd-drag-handle-draggable-id="3"
+        data-rbd-draggable-context-id="4"
+        data-rbd-draggable-id="3"
+        draggable="false"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="flex items-start select-none cursor-pointer p-1"
+        >
+          <h2
+            class="flex-1 px-1 text-trello-gray-300 font-semibold break-all"
+          >
+            List 3
+          </h2>
+          <button
+            class="hover:bg-trello-gray-500 p-1 ml-1.5 rounded-ibsm"
+          >
+            <svg
+              class="text-trello-gray-200"
+              data-testid="list-title-more-menu-button"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="overflow-y-auto overflow-x-hidden min-h-4 pb-1.5"
+          data-rbd-droppable-context-id="4"
+          data-rbd-droppable-id="3"
+          id="3"
+        >
+          <div
+            aria-describedby="rbd-hidden-text-4-hidden-text-53"
+            data-rbd-drag-handle-context-id="4"
+            data-rbd-drag-handle-draggable-id="3"
+            data-rbd-draggable-context-id="4"
+            data-rbd-draggable-id="3"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 2
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-4-hidden-text-53"
+            data-rbd-drag-handle-context-id="4"
+            data-rbd-drag-handle-draggable-id="6"
+            data-rbd-draggable-context-id="4"
+            data-rbd-draggable-id="6"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 2
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-4-hidden-text-53"
+            data-rbd-drag-handle-context-id="4"
+            data-rbd-drag-handle-draggable-id="9"
+            data-rbd-draggable-context-id="4"
+            data-rbd-draggable-id="9"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 2
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col transition-height ease-in-out duration-100 h-min"
+        >
+          <div
+            class="flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-1 mt-1"
+            data-testid="add-card-prompt-container"
+          >
+            <svg
+              fill="none"
+              height="20"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="12"
+                x2="12"
+                y1="5"
+                y2="19"
+              />
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+            </svg>
+            <h2
+              class="flex-1 ml-1.5"
+            >
+              Add a card
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div
+        class=""
+      >
+        <div
+          aria-hidden="false"
+          class="transition-height ease overflow-hidden duration-500 undefined"
+          style="height: 100%;"
+        >
+          <div
+            class="w-32 flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-2 m-1"
+          >
+            <svg
+              fill="none"
+              height="20"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="12"
+                x2="12"
+                y1="5"
+                y2="19"
+              />
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+            </svg>
+            <h2
+              class="flex-1"
+            >
+              Add a list
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`App should render successfully with card selected 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col h-screen box-border w-screen"
+  >
+    <div
+      class="w-full px-6 pt-3"
+    >
+      <div
+        class="flex w-full m-1"
+      >
+        <div
+          class="flex h-14 items-center select-none text-3xl w-full"
+        >
+          <h2
+            class="ml-2 my-auto text-trello-gray-300 font-semibold cursor-pointer"
+          >
+            Board 1
+          </h2>
+        </div>
+        <div
+          class="my-auto"
+        >
+          <button
+            class="flex items-center px-3 py-2 text-lg text-trello-gray-200 bg-trello-gray-500 bg-opacity-50 bg-transparent hover:bg-opacity-100 text-center shadow-md rounded-md"
+            type="button"
+          >
+            <svg
+              class="mr-2"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 16c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.084 0 2 .916 2 2s-.916 2-2 2-2-.916-2-2 .916-2 2-2z"
+              />
+              <path
+                d="m2.845 16.136 1 1.73c.531.917 1.809 1.261 2.73.73l.529-.306A8.1 8.1 0 0 0 9 19.402V20c0 1.103.897 2 2 2h2c1.103 0 2-.897 2-2v-.598a8.132 8.132 0 0 0 1.896-1.111l.529.306c.923.53 2.198.188 2.731-.731l.999-1.729a2.001 2.001 0 0 0-.731-2.732l-.505-.292a7.718 7.718 0 0 0 0-2.224l.505-.292a2.002 2.002 0 0 0 .731-2.732l-.999-1.729c-.531-.92-1.808-1.265-2.731-.732l-.529.306A8.1 8.1 0 0 0 15 4.598V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v.598a8.132 8.132 0 0 0-1.896 1.111l-.529-.306c-.924-.531-2.2-.187-2.731.732l-.999 1.729a2.001 2.001 0 0 0 .731 2.732l.505.292a7.683 7.683 0 0 0 0 2.223l-.505.292a2.003 2.003 0 0 0-.731 2.733zm3.326-2.758A5.703 5.703 0 0 1 6 12c0-.462.058-.926.17-1.378a.999.999 0 0 0-.47-1.108l-1.123-.65.998-1.729 1.145.662a.997.997 0 0 0 1.188-.142 6.071 6.071 0 0 1 2.384-1.399A1 1 0 0 0 11 5.3V4h2v1.3a1 1 0 0 0 .708.956 6.083 6.083 0 0 1 2.384 1.399.999.999 0 0 0 1.188.142l1.144-.661 1 1.729-1.124.649a1 1 0 0 0-.47 1.108c.112.452.17.916.17 1.378 0 .461-.058.925-.171 1.378a1 1 0 0 0 .471 1.108l1.123.649-.998 1.729-1.145-.661a.996.996 0 0 0-1.188.142 6.071 6.071 0 0 1-2.384 1.399A1 1 0 0 0 13 18.7l.002 1.3H11v-1.3a1 1 0 0 0-.708-.956 6.083 6.083 0 0 1-2.384-1.399.992.992 0 0 0-1.188-.141l-1.144.662-1-1.729 1.124-.651a1 1 0 0 0 .471-1.108z"
+              />
+            </svg>
+            Options
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex px-6 pt-3 lists-wrapper overflow-x-auto"
+      data-rbd-droppable-context-id="3"
+      data-rbd-droppable-id="app"
+      id="lists-wrapper"
+    >
+      <div
+        aria-describedby="rbd-hidden-text-3-hidden-text-36"
+        class="shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-2 flex flex-col list-wrapper"
+        data-rbd-drag-handle-context-id="3"
+        data-rbd-drag-handle-draggable-id="1"
+        data-rbd-draggable-context-id="3"
+        data-rbd-draggable-id="1"
+        draggable="false"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="flex items-start select-none cursor-pointer p-1"
+        >
+          <h2
+            class="flex-1 px-1 text-trello-gray-300 font-semibold break-all"
+          >
+            List 1
+          </h2>
+          <button
+            class="hover:bg-trello-gray-500 p-1 ml-1.5 rounded-ibsm"
+          >
+            <svg
+              class="text-trello-gray-200"
+              data-testid="list-title-more-menu-button"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="overflow-y-auto overflow-x-hidden min-h-4 pb-1.5"
+          data-rbd-droppable-context-id="3"
+          data-rbd-droppable-id="1"
+          id="1"
+        >
+          <div
+            aria-describedby="rbd-hidden-text-3-hidden-text-36"
+            data-rbd-drag-handle-context-id="3"
+            data-rbd-drag-handle-draggable-id="1"
+            data-rbd-draggable-context-id="3"
+            data-rbd-draggable-id="1"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 0
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-3-hidden-text-36"
+            data-rbd-drag-handle-context-id="3"
+            data-rbd-drag-handle-draggable-id="4"
+            data-rbd-draggable-context-id="3"
+            data-rbd-draggable-id="4"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 0
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-3-hidden-text-36"
+            data-rbd-drag-handle-context-id="3"
+            data-rbd-drag-handle-draggable-id="7"
+            data-rbd-draggable-context-id="3"
+            data-rbd-draggable-id="7"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 0
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col transition-height ease-in-out duration-100 h-min"
+        >
+          <div
+            class="flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-1 mt-1"
+            data-testid="add-card-prompt-container"
+          >
+            <svg
+              fill="none"
+              height="20"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="12"
+                x2="12"
+                y1="5"
+                y2="19"
+              />
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+            </svg>
+            <h2
+              class="flex-1 ml-1.5"
+            >
+              Add a card
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-describedby="rbd-hidden-text-3-hidden-text-36"
+        class="shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-2 flex flex-col list-wrapper"
+        data-rbd-drag-handle-context-id="3"
+        data-rbd-drag-handle-draggable-id="2"
+        data-rbd-draggable-context-id="3"
+        data-rbd-draggable-id="2"
+        draggable="false"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="flex items-start select-none cursor-pointer p-1"
+        >
+          <h2
+            class="flex-1 px-1 text-trello-gray-300 font-semibold break-all"
+          >
+            List 2
+          </h2>
+          <button
+            class="hover:bg-trello-gray-500 p-1 ml-1.5 rounded-ibsm"
+          >
+            <svg
+              class="text-trello-gray-200"
+              data-testid="list-title-more-menu-button"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="overflow-y-auto overflow-x-hidden min-h-4 pb-1.5"
+          data-rbd-droppable-context-id="3"
+          data-rbd-droppable-id="2"
+          id="2"
+        >
+          <div
+            aria-describedby="rbd-hidden-text-3-hidden-text-36"
+            data-rbd-drag-handle-context-id="3"
+            data-rbd-drag-handle-draggable-id="2"
+            data-rbd-draggable-context-id="3"
+            data-rbd-draggable-id="2"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 1
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-3-hidden-text-36"
+            data-rbd-drag-handle-context-id="3"
+            data-rbd-drag-handle-draggable-id="5"
+            data-rbd-draggable-context-id="3"
+            data-rbd-draggable-id="5"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 1
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-3-hidden-text-36"
+            data-rbd-drag-handle-context-id="3"
+            data-rbd-drag-handle-draggable-id="8"
+            data-rbd-draggable-context-id="3"
+            data-rbd-draggable-id="8"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 1
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col transition-height ease-in-out duration-100 h-min"
+        >
+          <div
+            class="flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-1 mt-1"
+            data-testid="add-card-prompt-container"
+          >
+            <svg
+              fill="none"
+              height="20"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="12"
+                x2="12"
+                y1="5"
+                y2="19"
+              />
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+            </svg>
+            <h2
+              class="flex-1 ml-1.5"
+            >
+              Add a card
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-describedby="rbd-hidden-text-3-hidden-text-36"
+        class="shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-2 flex flex-col list-wrapper"
+        data-rbd-drag-handle-context-id="3"
+        data-rbd-drag-handle-draggable-id="3"
+        data-rbd-draggable-context-id="3"
+        data-rbd-draggable-id="3"
+        draggable="false"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="flex items-start select-none cursor-pointer p-1"
+        >
+          <h2
+            class="flex-1 px-1 text-trello-gray-300 font-semibold break-all"
+          >
+            List 3
+          </h2>
+          <button
+            class="hover:bg-trello-gray-500 p-1 ml-1.5 rounded-ibsm"
+          >
+            <svg
+              class="text-trello-gray-200"
+              data-testid="list-title-more-menu-button"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="overflow-y-auto overflow-x-hidden min-h-4 pb-1.5"
+          data-rbd-droppable-context-id="3"
+          data-rbd-droppable-id="3"
+          id="3"
+        >
+          <div
+            aria-describedby="rbd-hidden-text-3-hidden-text-36"
+            data-rbd-drag-handle-context-id="3"
+            data-rbd-drag-handle-draggable-id="3"
+            data-rbd-draggable-context-id="3"
+            data-rbd-draggable-id="3"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 2
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-3-hidden-text-36"
+            data-rbd-drag-handle-context-id="3"
+            data-rbd-drag-handle-draggable-id="6"
+            data-rbd-draggable-context-id="3"
+            data-rbd-draggable-id="6"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 2
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-3-hidden-text-36"
+            data-rbd-drag-handle-context-id="3"
+            data-rbd-drag-handle-draggable-id="9"
+            data-rbd-draggable-context-id="3"
+            data-rbd-draggable-id="9"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 2
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col transition-height ease-in-out duration-100 h-min"
+        >
+          <div
+            class="flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-1 mt-1"
+            data-testid="add-card-prompt-container"
+          >
+            <svg
+              fill="none"
+              height="20"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="12"
+                x2="12"
+                y1="5"
+                y2="19"
+              />
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+            </svg>
+            <h2
+              class="flex-1 ml-1.5"
+            >
+              Add a card
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div
+        class=""
+      >
+        <div
+          aria-hidden="false"
+          class="transition-height ease overflow-hidden duration-500 undefined"
+          style="height: 100%;"
+        >
+          <div
+            class="w-32 flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-2 m-1"
+          >
+            <svg
+              fill="none"
+              height="20"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="12"
+                x2="12"
+                y1="5"
+                y2="19"
+              />
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+            </svg>
+            <h2
+              class="flex-1"
+            >
+              Add a list
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="z-50 min-h-full min-w-full flex fixed top-0 left-0 justify-center items-center bg-black bg-opacity-30"
+      id="cardModal"
+    >
+      <div
+        class="flex flex-col bg-trello-gray-400 w-218 rounded-sm max-h-full p-4 mb-80"
+      >
+        <div
+          class="flex"
+        >
+          <div
+            class="flex flex-col w-full"
+          >
+            <div
+              class="flex gap-1 items-center"
+            >
+              <svg
+                fill="currentColor"
+                height="25"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="25"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 0h24v24H0V0z"
+                  fill="none"
+                />
+                <path
+                  d="M19 3H4.99c-1.11 0-1.98.89-1.98 2L3 19c0 1.1.88 2 1.99 2H19c1.1 0 2-.9 2-2V5a2 2 0 00-2-2zm0 12h-4c0 1.66-1.35 3-3 3s-3-1.34-3-3H4.99V5H19v10z"
+                />
+              </svg>
+              <h3
+                class="text-xl font-semibold text-gray-800 break-all"
+              >
+                Card 0
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-700"
+            >
+              in list List 1
+            </p>
+          </div>
+          <button
+            class="text-gray-400 bg-transparent hover:bg-black hover:bg-opacity-10 hover:text-gray-600 rounded-lg text-sm p-2 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            type="button"
+          >
+            <svg
+              data-testid="card-modal-close-icon"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="flex w-full h-full"
+        >
+          <div
+            class="flex flex-col w-2/3 py-4"
+          >
+            <div
+              class="flex flex-col text-sm text-gray-700"
+            >
+              <p
+                class="mb-2"
+              >
+                Tags
+              </p>
+              <div
+                class="flex gap-1 flex-wrap mb-4"
+              >
+                <button
+                  class="p-1 rounded-ibsm flex items-center cursor-pointer bg-black bg-opacity-5 hover:bg-opacity-10"
+                >
+                  <svg
+                    class="mr-0.5 text-trello-gray-200"
+                    fill="none"
+                    height="25"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="25"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <line
+                      x1="12"
+                      x2="12"
+                      y1="5"
+                      y2="19"
+                    />
+                    <line
+                      x1="5"
+                      x2="19"
+                      y1="12"
+                      y2="12"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div
+              class="flex items-center gap-2 text-lg mb-2 text-gray-800 font-semibold"
+            >
+              <svg
+                fill="none"
+                height="20"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <line
+                  x1="17"
+                  x2="3"
+                  y1="10"
+                  y2="10"
+                />
+                <line
+                  x1="21"
+                  x2="3"
+                  y1="6"
+                  y2="6"
+                />
+                <line
+                  x1="21"
+                  x2="3"
+                  y1="14"
+                  y2="14"
+                />
+                <line
+                  x1="17"
+                  x2="3"
+                  y1="18"
+                  y2="18"
+                />
+              </svg>
+              <p>
+                Description
+              </p>
+            </div>
+            <textarea
+              class="text-gray-600 p-2 bg-black bg-opacity-5 rounded-ibsm h-44"
+              placeholder="Add some more detail here..."
+            >
+              Description 0
+            </textarea>
+          </div>
+          <div
+            class="flex flex-col w-44 py-4 ml-auto"
+          >
+            <h4
+              class="text-gray-800 text-sm"
+            >
+              Add to card
+            </h4>
+            <div
+              class="flex-col flex"
+            >
+              <button
+                class="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
+                data-testid="card-modal-actions-tags-button"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 1024 1024"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M938 458.8l-29.6-312.6c-1.5-16.2-14.4-29-30.6-30.6L565.2 86h-.4c-3.2 0-5.7 1-7.6 2.9L88.9 557.2a9.96 9.96 0 0 0 0 14.1l363.8 363.8c1.9 1.9 4.4 2.9 7.1 2.9s5.2-1 7.1-2.9l468.3-468.3c2-2.1 3-5 2.8-8zM459.7 834.7L189.3 564.3 589 164.6 836 188l23.4 247-399.7 399.7zM680 256c-48.5 0-88 39.5-88 88s39.5 88 88 88 88-39.5 88-88-39.5-88-88-88zm0 120c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"
+                  />
+                </svg>
+                <p>
+                  Tags
+                </p>
+              </button>
+            </div>
+            <h4
+              class="text-gray-800 text-sm"
+            >
+              Actions
+            </h4>
+            <div
+              class="flex-col flex"
+            >
+              <button
+                class="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
+                data-testid="card-modal-actions-copy-button"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 0h24v24H0V0z"
+                    fill="none"
+                  />
+                  <path
+                    d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"
+                  />
+                </svg>
+                <p>
+                  Copy
+                </p>
+              </button>
+            </div>
+            <div
+              class="flex-col flex"
+            >
+              <button
+                class="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
+                data-testid="card-modal-actions-move-button"
+              >
+                <svg
+                  fill="none"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                  />
+                </svg>
+                <p>
+                  Move
+                </p>
+              </button>
+            </div>
+            <div
+              class="flex-col flex"
+            >
+              <button
+                class="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
+                data-testid="card-modal-actions-delete-button"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 1024 1024"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M360 184h-8c4.4 0 8-3.6 8-8v8h304v-8c0 4.4 3.6 8 8 8h-8v72h72v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80h72v-72zm504 72H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM731.3 840H292.7l-24.2-512h487l-24.2 512z"
+                  />
+                </svg>
+                <p>
+                  Delete
+                </p>
+              </button>
+            </div>
+            <div
+              class="flex-col flex"
+            >
+              <button
+                class="flex gap-2 py-1 px-2 mb-2 bg-trello-gray-card-modal-buttons hover:bg-trello-gray-card-modal-buttons-hover text-trello-blue-card-modal-button-text items-center text-base shadow-sm rounded-sm"
+                data-testid="card-modal-actions-attachment-menu-button"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 1024 1024"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M779.3 196.6c-94.2-94.2-247.6-94.2-341.7 0l-261 260.8c-1.7 1.7-2.6 4-2.6 6.4s.9 4.7 2.6 6.4l36.9 36.9a9 9 0 0 0 12.7 0l261-260.8c32.4-32.4 75.5-50.2 121.3-50.2s88.9 17.8 121.2 50.2c32.4 32.4 50.2 75.5 50.2 121.2 0 45.8-17.8 88.8-50.2 121.2l-266 265.9-43.1 43.1c-40.3 40.3-105.8 40.3-146.1 0-19.5-19.5-30.2-45.4-30.2-73s10.7-53.5 30.2-73l263.9-263.8c6.7-6.6 15.5-10.3 24.9-10.3h.1c9.4 0 18.1 3.7 24.7 10.3 6.7 6.7 10.3 15.5 10.3 24.9 0 9.3-3.7 18.1-10.3 24.7L372.4 653c-1.7 1.7-2.6 4-2.6 6.4s.9 4.7 2.6 6.4l36.9 36.9a9 9 0 0 0 12.7 0l215.6-215.6c19.9-19.9 30.8-46.3 30.8-74.4s-11-54.6-30.8-74.4c-41.1-41.1-107.9-41-149 0L463 364 224.8 602.1A172.22 172.22 0 0 0 174 724.8c0 46.3 18.1 89.8 50.8 122.5 33.9 33.8 78.3 50.7 122.7 50.7 44.4 0 88.8-16.9 122.6-50.7l309.2-309C824.8 492.7 850 432 850 367.5c.1-64.6-25.1-125.3-70.7-170.9z"
+                  />
+                </svg>
+                <p>
+                  Attachments
+                </p>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`App should render successfully with existing board data 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col h-screen box-border w-screen"
+  >
+    <div
+      class="w-full px-6 pt-3"
+    >
+      <div
+        class="flex w-full m-1"
+      >
+        <div
+          class="flex h-14 items-center select-none text-3xl w-full"
+        >
+          <h2
+            class="ml-2 my-auto text-trello-gray-300 font-semibold cursor-pointer"
+          >
+            Board 1
+          </h2>
+        </div>
+        <div
+          class="my-auto"
+        >
+          <button
+            class="flex items-center px-3 py-2 text-lg text-trello-gray-200 bg-trello-gray-500 bg-opacity-50 bg-transparent hover:bg-opacity-100 text-center shadow-md rounded-md"
+            type="button"
+          >
+            <svg
+              class="mr-2"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 16c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.084 0 2 .916 2 2s-.916 2-2 2-2-.916-2-2 .916-2 2-2z"
+              />
+              <path
+                d="m2.845 16.136 1 1.73c.531.917 1.809 1.261 2.73.73l.529-.306A8.1 8.1 0 0 0 9 19.402V20c0 1.103.897 2 2 2h2c1.103 0 2-.897 2-2v-.598a8.132 8.132 0 0 0 1.896-1.111l.529.306c.923.53 2.198.188 2.731-.731l.999-1.729a2.001 2.001 0 0 0-.731-2.732l-.505-.292a7.718 7.718 0 0 0 0-2.224l.505-.292a2.002 2.002 0 0 0 .731-2.732l-.999-1.729c-.531-.92-1.808-1.265-2.731-.732l-.529.306A8.1 8.1 0 0 0 15 4.598V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v.598a8.132 8.132 0 0 0-1.896 1.111l-.529-.306c-.924-.531-2.2-.187-2.731.732l-.999 1.729a2.001 2.001 0 0 0 .731 2.732l.505.292a7.683 7.683 0 0 0 0 2.223l-.505.292a2.003 2.003 0 0 0-.731 2.733zm3.326-2.758A5.703 5.703 0 0 1 6 12c0-.462.058-.926.17-1.378a.999.999 0 0 0-.47-1.108l-1.123-.65.998-1.729 1.145.662a.997.997 0 0 0 1.188-.142 6.071 6.071 0 0 1 2.384-1.399A1 1 0 0 0 11 5.3V4h2v1.3a1 1 0 0 0 .708.956 6.083 6.083 0 0 1 2.384 1.399.999.999 0 0 0 1.188.142l1.144-.661 1 1.729-1.124.649a1 1 0 0 0-.47 1.108c.112.452.17.916.17 1.378 0 .461-.058.925-.171 1.378a1 1 0 0 0 .471 1.108l1.123.649-.998 1.729-1.145-.661a.996.996 0 0 0-1.188.142 6.071 6.071 0 0 1-2.384 1.399A1 1 0 0 0 13 18.7l.002 1.3H11v-1.3a1 1 0 0 0-.708-.956 6.083 6.083 0 0 1-2.384-1.399.992.992 0 0 0-1.188-.141l-1.144.662-1-1.729 1.124-.651a1 1 0 0 0 .471-1.108z"
+              />
+            </svg>
+            Options
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex px-6 pt-3 lists-wrapper overflow-x-auto"
+      data-rbd-droppable-context-id="1"
+      data-rbd-droppable-id="app"
+      id="lists-wrapper"
+    >
+      <div
+        aria-describedby="rbd-hidden-text-1-hidden-text-2"
+        class="shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-2 flex flex-col list-wrapper"
+        data-rbd-drag-handle-context-id="1"
+        data-rbd-drag-handle-draggable-id="1"
+        data-rbd-draggable-context-id="1"
+        data-rbd-draggable-id="1"
+        draggable="false"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="flex items-start select-none cursor-pointer p-1"
+        >
+          <h2
+            class="flex-1 px-1 text-trello-gray-300 font-semibold break-all"
+          >
+            List 1
+          </h2>
+          <button
+            class="hover:bg-trello-gray-500 p-1 ml-1.5 rounded-ibsm"
+          >
+            <svg
+              class="text-trello-gray-200"
+              data-testid="list-title-more-menu-button"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="overflow-y-auto overflow-x-hidden min-h-4 pb-1.5"
+          data-rbd-droppable-context-id="1"
+          data-rbd-droppable-id="1"
+          id="1"
+        >
+          <div
+            aria-describedby="rbd-hidden-text-1-hidden-text-2"
+            data-rbd-drag-handle-context-id="1"
+            data-rbd-drag-handle-draggable-id="1"
+            data-rbd-draggable-context-id="1"
+            data-rbd-draggable-id="1"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 0
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-1-hidden-text-2"
+            data-rbd-drag-handle-context-id="1"
+            data-rbd-drag-handle-draggable-id="4"
+            data-rbd-draggable-context-id="1"
+            data-rbd-draggable-id="4"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 0
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-1-hidden-text-2"
+            data-rbd-drag-handle-context-id="1"
+            data-rbd-drag-handle-draggable-id="7"
+            data-rbd-draggable-context-id="1"
+            data-rbd-draggable-id="7"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 0
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col transition-height ease-in-out duration-100 h-min"
+        >
+          <div
+            class="flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-1 mt-1"
+            data-testid="add-card-prompt-container"
+          >
+            <svg
+              fill="none"
+              height="20"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="12"
+                x2="12"
+                y1="5"
+                y2="19"
+              />
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+            </svg>
+            <h2
+              class="flex-1 ml-1.5"
+            >
+              Add a card
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-describedby="rbd-hidden-text-1-hidden-text-2"
+        class="shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-2 flex flex-col list-wrapper"
+        data-rbd-drag-handle-context-id="1"
+        data-rbd-drag-handle-draggable-id="2"
+        data-rbd-draggable-context-id="1"
+        data-rbd-draggable-id="2"
+        draggable="false"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="flex items-start select-none cursor-pointer p-1"
+        >
+          <h2
+            class="flex-1 px-1 text-trello-gray-300 font-semibold break-all"
+          >
+            List 2
+          </h2>
+          <button
+            class="hover:bg-trello-gray-500 p-1 ml-1.5 rounded-ibsm"
+          >
+            <svg
+              class="text-trello-gray-200"
+              data-testid="list-title-more-menu-button"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="overflow-y-auto overflow-x-hidden min-h-4 pb-1.5"
+          data-rbd-droppable-context-id="1"
+          data-rbd-droppable-id="2"
+          id="2"
+        >
+          <div
+            aria-describedby="rbd-hidden-text-1-hidden-text-2"
+            data-rbd-drag-handle-context-id="1"
+            data-rbd-drag-handle-draggable-id="2"
+            data-rbd-draggable-context-id="1"
+            data-rbd-draggable-id="2"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 1
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-1-hidden-text-2"
+            data-rbd-drag-handle-context-id="1"
+            data-rbd-drag-handle-draggable-id="5"
+            data-rbd-draggable-context-id="1"
+            data-rbd-draggable-id="5"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 1
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-1-hidden-text-2"
+            data-rbd-drag-handle-context-id="1"
+            data-rbd-drag-handle-draggable-id="8"
+            data-rbd-draggable-context-id="1"
+            data-rbd-draggable-id="8"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 1
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col transition-height ease-in-out duration-100 h-min"
+        >
+          <div
+            class="flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-1 mt-1"
+            data-testid="add-card-prompt-container"
+          >
+            <svg
+              fill="none"
+              height="20"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="12"
+                x2="12"
+                y1="5"
+                y2="19"
+              />
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+            </svg>
+            <h2
+              class="flex-1 ml-1.5"
+            >
+              Add a card
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-describedby="rbd-hidden-text-1-hidden-text-2"
+        class="shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-2 flex flex-col list-wrapper"
+        data-rbd-drag-handle-context-id="1"
+        data-rbd-drag-handle-draggable-id="3"
+        data-rbd-draggable-context-id="1"
+        data-rbd-draggable-id="3"
+        draggable="false"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="flex items-start select-none cursor-pointer p-1"
+        >
+          <h2
+            class="flex-1 px-1 text-trello-gray-300 font-semibold break-all"
+          >
+            List 3
+          </h2>
+          <button
+            class="hover:bg-trello-gray-500 p-1 ml-1.5 rounded-ibsm"
+          >
+            <svg
+              class="text-trello-gray-200"
+              data-testid="list-title-more-menu-button"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="overflow-y-auto overflow-x-hidden min-h-4 pb-1.5"
+          data-rbd-droppable-context-id="1"
+          data-rbd-droppable-id="3"
+          id="3"
+        >
+          <div
+            aria-describedby="rbd-hidden-text-1-hidden-text-2"
+            data-rbd-drag-handle-context-id="1"
+            data-rbd-drag-handle-draggable-id="3"
+            data-rbd-draggable-context-id="1"
+            data-rbd-draggable-id="3"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 2
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-1-hidden-text-2"
+            data-rbd-drag-handle-context-id="1"
+            data-rbd-drag-handle-draggable-id="6"
+            data-rbd-draggable-context-id="1"
+            data-rbd-draggable-id="6"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 2
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-1-hidden-text-2"
+            data-rbd-drag-handle-context-id="1"
+            data-rbd-drag-handle-draggable-id="9"
+            data-rbd-draggable-context-id="1"
+            data-rbd-draggable-id="9"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 2
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col transition-height ease-in-out duration-100 h-min"
+        >
+          <div
+            class="flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-1 mt-1"
+            data-testid="add-card-prompt-container"
+          >
+            <svg
+              fill="none"
+              height="20"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="12"
+                x2="12"
+                y1="5"
+                y2="19"
+              />
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+            </svg>
+            <h2
+              class="flex-1 ml-1.5"
+            >
+              Add a card
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div
+        class=""
+      >
+        <div
+          aria-hidden="false"
+          class="transition-height ease overflow-hidden duration-500 undefined"
+          style="height: 100%;"
+        >
+          <div
+            class="w-32 flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-2 m-1"
+          >
+            <svg
+              fill="none"
+              height="20"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="12"
+                x2="12"
+                y1="5"
+                y2="19"
+              />
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+            </svg>
+            <h2
+              class="flex-1"
+            >
+              Add a list
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`App should render successfully with list selected 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col h-screen box-border w-screen"
+  >
+    <div
+      class="w-full px-6 pt-3"
+    >
+      <div
+        class="flex w-full m-1"
+      >
+        <div
+          class="flex h-14 items-center select-none text-3xl w-full"
+        >
+          <h2
+            class="ml-2 my-auto text-trello-gray-300 font-semibold cursor-pointer"
+          >
+            Board 1
+          </h2>
+        </div>
+        <div
+          class="my-auto"
+        >
+          <button
+            class="flex items-center px-3 py-2 text-lg text-trello-gray-200 bg-trello-gray-500 bg-opacity-50 bg-transparent hover:bg-opacity-100 text-center shadow-md rounded-md"
+            type="button"
+          >
+            <svg
+              class="mr-2"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 16c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.084 0 2 .916 2 2s-.916 2-2 2-2-.916-2-2 .916-2 2-2z"
+              />
+              <path
+                d="m2.845 16.136 1 1.73c.531.917 1.809 1.261 2.73.73l.529-.306A8.1 8.1 0 0 0 9 19.402V20c0 1.103.897 2 2 2h2c1.103 0 2-.897 2-2v-.598a8.132 8.132 0 0 0 1.896-1.111l.529.306c.923.53 2.198.188 2.731-.731l.999-1.729a2.001 2.001 0 0 0-.731-2.732l-.505-.292a7.718 7.718 0 0 0 0-2.224l.505-.292a2.002 2.002 0 0 0 .731-2.732l-.999-1.729c-.531-.92-1.808-1.265-2.731-.732l-.529.306A8.1 8.1 0 0 0 15 4.598V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v.598a8.132 8.132 0 0 0-1.896 1.111l-.529-.306c-.924-.531-2.2-.187-2.731.732l-.999 1.729a2.001 2.001 0 0 0 .731 2.732l.505.292a7.683 7.683 0 0 0 0 2.223l-.505.292a2.003 2.003 0 0 0-.731 2.733zm3.326-2.758A5.703 5.703 0 0 1 6 12c0-.462.058-.926.17-1.378a.999.999 0 0 0-.47-1.108l-1.123-.65.998-1.729 1.145.662a.997.997 0 0 0 1.188-.142 6.071 6.071 0 0 1 2.384-1.399A1 1 0 0 0 11 5.3V4h2v1.3a1 1 0 0 0 .708.956 6.083 6.083 0 0 1 2.384 1.399.999.999 0 0 0 1.188.142l1.144-.661 1 1.729-1.124.649a1 1 0 0 0-.47 1.108c.112.452.17.916.17 1.378 0 .461-.058.925-.171 1.378a1 1 0 0 0 .471 1.108l1.123.649-.998 1.729-1.145-.661a.996.996 0 0 0-1.188.142 6.071 6.071 0 0 1-2.384 1.399A1 1 0 0 0 13 18.7l.002 1.3H11v-1.3a1 1 0 0 0-.708-.956 6.083 6.083 0 0 1-2.384-1.399.992.992 0 0 0-1.188-.141l-1.144.662-1-1.729 1.124-.651a1 1 0 0 0 .471-1.108z"
+              />
+            </svg>
+            Options
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex px-6 pt-3 lists-wrapper overflow-x-auto"
+      data-rbd-droppable-context-id="2"
+      data-rbd-droppable-id="app"
+      id="lists-wrapper"
+    >
+      <div
+        aria-describedby="rbd-hidden-text-2-hidden-text-19"
+        class="shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-2 flex flex-col list-wrapper"
+        data-rbd-drag-handle-context-id="2"
+        data-rbd-drag-handle-draggable-id="1"
+        data-rbd-draggable-context-id="2"
+        data-rbd-draggable-id="1"
+        draggable="false"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="flex items-start select-none cursor-pointer p-1"
+        >
+          <h2
+            class="flex-1 px-1 text-trello-gray-300 font-semibold break-all"
+          >
+            List 1
+          </h2>
+          <button
+            class="hover:bg-trello-gray-500 p-1 ml-1.5 rounded-ibsm"
+          >
+            <svg
+              class="text-trello-gray-200"
+              data-testid="list-title-more-menu-button"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="overflow-y-auto overflow-x-hidden min-h-4 pb-1.5"
+          data-rbd-droppable-context-id="2"
+          data-rbd-droppable-id="1"
+          id="1"
+        >
+          <div
+            aria-describedby="rbd-hidden-text-2-hidden-text-19"
+            data-rbd-drag-handle-context-id="2"
+            data-rbd-drag-handle-draggable-id="1"
+            data-rbd-draggable-context-id="2"
+            data-rbd-draggable-id="1"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 0
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-2-hidden-text-19"
+            data-rbd-drag-handle-context-id="2"
+            data-rbd-drag-handle-draggable-id="4"
+            data-rbd-draggable-context-id="2"
+            data-rbd-draggable-id="4"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 0
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-2-hidden-text-19"
+            data-rbd-drag-handle-context-id="2"
+            data-rbd-drag-handle-draggable-id="7"
+            data-rbd-draggable-context-id="2"
+            data-rbd-draggable-id="7"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 0
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col transition-height ease-in-out duration-100 h-min"
+        >
+          <div
+            class="flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-1 mt-1"
+            data-testid="add-card-prompt-container"
+          >
+            <svg
+              fill="none"
+              height="20"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="12"
+                x2="12"
+                y1="5"
+                y2="19"
+              />
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+            </svg>
+            <h2
+              class="flex-1 ml-1.5"
+            >
+              Add a card
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-describedby="rbd-hidden-text-2-hidden-text-19"
+        class="shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-2 flex flex-col list-wrapper"
+        data-rbd-drag-handle-context-id="2"
+        data-rbd-drag-handle-draggable-id="2"
+        data-rbd-draggable-context-id="2"
+        data-rbd-draggable-id="2"
+        draggable="false"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="flex items-start select-none cursor-pointer p-1"
+        >
+          <h2
+            class="flex-1 px-1 text-trello-gray-300 font-semibold break-all"
+          >
+            List 2
+          </h2>
+          <button
+            class="hover:bg-trello-gray-500 p-1 ml-1.5 rounded-ibsm"
+          >
+            <svg
+              class="text-trello-gray-200"
+              data-testid="list-title-more-menu-button"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="overflow-y-auto overflow-x-hidden min-h-4 pb-1.5"
+          data-rbd-droppable-context-id="2"
+          data-rbd-droppable-id="2"
+          id="2"
+        >
+          <div
+            aria-describedby="rbd-hidden-text-2-hidden-text-19"
+            data-rbd-drag-handle-context-id="2"
+            data-rbd-drag-handle-draggable-id="2"
+            data-rbd-draggable-context-id="2"
+            data-rbd-draggable-id="2"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 1
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-2-hidden-text-19"
+            data-rbd-drag-handle-context-id="2"
+            data-rbd-drag-handle-draggable-id="5"
+            data-rbd-draggable-context-id="2"
+            data-rbd-draggable-id="5"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 1
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-2-hidden-text-19"
+            data-rbd-drag-handle-context-id="2"
+            data-rbd-drag-handle-draggable-id="8"
+            data-rbd-draggable-context-id="2"
+            data-rbd-draggable-id="8"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 1
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col transition-height ease-in-out duration-100 h-min"
+        >
+          <div
+            class="flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-1 mt-1"
+            data-testid="add-card-prompt-container"
+          >
+            <svg
+              fill="none"
+              height="20"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="12"
+                x2="12"
+                y1="5"
+                y2="19"
+              />
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+            </svg>
+            <h2
+              class="flex-1 ml-1.5"
+            >
+              Add a card
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-describedby="rbd-hidden-text-2-hidden-text-19"
+        class="shadow bg-trello-gray-100 rounded-md w-80 m-1 px-2 py-2 flex flex-col list-wrapper"
+        data-rbd-drag-handle-context-id="2"
+        data-rbd-drag-handle-draggable-id="3"
+        data-rbd-draggable-context-id="2"
+        data-rbd-draggable-id="3"
+        draggable="false"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="flex items-start select-none cursor-pointer p-1"
+        >
+          <h2
+            class="flex-1 px-1 text-trello-gray-300 font-semibold break-all"
+          >
+            List 3
+          </h2>
+          <button
+            class="hover:bg-trello-gray-500 p-1 ml-1.5 rounded-ibsm"
+          >
+            <svg
+              class="text-trello-gray-200"
+              data-testid="list-title-more-menu-button"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h24v24H0z"
+                fill="none"
+              />
+              <path
+                d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="overflow-y-auto overflow-x-hidden min-h-4 pb-1.5"
+          data-rbd-droppable-context-id="2"
+          data-rbd-droppable-id="3"
+          id="3"
+        >
+          <div
+            aria-describedby="rbd-hidden-text-2-hidden-text-19"
+            data-rbd-drag-handle-context-id="2"
+            data-rbd-drag-handle-draggable-id="3"
+            data-rbd-draggable-context-id="2"
+            data-rbd-draggable-id="3"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 2
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-2-hidden-text-19"
+            data-rbd-drag-handle-context-id="2"
+            data-rbd-drag-handle-draggable-id="6"
+            data-rbd-draggable-context-id="2"
+            data-rbd-draggable-id="6"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 2
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-describedby="rbd-hidden-text-2-hidden-text-19"
+            data-rbd-drag-handle-context-id="2"
+            data-rbd-drag-handle-draggable-id="9"
+            data-rbd-draggable-context-id="2"
+            data-rbd-draggable-id="9"
+            data-testid="list-card-container"
+            draggable="false"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="flex flex-col shadow bg-white hover:bg-trello-gray-400 cursor-pointer rounded-md p-2 my-1.5 break-words"
+            >
+              <p>
+                Card 2
+              </p>
+              <div
+                class="flex items-center space-x-2 text-gray-600 pt-2"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="3.06"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="8.29"
+                  />
+                  <rect
+                    height="2.18"
+                    width="23.08"
+                    x="0.46"
+                    y="13.53"
+                  />
+                  <rect
+                    height="2.18"
+                    width="15.81"
+                    x="0.46"
+                    y="18.76"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col transition-height ease-in-out duration-100 h-min"
+        >
+          <div
+            class="flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-1 mt-1"
+            data-testid="add-card-prompt-container"
+          >
+            <svg
+              fill="none"
+              height="20"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="12"
+                x2="12"
+                y1="5"
+                y2="19"
+              />
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+            </svg>
+            <h2
+              class="flex-1 ml-1.5"
+            >
+              Add a card
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div
+        class=""
+      >
+        <div
+          aria-hidden="false"
+          class="transition-height ease overflow-hidden duration-500 undefined"
+          style="height: 100%;"
+        >
+          <div
+            class="w-32 flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-2 m-1"
+          >
+            <svg
+              fill="none"
+              height="20"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="12"
+                x2="12"
+                y1="5"
+                y2="19"
+              />
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+            </svg>
+            <h2
+              class="flex-1"
+            >
+              Add a list
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fixed flex flex-col w-72 min-h-40 text-gray-700 bg-white rounded-ibsm shadow-2xl py-2"
+      style="display: none;"
+    >
+      <div
+        class="relative text-center mb-2"
+      >
+        <span
+          class="mx-auto py-1"
+        >
+          List Actions
+        </span>
+        <svg
+          class="absolute right-0 top-0 z-20 cursor-pointer my-1 mr-3"
+          data-testid="list-options-menu-close-icon"
+          fill="currentColor"
+          height="20"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+          <path
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+          />
+        </svg>
+      </div>
+      <hr
+        class="w-11/12 mx-auto"
+      />
+      <button
+        class="w-full text-left px-3 py-2 cursor-pointer hover:bg-black hover:bg-opacity-10"
+      >
+        Copy list...
+      </button>
+      <button
+        class="w-full text-left px-3 py-2 cursor-not-allowed opacity-50 hover:bg-black hover:bg-opacity-10"
+      >
+        Move
+      </button>
+      <button
+        class="w-full text-left px-3 py-2 cursor-pointer hover:bg-black hover:bg-opacity-10"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`App should render successfully with no board data 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col h-screen box-border w-screen"
+  >
+    <div
+      class="w-full px-6 pt-3"
+    >
+      <div
+        class="flex w-full m-1"
+      >
+        <div
+          class="flex h-14 items-center select-none text-3xl w-full"
+        >
+          <h2
+            class="ml-2 my-auto text-trello-gray-300 font-semibold cursor-pointer"
+          >
+            New Board...
+          </h2>
+        </div>
+        <div
+          class="my-auto"
+        >
+          <button
+            class="flex items-center px-3 py-2 text-lg text-trello-gray-200 bg-trello-gray-500 bg-opacity-50 bg-transparent hover:bg-opacity-100 text-center shadow-md rounded-md"
+            type="button"
+          >
+            <svg
+              class="mr-2"
+              fill="currentColor"
+              height="20"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 16c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.084 0 2 .916 2 2s-.916 2-2 2-2-.916-2-2 .916-2 2-2z"
+              />
+              <path
+                d="m2.845 16.136 1 1.73c.531.917 1.809 1.261 2.73.73l.529-.306A8.1 8.1 0 0 0 9 19.402V20c0 1.103.897 2 2 2h2c1.103 0 2-.897 2-2v-.598a8.132 8.132 0 0 0 1.896-1.111l.529.306c.923.53 2.198.188 2.731-.731l.999-1.729a2.001 2.001 0 0 0-.731-2.732l-.505-.292a7.718 7.718 0 0 0 0-2.224l.505-.292a2.002 2.002 0 0 0 .731-2.732l-.999-1.729c-.531-.92-1.808-1.265-2.731-.732l-.529.306A8.1 8.1 0 0 0 15 4.598V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v.598a8.132 8.132 0 0 0-1.896 1.111l-.529-.306c-.924-.531-2.2-.187-2.731.732l-.999 1.729a2.001 2.001 0 0 0 .731 2.732l.505.292a7.683 7.683 0 0 0 0 2.223l-.505.292a2.003 2.003 0 0 0-.731 2.733zm3.326-2.758A5.703 5.703 0 0 1 6 12c0-.462.058-.926.17-1.378a.999.999 0 0 0-.47-1.108l-1.123-.65.998-1.729 1.145.662a.997.997 0 0 0 1.188-.142 6.071 6.071 0 0 1 2.384-1.399A1 1 0 0 0 11 5.3V4h2v1.3a1 1 0 0 0 .708.956 6.083 6.083 0 0 1 2.384 1.399.999.999 0 0 0 1.188.142l1.144-.661 1 1.729-1.124.649a1 1 0 0 0-.47 1.108c.112.452.17.916.17 1.378 0 .461-.058.925-.171 1.378a1 1 0 0 0 .471 1.108l1.123.649-.998 1.729-1.145-.661a.996.996 0 0 0-1.188.142 6.071 6.071 0 0 1-2.384 1.399A1 1 0 0 0 13 18.7l.002 1.3H11v-1.3a1 1 0 0 0-.708-.956 6.083 6.083 0 0 1-2.384-1.399.992.992 0 0 0-1.188-.141l-1.144.662-1-1.729 1.124-.651a1 1 0 0 0 .471-1.108z"
+              />
+            </svg>
+            Options
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex px-6 pt-3 lists-wrapper overflow-x-auto"
+      data-rbd-droppable-context-id="0"
+      data-rbd-droppable-id="app"
+      id="lists-wrapper"
+    >
+      <div
+        class=""
+      >
+        <div
+          aria-hidden="false"
+          class="transition-height ease overflow-hidden duration-500 undefined"
+          style="height: 100%;"
+        >
+          <div
+            class="w-32 flex hover:bg-trello-gray-500 rounded-ibsm items-center cursor-pointer text-trello-gray-600 p-2 m-1"
+          >
+            <svg
+              fill="none"
+              height="20"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="12"
+                x2="12"
+                y1="5"
+                y2="19"
+              />
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+            </svg>
+            <h2
+              class="flex-1"
+            >
+              Add a list
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
