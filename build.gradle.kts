@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import com.github.gradle.node.yarn.task.YarnTask
 
 plugins {
 	id("org.springframework.boot") version "3.0.1"
@@ -17,14 +18,6 @@ repositories {
 	mavenCentral()
 }
 
-node {
-	version = '16.16.0'
-	download = true
-	workDir = file("${project.projectDir}/src/main/frontend/nodejs")
-	yarnWorkDir = file("${project.projectDir}/src/main/frontend/yarn")
-	nodeModulesDir = file("${project.projectDir}/src/main/frontend")
-}
-
 dependencies {
 	// implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
@@ -34,8 +27,13 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
+tasks.clean {
+	delete("${project.projectDir}/src/main/frontend/build")
+}
+
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
+		dependsOn("copyFrontend")
 		freeCompilerArgs = listOf("-Xjsr305=strict")
 		jvmTarget = "17"
 	}
@@ -45,12 +43,19 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
-tasks.withType<YarnTask> {	
-	buildFrontend {
-		execOverrides {
-			it.workingDir = 'src/main/frontend'
-		}
-		args = ['build']
-	}
+tasks.register<YarnTask>("frontendDependencies") {
+    workingDir.set(file("${project.projectDir}/src/main/frontend"))
+    args.set(listOf("install"))
 }
-tasks.build.dependsOn buildFrontend
+
+tasks.register<YarnTask>("buildFrontend") {
+    dependsOn("frontendDependencies")
+    workingDir.set(file("${project.projectDir}/src/main/frontend"))
+    args.set(listOf("build"))
+}
+
+tasks.register<Copy>("copyFrontend") {
+    dependsOn("buildFrontend")
+    from("src/main/frontend/build")
+    into("build/resources/main/static/.")
+}
