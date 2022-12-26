@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-	// implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -44,18 +44,18 @@ tasks.withType<Test> {
 }
 
 tasks.register<YarnTask>("frontendDependencies") {
-    workingDir.set(file("${project.projectDir}/src/main/frontend"))
-    args.set(listOf("install"))
+	workingDir.set(file("${project.projectDir}/src/main/frontend"))
+	args.set(listOf("install"))
 }
 
 tasks.register<YarnTask>("buildFrontend") {
-    dependsOn("frontendDependencies")
-    workingDir.set(file("${project.projectDir}/src/main/frontend"))
-    args.set(listOf("build"))
+	dependsOn("frontendDependencies")
+	workingDir.set(file("${project.projectDir}/src/main/frontend"))
+	args.set(listOf("build"))
 }
 
 tasks.register<Copy>("copyFrontend") {
-    dependsOn("buildFrontend")
-    from("src/main/frontend/build")
-    into("build/resources/main/static/.")
+	dependsOn("buildFrontend")
+	from("src/main/frontend/build")
+	into("build/resources/main/static/.")
 }
