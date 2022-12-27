@@ -21,7 +21,7 @@ const AddList = () => {
     setTitle(e.target.value);
   };
 
-  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleAddList();
     }
@@ -53,7 +53,7 @@ const AddList = () => {
               className="w-full text-left box-border outline-none border-2 border-trello-blue-100 shadow bg-white hover:bg-trello-gray-400 rounded-md p-2"
               // onBlur={() => setOpen(false)}
               onChange={handleOnChange}
-              onKeyPress={handleKeyPress}
+              onKeyDown={handleKeyDown}
             />
             <div className="flex items-center mt-2">
               <button
