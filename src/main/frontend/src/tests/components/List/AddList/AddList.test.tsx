@@ -83,7 +83,7 @@ describe("AddList", () => {
 
     fireEvent.change(listTitleInput, { target: { value: "List 1" } });
 
-    fireEvent.keyPress(listTitleInput, { key: "Enter", charCode: 13 });
+    fireEvent.keyDown(listTitleInput, { key: "Enter", charCode: 13 });
 
     expect(store.getState().lists.value).toHaveLength(1);
     expect(store.getState().lists.value[0].id).toBeDefined();
