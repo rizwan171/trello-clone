@@ -7,6 +7,7 @@ import CardModalActions from "./CardModalActions/CardModalActions";
 import CardModalTags from "./CardModalTags/CardModalTags";
 import CardModalAttachment from "./CardModalAttachments/CardModalAttachment";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { closeAllModalMenus } from "../../features/modalActionMenusVisibilitySlice";
 
 const CardModal = () => {
   const dispatch = useAppDispatch();
@@ -49,6 +50,7 @@ const CardModal = () => {
 
   const closeModal = () => {
     dispatch(clearSelectedCard());
+    dispatch(closeAllModalMenus());
   };
 
   const handleCardTitleOnChange = (e: ChangeEvent<HTMLTextAreaElement>) => {

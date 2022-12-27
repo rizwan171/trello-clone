@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import localforage from "localforage";
 import { ChangeEvent, useRef } from "react";
 import { MdClose } from "react-icons/md";
-import { closeMenu } from "../../../../features/modalActionMenusVisibilitySlice";
+import { closeAllModalMenus } from "../../../../features/modalActionMenusVisibilitySlice";
 import { v4 as uuidv4 } from "uuid";
 import { addFilesToCard } from "../../../../features/cardsSlice";
 import { setCurrentSelectedCard } from "../../../../features/currentSelectedCardSlice";
@@ -38,7 +38,7 @@ const AttachmentMenu = ({ update }: AttachmentMenuProps) => {
   };
 
   const handleClose = () => {
-    dispatch(closeMenu());
+    dispatch(closeAllModalMenus());
   };
 
   return (

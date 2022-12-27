@@ -2,7 +2,7 @@ import { useState } from "react";
 import { MdClose } from "react-icons/md";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { copyCardToList } from "../../../../features/cardsSlice";
-import { closeMenu } from "../../../../features/modalActionMenusVisibilitySlice";
+import { closeAllModalMenus } from "../../../../features/modalActionMenusVisibilitySlice";
 
 const CopyMenu = () => {
   const dispatch = useAppDispatch();
@@ -11,7 +11,7 @@ const CopyMenu = () => {
   const [selectedListId, setSelectedListId] = useState("");
 
   const handleClose = () => {
-    dispatch(closeMenu());
+    dispatch(closeAllModalMenus());
   };
 
   const handleCopyCard = () => {
