@@ -196,7 +196,7 @@ it("should do something", () => {
 #### Interacting with elements i.e. firing different events like click, change, etc.
 
 - To fire an event for an element, use `fireEvent` from React Testing Library
-- This object has a bunch of functions that can be called to trigger certain events like `.click()`, `.change()`, `.keyPress()`
+- This object has a bunch of functions that can be called to trigger certain events like `.click()`, `.change()`, `.keyDown()`
   - For more info, see https://testing-library.com/docs/dom-testing-library/api-events/
 - These functions usually take 2 paramters: the element to fire an event for, and an event object to pass
   - Note: for events like `.click()`, it is sufficient to pass just the element as a parameter
@@ -573,16 +573,16 @@ describe("Component", () => {
 
 - See the `should add a list when enter pressed in the title input` scenario in the [AddList test](../src/tests/components/List/AddList/AddList.test.tsx) for an example
 
-#### Firing a `keyPress` event when testing
+#### Firing a `keyDown` event when testing
 
-- When firing a `keyPress` event, the `charCode` must be defined along with other properties you expect to use e.g. if your `keyPress` handler checks the `key` property of the event, you must pass `key` and `charCode` to the event
+- When firing a `keyDown` event, the `charCode` must be defined along with other properties you expect to use e.g. if your `keyDown` handler checks the `key` property of the event, you must pass `key` and `charCode` to the event
   - See https://github.com/testing-library/react-testing-library/issues/269#issuecomment-455854112
 
 ```javascript
-it('should fire keyPress event properly', () => {
+it('should fire keyDown event properly', () => {
   ...
 
-  fireEvent.keyPress(element, { key: "Enter", charCode: 13 });
+  fireEvent.keyDown(element, { key: "Enter", charCode: 13 });
 });
 ```
 
