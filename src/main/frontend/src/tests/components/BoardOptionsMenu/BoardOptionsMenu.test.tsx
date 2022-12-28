@@ -275,6 +275,10 @@ describe("BoardOptionsMenu", () => {
 
     fireEvent.click(deleteButton);
     const stateAfterDeleting = { ...store.getState() };
-    expect(stateAfterDeleting).not.toEqual(stateBeforeDeleting);
+    expect(stateAfterDeleting.lists.value).toStrictEqual([]);
+    expect(stateAfterDeleting.tags.value).toStrictEqual([]);
+    expect(stateAfterDeleting.cards.value).toStrictEqual([]);
+    expect(stateAfterDeleting.board.value.id).not.toBe(stateBeforeDeleting.board.value.id);
+    expect(stateAfterDeleting.board.value.title).not.toBe(stateBeforeDeleting.board.value.title);
   });
 });

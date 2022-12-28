@@ -21,7 +21,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { TabIdentifier } from "../../types/global/TabIdentifier";
 import { ExportDataFull, ExportDataList } from "../../types/global/ExportData";
 import ImportData from "../../types/global/ImportData";
-import { updateAllTags } from "../../features/tagsSlice";
+import { deleteAllTags, updateAllTags } from "../../features/tagsSlice";
 
 const BoardOptionsMenu = () => {
   const dispatch = useAppDispatch();
@@ -169,6 +169,7 @@ const BoardOptionsMenu = () => {
   const handleDeleteBoard = () => {
     dispatch(deleteAllLists());
     dispatch(deleteAllCards());
+    dispatch(deleteAllTags());
     dispatch(setNewBoardState());
 
     closeDeleteModal();
