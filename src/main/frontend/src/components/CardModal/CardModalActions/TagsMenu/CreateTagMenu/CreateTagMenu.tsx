@@ -5,7 +5,7 @@ import { NO_COLOUR, TAG_COLOURS } from "../../../../../constants/TagColours";
 import { setSelectedTagColour } from "../../../../../features/selectedTagColourSlice";
 import { createTag, deleteTag, updateTag } from "../../../../../features/tagsSlice";
 import { clearCreateTagMenuData } from "../../../../../features/createTagMenuDataSlice";
-import { closeMenu, showTagsMenu } from "../../../../../features/modalActionMenusVisibilitySlice";
+import { closeAllModalMenus, showTagsMenu } from "../../../../../features/modalActionMenusVisibilitySlice";
 import { removeTagFromAllCards } from "../../../../../features/cardsSlice";
 import { setCurrentSelectedCard } from "../../../../../features/currentSelectedCardSlice";
 import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
@@ -75,7 +75,7 @@ const CreateTagMenu = () => {
 
   const handleClose = () => {
     resetFields();
-    dispatch(closeMenu());
+    dispatch(closeAllModalMenus());
   };
 
   return (

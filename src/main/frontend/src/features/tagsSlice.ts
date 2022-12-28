@@ -32,6 +32,10 @@ export const tagsSlice = createSlice({
       state.value = state.value.filter((tag) => tag.id !== action.payload);
       localStorage.setItem("tags", JSON.stringify([...state.value]));
     },
+    deleteAllTags: (state: TagsState) => {
+      state.value = [];
+      localStorage.setItem("tags", JSON.stringify([...state.value]));
+    },
     updateAllTags: (state: TagsState, action: PayloadAction<UpdateAllTagsParams>) => {
       state.value = [...action.payload];
       localStorage.setItem("tags", JSON.stringify([...state.value]));
@@ -39,5 +43,5 @@ export const tagsSlice = createSlice({
   },
 });
 
-export const { createTag, updateTag, deleteTag, updateAllTags } = tagsSlice.actions;
+export const { createTag, updateTag, deleteTag, updateAllTags, deleteAllTags } = tagsSlice.actions;
 export default tagsSlice.reducer;

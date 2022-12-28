@@ -2,9 +2,9 @@ import { ChangeEvent, useState } from "react";
 import { MdClose } from "react-icons/md";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { addTagToCard, removeTagFromCard } from "../../../../features/cardsSlice";
-import { setCreateTagMenuData } from "../../../../features/createTagMenuDataSlice";
+import { clearCreateTagMenuData, setCreateTagMenuData } from "../../../../features/createTagMenuDataSlice";
 import { setCurrentSelectedCard } from "../../../../features/currentSelectedCardSlice";
-import { closeMenu, showCreateTagMenu } from "../../../../features/modalActionMenusVisibilitySlice";
+import { closeAllModalMenus, showCreateTagMenu } from "../../../../features/modalActionMenusVisibilitySlice";
 import Tag from "../../../../types/global/Tag";
 import TagOption from "./TagOption/TagOption";
 
@@ -29,11 +29,12 @@ const TagsMenu = () => {
   };
 
   const handleShowCreateTagForm = () => {
+    dispatch(clearCreateTagMenuData());
     dispatch(showCreateTagMenu());
   };
 
   const handleCloseTags = () => {
-    dispatch(closeMenu());
+    dispatch(closeAllModalMenus());
   };
 
   const tagClicked = (tag: Tag) => {
@@ -53,7 +54,12 @@ const TagsMenu = () => {
     <div className="fixed mt-10 w-72 text-gray-700 bg-white rounded-ibsm shadow-2xl p-4">
       <div className="relative text-center mb-2">
         <span className="text-sm block relative z-10">Tags</span>
-        <MdClose data-testid="close-tags-menu-icon" onClick={handleCloseTags} size={20} className="absolute right-0 top-0 z-20 cursor-pointer" />
+        <MdClose
+          data-testid="close-tags-menu-icon"
+          onClick={handleCloseTags}
+          size={20}
+          className="absolute right-0 top-0 z-20 cursor-pointer"
+        />
       </div>
       <hr />
       <div className="flex flex-col mt-2 text-sm">

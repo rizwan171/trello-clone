@@ -3,7 +3,7 @@ import { MdClose } from "react-icons/md";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { moveCardToList } from "../../../../features/cardsSlice";
 import { setCurrentSelectedCard } from "../../../../features/currentSelectedCardSlice";
-import { closeMenu } from "../../../../features/modalActionMenusVisibilitySlice";
+import { closeAllModalMenus } from "../../../../features/modalActionMenusVisibilitySlice";
 
 const MoveMenu = () => {
   const dispatch = useAppDispatch();
@@ -13,7 +13,7 @@ const MoveMenu = () => {
   const [selectedListId, setSelectedListId] = useState("");
 
   const handleClose = () => {
-    dispatch(closeMenu());
+    dispatch(closeAllModalMenus());
   };
 
   const handleMoveCard = () => {

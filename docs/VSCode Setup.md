@@ -67,8 +67,11 @@ By default, emmet doesn't work with JSX. To enable this
 ### 7. Jest Extension
 
 - The Jest tests can be ran via the Jest extension
-- All that needs to be done is specify the Jest Command Line command in the settings for the Jest extension
-  - This should be set to `yarn test --`
+- To do this, you need to specify 2 things in the extension's settings
+  - Jest Command Line
+    -  `yarn test --`
+  - Root Path
+    - `src/main/frontend/src`
 
 ### Misc
 

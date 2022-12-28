@@ -32,7 +32,7 @@ export const modalActionMenusVisibilitySlice = createSlice({
   name: "modalActionMenusVisibility",
   initialState,
   reducers: {
-    closeMenu: (state: ModalActionMenuVisibilityState) => {
+    closeAllModalMenus: (state: ModalActionMenuVisibilityState) => {
       state.value = {
         ...initialState.value,
       };
@@ -98,7 +98,7 @@ export const modalActionMenusVisibilitySlice = createSlice({
 });
 
 export const {
-  closeMenu,
+  closeAllModalMenus,
   showTagsMenu,
   showCreateTagMenu,
   showCopyMenu,

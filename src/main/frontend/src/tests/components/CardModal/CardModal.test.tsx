@@ -1,12 +1,16 @@
-import { fireEvent, screen, waitFor } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
 import { RootState } from "../../../app/store";
 import CardModal from "../../../components/CardModal/CardModal";
 import { renderWithProviders } from "../../utils/renderUtils";
+import { generateModalActionsVisibilityState } from "../../utils/stateUtils";
+import { ModalActionMenuVisibilityState } from "../../../types/reducers/ModalActionMenuVisibilitySlice";
 
 describe("CardModal", () => {
   let initialState: Partial<RootState>;
+  let modalActionsVisibilityState: ModalActionMenuVisibilityState;
 
   beforeEach(() => {
+    modalActionsVisibilityState = generateModalActionsVisibilityState();
     const card = {
       id: "1",
       title: "Card 1",
@@ -113,9 +117,20 @@ describe("CardModal", () => {
     expect(store.getState().currentSelectedCard.value?.description).toBe("Updated Description");
   });
 
-  it("should close card modal on close icon clicked", () => {
-    const { store } = renderWithProviders(<CardModal />, { preloadedState: initialState });
+  it("should close card modal and all open modal menus on close icon clicked", () => {
+    const { store } = renderWithProviders(<CardModal />, {
+      preloadedState: {
+        ...initialState,
+        modalActionMenusVisibility: {
+          value: {
+            ...modalActionsVisibilityState.value,
+            deleteMenuOpen: true,
+          },
+        },
+      },
+    });
     expect(store.getState().currentSelectedCard.value).toBeDefined();
+    expect(store.getState().modalActionMenusVisibility.value.deleteMenuOpen).toBeTruthy();
 
     const closeIcon = screen.getByTestId("card-modal-close-icon");
     expect(closeIcon).toBeInTheDocument();
@@ -123,14 +138,27 @@ describe("CardModal", () => {
     fireEvent.click(closeIcon);
 
     expect(store.getState().currentSelectedCard.value).toBeNull();
+    expect(store.getState().modalActionMenusVisibility.value.deleteMenuOpen).toBeFalsy();
   });
 
-  it("should close card modal on escape press", () => {
-    const { store } = renderWithProviders(<CardModal />, { preloadedState: initialState });
+  it("should close card modal and all open modal menus on escape press", () => {
+    const { store } = renderWithProviders(<CardModal />, {
+      preloadedState: {
+        ...initialState,
+        modalActionMenusVisibility: {
+          value: {
+            ...modalActionsVisibilityState.value,
+            deleteMenuOpen: true,
+          },
+        },
+      },
+    });
     expect(store.getState().currentSelectedCard.value).toBeDefined();
+    expect(store.getState().modalActionMenusVisibility.value.deleteMenuOpen).toBeTruthy();
 
     fireEvent.keyDown(document, { key: "Escape" });
 
     expect(store.getState().currentSelectedCard.value).toBeNull();
+    expect(store.getState().modalActionMenusVisibility.value.deleteMenuOpen).toBeFalsy();
   });
 });
