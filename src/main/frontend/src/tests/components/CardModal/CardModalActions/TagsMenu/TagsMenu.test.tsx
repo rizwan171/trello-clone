@@ -84,6 +84,7 @@ describe("TagsMenu", () => {
 
     expect(store.getState().modalActionMenusVisibility.value.createTagsMenuOpen).toBeTruthy();
     expect(store.getState().modalActionMenusVisibility.value.tagsMenuOpen).toBeFalsy();
+    expect(store.getState().createTagMenuData.value).toBeNull();
   });
 
   it("should open the create tag menu to edit an existing tag", () => {

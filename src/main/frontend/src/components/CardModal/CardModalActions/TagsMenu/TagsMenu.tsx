@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { MdClose } from "react-icons/md";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { addTagToCard, removeTagFromCard } from "../../../../features/cardsSlice";
-import { setCreateTagMenuData } from "../../../../features/createTagMenuDataSlice";
+import { clearCreateTagMenuData, setCreateTagMenuData } from "../../../../features/createTagMenuDataSlice";
 import { setCurrentSelectedCard } from "../../../../features/currentSelectedCardSlice";
 import { closeAllModalMenus, showCreateTagMenu } from "../../../../features/modalActionMenusVisibilitySlice";
 import Tag from "../../../../types/global/Tag";
@@ -29,6 +29,7 @@ const TagsMenu = () => {
   };
 
   const handleShowCreateTagForm = () => {
+    dispatch(clearCreateTagMenuData());
     dispatch(showCreateTagMenu());
   };
 
