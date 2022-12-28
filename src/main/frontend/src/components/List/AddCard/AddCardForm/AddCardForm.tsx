@@ -9,11 +9,6 @@ const AddCardForm = ({ setOpen, listId }: AddCardFormProps) => {
   const [text, setText] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleClose = () => {
-    setOpen(false);
-    setText("");
-  };
-
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.scrollIntoView();
@@ -22,23 +17,38 @@ const AddCardForm = ({ setOpen, listId }: AddCardFormProps) => {
     }
   }, []);
 
+  const resetText = () => {
+    setText("");
+    inputRef.current && (inputRef.current.value = "");
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    resetText();
+  };
+
   const handleOnChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     if (e.target.value !== "\n") {
       setText(e.target.value);
     }
   };
 
-  const handleAddCard = () => {
+  const handleAddCard = (closeForm: boolean) => {
     if (text.trim().length !== 0) {
       dispatch(addCard({ listId, title: text, tags: [], description: "", attachments: [] }));
     }
-    handleClose();
+
+    if (closeForm) {
+      handleClose();
+    } else {
+      resetText();
+    }
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-    switch (e.code) {
+    switch (e.key) {
       case "Enter":
-        handleAddCard();
+        handleAddCard(false);
         break;
       case "Escape":
         handleClose();
@@ -62,7 +72,7 @@ const AddCardForm = ({ setOpen, listId }: AddCardFormProps) => {
         <button
           type="button"
           className="py-2 px-3 bg-trello-green-100 hover:bg-trello-green-200 text-white transition ease-in duration-200 text-center text-base shadow-md rounded-md"
-          onClick={handleAddCard}
+          onClick={() => handleAddCard(true)}
         >
           Add Card
         </button>
