@@ -2,6 +2,7 @@ version: "3.9"
 services:
   postgres:
     image: postgres
+    container_name: trello-clone-db
     environment:
       - POSTGRES_USER=dev
       - POSTGRES_PASSWORD=dev
