@@ -1,95 +1,43 @@
-# Getting Started with Create React App
+# Running the application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Prerequisites
+- Docker
+- Node
 
-## Available Scripts
+## Running the whole app (backend + frontend)
+- Run `docker compose up --detach` in terminal from the root of this project
+- Go to `localhost:8080`
+- When done
 
-In the project directory, you can run:
+## Running just the frontend
+- Naviage to `src/main/frontend/` in the termninal
+- Run `yarn start`
+- Go to `localhost:8080`
 
-### `npm start`
+## Accessing the database via pgAdmin
+- The docker compose file starts up a pgAdmin container alongside the postgres database.
+- This can be accessed on `localhost:5050`, with email `dev@dev.co.uk` and password `dev`
+- To setup the database within pgAdmin:
+  - Run `docker compose up --detach` in terminal from the root of this project
+  - Login and choose `Object -> Register -> Server...` 
+  - In the General tab:
+    - Name: set to anything you wish i.e. Trello Clone DB
+  - In the Connection tab:
+    - Host: trello-clone-db
+    - Port: 5432
+    - Username: dev
+    - Password: dev
+    - Toggle Save Password
+    - Press Save
+- The database should be viewable in the left-hand side browser under Servers
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tearing down the database
+- To reset the database, run `docker compose down` in terminal from the root of this project, and re-run `docker compose up --detach`
+- NOTE: this also resets pgAdmin, and requires you to setup the connection to the database again
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Running tests locally
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-### Running via Docker
-
-- Build the image using `docker build -t trello-clone .`
-- Create a container `docker run -d -p 8080:80 trello-clone`
-- Go to `http://localhost:8080`
-
-#### Running on smaller machines/servers i.e. Raspberry Pi
-
-- On Raspberry Pi's or machines with limited memory, it's possible to get the below messasge or something similar when at the `npm run build` step:
-
-```
-Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
-```
-
-- To overcome this, build from the Dockerfile.pi
-- Build the image using `docker build -f Dockerfile.pi -t trello-clone .`
-- Create a container `docker run -d -p 8080:80 trello-clone`
-- Go to `http://localhost:8080`
-
-### Running tests locally
-
-#### Jest Tests
+## Jest Tests
+- Navigate to `src/main/frontend/`
 - Run `yarn test` to run all tests
 - Run `yarn test --watch` to run the tests in watch mode

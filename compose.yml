@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres
+    container_name: trello-clone-db
+    environment:
+      - POSTGRES_USER=dev
+      - POSTGRES_PASSWORD=dev
+      - POSTGRES_DB=tcdb
+    ports:
+      - 5432:5432
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=dev@dev.co.uk
+      - PGADMIN_DEFAULT_PASSWORD=dev
+    ports:
+      - 5050:80
