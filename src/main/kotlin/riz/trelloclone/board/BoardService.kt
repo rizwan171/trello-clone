@@ -5,15 +5,15 @@ import riz.trelloclone.board.JsonBoard
 import java.util.*
 
 @Service
-class BoardService(@Autowired val boardRepo: BoardRepo) {
+class BoardService(@Autowired val boardRepository: BoardRepository) {
 
   fun createBoard(jsonBoard: JsonBoard): JsonBoard {
     val board = Board(UUID.randomUUID(), jsonBoard.title)
-    return toJsonBoard(boardRepo.save(board))
+    return toJsonBoard(boardRepository.save(board))
   }
 
   fun getBoard(id: UUID): Optional<JsonBoard> {
-    return boardRepo.findById(id)
+    return boardRepository.findById(id)
       .map { toJsonBoard(it) }
   }
 

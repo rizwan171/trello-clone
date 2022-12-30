@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull
 import java.util.*
 
 data class JsonBoard(
-  val id: UUID,
+  val id: UUID?,
 
   @field:NotNull(value = "Title must not be blank")
   val title: String

@@ -1,5 +1,6 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 import com.github.gradle.node.yarn.task.YarnTask
+import org.springframework.boot.gradle.tasks.run.BootRun
 
 plugins {
 	id("org.springframework.boot") version "3.0.1"
@@ -29,18 +30,20 @@ dependencies {
 	runtimeOnly("org.flywaydb:flyway-gradle-plugin:9.10.2")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("io.mockk:mockk:1.13.3")
 }
 
 tasks.clean {
 	delete("${project.projectDir}/src/main/frontend/build")
 }
 
-tasks.withType<KotlinCompile> {
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 	kotlinOptions {
-		dependsOn("copyFrontend")
-		freeCompilerArgs = listOf("-Xjsr305=strict")
 		jvmTarget = "17"
 	}
+}
+tasks.withType<BootRun> {
+	dependsOn("copyFrontend")
 }
 
 tasks.withType<Test> {
