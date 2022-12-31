@@ -1,10 +1,14 @@
 package riz.trelloclone.board
 
 import BoardService
+import com.fasterxml.jackson.annotation.JsonView
+import jakarta.servlet.http.HttpServletRequest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
+import riz.trelloclone.view.Views
+import java.net.URI
 import java.util.*
 
 @RestController
@@ -22,7 +26,10 @@ class BoardRestApiController(@Autowired val boardService: BoardService) {
   }
 
   @PostMapping
-  fun createBoard(@Validated @RequestBody jsonBoard: JsonBoard): ResponseEntity<JsonBoard> {
-    return ResponseEntity.ok().body(boardService.createBoard(jsonBoard))
+
+  fun createBoard(@Validated @RequestBody @JsonView(Views.Post::class) jsonBoard: JsonBoard,
+                  request: HttpServletRequest): ResponseEntity<JsonBoard> {
+    val createdBoard = boardService.createBoard(jsonBoard)
+    return ResponseEntity.created(URI.create(request.requestURI.plus("/${createdBoard.id}"))).body(createdBoard)
   }
 }
