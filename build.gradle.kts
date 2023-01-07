@@ -1,4 +1,4 @@
-
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import com.github.gradle.node.yarn.task.YarnTask
 
 plugins {
@@ -37,7 +37,7 @@ tasks.clean {
 	delete("${project.projectDir}/src/main/frontend/build")
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		jvmTarget = "17"
 	}
