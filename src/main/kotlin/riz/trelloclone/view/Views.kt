@@ -2,8 +2,8 @@ package riz.trelloclone.view
 
 class Views {
 
-  interface Get
+  interface Post
 
-  interface Post : Get
+  interface Get : Post
 
 }

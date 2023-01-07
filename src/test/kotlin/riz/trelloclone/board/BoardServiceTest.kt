@@ -1,8 +1,5 @@
 package riz.trelloclone.board
 
-import Board
-import BoardRepository
-import BoardService
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.slot

@@ -1,7 +1,7 @@
+package riz.trelloclone.board
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import riz.trelloclone.board.JsonBoard
 import java.util.*
 
 @Service

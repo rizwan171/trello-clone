@@ -1,6 +1,5 @@
 package riz.trelloclone.board
 
-import BoardService
 import com.ninjasquad.springmockk.MockkBean
 import io.mockk.every
 import org.junit.jupiter.api.Test

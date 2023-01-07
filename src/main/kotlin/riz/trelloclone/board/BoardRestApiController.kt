@@ -1,6 +1,5 @@
 package riz.trelloclone.board
 
-import BoardService
 import com.fasterxml.jackson.annotation.JsonView
 import jakarta.servlet.http.HttpServletRequest
 import org.springframework.beans.factory.annotation.Autowired
@@ -16,7 +15,7 @@ import java.util.*
 class BoardRestApiController(@Autowired val boardService: BoardService) {
 
   @GetMapping("/{id}")
-  fun getBoard(@PathVariable id: UUID): ResponseEntity<JsonBoard?> {
+  fun getBoard(@PathVariable id: UUID): ResponseEntity<JsonBoard> {
     val jsonBoardOptional = boardService.getBoard(id)
     if (jsonBoardOptional.isEmpty) {
       return ResponseEntity.notFound().build()
@@ -26,7 +25,6 @@ class BoardRestApiController(@Autowired val boardService: BoardService) {
   }
 
   @PostMapping
-
   fun createBoard(@Validated @RequestBody @JsonView(Views.Post::class) jsonBoard: JsonBoard,
                   request: HttpServletRequest): ResponseEntity<JsonBoard> {
     val createdBoard = boardService.createBoard(jsonBoard)
