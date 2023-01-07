@@ -14,7 +14,6 @@ class BoardServiceTest {
   private val boardService = BoardService(boardRepository)
   private val boardCaptureSlot = slot<Board>()
 
-
   @Test
   fun createBoard() {
     val boardId = UUID.randomUUID()
