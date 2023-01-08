@@ -19,8 +19,8 @@ git pull
 git checkout -b your-branch-name-here
 ```
 
-- Name your branches by prefixing TC, followed by the issue number, and a short name corresponding to the task e.g.
-  - For Issue #1: Add the required libraries for the project, an appropriate branch name would be `TC-1-add-required-libraries`
+- Name your branches by prefixing  the issue number, and a short name corresponding to the task e.g.
+  - For Issue #1: Add the required libraries for the project, an appropriate branch name would be `1-add-required-libraries`
 
 ## Commits
 

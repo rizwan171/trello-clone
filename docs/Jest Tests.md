@@ -1,6 +1,6 @@
-# Testing Information
+# Jest Tests
 
-This document details some information and tips for writing tests. For more information on the testing frameworks used, please consult the relevant documentation. Below are some links that may be helpful:
+This document details some information and tips for writing Jest tests. For more information on the testing frameworks used, please consult the relevant documentation. Below are some links that may be helpful:
 
 - https://jestjs.io/docs/using-matchers
 - https://jestjs.io/docs/setup-teardown

@@ -25,7 +25,12 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+	runtimeOnly("org.flywaydb:flyway-gradle-plugin:9.10.2")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("io.mockk:mockk:1.13.3")
+	testImplementation("com.ninja-squad:springmockk:4.0.0")
 }
 
 tasks.clean {
@@ -34,10 +39,11 @@ tasks.clean {
 
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
-		dependsOn("copyFrontend")
-		freeCompilerArgs = listOf("-Xjsr305=strict")
 		jvmTarget = "17"
 	}
+}
+tasks.build {
+	dependsOn("copyFrontend")
 }
 
 tasks.withType<Test> {
@@ -59,4 +65,44 @@ tasks.register<Copy>("copyFrontend") {
 	dependsOn("buildFrontend")
 	from("src/main/frontend/build")
 	into("build/resources/main/static/.")
+}
+
+sourceSets {
+	create("integrationTest") {
+		kotlin {
+			compileClasspath += sourceSets.main.get().output
+			runtimeClasspath += sourceSets.main.get().output
+			srcDir(file("src/integrationTest/kotlin"))
+		}
+		resources.srcDir(file("src/integrationTest/resources"))
+	}
+}
+
+val integrationTestImplementation: Configuration by configurations.getting {
+	extendsFrom(configurations.implementation.get())
+}
+
+configurations["integrationTestRuntimeOnly"].extendsFrom(configurations.runtimeOnly.get())
+
+dependencies {
+	integrationTestImplementation("org.springframework.boot:spring-boot-starter-test")
+	integrationTestImplementation("io.rest-assured:rest-assured:5.3.0")
+	integrationTestImplementation("org.testcontainers:testcontainers:1.17.6")
+	integrationTestImplementation("org.testcontainers:junit-jupiter:1.17.6")
+	integrationTestImplementation("org.testcontainers:postgresql:1.17.6")
+}
+
+task<Test>("integrationTest") {
+	description = "Runs integration tests."
+	group = "verification"
+
+	testClassesDirs = sourceSets["integrationTest"].output.classesDirs
+	classpath = sourceSets["integrationTest"].runtimeClasspath
+	shouldRunAfter("test")
+
+	useJUnitPlatform()
+
+	testLogging {
+		events("passed")
+	}
 }
