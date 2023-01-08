@@ -12,7 +12,7 @@ import java.util.*
 
 @RestController
 @RequestMapping("/api/v1/boards")
-class BoardRestApiController(@Autowired val boardService: BoardService) {
+class BoardApiRestController(@Autowired val boardService: BoardService) {
 
   @GetMapping("/{id}")
   fun getBoard(@PathVariable id: UUID): ResponseEntity<JsonBoard> {

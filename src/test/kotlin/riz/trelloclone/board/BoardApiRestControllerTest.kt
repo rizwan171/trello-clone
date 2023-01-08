@@ -14,9 +14,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 import java.util.*
 
-@WebMvcTest(controllers = [BoardRestApiControllerTest::class])
+@WebMvcTest(controllers = [BoardApiRestControllerTest::class])
 @ExtendWith(SpringExtension::class)
-class BoardRestApiControllerTest(@Autowired val mockMvc: MockMvc) {
+class BoardApiRestControllerTest(@Autowired val mockMvc: MockMvc) {
 
   @MockkBean
   private lateinit var boardService: BoardService

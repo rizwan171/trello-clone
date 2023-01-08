@@ -11,7 +11,7 @@ import riz.trelloclone.util.AbstractIntegrationTest
 import riz.trelloclone.util.BoardUtils
 import java.util.*
 
-class BoardRestApiSmokeTest : AbstractIntegrationTest() {
+class BoardApiSmokeTest : AbstractIntegrationTest() {
 
   @Autowired
   private lateinit var boardRepository: BoardRepository
