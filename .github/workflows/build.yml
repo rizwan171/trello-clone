@@ -1,7 +1,6 @@
 name: Build CI
 
-on:
-  push:
+on: push
 
 jobs:
   build-frontend:
@@ -25,10 +24,6 @@ jobs:
       run: yarn install --frozen-lockfile 
       working-directory: src/main/frontend
   
-  frontent-test:
-    needs: build-frontend
-    runs-on: ubuntu-latest
-    steps:
     - name: Run Jest Tests
       run: yarn test
       working-directory: src/main/frontend
@@ -45,16 +40,8 @@ jobs:
     - name: Gradle Build
       run: ./gradlew build
 
-  kotlin-test:
-    needs: build-backend
-    runs-on: ubuntu-latest
-    steps:
     - name: Run Tests
       run: ./gradlew test
   
-  kotlin-integration-test:
-    needs: build-backend
-    runs-on: ubuntu-latest
-    steps:
     - name: Run Integration Tests
       run: ./gradlew integrationTest
