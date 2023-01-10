@@ -58,4 +58,52 @@ class BoardApiSmokeTest : AbstractIntegrationTest() {
       .then()
       .statusCode(HttpStatus.CREATED.value())
   }
+
+  @Test
+  fun editBoard() {
+    val boardId = BoardUtils.createBoard(uri).id
+
+    given()
+      .body("""
+        {
+          "title": "Updated Test Board"
+        }
+      """.trimIndent())
+      .contentType(ContentType.JSON)
+      .put("$uri/api/v1/boards/$boardId")
+      .then()
+      .statusCode(HttpStatus.OK.value())
+  }
+
+  @Test
+  fun editBoard_notFound() {
+    given()
+      .body("""
+        {
+          "title": "Updated Test Board"
+        }
+      """.trimIndent())
+      .contentType(ContentType.JSON)
+      .put("$uri/api/v1/boards/${UUID.randomUUID()}")
+      .then()
+      .statusCode(HttpStatus.NOT_FOUND.value())
+  }
+
+  @Test
+  fun deleteBoard() {
+    val boardId = BoardUtils.createBoard(uri).id
+
+    given()
+      .delete("$uri/api/v1/boards/$boardId")
+      .then()
+      .statusCode(HttpStatus.NO_CONTENT.value())
+  }
+
+  @Test
+  fun deleteBoard_notFound() {
+    given()
+      .delete("$uri/api/v1/boards/${UUID.randomUUID()}")
+      .then()
+      .statusCode(HttpStatus.NOT_FOUND.value())
+  }
 }

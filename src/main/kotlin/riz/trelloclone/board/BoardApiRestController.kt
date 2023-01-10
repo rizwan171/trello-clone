@@ -15,19 +15,43 @@ import java.util.*
 class BoardApiRestController(@Autowired val boardService: BoardService) {
 
   @GetMapping("/{id}")
-  fun getBoard(@PathVariable id: UUID): ResponseEntity<JsonBoard> {
-    val jsonBoardOptional = boardService.getBoard(id)
-    if (jsonBoardOptional.isEmpty) {
+  fun getBoard(@PathVariable id: UUID): ResponseEntity<BoardJson> {
+    val boardOptional = boardService.getBoard(id)
+    if (boardOptional.isEmpty) {
       return ResponseEntity.notFound().build()
     }
 
-    return ResponseEntity.ok().body(jsonBoardOptional.get())
+    val boardJson = BoardJson.fromEntity(boardOptional.get())
+    return ResponseEntity.ok().body(boardJson)
   }
 
   @PostMapping
-  fun createBoard(@Validated @RequestBody @JsonView(Views.Post::class) jsonBoard: JsonBoard,
-                  request: HttpServletRequest): ResponseEntity<JsonBoard> {
-    val createdBoard = boardService.createBoard(jsonBoard)
+  fun createBoard(@Validated @RequestBody @JsonView(Views.Post::class) boardJson: BoardJson,
+                  request: HttpServletRequest): ResponseEntity<BoardJson> {
+    val createdBoard = boardService.createBoard(boardJson)
     return ResponseEntity.created(URI.create(request.requestURI.plus("/${createdBoard.id}"))).body(createdBoard)
+  }
+
+  @PutMapping("/{id}")
+  fun editBoard(@Validated @RequestBody @JsonView(Views.Post::class) boardJson: BoardJson,
+                @PathVariable id: UUID): ResponseEntity<BoardJson> {
+    val boardOptional = boardService.getBoard(id)
+    if (boardOptional.isEmpty) {
+      return ResponseEntity.notFound().build()
+    }
+
+    val updatedBoardJson = boardService.updateBoard(boardOptional.get(), boardJson)
+    return ResponseEntity.ok(updatedBoardJson)
+  }
+
+  @DeleteMapping("/{id}")
+  fun deleteBoard(@PathVariable id: UUID): ResponseEntity<Unit> {
+    val boardOptional = boardService.getBoard(id)
+    if (boardOptional.isEmpty) {
+      return ResponseEntity.notFound().build()
+    }
+
+    boardService.deleteBoard(boardOptional.get())
+    return ResponseEntity.noContent().build()
   }
 }

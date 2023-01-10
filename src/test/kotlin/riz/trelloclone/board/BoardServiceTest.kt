@@ -17,11 +17,11 @@ class BoardServiceTest {
   @Test
   fun createBoard() {
     val boardId = UUID.randomUUID()
-    val jsonBoard = JsonBoard(boardId, "title")
+    val boardJson = BoardJson(boardId, "title")
     val board = Board(boardId, "title")
     every { boardRepository.save(any()) } returns board
 
-    val savedJsonBoard = boardService.createBoard(jsonBoard)
+    val savedJsonBoard = boardService.createBoard(boardJson)
 
     verify { boardRepository.save(capture(boardCaptureSlot)) }
     assertThat(boardCaptureSlot.captured)
@@ -30,6 +30,6 @@ class BoardServiceTest {
       .isEqualTo(board)
     assertThat(savedJsonBoard)
       .usingRecursiveComparison()
-      .isEqualTo(jsonBoard)
+      .isEqualTo(boardJson)
   }
 }

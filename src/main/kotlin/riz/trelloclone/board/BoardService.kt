@@ -7,17 +7,22 @@ import java.util.*
 @Service
 class BoardService(@Autowired val boardRepository: BoardRepository) {
 
-  fun createBoard(jsonBoard: JsonBoard): JsonBoard {
-    val board = Board(UUID.randomUUID(), jsonBoard.title)
-    return toJsonBoard(boardRepository.save(board))
+  fun createBoard(boardJson: BoardJson): BoardJson {
+    val board = Board(UUID.randomUUID(), boardJson.title)
+    return BoardJson.fromEntity(boardRepository.save(board))
   }
 
-  fun getBoard(id: UUID): Optional<JsonBoard> {
+  fun getBoard(id: UUID): Optional<Board> {
     return boardRepository.findById(id)
-      .map { toJsonBoard(it) }
   }
 
-  private fun toJsonBoard(board: Board): JsonBoard {
-    return JsonBoard(board.id, board.title)
+  fun updateBoard(board: Board, boardJson: BoardJson): BoardJson {
+    board.title = boardJson.title
+
+    return BoardJson.fromEntity(boardRepository.save(board))
+  }
+
+  fun deleteBoard(board: Board) {
+    boardRepository.delete(board)
   }
 }
