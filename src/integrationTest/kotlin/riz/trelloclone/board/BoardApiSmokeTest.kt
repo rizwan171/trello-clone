@@ -2,6 +2,9 @@ package riz.trelloclone.board
 
 import io.restassured.RestAssured.given
 import io.restassured.http.ContentType
+import org.assertj.core.api.Assertions.assertThat
+import org.hamcrest.CoreMatchers.equalTo
+import org.hamcrest.CoreMatchers.notNullValue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -35,6 +38,8 @@ class BoardApiSmokeTest : AbstractIntegrationTest() {
       .get("$uri/api/v1/boards/$boardId")
       .then()
       .statusCode(HttpStatus.OK.value())
+      .body("id", equalTo(boardId.toString()))
+      .body("title", notNullValue())
   }
 
   @Test
@@ -47,16 +52,23 @@ class BoardApiSmokeTest : AbstractIntegrationTest() {
 
   @Test
   fun createBoard() {
-    given()
+    val location = given()
       .body("""
         {
-          "title": "Test Board"
+          "title": "New Board"
         }
       """.trimIndent())
       .contentType(ContentType.JSON)
       .post("$uri/api/v1/boards")
       .then()
       .statusCode(HttpStatus.CREATED.value())
+      .extract()
+      .header("Location")
+
+    val createdBoardId = BoardUtils.extractIdFromLocation(location)
+    val createdBoard = boardRepository.findById(createdBoardId)
+    assertThat(createdBoard).isPresent
+    assertThat(createdBoard.get().title).isEqualTo("New Board")
   }
 
   @Test
@@ -73,6 +85,12 @@ class BoardApiSmokeTest : AbstractIntegrationTest() {
       .put("$uri/api/v1/boards/$boardId")
       .then()
       .statusCode(HttpStatus.OK.value())
+      .body("id", equalTo(boardId.toString()))
+      .body("title", equalTo("Updated Test Board"))
+
+    val updatedBoard = boardRepository.findById(boardId)
+    assertThat(updatedBoard).isPresent
+    assertThat(updatedBoard.get().title).isEqualTo("Updated Test Board")
   }
 
   @Test
@@ -97,6 +115,9 @@ class BoardApiSmokeTest : AbstractIntegrationTest() {
       .delete("$uri/api/v1/boards/$boardId")
       .then()
       .statusCode(HttpStatus.NO_CONTENT.value())
+
+    val deletedBoard = boardRepository.findById(boardId)
+    assertThat(deletedBoard).isEmpty
   }
 
   @Test

@@ -3,6 +3,7 @@ package riz.trelloclone.util
 import io.restassured.RestAssured.given
 import io.restassured.http.ContentType
 import riz.trelloclone.board.BoardJson
+import java.util.*
 
 class BoardUtils {
 
@@ -18,6 +19,10 @@ class BoardUtils {
         .post("$baseUri/api/v1/boards")
         .andReturn()
         .`as`(BoardJson::class.java)
+    }
+
+    fun extractIdFromLocation(location: String): UUID {
+      return UUID.fromString(location.split("/")[4])
     }
   }
 }
