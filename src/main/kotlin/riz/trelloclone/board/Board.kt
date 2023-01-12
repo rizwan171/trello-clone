@@ -5,10 +5,10 @@ import java.util.*
 
 @Entity
 @Table(name = "boards")
-data class Board (
+open class Board (
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
-  val id: UUID,
+  var id: UUID,
 
-  val title: String
+  var title: String
 )
