@@ -66,7 +66,7 @@ class BoardApiRestControllerTest(@Autowired val mockMvc: MockMvc) {
   }
 
   @Test
-  fun editBoard() {
+  fun updateBoard() {
     every { boardService.getBoard(boardId) } returns Optional.of(board)
     val boardJsonUpdates = BoardJson(null, "updated title")
     val updateBoardJsonString = """
@@ -90,7 +90,7 @@ class BoardApiRestControllerTest(@Autowired val mockMvc: MockMvc) {
   }
 
   @Test
-  fun editBoard_notFound() {
+  fun updateBoard_notFound() {
     every { boardService.getBoard(boardId) } returns Optional.empty()
 
     mockMvc.perform(put("/api/v1/boards/$boardId")

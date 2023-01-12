@@ -33,7 +33,7 @@ class BoardApiRestController(@Autowired val boardService: BoardService) {
   }
 
   @PutMapping("/{id}")
-  fun editBoard(@Validated @RequestBody @JsonView(Views.Post::class) boardJson: BoardJson,
+  fun updateBoard(@Validated @RequestBody @JsonView(Views.Post::class) boardJson: BoardJson,
                 @PathVariable id: UUID): ResponseEntity<BoardJson> {
     val boardOptional = boardService.getBoard(id)
     if (boardOptional.isEmpty) {

@@ -72,7 +72,7 @@ class BoardApiSmokeTest : AbstractIntegrationTest() {
   }
 
   @Test
-  fun editBoard() {
+  fun updateBoard() {
     val boardId = BoardUtils.createBoard(uri).id
 
     given()
@@ -94,7 +94,7 @@ class BoardApiSmokeTest : AbstractIntegrationTest() {
   }
 
   @Test
-  fun editBoard_notFound() {
+  fun updateBoard_notFound() {
     given()
       .body("""
         {
