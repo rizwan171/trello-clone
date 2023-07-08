@@ -14,6 +14,13 @@ import java.util.*
 @RequestMapping("/api/v1/boards")
 class BoardApiRestController(@Autowired val boardService: BoardService) {
 
+  @PostMapping
+  fun createBoard(@Validated @RequestBody @JsonView(Views.Post::class) boardJson: BoardJson,
+                  request: HttpServletRequest): ResponseEntity<BoardJson> {
+    val createdBoard = boardService.createBoard(boardJson)
+    return ResponseEntity.created(URI.create(request.requestURI.plus("/${createdBoard.id}"))).body(createdBoard)
+  }
+
   @GetMapping("/{id}")
   fun getBoard(@PathVariable id: UUID): ResponseEntity<BoardJson> {
     val boardOptional = boardService.getBoard(id)
@@ -23,13 +30,6 @@ class BoardApiRestController(@Autowired val boardService: BoardService) {
 
     val boardJson = BoardJson.fromEntity(boardOptional.get())
     return ResponseEntity.ok().body(boardJson)
-  }
-
-  @PostMapping
-  fun createBoard(@Validated @RequestBody @JsonView(Views.Post::class) boardJson: BoardJson,
-                  request: HttpServletRequest): ResponseEntity<BoardJson> {
-    val createdBoard = boardService.createBoard(boardJson)
-    return ResponseEntity.created(URI.create(request.requestURI.plus("/${createdBoard.id}"))).body(createdBoard)
   }
 
   @PutMapping("/{id}")
