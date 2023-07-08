@@ -36,7 +36,7 @@ NOTE: the following steps require `yarn` to be installed. Run `npm i -g yarn` to
 - Run `yarn start` to start the app.
   - The app should start on `localhost:3000`.
 
-### To start both the backend and frontend
+## To start both the backend and frontend
 - Run `docker compose up --detach` in terminal from the root of this project.
   - This will create the postgres database container needed for the app, as well as a pgAdmin container to query the database.
 - Run the gradle build task i.e. `./gradlew build`
