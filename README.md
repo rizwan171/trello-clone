@@ -29,7 +29,7 @@ A React-based clone of Trello. Initially started life as a frontend only project
 Currently, the app will save data to LocalStorage and does not interact with the Kotlin backend. This is actively being worked on.<br>
 It is recommended to run only the frontend if you just want to use the app as this is lighter on resources and does not require Docker.
 
-## To start just the frontend (recommended)
+### To start just the frontend (recommended)
 NOTE: the following steps require `yarn` to be installed. Run `npm i -g yarn` to install yarn globally.
 - Navigate to `src/main/frontend/` in the terminal.
 - Run `yarn` to install the required dependencies.
