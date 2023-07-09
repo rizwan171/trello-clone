@@ -21,6 +21,9 @@
 ## About
 A React-based clone of Trello. Initially started life as a frontend only project, but a Spring Boot Kotlin backend is currently being added.
 
+<img src="screenshots/screenshot1.png" width="75%" height="60%"/>
+<img src="screenshots/screenshot2.png" width="75%" height="60%"/>
+
 ## Prerequisites
 - Docker
 - Node
